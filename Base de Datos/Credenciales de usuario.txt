@@ -1,0 +1,15 @@
+Perfil Vendedor
+Usuario: JUANIV
+Contraseña: 123
+
+Perfil Gerente
+Usuario: JUANIG
+Contraseña: 123
+
+Perfil SuperAdministrador
+Usuario: JUANISA
+Contraseña: 123
+
+Perfil Administrador
+Usuario: JUANIA
+Contraseña: 123
