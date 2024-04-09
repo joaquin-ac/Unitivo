@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             GroupBoxClientes = new GroupBox();
             Label2 = new Label();
             BBuscar = new Button();
@@ -44,7 +45,7 @@
             TabControlListaClientes = new TabControl();
             TabPageListaCliente = new TabPage();
             DataGridViewListarClientes = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
@@ -64,13 +65,13 @@
             GroupBoxClientes.Controls.Add(BBuscar);
             GroupBoxClientes.Controls.Add(TBBuscar);
             GroupBoxClientes.Controls.Add(ComboBoxBuscarDni);
-            GroupBoxClientes.Font = new Font("Cooper Black", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            GroupBoxClientes.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxClientes.ForeColor = Color.DarkOrange;
-            GroupBoxClientes.Location = new Point(105, 30);
-            GroupBoxClientes.Margin = new Padding(4, 5, 4, 5);
+            GroupBoxClientes.Location = new Point(92, 22);
+            GroupBoxClientes.Margin = new Padding(4);
             GroupBoxClientes.Name = "GroupBoxClientes";
-            GroupBoxClientes.Padding = new Padding(4, 5, 4, 5);
-            GroupBoxClientes.Size = new Size(617, 154);
+            GroupBoxClientes.Padding = new Padding(4);
+            GroupBoxClientes.Size = new Size(540, 116);
             GroupBoxClientes.TabIndex = 2;
             GroupBoxClientes.TabStop = false;
             GroupBoxClientes.Text = "Clientes";
@@ -80,10 +81,10 @@
             Label2.AutoSize = true;
             Label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label2.ForeColor = Color.DarkOliveGreen;
-            Label2.Location = new Point(45, 50);
-            Label2.Margin = new Padding(5, 0, 5, 0);
+            Label2.Location = new Point(39, 38);
+            Label2.Margin = new Padding(4, 0, 4, 0);
             Label2.Name = "Label2";
-            Label2.Size = new Size(112, 25);
+            Label2.Size = new Size(90, 20);
             Label2.TabIndex = 6;
             Label2.Text = "Buscar por:";
             // 
@@ -92,66 +93,72 @@
             BBuscar.BackColor = Color.DarkOliveGreen;
             BBuscar.ForeColor = Color.White;
             BBuscar.Image = Properties.Resources.icons8_búsqueda_26;
-            BBuscar.Location = new Point(516, 61);
-            BBuscar.Margin = new Padding(4, 5, 4, 5);
+            BBuscar.Location = new Point(452, 46);
+            BBuscar.Margin = new Padding(4);
             BBuscar.Name = "BBuscar";
-            BBuscar.Size = new Size(60, 62);
+            BBuscar.Size = new Size(52, 46);
             BBuscar.TabIndex = 2;
             BBuscar.UseVisualStyleBackColor = false;
+            BBuscar.Click += BBuscar_Click;
             // 
             // TBBuscar
             // 
-            TBBuscar.Location = new Point(296, 74);
-            TBBuscar.Margin = new Padding(4, 5, 4, 5);
+            TBBuscar.Location = new Point(259, 56);
+            TBBuscar.Margin = new Padding(4);
             TBBuscar.Name = "TBBuscar";
-            TBBuscar.Size = new Size(185, 38);
+            TBBuscar.Size = new Size(162, 31);
             TBBuscar.TabIndex = 1;
-            TBBuscar.KeyPress += NumStr_KeyPress;
+            TBBuscar.KeyPress += BuscarPorComboBox;
             // 
             // ComboBoxBuscarDni
             // 
             ComboBoxBuscarDni.BackColor = SystemColors.Window;
             ComboBoxBuscarDni.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBoxBuscarDni.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxBuscarDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ComboBoxBuscarDni.ForeColor = Color.SaddleBrown;
             ComboBoxBuscarDni.FormattingEnabled = true;
-            ComboBoxBuscarDni.Items.AddRange(new object[] { "Dni", "Nombre y Apellido" });
-            ComboBoxBuscarDni.Location = new Point(49, 77);
-            ComboBoxBuscarDni.Margin = new Padding(4, 5, 4, 5);
+            ComboBoxBuscarDni.Items.AddRange(new object[] { "DNI", "Nombre y Apellido" });
+            ComboBoxBuscarDni.Location = new Point(43, 58);
+            ComboBoxBuscarDni.Margin = new Padding(4);
             ComboBoxBuscarDni.Name = "ComboBoxBuscarDni";
-            ComboBoxBuscarDni.Size = new Size(198, 31);
+            ComboBoxBuscarDni.Size = new Size(174, 28);
             ComboBoxBuscarDni.TabIndex = 0;
+            ComboBoxBuscarDni.SelectedValueChanged += ComboBoxBuscarDni_SelectedValueChanged;
             // 
             // panel1
             // 
             panel1.BackColor = Color.DarkOliveGreen;
-            panel1.Location = new Point(0, 9);
+            panel1.Location = new Point(0, 7);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(10, 624);
+            panel1.Size = new Size(9, 468);
             panel1.TabIndex = 4;
             // 
             // panel2
             // 
             panel2.BackColor = Color.DarkOliveGreen;
-            panel2.Location = new Point(831, 8);
+            panel2.Location = new Point(727, 6);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(10, 622);
+            panel2.Size = new Size(9, 466);
             panel2.TabIndex = 5;
             // 
             // panel3
             // 
             panel3.BackColor = Color.DarkOliveGreen;
             panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(841, 10);
+            panel3.Size = new Size(736, 8);
             panel3.TabIndex = 6;
             // 
             // panel4
             // 
             panel4.BackColor = Color.DarkOliveGreen;
-            panel4.Location = new Point(0, 623);
+            panel4.Location = new Point(0, 467);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(841, 10);
+            panel4.Size = new Size(736, 8);
             panel4.TabIndex = 7;
             // 
             // BSeleccionar
@@ -159,27 +166,28 @@
             BSeleccionar.BackColor = Color.DarkOliveGreen;
             BSeleccionar.FlatAppearance.BorderSize = 2;
             BSeleccionar.FlatStyle = FlatStyle.Flat;
-            BSeleccionar.Font = new Font("Cooper Black", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            BSeleccionar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             BSeleccionar.ForeColor = Color.Cornsilk;
-            BSeleccionar.Location = new Point(445, 559);
-            BSeleccionar.Margin = new Padding(4, 5, 4, 5);
+            BSeleccionar.Location = new Point(389, 419);
+            BSeleccionar.Margin = new Padding(4);
             BSeleccionar.Name = "BSeleccionar";
-            BSeleccionar.Size = new Size(181, 41);
+            BSeleccionar.Size = new Size(158, 31);
             BSeleccionar.TabIndex = 67;
             BSeleccionar.Text = "Seleccionar";
             BSeleccionar.UseVisualStyleBackColor = false;
+            BSeleccionar.Click += BSeleccionar_Click;
             // 
             // BCancelar
             // 
             BCancelar.BackColor = Color.Sienna;
             BCancelar.FlatAppearance.BorderSize = 2;
             BCancelar.FlatStyle = FlatStyle.Flat;
-            BCancelar.Font = new Font("Cooper Black", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            BCancelar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             BCancelar.ForeColor = Color.Cornsilk;
-            BCancelar.Location = new Point(217, 559);
-            BCancelar.Margin = new Padding(4, 5, 4, 5);
+            BCancelar.Location = new Point(190, 419);
+            BCancelar.Margin = new Padding(4);
             BCancelar.Name = "BCancelar";
-            BCancelar.Size = new Size(181, 41);
+            BCancelar.Size = new Size(158, 31);
             BCancelar.TabIndex = 68;
             BCancelar.Text = "Cancelar";
             BCancelar.UseVisualStyleBackColor = false;
@@ -188,22 +196,24 @@
             // TabControlListaClientes
             // 
             TabControlListaClientes.Controls.Add(TabPageListaCliente);
-            TabControlListaClientes.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabControlListaClientes.Location = new Point(40, 208);
+            TabControlListaClientes.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabControlListaClientes.Location = new Point(35, 156);
+            TabControlListaClientes.Margin = new Padding(3, 2, 3, 2);
             TabControlListaClientes.Name = "TabControlListaClientes";
             TabControlListaClientes.SelectedIndex = 0;
-            TabControlListaClientes.Size = new Size(750, 306);
+            TabControlListaClientes.Size = new Size(656, 230);
             TabControlListaClientes.TabIndex = 69;
             // 
             // TabPageListaCliente
             // 
             TabPageListaCliente.Controls.Add(DataGridViewListarClientes);
-            TabPageListaCliente.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabPageListaCliente.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaCliente.ForeColor = Color.White;
-            TabPageListaCliente.Location = new Point(4, 28);
+            TabPageListaCliente.Location = new Point(4, 26);
+            TabPageListaCliente.Margin = new Padding(3, 2, 3, 2);
             TabPageListaCliente.Name = "TabPageListaCliente";
-            TabPageListaCliente.Padding = new Padding(3);
-            TabPageListaCliente.Size = new Size(742, 274);
+            TabPageListaCliente.Padding = new Padding(3, 2, 3, 2);
+            TabPageListaCliente.Size = new Size(648, 200);
             TabPageListaCliente.TabIndex = 0;
             TabPageListaCliente.Text = "Lista de Clientes";
             TabPageListaCliente.UseVisualStyleBackColor = true;
@@ -219,7 +229,7 @@
             DataGridViewListarClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle1.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.Window;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -227,30 +237,38 @@
             DataGridViewListarClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewListarClientes.ColumnHeadersHeight = 20;
             DataGridViewListarClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DataGridViewListarClientes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
-            DataGridViewListarClientes.Dock = DockStyle.Fill;
-            DataGridViewListarClientes.EnableHeadersVisualStyles = false;
-            DataGridViewListarClientes.Location = new Point(3, 3);
-            DataGridViewListarClientes.Margin = new Padding(4, 5, 4, 5);
-            DataGridViewListarClientes.Name = "DataGridViewListarClientes";
-            DataGridViewListarClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            DataGridViewListarClientes.Columns.AddRange(new DataGridViewColumn[] { ID, Column2, Column3, Column4, Column5, Column6, Column7 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.NavajoWhite;
-            dataGridViewCellStyle2.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DataGridViewListarClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            DataGridViewListarClientes.Dock = DockStyle.Fill;
+            DataGridViewListarClientes.EnableHeadersVisualStyles = false;
+            DataGridViewListarClientes.Location = new Point(3, 2);
+            DataGridViewListarClientes.Margin = new Padding(4);
+            DataGridViewListarClientes.Name = "DataGridViewListarClientes";
+            DataGridViewListarClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.NavajoWhite;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListarClientes.RowHeadersWidth = 51;
-            DataGridViewListarClientes.Size = new Size(736, 268);
+            DataGridViewListarClientes.Size = new Size(642, 196);
             DataGridViewListarClientes.TabIndex = 6;
             // 
-            // Column1
+            // ID
             // 
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
             // 
             // Column2
             // 
@@ -290,10 +308,10 @@
             // 
             // BuscarCliente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(840, 634);
+            ClientSize = new Size(735, 476);
             ControlBox = false;
             Controls.Add(TabControlListaClientes);
             Controls.Add(BCancelar);
@@ -304,9 +322,11 @@
             Controls.Add(panel1);
             Controls.Add(GroupBoxClientes);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "BuscarCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += BuscarCliente_Load;
             GroupBoxClientes.ResumeLayout(false);
             GroupBoxClientes.PerformLayout();
             TabControlListaClientes.ResumeLayout(false);
@@ -337,5 +357,6 @@
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         internal Label Label2;
+        private DataGridViewTextBoxColumn ID;
     }
 }

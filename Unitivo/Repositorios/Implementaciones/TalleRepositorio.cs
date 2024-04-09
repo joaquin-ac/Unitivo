@@ -21,6 +21,10 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public bool AgregarTalle(Talle x)
         {
+            if (BuscarTalle(x.Descripcion).Count > 0)
+            {
+                return false;
+            }
             try
             {
                 x.Estado = true;
@@ -42,16 +46,17 @@ namespace Unitivo.Repositorios.Implementaciones
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
         }
-        public bool ModificarTalle(Talle Talle)
+        public bool ModificarTalle(Talle talle)
         {
+
             try
             {
-                if (BuscarTalle(Talle.Descripcion) != null)
+                if (BuscarTalleExacto(talle.Descripcion).Count > 0)
                 {
                     MessageBox.Show("Ya existe un Talle con esa descripcion", "Talles", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                _contexto?.Talles.Update(Talle);
+                _contexto?.Talles.Update(talle);
                 int resultado = _contexto?.SaveChanges() ?? 0;
                 return resultado > 0;
             }
@@ -72,16 +77,31 @@ namespace Unitivo.Repositorios.Implementaciones
             List<Talle> Talles = _contexto?.Talles.Where(x => x.Descripcion.Contains(nombre)).ToList()!;
             return Talles;
         }
+        public List<Talle> BuscarTalleExacto(string nombre)
+        {
+            List<Talle> Talles = _contexto?.Talles.Where(x => x.Descripcion == nombre).ToList()!;
+            return Talles;
+        }
 
         public List<Talle> ListarTalles()
         {
-            List<Talle> Talles = _contexto?.Talles.ToList()!;
-            return Talles;
+            List<Talle> talles = _contexto?.Talles.ToList()!;
+            return talles;
         }
         public List<Talle> ListarTallesActivos()
         {
-            List<Talle> Talles = _contexto?.Talles.Where(x => x.Estado == true).ToList()!;
-            return Talles;
+            List<Talle> talles = _contexto?.Talles.Where(x => x.Estado == true).ToList()!;
+            return talles;
+        }
+
+        public bool reactivarTalle(int id)
+        {
+            Talle tal = (from t in _contexto?.Talles
+                             where t.Id == id
+                             select t).First();
+            tal.Estado = true;
+            int resultado = _contexto?.SaveChanges() ?? 0;
+            return resultado > 0;
         }
     }
 }

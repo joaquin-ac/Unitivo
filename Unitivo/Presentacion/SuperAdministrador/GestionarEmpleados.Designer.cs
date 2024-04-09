@@ -66,9 +66,9 @@
             GroupBoxGestionUsuarios.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxGestionUsuarios.ForeColor = Color.Sienna;
             GroupBoxGestionUsuarios.Location = new Point(184, 28);
-            GroupBoxGestionUsuarios.Margin = new Padding(4, 4, 4, 4);
+            GroupBoxGestionUsuarios.Margin = new Padding(4);
             GroupBoxGestionUsuarios.Name = "GroupBoxGestionUsuarios";
-            GroupBoxGestionUsuarios.Padding = new Padding(4, 4, 4, 4);
+            GroupBoxGestionUsuarios.Padding = new Padding(4);
             GroupBoxGestionUsuarios.Size = new Size(525, 108);
             GroupBoxGestionUsuarios.TabIndex = 78;
             GroupBoxGestionUsuarios.TabStop = false;
@@ -94,10 +94,11 @@
             ComboBoxBuscarDni.FormattingEnabled = true;
             ComboBoxBuscarDni.Items.AddRange(new object[] { "DNI", "Nombre y Apellido" });
             ComboBoxBuscarDni.Location = new Point(49, 58);
-            ComboBoxBuscarDni.Margin = new Padding(4, 4, 4, 4);
+            ComboBoxBuscarDni.Margin = new Padding(4);
             ComboBoxBuscarDni.Name = "ComboBoxBuscarDni";
             ComboBoxBuscarDni.Size = new Size(140, 28);
             ComboBoxBuscarDni.TabIndex = 15;
+            ComboBoxBuscarDni.SelectedValueChanged += ComboBoxBuscarDni_SelectedValueChanged;
             // 
             // BBuscarUsuario
             // 
@@ -109,17 +110,18 @@
             BBuscarUsuario.ForeColor = Color.White;
             BBuscarUsuario.Image = Properties.Resources.icons8_búsqueda_26;
             BBuscarUsuario.Location = new Point(426, 36);
-            BBuscarUsuario.Margin = new Padding(4, 4, 4, 4);
+            BBuscarUsuario.Margin = new Padding(4);
             BBuscarUsuario.Name = "BBuscarUsuario";
             BBuscarUsuario.Size = new Size(52, 47);
             BBuscarUsuario.TabIndex = 14;
             BBuscarUsuario.UseVisualStyleBackColor = false;
+            BBuscarUsuario.Click += BBuscarUsuario_Click;
             // 
             // TBGestionUsuario
             // 
             TBGestionUsuario.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TBGestionUsuario.Location = new Point(242, 56);
-            TBGestionUsuario.Margin = new Padding(4, 4, 4, 4);
+            TBGestionUsuario.Margin = new Padding(4);
             TBGestionUsuario.Name = "TBGestionUsuario";
             TBGestionUsuario.Size = new Size(152, 26);
             TBGestionUsuario.TabIndex = 6;
@@ -131,7 +133,7 @@
             BModificarEmpleado.ForeColor = Color.White;
             BModificarEmpleado.Image = Properties.Resources.icons8_editar_archivo_26;
             BModificarEmpleado.Location = new Point(864, 270);
-            BModificarEmpleado.Margin = new Padding(4, 4, 4, 4);
+            BModificarEmpleado.Margin = new Padding(4);
             BModificarEmpleado.Name = "BModificarEmpleado";
             BModificarEmpleado.Size = new Size(59, 52);
             BModificarEmpleado.TabIndex = 76;
@@ -144,7 +146,7 @@
             BEliminarEmpleado.ForeColor = Color.White;
             BEliminarEmpleado.Image = Properties.Resources.icons8_basura_26;
             BEliminarEmpleado.Location = new Point(864, 340);
-            BEliminarEmpleado.Margin = new Padding(4, 4, 4, 4);
+            BEliminarEmpleado.Margin = new Padding(4);
             BEliminarEmpleado.Name = "BEliminarEmpleado";
             BEliminarEmpleado.Size = new Size(59, 52);
             BEliminarEmpleado.TabIndex = 75;
@@ -157,7 +159,7 @@
             BAltaEmpleado.ForeColor = Color.White;
             BAltaEmpleado.Image = Properties.Resources.icons8_más_2_matemáticas_30;
             BAltaEmpleado.Location = new Point(864, 340);
-            BAltaEmpleado.Margin = new Padding(4, 4, 4, 4);
+            BAltaEmpleado.Margin = new Padding(4);
             BAltaEmpleado.Name = "BAltaEmpleado";
             BAltaEmpleado.Size = new Size(59, 52);
             BAltaEmpleado.TabIndex = 80;
@@ -208,7 +210,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -216,7 +218,7 @@
             dgvEmpleados.Dock = DockStyle.Fill;
             dgvEmpleados.EnableHeadersVisualStyles = false;
             dgvEmpleados.Location = new Point(4, 2);
-            dgvEmpleados.Margin = new Padding(4, 4, 4, 4);
+            dgvEmpleados.Margin = new Padding(4);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.ReadOnly = true;
             dgvEmpleados.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -233,6 +235,8 @@
             dgvEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmpleados.Size = new Size(810, 275);
             dgvEmpleados.TabIndex = 2;
+            dgvEmpleados.RowHeaderMouseClick += dgvEmpleados_RowHeaderMouseClick;
+            dgvEmpleados.RowHeaderMouseDoubleClick += dgvEmpleados_RowHeaderMouseDoubleClick;
             // 
             // ID
             // 
@@ -302,9 +306,10 @@
             Controls.Add(BEliminarEmpleado);
             Controls.Add(BAltaEmpleado);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "GestionarEmpleados";
             Text = "Form1";
+            Load += GestionarEmpleados_Load;
             GroupBoxGestionUsuarios.ResumeLayout(false);
             GroupBoxGestionUsuarios.PerformLayout();
             TabControlListaEmpleados.ResumeLayout(false);

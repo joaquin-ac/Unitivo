@@ -49,21 +49,23 @@
             // TabDetalleVenta
             // 
             TabDetalleVenta.Controls.Add(TabPageDetalleVenta);
-            TabDetalleVenta.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabDetalleVenta.Location = new Point(36, 38);
+            TabDetalleVenta.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabDetalleVenta.Location = new Point(32, 28);
+            TabDetalleVenta.Margin = new Padding(3, 2, 3, 2);
             TabDetalleVenta.Name = "TabDetalleVenta";
             TabDetalleVenta.SelectedIndex = 0;
-            TabDetalleVenta.Size = new Size(1029, 420);
+            TabDetalleVenta.Size = new Size(900, 315);
             TabDetalleVenta.TabIndex = 59;
             // 
             // TabPageDetalleVenta
             // 
             TabPageDetalleVenta.Controls.Add(dgvListaVentas);
-            TabPageDetalleVenta.Font = new Font("Britannic Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            TabPageDetalleVenta.Location = new Point(4, 28);
+            TabPageDetalleVenta.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            TabPageDetalleVenta.Location = new Point(4, 26);
+            TabPageDetalleVenta.Margin = new Padding(3, 2, 3, 2);
             TabPageDetalleVenta.Name = "TabPageDetalleVenta";
-            TabPageDetalleVenta.Padding = new Padding(3);
-            TabPageDetalleVenta.Size = new Size(1021, 388);
+            TabPageDetalleVenta.Padding = new Padding(3, 2, 3, 2);
+            TabPageDetalleVenta.Size = new Size(892, 285);
             TabPageDetalleVenta.TabIndex = 0;
             TabPageDetalleVenta.Text = "Detalle de Venta";
             TabPageDetalleVenta.UseVisualStyleBackColor = true;
@@ -78,7 +80,7 @@
             dgvListaVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle1.Font = new Font("Britannic Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -89,14 +91,14 @@
             dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Cantidad, Talle });
             dgvListaVentas.Dock = DockStyle.Fill;
             dgvListaVentas.EnableHeadersVisualStyles = false;
-            dgvListaVentas.Location = new Point(3, 3);
-            dgvListaVentas.Margin = new Padding(4, 3, 4, 3);
+            dgvListaVentas.Location = new Point(3, 2);
+            dgvListaVentas.Margin = new Padding(4, 2, 4, 2);
             dgvListaVentas.Name = "dgvListaVentas";
             dgvListaVentas.ReadOnly = true;
             dgvListaVentas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Britannic Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -104,7 +106,7 @@
             dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvListaVentas.RowHeadersWidth = 51;
             dgvListaVentas.RowTemplate.Height = 24;
-            dgvListaVentas.Size = new Size(1015, 382);
+            dgvListaVentas.Size = new Size(886, 281);
             dgvListaVentas.TabIndex = 56;
             // 
             // Codigo
@@ -147,12 +149,12 @@
             BVolver.BackColor = Color.Sienna;
             BVolver.FlatAppearance.BorderSize = 2;
             BVolver.FlatStyle = FlatStyle.Flat;
-            BVolver.Font = new Font("Cooper Black", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            BVolver.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             BVolver.ForeColor = Color.Cornsilk;
-            BVolver.Location = new Point(463, 478);
-            BVolver.Margin = new Padding(4, 5, 4, 5);
+            BVolver.Location = new Point(405, 358);
+            BVolver.Margin = new Padding(4, 4, 4, 4);
             BVolver.Name = "BVolver";
-            BVolver.Size = new Size(181, 41);
+            BVolver.Size = new Size(158, 31);
             BVolver.TabIndex = 71;
             BVolver.Text = "Volver";
             BVolver.UseVisualStyleBackColor = false;
@@ -161,50 +163,55 @@
             // panel1
             // 
             panel1.BackColor = Color.Gray;
-            panel1.Location = new Point(1094, 10);
+            panel1.Location = new Point(957, 8);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(10, 534);
+            panel1.Size = new Size(9, 400);
             panel1.TabIndex = 72;
             // 
             // panel2
             // 
             panel2.BackColor = Color.Gray;
             panel2.Controls.Add(panel4);
-            panel2.Location = new Point(0, 10);
+            panel2.Location = new Point(0, 8);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(10, 534);
+            panel2.Size = new Size(9, 400);
             panel2.TabIndex = 73;
             // 
             // panel4
             // 
             panel4.BackColor = Color.DarkGray;
-            panel4.Location = new Point(0, 618);
+            panel4.Location = new Point(0, 464);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1104, 10);
+            panel4.Size = new Size(966, 8);
             panel4.TabIndex = 75;
             // 
             // panel3
             // 
             panel3.BackColor = Color.Gray;
             panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1104, 10);
+            panel3.Size = new Size(966, 8);
             panel3.TabIndex = 74;
             // 
             // panel5
             // 
             panel5.BackColor = Color.Gray;
-            panel5.Location = new Point(0, 537);
+            panel5.Location = new Point(0, 403);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1104, 10);
+            panel5.Size = new Size(966, 8);
             panel5.TabIndex = 75;
             // 
             // DetalleVenta
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1105, 547);
+            ClientSize = new Size(967, 410);
             Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -212,10 +219,11 @@
             Controls.Add(BVolver);
             Controls.Add(TabDetalleVenta);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "DetalleVenta";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += DetalleVenta_Load;
             TabDetalleVenta.ResumeLayout(false);
             TabPageDetalleVenta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvListaVentas).EndInit();

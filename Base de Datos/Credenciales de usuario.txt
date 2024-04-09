@@ -1,15 +1,11 @@
 Perfil Vendedor
-Usuario: JUANIV
-Contraseña: 123
-
-Perfil Gerente
-Usuario: JUANIG
-Contraseña: 123
+Usuario: pepe@gmail.com
+Contraseña: Ab@1234567
 
 Perfil SuperAdministrador
-Usuario: JUANISA
-Contraseña: 123
+Usuario: juan@gmail.com
+Contraseña: Ab@1234567
 
 Perfil Administrador
-Usuario: JUANIA
-Contraseña: 123
+Usuario: maria@gmail.com
+Contraseña: Ab@1234567

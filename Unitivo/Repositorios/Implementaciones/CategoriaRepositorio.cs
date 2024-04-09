@@ -18,6 +18,10 @@ namespace Unitivo.Repositorios.Implementaciones
         }    
         
         public bool AgregarCategoria(Categoria x){
+            if (BuscarCategoria(x.Descripcion).Count > 0)
+            {
+                return false;
+            }
             try{
                 x.Estado = true;
                 _contexto?.Categorias.Add(x);
@@ -40,7 +44,7 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool ModificarCategoria(Categoria Categoria){
             try
             {
-                if(BuscarCategoria(Categoria.Descripcion) != null){
+                if(BuscarCategoriaExacta(Categoria.Descripcion).Count > 0){
                     MessageBox.Show("Ya existe un Categoria con esa descripcion", "Categorias", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -64,7 +68,13 @@ namespace Unitivo.Repositorios.Implementaciones
             List<Categoria> Categorias = _contexto?.Categorias.Where(x => x.Descripcion.Contains(nombre)).ToList()!;
             return Categorias;
         }
-        
+
+        public List<Categoria> BuscarCategoriaExacta(string nombre)
+        {
+            List<Categoria> Categorias = _contexto?.Categorias.Where(x => x.Descripcion == nombre).ToList()!;
+            return Categorias;
+        }
+
         public List<Categoria> ListarCategorias(){
             List<Categoria> Categorias = _contexto?.Categorias.ToList()!;
             return Categorias;
@@ -72,6 +82,16 @@ namespace Unitivo.Repositorios.Implementaciones
         public List<Categoria> ListarCategoriasActivos(){
             List<Categoria> Categorias = _contexto?.Categorias.Where(x => x.Estado == true).ToList()!;
             return Categorias;
+        }
+
+        public bool reactivarCategoria(int id)
+        {
+            Categoria cat = (from c in _contexto?.Categorias
+                            where c.Id == id
+                            select c).First();
+            cat.Estado = true;
+            int resultado = _contexto?.SaveChanges() ?? 0;
+            return resultado > 0;
         }
     }
 }

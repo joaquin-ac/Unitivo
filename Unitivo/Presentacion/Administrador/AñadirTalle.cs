@@ -62,12 +62,24 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CargarTalles()
         {
-            List<Talle> talles = talleRepositorio.ListarTallesActivos();
+            List<Talle> talles = talleRepositorio.ListarTalles();
             DataGridViewListarTalles.Rows.Clear();
             DataGridViewListarTalles.Refresh();
+
             foreach (Talle talle in talles)
             {
-                DataGridViewListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+                if (talle.Estado == true)
+                {
+                    DataGridViewListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = DataGridViewListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+
+                    // Establecer el color de fondo de la fila agregada
+                    DataGridViewListarTalles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 
@@ -77,8 +89,9 @@ namespace Unitivo.Presentacion.Administrador
             TBNombreTalle.Clear();
         }
 
+        private void AñadirTalle_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

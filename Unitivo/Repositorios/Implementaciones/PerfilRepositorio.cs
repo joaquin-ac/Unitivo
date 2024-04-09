@@ -18,6 +18,11 @@ namespace Unitivo.Repositorios.Implementaciones
             try
             {
                 x.EstadoPerfil = true;
+                if (BuscarPerfilExacto(x.DescripcionPerfil).Count > 0)
+                {
+                    MessageBox.Show("El perfil ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
                 _contexto?.Perfiles.Add(x);
                 _contexto?.SaveChanges();
                 return true;
@@ -44,7 +49,6 @@ namespace Unitivo.Repositorios.Implementaciones
             if (perfil == null) return false;
             perfil.EstadoPerfil = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
-            MessageBox.Show("Se Reactivo correctamente", "Exito");
             return resultado > 0;
         }
 
@@ -55,20 +59,16 @@ namespace Unitivo.Repositorios.Implementaciones
                 MessageBox.Show("Ya existe un perfil con esa descripcion", "Perfiles", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            Perfile modif = (from perfil in _contexto?.Perfiles
-                             where perfile.Id == perfil.Id 
-                             select perfil).First();
-
-
-            modif.Id = perfile.Id;
-            modif.DescripcionPerfil = perfile.DescripcionPerfil;
-            modif.EstadoPerfil = perfile.EstadoPerfil;
-
-
-
             try
-             {
+            {
+                Perfile modif = (from perfil in _contexto?.Perfiles
+                                 where perfile.Id == perfil.Id
+                                 select perfil).First();
+
+
+                modif.Id = perfile.Id;
+                modif.DescripcionPerfil = perfile.DescripcionPerfil;
+                modif.EstadoPerfil = perfile.EstadoPerfil;
                 int resultado = _contexto?.SaveChanges() ?? 0;
                 MessageBox.Show("Se cambio correctamente", "Exito");
                 return resultado > 0;

@@ -4,17 +4,88 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unitivo.Modelos;
+using Unitivo.Repositorios.Implementaciones;
+using System.Drawing.Printing;
 
 namespace Unitivo.Presentacion.Vendedor
 {
     public partial class FacturaVenta : Form
     {
-        public FacturaVenta()
+        FacturaRepositorio facturaRepositorio = new FacturaRepositorio();
+        DetalleFacturaRepositorio dFacturaRepositorio = new DetalleFacturaRepositorio();
+        Factura factura;
+        public FacturaVenta(Factura Pfactura)
         {
             InitializeComponent();
+            factura = Pfactura;
+            CargarFactura();
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CargarFactura()
+        {
+            TBIDFactura.Text = factura.Id.ToString();
+            DateTimePickerFecha.Value = factura.FechaCreacion;
+            string nomVendedor = factura.IdUsuarioNavigation.IdEmpleadoNavigation.Apellido + ", " + factura.IdUsuarioNavigation.IdEmpleadoNavigation.Nombre;
+            TBVendedor.Text = nomVendedor;
+            TBTotalFactura.Text = factura.Precio.ToString();
+            CargarDetalle();
+        }
+
+        private void CargarDetalle()
+        {
+            List<DetalleFactura> detallesFactura = dFacturaRepositorio.ListarDetalleFacturas(factura.Id);
+            dgvListaVentas.Rows.Clear();
+            dgvListaVentas.Refresh();
+
+            foreach (DetalleFactura dfactura in detallesFactura)
+            {
+                dgvListaVentas.Rows.Add(dfactura.Id, dfactura.IdProductoNavigation.Nombre, dfactura.Precio, dfactura.Cantidad, dfactura.IdProductoNavigation.IdTalleNavigation.Descripcion, dfactura.Precio);
+            }
+        }
+
+        private void BImprimir_Click(object sender, EventArgs e)
+        {
+            // Mostrar el diálogo de impresión
+            using (PrintDialog printDialog = new PrintDialog())
+            {
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Crear un objeto PrintDocument
+                    using (PrintDocument printDocument = new PrintDocument())
+                    {
+                        // Configurar la impresora seleccionada
+                        printDocument.PrinterSettings = printDialog.PrinterSettings;
+
+                        // Asociar el evento PrintPage para dibujar el contenido del formulario en la página
+                        printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+
+                        // Iniciar la impresión
+                        printDocument.Print();
+                    }
+                }
+            }
+            Close();
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Obtener el formulario como una imagen
+            Bitmap bitmap = new Bitmap(this.Width, this.Height);
+            this.DrawToBitmap(bitmap, new Rectangle(0, 0, this.Width, this.Height));
+
+            // Dibujar la imagen en la página de impresión
+            e.Graphics.DrawImage(bitmap, new PointF(0, 0));
         }
     }
 }

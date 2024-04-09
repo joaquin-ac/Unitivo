@@ -9,7 +9,7 @@ namespace Unitivo.Repositorios.Interfaces
 {
     public interface ProductoInterface
     {
-        public void AgregarProducto(Producto producto);
+        public bool AgregarProducto(Producto producto);
         public bool EliminarProducto(int id);
         public bool ModificarProducto(Producto producto, int stock);
         public Producto BuscarProducto(int id);

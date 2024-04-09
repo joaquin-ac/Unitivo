@@ -13,9 +13,9 @@ public partial class DetalleFactura
 
     public DateTime FechaCreacion { get; set; }
 
-    public int? IdFactura { get; set; }
+    public int IdFactura { get; set; }
 
-    public int? IdProducto { get; set; }
+    public int IdProducto { get; set; }
 
     public virtual Factura? IdFacturaNavigation { get; set; }
 

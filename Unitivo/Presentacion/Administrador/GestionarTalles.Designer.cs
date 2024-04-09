@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             GroupBoxGestionTalles = new GroupBox();
             BBuscarTalle = new Button();
             TBBuscarTalle = new TextBox();
@@ -39,20 +39,20 @@
             BEliminarTalle = new Button();
             TabListaTalles = new TabControl();
             TabPageListaTalles = new TabPage();
-            dgvListarTalles = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
             BAltaTalle = new Button();
             GroupBoxDatosTalles = new GroupBox();
             TBModTalle = new TextBox();
-            LModTalle = new Label();
             button1 = new Button();
+            LModTalle = new Label();
+            Estado = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
+            dgvListarTalles = new DataGridView();
             GroupBoxGestionTalles.SuspendLayout();
             TabListaTalles.SuspendLayout();
             TabPageListaTalles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvListarTalles).BeginInit();
             GroupBoxDatosTalles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvListarTalles).BeginInit();
             SuspendLayout();
             // 
             // GroupBoxGestionTalles
@@ -60,13 +60,13 @@
             GroupBoxGestionTalles.BackColor = Color.Cornsilk;
             GroupBoxGestionTalles.Controls.Add(BBuscarTalle);
             GroupBoxGestionTalles.Controls.Add(TBBuscarTalle);
-            GroupBoxGestionTalles.Font = new Font("Cooper Black", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            GroupBoxGestionTalles.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxGestionTalles.ForeColor = Color.SaddleBrown;
-            GroupBoxGestionTalles.Location = new Point(333, 33);
-            GroupBoxGestionTalles.Margin = new Padding(4, 5, 4, 5);
+            GroupBoxGestionTalles.Location = new Point(291, 25);
+            GroupBoxGestionTalles.Margin = new Padding(4);
             GroupBoxGestionTalles.Name = "GroupBoxGestionTalles";
-            GroupBoxGestionTalles.Padding = new Padding(4, 5, 4, 5);
-            GroupBoxGestionTalles.Size = new Size(425, 152);
+            GroupBoxGestionTalles.Padding = new Padding(4);
+            GroupBoxGestionTalles.Size = new Size(372, 114);
             GroupBoxGestionTalles.TabIndex = 91;
             GroupBoxGestionTalles.TabStop = false;
             GroupBoxGestionTalles.Text = "Gestión de Talles";
@@ -77,23 +77,24 @@
             BBuscarTalle.FlatAppearance.BorderColor = Color.White;
             BBuscarTalle.FlatAppearance.BorderSize = 2;
             BBuscarTalle.FlatStyle = FlatStyle.Flat;
-            BBuscarTalle.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BBuscarTalle.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BBuscarTalle.ForeColor = Color.White;
             BBuscarTalle.Image = Properties.Resources.icons8_búsqueda_26;
-            BBuscarTalle.Location = new Point(285, 60);
-            BBuscarTalle.Margin = new Padding(4, 5, 4, 5);
+            BBuscarTalle.Location = new Point(249, 45);
+            BBuscarTalle.Margin = new Padding(4);
             BBuscarTalle.Name = "BBuscarTalle";
-            BBuscarTalle.Size = new Size(65, 63);
+            BBuscarTalle.Size = new Size(57, 47);
             BBuscarTalle.TabIndex = 14;
             BBuscarTalle.UseVisualStyleBackColor = false;
+            BBuscarTalle.Click += BBuscarTalle_Click;
             // 
             // TBBuscarTalle
             // 
-            TBBuscarTalle.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBBuscarTalle.Location = new Point(65, 75);
-            TBBuscarTalle.Margin = new Padding(4, 5, 4, 5);
+            TBBuscarTalle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            TBBuscarTalle.Location = new Point(57, 56);
+            TBBuscarTalle.Margin = new Padding(4);
             TBBuscarTalle.Name = "TBBuscarTalle";
-            TBBuscarTalle.Size = new Size(196, 30);
+            TBBuscarTalle.Size = new Size(172, 26);
             TBBuscarTalle.TabIndex = 6;
             TBBuscarTalle.KeyPress += Num_KeyPress;
             // 
@@ -103,28 +104,29 @@
             BModificarTalle.FlatAppearance.BorderColor = Color.White;
             BModificarTalle.FlatAppearance.BorderSize = 2;
             BModificarTalle.FlatStyle = FlatStyle.Flat;
-            BModificarTalle.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BModificarTalle.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BModificarTalle.ForeColor = Color.White;
             BModificarTalle.Image = Properties.Resources.icons8_editar_archivo_26;
-            BModificarTalle.Location = new Point(973, 300);
-            BModificarTalle.Margin = new Padding(4, 5, 4, 5);
+            BModificarTalle.Location = new Point(851, 225);
+            BModificarTalle.Margin = new Padding(4);
             BModificarTalle.Name = "BModificarTalle";
-            BModificarTalle.Size = new Size(67, 69);
+            BModificarTalle.Size = new Size(59, 52);
             BModificarTalle.TabIndex = 89;
             BModificarTalle.UseVisualStyleBackColor = false;
+            BModificarTalle.Click += BModificarTalle_Click;
             // 
             // BEliminarTalle
             // 
             BEliminarTalle.BackColor = Color.Brown;
             BEliminarTalle.FlatAppearance.BorderSize = 2;
             BEliminarTalle.FlatStyle = FlatStyle.Flat;
-            BEliminarTalle.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BEliminarTalle.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BEliminarTalle.ForeColor = Color.White;
             BEliminarTalle.Image = Properties.Resources.icons8_basura_26;
-            BEliminarTalle.Location = new Point(973, 417);
-            BEliminarTalle.Margin = new Padding(4, 5, 4, 5);
+            BEliminarTalle.Location = new Point(851, 313);
+            BEliminarTalle.Margin = new Padding(4);
             BEliminarTalle.Name = "BEliminarTalle";
-            BEliminarTalle.Size = new Size(67, 69);
+            BEliminarTalle.Size = new Size(59, 52);
             BEliminarTalle.TabIndex = 88;
             BEliminarTalle.TextImageRelation = TextImageRelation.ImageBeforeText;
             BEliminarTalle.UseVisualStyleBackColor = false;
@@ -133,104 +135,37 @@
             // TabListaTalles
             // 
             TabListaTalles.Controls.Add(TabPageListaTalles);
-            TabListaTalles.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabListaTalles.Location = new Point(98, 244);
+            TabListaTalles.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabListaTalles.Location = new Point(86, 183);
+            TabListaTalles.Margin = new Padding(3, 2, 3, 2);
             TabListaTalles.Name = "TabListaTalles";
             TabListaTalles.SelectedIndex = 0;
-            TabListaTalles.Size = new Size(826, 269);
+            TabListaTalles.Size = new Size(723, 202);
             TabListaTalles.TabIndex = 90;
             // 
             // TabPageListaTalles
             // 
             TabPageListaTalles.Controls.Add(dgvListarTalles);
-            TabPageListaTalles.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabPageListaTalles.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaTalles.ForeColor = Color.White;
-            TabPageListaTalles.Location = new Point(4, 28);
+            TabPageListaTalles.Location = new Point(4, 26);
+            TabPageListaTalles.Margin = new Padding(3, 2, 3, 2);
             TabPageListaTalles.Name = "TabPageListaTalles";
-            TabPageListaTalles.Padding = new Padding(3);
-            TabPageListaTalles.Size = new Size(818, 237);
+            TabPageListaTalles.Padding = new Padding(3, 2, 3, 2);
+            TabPageListaTalles.Size = new Size(715, 172);
             TabPageListaTalles.TabIndex = 0;
             TabPageListaTalles.Text = "Lista de Talles";
             TabPageListaTalles.UseVisualStyleBackColor = true;
-            // 
-            // dgvListarTalles
-            // 
-            dgvListarTalles.AllowUserToAddRows = false;
-            dgvListarTalles.AllowUserToDeleteRows = false;
-            dgvListarTalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvListarTalles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvListarTalles.BackgroundColor = Color.RosyBrown;
-            dgvListarTalles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle17.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            dgvListarTalles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            dgvListarTalles.ColumnHeadersHeight = 20;
-            dgvListarTalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvListarTalles.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = SystemColors.Window;
-            dataGridViewCellStyle18.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle18.ForeColor = Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = Color.Blue;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            dgvListarTalles.DefaultCellStyle = dataGridViewCellStyle18;
-            dgvListarTalles.Dock = DockStyle.Fill;
-            dgvListarTalles.EnableHeadersVisualStyles = false;
-            dgvListarTalles.Location = new Point(3, 3);
-            dgvListarTalles.Margin = new Padding(4, 5, 4, 5);
-            dgvListarTalles.Name = "dgvListarTalles";
-            dgvListarTalles.ReadOnly = true;
-            dgvListarTalles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle19.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle19.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            dgvListarTalles.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dgvListarTalles.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.ForeColor = Color.Black;
-            dgvListarTalles.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            dgvListarTalles.Size = new Size(812, 231);
-            dgvListarTalles.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Descripcion";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Estado";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
             // 
             // BAltaTalle
             // 
             BAltaTalle.BackColor = Color.DarkOliveGreen;
             BAltaTalle.ForeColor = Color.White;
             BAltaTalle.Image = Properties.Resources.icons8_más_2_matemáticas_30;
-            BAltaTalle.Location = new Point(973, 417);
-            BAltaTalle.Margin = new Padding(4, 5, 4, 5);
+            BAltaTalle.Location = new Point(851, 313);
+            BAltaTalle.Margin = new Padding(4);
             BAltaTalle.Name = "BAltaTalle";
-            BAltaTalle.Size = new Size(67, 69);
+            BAltaTalle.Size = new Size(59, 52);
             BAltaTalle.TabIndex = 92;
             BAltaTalle.UseVisualStyleBackColor = false;
             BAltaTalle.Click += BAltaTalle_Click;
@@ -241,36 +176,24 @@
             GroupBoxDatosTalles.Controls.Add(TBModTalle);
             GroupBoxDatosTalles.Controls.Add(button1);
             GroupBoxDatosTalles.Controls.Add(LModTalle);
-            GroupBoxDatosTalles.Font = new Font("Cooper Black", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            GroupBoxDatosTalles.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxDatosTalles.ForeColor = Color.White;
-            GroupBoxDatosTalles.Location = new Point(240, 555);
-            GroupBoxDatosTalles.Margin = new Padding(4, 5, 4, 5);
+            GroupBoxDatosTalles.Location = new Point(210, 416);
+            GroupBoxDatosTalles.Margin = new Padding(4);
             GroupBoxDatosTalles.Name = "GroupBoxDatosTalles";
-            GroupBoxDatosTalles.Padding = new Padding(4, 5, 4, 5);
-            GroupBoxDatosTalles.Size = new Size(600, 245);
+            GroupBoxDatosTalles.Padding = new Padding(4);
+            GroupBoxDatosTalles.Size = new Size(525, 184);
             GroupBoxDatosTalles.TabIndex = 19;
             GroupBoxDatosTalles.TabStop = false;
             GroupBoxDatosTalles.Text = "Modificar Talle";
             // 
             // TBModTalle
             // 
-            TBModTalle.Location = new Point(134, 133);
-            TBModTalle.Margin = new Padding(4, 5, 4, 5);
+            TBModTalle.Location = new Point(117, 100);
+            TBModTalle.Margin = new Padding(4);
             TBModTalle.Name = "TBModTalle";
-            TBModTalle.Size = new Size(221, 38);
+            TBModTalle.Size = new Size(194, 32);
             TBModTalle.TabIndex = 16;
-            // 
-            // LModTalle
-            // 
-            LModTalle.AutoSize = true;
-            LModTalle.Font = new Font("Britannic Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LModTalle.ForeColor = Color.White;
-            LModTalle.Location = new Point(131, 90);
-            LModTalle.Margin = new Padding(8, 0, 8, 0);
-            LModTalle.Name = "LModTalle";
-            LModTalle.Size = new Size(160, 27);
-            LModTalle.TabIndex = 15;
-            LModTalle.Text = "Descripción : ";
             // 
             // button1
             // 
@@ -278,22 +201,107 @@
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatAppearance.BorderSize = 2;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Britannic Bold", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(429, 130);
-            button1.Margin = new Padding(5, 6, 5, 6);
+            button1.Location = new Point(375, 98);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
-            button1.Size = new Size(131, 47);
+            button1.Size = new Size(115, 35);
             button1.TabIndex = 13;
             button1.Text = "Modificar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // LModTalle
+            // 
+            LModTalle.AutoSize = true;
+            LModTalle.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LModTalle.ForeColor = Color.White;
+            LModTalle.Location = new Point(115, 68);
+            LModTalle.Margin = new Padding(7, 0, 7, 0);
+            LModTalle.Name = "LModTalle";
+            LModTalle.Size = new Size(125, 24);
+            LModTalle.TabIndex = 15;
+            LModTalle.Text = "Descripción : ";
+            // 
+            // Estado
+            // 
+            Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            // 
+            // dgvListarTalles
+            // 
+            dgvListarTalles.AllowUserToAddRows = false;
+            dgvListarTalles.AllowUserToDeleteRows = false;
+            dgvListarTalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListarTalles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvListarTalles.BackgroundColor = Color.RosyBrown;
+            dgvListarTalles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvListarTalles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvListarTalles.ColumnHeadersHeight = 20;
+            dgvListarTalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvListarTalles.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvListarTalles.Dock = DockStyle.Fill;
+            dgvListarTalles.EnableHeadersVisualStyles = false;
+            dgvListarTalles.Location = new Point(3, 2);
+            dgvListarTalles.Margin = new Padding(4);
+            dgvListarTalles.Name = "dgvListarTalles";
+            dgvListarTalles.ReadOnly = true;
+            dgvListarTalles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvListarTalles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvListarTalles.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dgvListarTalles.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dgvListarTalles.Size = new Size(709, 168);
+            dgvListarTalles.TabIndex = 3;
+            dgvListarTalles.CellContentClick += dgvListarTalles_CellContentClick;
+            dgvListarTalles.RowHeaderMouseClick += dgvListarTalles_RowHeaderMouseClick;
+            dgvListarTalles.RowHeaderMouseDoubleClick += dgvListarTalles_RowHeaderMouseDoubleClick;
             // 
             // GestionarTalles
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1080, 846);
+            ClientSize = new Size(945, 634);
             Controls.Add(GroupBoxDatosTalles);
             Controls.Add(GroupBoxGestionTalles);
             Controls.Add(BModificarTalle);
@@ -301,16 +309,17 @@
             Controls.Add(TabListaTalles);
             Controls.Add(BAltaTalle);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(4);
             Name = "GestionarTalles";
             Text = "Form1";
+            Load += GestionarTalles_Load;
             GroupBoxGestionTalles.ResumeLayout(false);
             GroupBoxGestionTalles.PerformLayout();
             TabListaTalles.ResumeLayout(false);
             TabPageListaTalles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvListarTalles).EndInit();
             GroupBoxDatosTalles.ResumeLayout(false);
             GroupBoxDatosTalles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvListarTalles).EndInit();
             ResumeLayout(false);
         }
 
@@ -321,17 +330,16 @@
         internal Button BEliminarTalle;
         internal TabControl TabListaTalles;
         internal TabPage TabPageListaTalles;
-        internal DataGridView dgvListarTalles;
         internal Button BAltaTalle;
 
-        #endregion
-
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
+#endregion
         internal GroupBox GroupBoxDatosTalles;
         internal TextBox TBModTalle;
         internal Button button1;
         internal Label LModTalle;
+        internal DataGridView dgvListarTalles;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Estado;
     }
 }

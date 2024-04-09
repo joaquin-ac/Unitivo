@@ -57,10 +57,10 @@
             BImprimirVendedor.BackColor = Color.SteelBlue;
             BImprimirVendedor.ForeColor = Color.White;
             BImprimirVendedor.Image = Properties.Resources.icons8_imprimir_26;
-            BImprimirVendedor.Location = new Point(987, 424);
-            BImprimirVendedor.Margin = new Padding(4, 5, 4, 5);
+            BImprimirVendedor.Location = new Point(864, 318);
+            BImprimirVendedor.Margin = new Padding(4);
             BImprimirVendedor.Name = "BImprimirVendedor";
-            BImprimirVendedor.Size = new Size(67, 69);
+            BImprimirVendedor.Size = new Size(59, 52);
             BImprimirVendedor.TabIndex = 22;
             BImprimirVendedor.UseVisualStyleBackColor = false;
             // 
@@ -69,13 +69,13 @@
             GroupBoxVendedor.BackColor = Color.FloralWhite;
             GroupBoxVendedor.Controls.Add(BBuscarVendedor);
             GroupBoxVendedor.Controls.Add(TBBuscarVendedor);
-            GroupBoxVendedor.Font = new Font("Cooper Black", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            GroupBoxVendedor.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxVendedor.ForeColor = Color.DarkOrange;
-            GroupBoxVendedor.Location = new Point(235, 45);
-            GroupBoxVendedor.Margin = new Padding(4, 5, 4, 5);
+            GroupBoxVendedor.Location = new Point(206, 34);
+            GroupBoxVendedor.Margin = new Padding(4);
             GroupBoxVendedor.Name = "GroupBoxVendedor";
-            GroupBoxVendedor.Padding = new Padding(4, 5, 4, 5);
-            GroupBoxVendedor.Size = new Size(533, 154);
+            GroupBoxVendedor.Padding = new Padding(4);
+            GroupBoxVendedor.Size = new Size(466, 116);
             GroupBoxVendedor.TabIndex = 20;
             GroupBoxVendedor.TabStop = false;
             GroupBoxVendedor.Text = "Vendedores";
@@ -85,43 +85,44 @@
             BBuscarVendedor.BackColor = Color.DarkOliveGreen;
             BBuscarVendedor.ForeColor = Color.White;
             BBuscarVendedor.Image = Properties.Resources.icons8_búsqueda_26;
-            BBuscarVendedor.Location = new Point(365, 66);
-            BBuscarVendedor.Margin = new Padding(4, 5, 4, 5);
+            BBuscarVendedor.Location = new Point(319, 50);
+            BBuscarVendedor.Margin = new Padding(4);
             BBuscarVendedor.Name = "BBuscarVendedor";
-            BBuscarVendedor.Size = new Size(60, 62);
+            BBuscarVendedor.Size = new Size(52, 46);
             BBuscarVendedor.TabIndex = 2;
             BBuscarVendedor.UseVisualStyleBackColor = false;
+            BBuscarVendedor.Click += BBuscarVendedor_Click;
             // 
             // TBBuscarVendedor
             // 
-            TBBuscarVendedor.Location = new Point(108, 72);
-            TBBuscarVendedor.Margin = new Padding(4, 5, 4, 5);
+            TBBuscarVendedor.Location = new Point(94, 54);
+            TBBuscarVendedor.Margin = new Padding(4);
             TBBuscarVendedor.Name = "TBBuscarVendedor";
-            TBBuscarVendedor.Size = new Size(220, 38);
+            TBBuscarVendedor.Size = new Size(193, 31);
             TBBuscarVendedor.TabIndex = 1;
             TBBuscarVendedor.KeyPress += StrNum_KeyPress;
             // 
             // TabControlListaVendedores
             // 
             TabControlListaVendedores.Controls.Add(TabPageListaVendedores);
-            TabControlListaVendedores.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabControlListaVendedores.Location = new Point(27, 239);
-            TabControlListaVendedores.Margin = new Padding(4, 3, 4, 3);
+            TabControlListaVendedores.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabControlListaVendedores.Location = new Point(24, 179);
+            TabControlListaVendedores.Margin = new Padding(4, 2, 4, 2);
             TabControlListaVendedores.Name = "TabControlListaVendedores";
             TabControlListaVendedores.SelectedIndex = 0;
-            TabControlListaVendedores.Size = new Size(944, 412);
+            TabControlListaVendedores.Size = new Size(826, 309);
             TabControlListaVendedores.TabIndex = 82;
             // 
             // TabPageListaVendedores
             // 
             TabPageListaVendedores.Controls.Add(dgvEmpleados);
-            TabPageListaVendedores.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabPageListaVendedores.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaVendedores.ForeColor = Color.White;
-            TabPageListaVendedores.Location = new Point(4, 28);
-            TabPageListaVendedores.Margin = new Padding(4, 3, 4, 3);
+            TabPageListaVendedores.Location = new Point(4, 26);
+            TabPageListaVendedores.Margin = new Padding(4, 2, 4, 2);
             TabPageListaVendedores.Name = "TabPageListaVendedores";
-            TabPageListaVendedores.Padding = new Padding(4, 3, 4, 3);
-            TabPageListaVendedores.Size = new Size(936, 380);
+            TabPageListaVendedores.Padding = new Padding(4, 2, 4, 2);
+            TabPageListaVendedores.Size = new Size(818, 279);
             TabPageListaVendedores.TabIndex = 0;
             TabPageListaVendedores.Text = "Lista de Vendedores";
             TabPageListaVendedores.UseVisualStyleBackColor = true;
@@ -134,7 +135,7 @@
             dgvEmpleados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle1.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -145,22 +146,22 @@
             dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvEmpleados.DefaultCellStyle = dataGridViewCellStyle2;
             dgvEmpleados.Dock = DockStyle.Fill;
             dgvEmpleados.EnableHeadersVisualStyles = false;
-            dgvEmpleados.Location = new Point(4, 3);
-            dgvEmpleados.Margin = new Padding(5, 6, 5, 6);
+            dgvEmpleados.Location = new Point(4, 2);
+            dgvEmpleados.Margin = new Padding(4);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.ReadOnly = true;
             dgvEmpleados.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -169,7 +170,7 @@
             dgvEmpleados.RowHeadersWidth = 51;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dgvEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dgvEmpleados.Size = new Size(928, 374);
+            dgvEmpleados.Size = new Size(810, 275);
             dgvEmpleados.TabIndex = 2;
             // 
             // Column1
@@ -230,17 +231,18 @@
             // 
             // ListarVendedores
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1067, 692);
+            ClientSize = new Size(934, 519);
             Controls.Add(TabControlListaVendedores);
             Controls.Add(BImprimirVendedor);
             Controls.Add(GroupBoxVendedor);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(4);
             Name = "ListarVendedores";
             Text = "Form1";
+            Load += ListarVendedores_Load;
             GroupBoxVendedor.ResumeLayout(false);
             GroupBoxVendedor.PerformLayout();
             TabControlListaVendedores.ResumeLayout(false);

@@ -31,7 +31,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             GroupBoxGestionPerfil = new GroupBox();
             BBuscarPerfil = new Button();
             TBGestionPerfil = new TextBox();
@@ -44,21 +43,15 @@
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            tabPage1 = new TabPage();
-            DataGridViewListarPerfilesDesactivados = new DataGridView();
             GroupBoxDatosPerfil = new GroupBox();
+            BCancelar = new Button();
             BModEmpleado = new Button();
             TBModPerfil = new TextBox();
             LModPerfil = new Label();
-            DID = new DataGridViewTextBoxColumn();
-            DDescripcion = new DataGridViewTextBoxColumn();
-            DEstado = new DataGridViewTextBoxColumn();
             GroupBoxGestionPerfil.SuspendLayout();
             TabControlRegPerfil.SuspendLayout();
             TabPageListaPerfil.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewListarPerfiles).BeginInit();
-            tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DataGridViewListarPerfilesDesactivados).BeginInit();
             GroupBoxDatosPerfil.SuspendLayout();
             SuspendLayout();
             // 
@@ -146,7 +139,6 @@
             // TabControlRegPerfil
             // 
             TabControlRegPerfil.Controls.Add(TabPageListaPerfil);
-            TabControlRegPerfil.Controls.Add(tabPage1);
             TabControlRegPerfil.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabControlRegPerfil.Location = new Point(63, 176);
             TabControlRegPerfil.Margin = new Padding(3, 2, 3, 2);
@@ -154,7 +146,6 @@
             TabControlRegPerfil.SelectedIndex = 0;
             TabControlRegPerfil.Size = new Size(729, 238);
             TabControlRegPerfil.TabIndex = 87;
-            TabControlRegPerfil.UseWaitCursor = true;
             // 
             // TabPageListaPerfil
             // 
@@ -169,7 +160,6 @@
             TabPageListaPerfil.TabIndex = 0;
             TabPageListaPerfil.Text = "Lista de Puestos";
             TabPageListaPerfil.UseVisualStyleBackColor = true;
-            TabPageListaPerfil.UseWaitCursor = true;
             // 
             // DataGridViewListarPerfiles
             // 
@@ -190,6 +180,14 @@
             DataGridViewListarPerfiles.ColumnHeadersHeight = 20;
             DataGridViewListarPerfiles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewListarPerfiles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DataGridViewListarPerfiles.DefaultCellStyle = dataGridViewCellStyle2;
             DataGridViewListarPerfiles.Dock = DockStyle.Fill;
             DataGridViewListarPerfiles.EnableHeadersVisualStyles = false;
             DataGridViewListarPerfiles.Location = new Point(3, 2);
@@ -197,21 +195,22 @@
             DataGridViewListarPerfiles.Name = "DataGridViewListarPerfiles";
             DataGridViewListarPerfiles.ReadOnly = true;
             DataGridViewListarPerfiles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarPerfiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarPerfiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListarPerfiles.RowHeadersWidth = 51;
             DataGridViewListarPerfiles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListarPerfiles.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             DataGridViewListarPerfiles.RowTemplate.Height = 24;
             DataGridViewListarPerfiles.Size = new Size(715, 204);
             DataGridViewListarPerfiles.TabIndex = 0;
-            DataGridViewListarPerfiles.UseWaitCursor = true;
+            DataGridViewListarPerfiles.RowHeaderMouseClick += DataGridViewListarPerfiles_RowHeaderMouseClick;
+            DataGridViewListarPerfiles.RowHeaderMouseDoubleClick += DataGridViewListarPerfiles_CellContentClick;
             // 
             // ID
             // 
@@ -234,64 +233,10 @@
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
-            // tabPage1
-            // 
-            tabPage1.Controls.Add(DataGridViewListarPerfilesDesactivados);
-            tabPage1.Location = new Point(4, 26);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(721, 208);
-            tabPage1.TabIndex = 1;
-            tabPage1.Text = "Puestos Desactivados";
-            tabPage1.UseVisualStyleBackColor = true;
-            tabPage1.UseWaitCursor = true;
-            // 
-            // DataGridViewListarPerfilesDesactivados
-            // 
-            DataGridViewListarPerfilesDesactivados.AllowUserToAddRows = false;
-            DataGridViewListarPerfilesDesactivados.AllowUserToDeleteRows = false;
-            DataGridViewListarPerfilesDesactivados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DataGridViewListarPerfilesDesactivados.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            DataGridViewListarPerfilesDesactivados.BackgroundColor = Color.RosyBrown;
-            DataGridViewListarPerfilesDesactivados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarPerfilesDesactivados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            DataGridViewListarPerfilesDesactivados.ColumnHeadersHeight = 20;
-            DataGridViewListarPerfilesDesactivados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DataGridViewListarPerfilesDesactivados.Columns.AddRange(new DataGridViewColumn[] { DID, DDescripcion, DEstado });
-            DataGridViewListarPerfilesDesactivados.Dock = DockStyle.Fill;
-            DataGridViewListarPerfilesDesactivados.EnableHeadersVisualStyles = false;
-            DataGridViewListarPerfilesDesactivados.Location = new Point(3, 3);
-            DataGridViewListarPerfilesDesactivados.Margin = new Padding(3, 2, 3, 2);
-            DataGridViewListarPerfilesDesactivados.Name = "DataGridViewListarPerfilesDesactivados";
-            DataGridViewListarPerfilesDesactivados.ReadOnly = true;
-            DataGridViewListarPerfilesDesactivados.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarPerfilesDesactivados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            DataGridViewListarPerfilesDesactivados.RowHeadersWidth = 51;
-            DataGridViewListarPerfilesDesactivados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            DataGridViewListarPerfilesDesactivados.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            DataGridViewListarPerfilesDesactivados.RowTemplate.Height = 24;
-            DataGridViewListarPerfilesDesactivados.Size = new Size(715, 202);
-            DataGridViewListarPerfilesDesactivados.TabIndex = 1;
-            DataGridViewListarPerfilesDesactivados.UseWaitCursor = true;
-            DataGridViewListarPerfilesDesactivados.CellContentClick += DataGridViewListarPerfilesDesactivados_CellContentClick;
-            // 
             // GroupBoxDatosPerfil
             // 
             GroupBoxDatosPerfil.BackColor = Color.RosyBrown;
+            GroupBoxDatosPerfil.Controls.Add(BCancelar);
             GroupBoxDatosPerfil.Controls.Add(BModEmpleado);
             GroupBoxDatosPerfil.Controls.Add(TBModPerfil);
             GroupBoxDatosPerfil.Controls.Add(LModPerfil);
@@ -305,6 +250,22 @@
             GroupBoxDatosPerfil.TabIndex = 88;
             GroupBoxDatosPerfil.TabStop = false;
             GroupBoxDatosPerfil.Text = "Modificar Puesto";
+            // 
+            // BCancelar
+            // 
+            BCancelar.BackColor = Color.Sienna;
+            BCancelar.FlatAppearance.BorderSize = 2;
+            BCancelar.FlatStyle = FlatStyle.Flat;
+            BCancelar.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BCancelar.ForeColor = Color.White;
+            BCancelar.Location = new Point(281, 24);
+            BCancelar.Margin = new Padding(4);
+            BCancelar.Name = "BCancelar";
+            BCancelar.Size = new Size(145, 44);
+            BCancelar.TabIndex = 89;
+            BCancelar.Text = "Cancelar";
+            BCancelar.UseVisualStyleBackColor = false;
+            BCancelar.Click += BCancelar_Click;
             // 
             // BModEmpleado
             // 
@@ -342,27 +303,6 @@
             LModPerfil.TabIndex = 15;
             LModPerfil.Text = "Puesto: ";
             // 
-            // DID
-            // 
-            DID.HeaderText = "ID";
-            DID.MinimumWidth = 6;
-            DID.Name = "DID";
-            DID.ReadOnly = true;
-            // 
-            // DDescripcion
-            // 
-            DDescripcion.HeaderText = "Descripcion";
-            DDescripcion.MinimumWidth = 6;
-            DDescripcion.Name = "DDescripcion";
-            DDescripcion.ReadOnly = true;
-            // 
-            // DEstado
-            // 
-            DEstado.HeaderText = "Estado";
-            DEstado.MinimumWidth = 6;
-            DEstado.Name = "DEstado";
-            DEstado.ReadOnly = true;
-            // 
             // GestionarPuestos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -385,8 +325,6 @@
             TabControlRegPerfil.ResumeLayout(false);
             TabPageListaPerfil.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewListarPerfiles).EndInit();
-            tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)DataGridViewListarPerfilesDesactivados).EndInit();
             GroupBoxDatosPerfil.ResumeLayout(false);
             GroupBoxDatosPerfil.PerformLayout();
             ResumeLayout(false);
@@ -411,10 +349,6 @@
         internal TextBox TBModPerfil;
         internal Label LModPerfil;
         internal Button BModEmpleado;
-        private TabPage tabPage1;
-        internal DataGridView DataGridViewListarPerfilesDesactivados;
-        private DataGridViewTextBoxColumn DID;
-        private DataGridViewTextBoxColumn DDescripcion;
-        private DataGridViewTextBoxColumn DEstado;
+        internal Button BCancelar;
     }
 }

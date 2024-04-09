@@ -158,10 +158,6 @@ public partial class UnitivoContext : DbContext
             entity.ToTable("facturas");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Estado).HasColumnName("estado");
-            entity.Property(e => e.Fecha)
-                .HasColumnType("date")
-                .HasColumnName("fecha");
             entity.Property(e => e.FechaCreacion).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.IdCliente).HasColumnName("id_cliente");
             entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");

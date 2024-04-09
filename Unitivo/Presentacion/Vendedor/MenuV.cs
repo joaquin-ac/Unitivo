@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unitivo.Formularios.Vendedor;
+using Unitivo.Modelos;
 using Unitivo.Recursos;
 using Unitivo.Repositorio.Interfaces;
 using Unitivo.Repositorios.Implementaciones;
@@ -22,10 +24,12 @@ namespace Unitivo.Presentacion.Vendedor
         private int state;
         private int px, py;
         private bool mover;
+        private Usuario vendedor;
 
-        public MenuV()
+        public MenuV(Usuario user)
         {
             InitializeComponent();
+            vendedor = user;
         }
 
         private void MenuV_Load(object sender, EventArgs e)
@@ -84,7 +88,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void BNuevaVenta_Click(object sender, EventArgs e)
         {
-            AbrirFormulariosVendedor(new AñadirVentas());
+            AbrirFormulariosVendedor(new AñadirVentas(vendedor));
         }
 
         private void BListarVentas_Click(object sender, EventArgs e)

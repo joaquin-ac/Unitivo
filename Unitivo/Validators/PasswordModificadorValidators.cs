@@ -1,33 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using FluentValidation;
 using Unitivo.Modelos;
 using Unitivo.Repositorios.Implementaciones;
 
 namespace Unitivo.Validators
 {
-    public class UsuarioValidator : AbstractValidator<Usuario>
+    public class PasswordModificadorValidator : AbstractValidator<Usuario>
     {
 
         EmpleadoRepositorio empleadoRepositorio = new EmpleadoRepositorio();
 
-        PerfilRepositorio perfilRepositorio = new PerfilRepositorio();
+        PerfilRepositorio perfilRepositorio = new PerfilRepositorio();    
 
         UsuariosRepositorio usuariosRepositorio = new UsuariosRepositorio();
 
-        public UsuarioValidator()
+        public PasswordModificadorValidator()
         {
             //nombre contrase;a perfil confirmarcontrase;a idempleado
-            //valida id empleado
-            RuleFor(x => x.IdEmpleado)
-                .Must(NoExisteIdEmpleado).WithMessage("El empleado ya esta asociado a un usuario");
-
             //validar nombre
-            RuleFor(x => x.NombreUsuario)
-                .NotEmpty().WithMessage("El campo Nombre es obligatorio")
-                .Length(3, 50).WithMessage("El campo Nombre debe tener entre 3 y 50 caracteres")
-                .Must(ExisteNombreUsuario).WithMessage("El nombre de usuario no existe en la base de datos")
-                .Must(NombreUsuarioNoVinculado).WithMessage("El correo ya esta vinculado a un usuario")
-                .Matches(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").WithMessage("El correo tiene que ser valido")
-                ;
             //validar password
             RuleFor(x => x.Password)
                 .NotEmpty().WithMessage("El campo Password es obligatorio")
@@ -44,64 +38,41 @@ namespace Unitivo.Validators
             RuleFor(x => x.IdEmpleado)
                 .NotEmpty().WithMessage("El campo id es obligatorio")
                 .Must(ExisteId).WithMessage("El empleado no existe en la base de datos");
-            ;
+                ;
         }
 
         private bool ExisteNombreUsuario(string nombreUsuario)
         {
-            if (empleadoRepositorio.BuscarEmpleadosPorMail(nombreUsuario).Count > 0)
-            {
+            if(empleadoRepositorio.BuscarEmpleadosPorMail(nombreUsuario) != null){
                 return true;
-            }
-            else
-            {
+            }else{
                 return false;
             }
         }
 
-        private bool NoExisteIdEmpleado(int idEmpleado)
-        {
-            if (usuariosRepositorio.BuscarUsuarioIdEmpleado(idEmpleado).Count > 0)
-            {
-                return false;
-            }
-            else
-            {
+        private bool NombreUsuarioNoVinculado(string nombreUsuario){
+            if(usuariosRepositorio.BuscarUsuario(nombreUsuario).Count() == 0){
                 return true;
             }
-        }
-
-        private bool NombreUsuarioNoVinculado(string nombreUsuario)
-        {
-            if (usuariosRepositorio.BuscarUsuario(nombreUsuario).Count() == 0)
-            {
-                return true;
-            }
-            else
+            else 
             {
                 return false;
             }
         }
         private bool ExistePerfil(int idPerfil)
         {
-            if (perfilRepositorio.BuscarPerfilPorId(idPerfil) != null)
-            {
+            if(perfilRepositorio.BuscarPerfilPorId(idPerfil) != null){
                 return true;
-            }
-            else
-            {
+            }else{
                 return true;
             }
         }
         private bool ExisteId(int id)
         {
-            if (empleadoRepositorio.buscarEmpleado(id) != null)
-            {
+            if(empleadoRepositorio.buscarEmpleado(id) != null){
                 return true;
-            }
-            else
-            {
-                return false;
+            }else{
+                return true;
             }
         }
     }

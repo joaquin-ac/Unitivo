@@ -29,7 +29,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BRegistrarPerfil_Click(object sender, EventArgs e)
         {
-            if (CommonFunctions.ValidarCamposNoVacios(this))
+            if (TBNombrePerfil.Text.Trim() != "")
             {
                 try
                 {
@@ -62,14 +62,25 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void CargarPerfiles()
         {
-            List<Perfile> perfiles = perfilRepositorio.ListarPerfilesActivos();       
+            List<Perfile> perfiles = perfilRepositorio.ListarPerfiles();       
 
             DataGridViewListarPerfiles.Rows.Clear();
             DataGridViewListarPerfiles.Refresh();
 
             foreach (Perfile perfile in perfiles)
             {
-                DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
+                if (perfile.EstadoPerfil == true)
+                {
+                    DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil); ;
+
+                    // Establecer el color de fondo de la fila agregada
+                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 

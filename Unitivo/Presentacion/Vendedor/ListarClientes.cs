@@ -92,7 +92,7 @@ namespace Unitivo.Presentacion.Vendedor
 
             if (parametro != null)
             {
-                List<Cliente> clientes = clienteRepositorio.BuscarCliente(parametro);
+                List<Cliente> clientes = clienteRepositorio.BuscarClienteActivos(parametro);
                 if (clientes != null)
                 {
                     DataGridViewListarClientes.Rows.Clear();
@@ -114,7 +114,15 @@ namespace Unitivo.Presentacion.Vendedor
             }
         }
 
+        private void ListarClientes_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        private void ComboBoxBuscar_SelectedValueChanged(object sender, EventArgs e)
+        {
+            TBBuscar.Clear();
+        }
     }
 
 

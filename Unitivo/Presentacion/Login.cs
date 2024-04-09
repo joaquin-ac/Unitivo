@@ -1,19 +1,8 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Unitivo.Presentacion.Vendedor;
+﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Administrador;
-using Unitivo.Presentacion.SuperAdministrador;
-using Unitivo.Sessions;
 using Unitivo.Presentacion.Logica;
-using Unitivo.Modelos;
+using Unitivo.Presentacion.SuperAdministrador;
+using Unitivo.Presentacion.Vendedor;
 using Unitivo.Repositorios.Implementaciones;
 
 
@@ -40,6 +29,7 @@ namespace Unitivo.Presentacion
 
         private void BLogin_Click(object sender, EventArgs e)
         {
+
             if (!EspacioEnBlanco())
             {
                 MessageBox.Show("No se permiten espacios en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -49,34 +39,33 @@ namespace Unitivo.Presentacion
             string nombreUsuario = TBUsuario.Text;
             string contraseña = TBContraseña.Text;
 
-            usuariosRepositorio.LoggUser(nombreUsuario, contraseña);
+            Usuario user = usuariosRepositorio.LoggUser(nombreUsuario, contraseña);
 
-            if (true) //CAMBIAR
+            if (user != null) //CAMBIAR
             {
-                int perfil = 3;  //CAMBIAR
 
-                switch (perfil)
+                if (user.IdPerfilNavigation.DescripcionPerfil.ToString() == "Vendedor")
                 {
-                    case 1 :
-                        MenuV menuVForm = new();
-                        menuVForm.Show();
-                        this.Hide();
-                
-                    break;
-                    case 2 :
-                        this.Hide();
-                        MenuA menuAForm = new();
-                        menuAForm.Show();
-                    break;
-                
-                    case 3 :
-                        this.Hide();
-                        MenuSA menuSAForm = new();
-                        menuSAForm.Show();
-                    break;
-                    default:
-                        MessageBox.Show("No se ha podido iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                    MenuV menuVForm = new(user);
+                    menuVForm.Show();
+                    this.Hide();
+                }
+                else if (user.IdPerfilNavigation.DescripcionPerfil.ToString() == "Administrador")
+                {
+                    MenuA menuAForm = new();
+                    menuAForm.Show();
+                    this.Hide();
+                }
+                else if (user.IdPerfilNavigation.DescripcionPerfil.ToString() == "SuperAdmin")
+                {
+
+                    MenuSA menuSAForm = new();
+                    menuSAForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -90,7 +79,7 @@ namespace Unitivo.Presentacion
 
         public bool EspacioEnBlanco()
         {
-            if( CommonFunctions.ValidarCamposNoVacios(TBUsuario) ||
+            if (CommonFunctions.ValidarCamposNoVacios(TBUsuario) ||
                 CommonFunctions.ValidarCamposNoVacios(TBContraseña))
             {
                 return true;

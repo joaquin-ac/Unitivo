@@ -33,12 +33,12 @@ namespace Unitivo.Presentacion.Vendedor
                 try
                 {
                     Cliente cliente = new Cliente();
-                        cliente.Nombre = TBNombreCliente.Text;
-                        cliente.Apellido = TBApellidoCliente.Text;
-                        cliente.Dni = int.Parse(TBDniCliente.Text);
-                        cliente.Telefono = TBTelCliente.Text;
-                        cliente.Direccion = TBDireccionCliente.Text;
-                        cliente.Correo = TBCorreoCliente.Text;
+                    cliente.Nombre = TBNombreCliente.Text;
+                    cliente.Apellido = TBApellidoCliente.Text;
+                    cliente.Dni = int.Parse(TBDniCliente.Text);
+                    cliente.Telefono = TBTelCliente.Text;
+                    cliente.Direccion = TBDireccionCliente.Text;
+                    cliente.Correo = TBCorreoCliente.Text;
 
                     if (clienteRepositorio.AgregarCliente(cliente))
                     {
@@ -56,7 +56,8 @@ namespace Unitivo.Presentacion.Vendedor
                     // Captura y maneja el error que ocurra en clienteRepositorio.AgregarCliente(cliente)
                     MessageBox.Show("Error al agregar cliente: " + ex.Message, "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }else
+            }
+            else
             {
                 MessageBox.Show("Debe completar todos los campos", "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -94,16 +95,21 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void CargarClientes()
         {
-            List<Cliente> clientes = clienteRepositorio.ListarClientesActivos();
+            List<Cliente> clientes = clienteRepositorio.ListarClientes();
             DataGridViewListarClientes.Rows.Clear();
             DataGridViewListarClientes.Refresh();
             foreach (Cliente cliente in clientes)
             {
-                DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo);
+                if (true)
+                {
+                    DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo);
+                }
+
             }
         }
 
-        private void AñadirCliente_Load(object sender, EventArgs e)
+
+        private void AñadirCliente_Load_1(object sender, EventArgs e)
         {
 
         }

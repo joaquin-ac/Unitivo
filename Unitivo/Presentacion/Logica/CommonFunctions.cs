@@ -1,4 +1,6 @@
-﻿namespace Unitivo.Presentacion.Logica
+﻿using System.Windows.Forms;
+
+namespace Unitivo.Presentacion.Logica
 {
     static class CommonFunctions
     {
@@ -42,6 +44,18 @@
             }
         }
 
+        public static void ValidarDecimalKeyPress(TextBox textBox, KeyPressEventArgs e)
+        {
+            // Verifica que la tecla presionada sea un número o una tecla de borrado.
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                // No permite ingresar la tecla presionada.
+                e.Handled = true;
+                // Muestra un mensaje de error.
+                MessageBox.Show("Solo se aceptan números enteros o decimales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         public static void ValidarKeyPress(TextBox textBox, KeyPressEventArgs e)
         {
@@ -70,6 +84,42 @@
         }
 
 
+        public static bool ValidarCamposNoVacios(Form formulario)
+        {
+            List<TextBox> textBoxes = ObtenerTextBoxes(formulario.Controls);
+
+            // Mostrar los nombres de todos los TextBox en un MessageBox
+
+            foreach (TextBox textBox in textBoxes)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private static List<TextBox> ObtenerTextBoxes(Control.ControlCollection controls)
+        {
+            List<TextBox> textBoxes = new List<TextBox>();
+
+            foreach (Control control in controls)
+            {
+                if (control is TextBox)
+                {
+                    textBoxes.Add((TextBox)control);
+                }
+                else if (control.HasChildren)
+                {
+                    textBoxes.AddRange(ObtenerTextBoxes(control.Controls));
+                }
+            }
+
+            return textBoxes;
+        }
+
+
         public static bool ValidarCamposNoVacios(Control control)
         {
             if (control is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
@@ -87,5 +137,6 @@
                 return true;
             }
         }
+
     }
 }

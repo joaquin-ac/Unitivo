@@ -19,7 +19,7 @@ namespace Unitivo.Repositorios.Interfaces{
 
         public Empleado BuscarEmpleadosPorDni(int id);
 
-        public Empleado BuscarEmpleadosPorMail(string mail);
+        public List<Empleado> BuscarEmpleadosPorMail(string mail);
 
         public List<Empleado> ListarEmpleados();
 

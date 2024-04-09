@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Unitivo.Modelos;
+﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
-using Unitivo.Repositorios.Interfaces;
 using Unitivo.Sessions;
-using System.IO;
 
 namespace Unitivo.Presentacion.Administrador
 {
     public partial class AñadirProducto : Form
     {
-        private readonly ProductoInterface? productoRepositorio;
+        private ProductoRepositorio productoRepositorio = new ProductoRepositorio();
+        private CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
+        private TalleRepositorio talleRepositorio = new TalleRepositorio();
 
         private string? rutaImagenProducto;
         private Image? image;
@@ -26,11 +17,14 @@ namespace Unitivo.Presentacion.Administrador
         {
             InitializeComponent();
             AñadirProducto_Load();
-            productoRepositorio = new ProductoRepositorio();
         }
 
-
-
+        private void AñadirProducto_Load(object sender, EventArgs e)
+        {
+            cargarCategorias();
+            cargarTalles();
+            CargarProductos();
+        }
         private void String_KeyPress(object sender, KeyPressEventArgs e)
         {
             CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
@@ -41,25 +35,62 @@ namespace Unitivo.Presentacion.Administrador
             CommonFunctions.ValidarNumberKeyPress((TextBox)sender, e);
         }
 
+        private void Num_DecimalKeyPress(object sender, KeyPressEventArgs e)
+        {
+            CommonFunctions.ValidarDecimalKeyPress((TextBox)sender, e);
+        }
+
+
+        private void CargarProductos()
+        {
+            List<Producto> productos = productoRepositorio.ListarProductos();
+            DataGridViewListaProductos.Rows.Clear();
+            DataGridViewListaProductos.Refresh();
+            foreach (Producto producto in productos)
+            {
+                if (producto.Estado == true)
+                {
+                    DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.Precio, producto.IdTalleNavigation.Descripcion);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.Precio, producto.IdTalleNavigation.Descripcion);
+
+                    // Establecer el color de fondo de la fila agregada
+                    DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
         private void BAñadirProducto_Click(object sender, EventArgs e)
         {
-            if (verificarCamposNulos())
+            if (CommonFunctions.ValidarCamposNoVacios(this) && CBCategoria.Text != "" && CBTalle.Text != "" && !(TBPrecio.Text.Contains(".") && TBPrecio.Text.Split('.')[1].Length > 2))
             {
                 Producto producto = new Producto();
                 producto.Nombre = TBNombreProducto.Text;
-                producto.IdCategoria = ((Categoria)CBCategoria.SelectedItem).Id;
+                producto.IdCategoria = (int)CBCategoria.SelectedValue;
                 producto.Stock = int.Parse(TBStock.Text);
                 producto.Precio = double.Parse(TBPrecio.Text);
-                producto.IdTalle = ((Talle)CBTalle.SelectedItem).Id;
+                producto.IdTalle = (int)CBTalle.SelectedValue;
                 producto.Imagen = rutaImagenProducto!;
 
-                try{
-                    productoRepositorio!.AgregarProducto(producto);
-                }
-                catch(Exception ex)
+                if (productoRepositorio!.AgregarProducto(producto))
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Categoria agregada correctamente.");
+                    LimpiarTextBoxs();
+                    cargarCategorias();
+                    cargarTalles();
+                    CargarProductos();
                 }
+                else
+                {
+                    MessageBox.Show("Error al agregar Categoria.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Complete todos los campos correctamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,6 +108,14 @@ namespace Unitivo.Presentacion.Administrador
             }
         }
 
+        private void LimpiarTextBoxs()
+        {
+            TBNombreProducto.Text = "";
+            TBPrecio.Text = "";
+            TBStock.Text = "";
+            CBCategoria.SelectedValue = 0;
+            CBTalle.SelectedValue = 0;
+        }
         private void AñadirProducto_Load()
         {
             // Cargar las categorías.
@@ -111,9 +150,25 @@ namespace Unitivo.Presentacion.Administrador
             }
         }
 
+        private void cargarCategorias()
+        {
+            var categorias = categoriaRepositorio.ListarCategorias();
+            CBCategoria.DataSource = categorias;
+            CBCategoria.ValueMember = "Id";
+            CBCategoria.DisplayMember = "Descripcion";
+        }
 
+        private void cargarTalles()
+        {
+            var talles = talleRepositorio.ListarTalles();
+            CBTalle.DataSource = talles;
+            CBTalle.ValueMember = "Id";
+            CBTalle.DisplayMember = "Descripcion";
+        }
 
+        private void DataGridViewListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-
+        }
     }
 }

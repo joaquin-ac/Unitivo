@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Unitivo.Modelos;
+﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
 
@@ -40,28 +31,45 @@ namespace Unitivo.Presentacion.SuperAdministrador
             if (DataGridViewListarPerfiles.SelectedRows.Count > 0)
             {
                 int idEliminar = (int)DataGridViewListarPerfiles.SelectedRows[0].Cells["ID"].Value;
-                perfilRepositorio.EliminarPerfil(idEliminar);
 
-                CargarPerfiles();
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar el puesto seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (perfilRepositorio.EliminarPerfil(idEliminar))
+                    {
+                        MessageBox.Show("El puesto se eliminó correctamente.", "Puesto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarPerfiles();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error al eliminar el puesto.", "Puesto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }   
             }
         }
 
         private void CargarPerfiles()
         {
-            List<Perfile> perfiles = perfilRepositorio.ListarPerfilesActivos();
+            List<Perfile> perfiles = perfilRepositorio.ListarPerfiles();
             DataGridViewListarPerfiles.Rows.Clear();
             DataGridViewListarPerfiles.Refresh();
             foreach (Perfile perfile in perfiles)
             {
-                DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
-            }
 
-            List<Perfile> perfilesDes = perfilRepositorio.ListarPerfilesDesactivos();
-            DataGridViewListarPerfilesDesactivados.Rows.Clear();
-            DataGridViewListarPerfilesDesactivados.Refresh();
-            foreach (Perfile perfile in perfilesDes)
-            {
-                DataGridViewListarPerfilesDesactivados.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
+                if (perfile.EstadoPerfil == true)
+                {
+                    DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil); ;
+
+                    // Establecer el color de fondo de la fila agregada
+                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+
             }
 
         }
@@ -89,8 +97,22 @@ namespace Unitivo.Presentacion.SuperAdministrador
             DataGridViewListarPerfiles.Refresh();
             foreach (Perfile perfile in perfiles)
             {
-                DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
+
+                if (perfile.EstadoPerfil == true)
+                {
+                    DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil); ;
+
+                    // Establecer el color de fondo de la fila agregada
+                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
             }
+
+
         }
 
         private void BModificarPerfiles_Click(object sender, EventArgs e)
@@ -114,24 +136,68 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BModEmpleado_Click(object sender, EventArgs e)
         {
-            perfilParaEditar.DescripcionPerfil = TBModPerfil.Text;
-            perfilRepositorio.ModificarPerfil(perfilParaEditar);
-            perfilParaEditar = new Perfile();
-            CargarPerfiles();
-            TBModPerfil.Text = "";
+            if (perfilParaEditar.Id != 0 && TBModPerfil.Text.Trim() != "")
+            {
+                perfilParaEditar.DescripcionPerfil = TBModPerfil.Text;
+                perfilRepositorio.ModificarPerfil(perfilParaEditar);
+                perfilParaEditar = new Perfile();
+                CargarPerfiles();
+                TBModPerfil.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("El campo puesto no puede estar vacio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
-        private void DataGridViewListarPerfilesDesactivados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void DataGridViewListarPerfiles_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
-                DataGridViewRow filaSeleccionada = DataGridViewListarPerfilesDesactivados.Rows[e.RowIndex];
-                int IdSelect = (int)filaSeleccionada.Cells["DID"].Value;
-                perfilRepositorio.ReactivarPerfil(IdSelect);
+                DataGridViewRow filaSeleccionada = DataGridViewListarPerfiles.Rows[e.RowIndex];
+                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
+                if (perfilRepositorio.ReactivarPerfil(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 CargarPerfiles();
             }
+        }
+
+        private void DataGridViewListarPerfiles_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                DataGridViewRow filaSeleccionada = DataGridViewListarPerfiles.Rows[e.RowIndex];
+                bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
+                if (estadoSelect == false)
+                {
+                    BEliminarPerfiles.Enabled = false;
+                }
+                else
+                {
+                    BEliminarPerfiles.Enabled = true;
+                }
+            }
+        }
+
+        private void DataGridViewListarPerfiles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void BCancelar_Click(object sender, EventArgs e)
+        {
+            perfilParaEditar = new Perfile();
+            TBModPerfil.Text = "";
         }
     }
 }

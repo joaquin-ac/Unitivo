@@ -17,60 +17,63 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public bool AgregarEmpleado(Empleado x)
         {
-            //          try
-            //        {
-            //se valida el modelo
-            var validator = new EmpleadoValidator();
-            var result = validator.Validate(x);
-
-            if (!result.IsValid)
+            try
             {
-                StringBuilder sb = new StringBuilder();
-                foreach (var failure in result.Errors)
+                //se valida el modelo
+                var validator = new EmpleadoValidator();
+                var result = validator.Validate(x);
+
+                if (!result.IsValid)
                 {
-                    sb.AppendLine($"{failure.PropertyName}: {failure.ErrorMessage}");
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var failure in result.Errors)
+                    {
+                        sb.AppendLine($"{failure.PropertyName}: {failure.ErrorMessage}");
+                    }
+                    throw new ValidationException(sb.ToString());
                 }
-                throw new ValidationException(sb.ToString());
-            }
 
-            // se valida que no exista un empleado con el mismo dni
-            if (BuscarEmpleadosPorDni(x.Dni) != null)
+                // se valida que no exista un empleado con el mismo dni
+                if (BuscarEmpleadosPorDni(x.Dni) != null)
+                {
+                    MessageBox.Show("El DNI ya esta asociado a un empleado.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false; // Retorna false si ya existe un empleado con el mismo DNI
+                }
+                //   Validar que el correo sea �nico
+
+                if (BuscarEmpleadosPorMail(x.Correo).Count > 0)
+                {
+                    MessageBox.Show("El correo ya esta asociado a un empleado.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false; // Retorna false si ya existe un empleado con el mismo correo
+                }
+
+                // se agregan los demas campos obligatorios
+                x.FechaCreacion = DateTime.Now;
+                x.Estado = true;
+
+                // Agrega el empleado al contexto de Entity Framework
+
+                _contexto?.Empleados.Add(x);
+                _contexto?.SaveChanges();
+
+                // Retorna true si el empleado se agreg� con �xito
+                return true;
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("El DNI ya est� asociado a un empleado.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false; // Retorna false si ya existe un empleado con el mismo DNI
+                // Retorna false si hubo un error durante la inserci�n
+                MessageBox.Show(ex.Message, "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-            //   Validar que el correo sea �nico
-
-            if (BuscarEmpleadosPorMail(x.Correo) != null)
-            {
-                MessageBox.Show("El correo ya est� asociado a un empleado.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false; // Retorna false si ya existe un empleado con el mismo correo
-            }
-
-            // se agregan los demas campos obligatorios
-            x.FechaCreacion = DateTime.Now;
-            x.Estado = true;
-
-            // Agrega el empleado al contexto de Entity Framework
-
-            _contexto?.Empleados.Add(x);
-            _contexto?.SaveChanges();
-
-            // Retorna true si el empleado se agreg� con �xito
-            return true;
-            //           }
-            //         catch (Exception ex)
-            //       {
-            // Retorna false si hubo un error durante la inserci�n
-            //        MessageBox.Show(ex.Message, "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //          return false;
-            //        }
 
         }
 
         public bool EliminarEmpleado(int id)
         {
-            Empleado? empleado = _contexto?.Empleados.Find(id);
+            Empleado? empleado = (from emp in _contexto?.Empleados
+                                  where emp.Id == id
+                                  select emp).First();
+
             if (empleado == null) return false;
             empleado.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
@@ -79,24 +82,67 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public bool ModificarEmpleado(Empleado empleado)
         {
-            _contexto?.Empleados.Update(empleado);
-            int resultado = _contexto?.SaveChanges() ?? 0;
-            return resultado > 0;
+            try
+            {
+                var validator = new EmpleadoValidator();
+                var result = validator.Validate(empleado);
+
+                if (!result.IsValid)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var failure in result.Errors)
+                    {
+                        sb.AppendLine($"{failure.PropertyName}: {failure.ErrorMessage}");
+                    }
+                    throw new ValidationException(sb.ToString());
+                }
+
+                Empleado empleadoContext = (from emp in _contexto?.Empleados
+                                            where emp.Id == empleado.Id
+                                            select emp).First();
+
+                empleadoContext.Nombre = empleado.Nombre;
+                empleadoContext.Apellido = empleado.Apellido;
+                empleadoContext.Dni = empleado.Dni;
+                empleadoContext.Telefono = empleado.Telefono;
+                empleadoContext.Direccion = empleado.Direccion;
+                empleadoContext.Correo = empleado.Correo;
+                empleadoContext.Edad = empleado.Edad;
+
+                int resultado = _contexto?.SaveChanges() ?? 0;
+                return resultado > 0;
+            }
+            catch (Exception ex)
+            {
+                // Retorna false si hubo un error durante la inserci�n
+                MessageBox.Show(ex.Message, "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public Empleado buscarEmpleado(int id)
         {
-            return _contexto?.Empleados.Find(id)!;
+
+            Empleado empleado = (from emp in _contexto?.Empleados
+                                 where emp.Id == id
+                                 select emp).FirstOrDefault();
+            return empleado;
         }
 
-        public Empleado BuscarEmpleadosPorDni(int id)
+        public Empleado BuscarEmpleadosPorDni(int dni)
         {
-            return _contexto?.Empleados.Find(id)!;
+            Empleado empleado = (from emp in _contexto?.Empleados
+                                 where emp.Dni == dni
+                                 select emp).FirstOrDefault();
+            return empleado;
         }
 
-        public Empleado BuscarEmpleadosPorMail(string correo)
+        public List<Empleado> BuscarEmpleadosPorMail(string correo)
         {
-            return _contexto?.Empleados.FirstOrDefault(c => c.Correo == correo)!;
+            List<Empleado> empleados = (from emp in _contexto?.Empleados
+                                        where emp.Correo == correo
+                                        select emp).ToList();
+            return empleados;
         }
 
         public List<Empleado> ListarEmpleados()
@@ -104,9 +150,35 @@ namespace Unitivo.Repositorios.Implementaciones
             return _contexto?.Empleados.ToList()!;
         }
 
+        public List<Empleado> ListarEmpleados(int dni)
+        {
+            List<Empleado> empleados = (from emp in _contexto?.Empleados
+                                        where emp.Dni == dni
+                                        select emp).ToList();
+            return empleados;
+        }
+
+        public List<Empleado> ListarEmpleados(string nom)
+        {
+            List<Empleado> empleados = (from emp in _contexto?.Empleados
+                                        where emp.Nombre.Contains(nom) || emp.Apellido.Contains(nom)
+                                        select emp).ToList();
+            return empleados;
+        }
+
         public List<Empleado> ListarEmpleadosActivos()
         {
             return _contexto?.Empleados.Where(c => c.Estado == true).ToList()!;
+        }
+
+        public bool ReactivaEmpleado(int id)
+        {
+            Empleado empleado = (from emp in _contexto?.Empleados
+                                 where emp.Id == id
+                                 select emp).First();
+            empleado.Estado = true;
+            int resultado = _contexto?.SaveChanges() ?? 0;
+            return resultado > 0;
         }
     }
 }

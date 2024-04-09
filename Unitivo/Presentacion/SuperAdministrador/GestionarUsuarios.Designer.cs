@@ -40,14 +40,15 @@
             TabControlRegUsuarios = new TabControl();
             TabPageListaUsuarios = new TabPage();
             dgvListaUsuarios = new DataGridView();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column11 = new DataGridViewTextBoxColumn();
-            Column12 = new DataGridViewTextBoxColumn();
-            Column13 = new DataGridViewTextBoxColumn();
-            Column14 = new DataGridViewTextBoxColumn();
-            Column15 = new DataGridViewTextBoxColumn();
+            ID = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
+            FechaModificacion = new DataGridViewTextBoxColumn();
+            FechaCreacion = new DataGridViewTextBoxColumn();
+            Perfil = new DataGridViewTextBoxColumn();
+            Empleado = new DataGridViewTextBoxColumn();
             GroupBoxDatosCliente = new GroupBox();
+            BCancelar = new Button();
             button1 = new Button();
             ComboBoxPerfil = new ComboBox();
             LDni = new Label();
@@ -67,22 +68,23 @@
             BModificarUsuario.BackColor = Color.SteelBlue;
             BModificarUsuario.ForeColor = Color.White;
             BModificarUsuario.Image = Properties.Resources.icons8_editar_archivo_26;
-            BModificarUsuario.Location = new Point(959, 282);
-            BModificarUsuario.Margin = new Padding(4, 5, 4, 5);
+            BModificarUsuario.Location = new Point(839, 212);
+            BModificarUsuario.Margin = new Padding(4);
             BModificarUsuario.Name = "BModificarUsuario";
-            BModificarUsuario.Size = new Size(67, 69);
+            BModificarUsuario.Size = new Size(59, 52);
             BModificarUsuario.TabIndex = 71;
             BModificarUsuario.UseVisualStyleBackColor = false;
+            BModificarUsuario.Click += BModificarUsuario_Click;
             // 
             // BEliminarUsuario
             // 
             BEliminarUsuario.BackColor = Color.Brown;
             BEliminarUsuario.ForeColor = Color.White;
             BEliminarUsuario.Image = Properties.Resources.icons8_basura_26;
-            BEliminarUsuario.Location = new Point(959, 376);
-            BEliminarUsuario.Margin = new Padding(4, 5, 4, 5);
+            BEliminarUsuario.Location = new Point(839, 282);
+            BEliminarUsuario.Margin = new Padding(4);
             BEliminarUsuario.Name = "BEliminarUsuario";
-            BEliminarUsuario.Size = new Size(67, 69);
+            BEliminarUsuario.Size = new Size(59, 52);
             BEliminarUsuario.TabIndex = 70;
             BEliminarUsuario.UseVisualStyleBackColor = false;
             BEliminarUsuario.Click += BEliminarUsuario_Click;
@@ -92,13 +94,13 @@
             GroupBoxGestionUsuarios.BackColor = Color.Cornsilk;
             GroupBoxGestionUsuarios.Controls.Add(BBuscarUsuario);
             GroupBoxGestionUsuarios.Controls.Add(TBGestionUsuario);
-            GroupBoxGestionUsuarios.Font = new Font("Britannic Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            GroupBoxGestionUsuarios.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxGestionUsuarios.ForeColor = Color.Sienna;
-            GroupBoxGestionUsuarios.Location = new Point(341, 24);
-            GroupBoxGestionUsuarios.Margin = new Padding(4, 5, 4, 5);
+            GroupBoxGestionUsuarios.Location = new Point(298, 18);
+            GroupBoxGestionUsuarios.Margin = new Padding(4);
             GroupBoxGestionUsuarios.Name = "GroupBoxGestionUsuarios";
-            GroupBoxGestionUsuarios.Padding = new Padding(4, 5, 4, 5);
-            GroupBoxGestionUsuarios.Size = new Size(348, 117);
+            GroupBoxGestionUsuarios.Padding = new Padding(4);
+            GroupBoxGestionUsuarios.Size = new Size(304, 88);
             GroupBoxGestionUsuarios.TabIndex = 73;
             GroupBoxGestionUsuarios.TabStop = false;
             GroupBoxGestionUsuarios.Text = "Gestión de Usuarios";
@@ -109,45 +111,48 @@
             BBuscarUsuario.FlatAppearance.BorderColor = Color.White;
             BBuscarUsuario.FlatAppearance.BorderSize = 2;
             BBuscarUsuario.FlatStyle = FlatStyle.Flat;
-            BBuscarUsuario.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BBuscarUsuario.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BBuscarUsuario.ForeColor = Color.White;
             BBuscarUsuario.Image = Properties.Resources.icons8_búsqueda_26;
-            BBuscarUsuario.Location = new Point(248, 40);
-            BBuscarUsuario.Margin = new Padding(4, 5, 4, 5);
+            BBuscarUsuario.Location = new Point(217, 30);
+            BBuscarUsuario.Margin = new Padding(4);
             BBuscarUsuario.Name = "BBuscarUsuario";
-            BBuscarUsuario.Size = new Size(60, 63);
+            BBuscarUsuario.Size = new Size(52, 47);
             BBuscarUsuario.TabIndex = 14;
             BBuscarUsuario.UseVisualStyleBackColor = false;
+            BBuscarUsuario.Click += BBuscarUsuario_Click;
             // 
             // TBGestionUsuario
             // 
-            TBGestionUsuario.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBGestionUsuario.Location = new Point(41, 54);
-            TBGestionUsuario.Margin = new Padding(4, 5, 4, 5);
+            TBGestionUsuario.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            TBGestionUsuario.Location = new Point(36, 40);
+            TBGestionUsuario.Margin = new Padding(4);
             TBGestionUsuario.Name = "TBGestionUsuario";
-            TBGestionUsuario.Size = new Size(173, 30);
+            TBGestionUsuario.Size = new Size(152, 26);
             TBGestionUsuario.TabIndex = 6;
             TBGestionUsuario.KeyPress += String_KeyPress;
             // 
             // TabControlRegUsuarios
             // 
             TabControlRegUsuarios.Controls.Add(TabPageListaUsuarios);
-            TabControlRegUsuarios.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabControlRegUsuarios.Location = new Point(64, 182);
+            TabControlRegUsuarios.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabControlRegUsuarios.Location = new Point(56, 136);
+            TabControlRegUsuarios.Margin = new Padding(3, 2, 3, 2);
             TabControlRegUsuarios.Name = "TabControlRegUsuarios";
             TabControlRegUsuarios.SelectedIndex = 0;
-            TabControlRegUsuarios.Size = new Size(844, 323);
+            TabControlRegUsuarios.Size = new Size(738, 242);
             TabControlRegUsuarios.TabIndex = 75;
             // 
             // TabPageListaUsuarios
             // 
             TabPageListaUsuarios.Controls.Add(dgvListaUsuarios);
-            TabPageListaUsuarios.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            TabPageListaUsuarios.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaUsuarios.ForeColor = Color.White;
-            TabPageListaUsuarios.Location = new Point(4, 28);
+            TabPageListaUsuarios.Location = new Point(4, 26);
+            TabPageListaUsuarios.Margin = new Padding(3, 2, 3, 2);
             TabPageListaUsuarios.Name = "TabPageListaUsuarios";
-            TabPageListaUsuarios.Padding = new Padding(3);
-            TabPageListaUsuarios.Size = new Size(836, 291);
+            TabPageListaUsuarios.Padding = new Padding(3, 2, 3, 2);
+            TabPageListaUsuarios.Size = new Size(730, 212);
             TabPageListaUsuarios.TabIndex = 0;
             TabPageListaUsuarios.Text = "Lista de Usuarios";
             TabPageListaUsuarios.UseVisualStyleBackColor = true;
@@ -161,7 +166,7 @@
             dgvListaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle1.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -169,25 +174,25 @@
             dgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaUsuarios.ColumnHeadersHeight = 20;
             dgvListaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvListaUsuarios.Columns.AddRange(new DataGridViewColumn[] { Column8, Column9, Column11, Column12, Column13, Column14, Column15 });
+            dgvListaUsuarios.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, Estado, FechaModificacion, FechaCreacion, Perfil, Empleado });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             dgvListaUsuarios.Dock = DockStyle.Fill;
             dgvListaUsuarios.EnableHeadersVisualStyles = false;
-            dgvListaUsuarios.Location = new Point(3, 3);
-            dgvListaUsuarios.Margin = new Padding(4, 5, 4, 5);
+            dgvListaUsuarios.Location = new Point(3, 2);
+            dgvListaUsuarios.Margin = new Padding(4);
             dgvListaUsuarios.Name = "dgvListaUsuarios";
             dgvListaUsuarios.ReadOnly = true;
             dgvListaUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Britannic Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -197,61 +202,65 @@
             dgvListaUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dgvListaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dgvListaUsuarios.Size = new Size(830, 285);
+            dgvListaUsuarios.Size = new Size(724, 208);
             dgvListaUsuarios.TabIndex = 2;
+            dgvListaUsuarios.CellContentClick += dgvListaUsuarios_CellContentClick;
+            dgvListaUsuarios.RowHeaderMouseClick += dgvListaUsuarios_RowHeaderMouseClick;
+            dgvListaUsuarios.RowHeaderMouseDoubleClick += dgvListaUsuarios_RowHeaderMouseDoubleClick;
             // 
-            // Column8
+            // ID
             // 
-            Column8.HeaderText = "ID";
-            Column8.MinimumWidth = 6;
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
             // 
-            // Column9
+            // Nombre
             // 
-            Column9.HeaderText = "Nombre";
-            Column9.MinimumWidth = 6;
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
             // 
-            // Column11
+            // Estado
             // 
-            Column11.HeaderText = "Estado";
-            Column11.MinimumWidth = 6;
-            Column11.Name = "Column11";
-            Column11.ReadOnly = true;
+            Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
             // 
-            // Column12
+            // FechaModificacion
             // 
-            Column12.HeaderText = "FechaModificacion";
-            Column12.MinimumWidth = 6;
-            Column12.Name = "Column12";
-            Column12.ReadOnly = true;
+            FechaModificacion.HeaderText = "FechaModificacion";
+            FechaModificacion.MinimumWidth = 6;
+            FechaModificacion.Name = "FechaModificacion";
+            FechaModificacion.ReadOnly = true;
             // 
-            // Column13
+            // FechaCreacion
             // 
-            Column13.HeaderText = "FechaCreacion";
-            Column13.MinimumWidth = 6;
-            Column13.Name = "Column13";
-            Column13.ReadOnly = true;
+            FechaCreacion.HeaderText = "FechaCreacion";
+            FechaCreacion.MinimumWidth = 6;
+            FechaCreacion.Name = "FechaCreacion";
+            FechaCreacion.ReadOnly = true;
             // 
-            // Column14
+            // Perfil
             // 
-            Column14.HeaderText = "Perfil";
-            Column14.MinimumWidth = 6;
-            Column14.Name = "Column14";
-            Column14.ReadOnly = true;
+            Perfil.HeaderText = "Perfil";
+            Perfil.MinimumWidth = 6;
+            Perfil.Name = "Perfil";
+            Perfil.ReadOnly = true;
             // 
-            // Column15
+            // Empleado
             // 
-            Column15.HeaderText = "Empleado";
-            Column15.MinimumWidth = 6;
-            Column15.Name = "Column15";
-            Column15.ReadOnly = true;
+            Empleado.HeaderText = "Empleado";
+            Empleado.MinimumWidth = 6;
+            Empleado.Name = "Empleado";
+            Empleado.ReadOnly = true;
             // 
             // GroupBoxDatosCliente
             // 
             GroupBoxDatosCliente.BackColor = Color.RosyBrown;
+            GroupBoxDatosCliente.Controls.Add(BCancelar);
             GroupBoxDatosCliente.Controls.Add(button1);
             GroupBoxDatosCliente.Controls.Add(ComboBoxPerfil);
             GroupBoxDatosCliente.Controls.Add(LDni);
@@ -259,16 +268,32 @@
             GroupBoxDatosCliente.Controls.Add(TBNombreUsuario);
             GroupBoxDatosCliente.Controls.Add(LNombreCliente);
             GroupBoxDatosCliente.Controls.Add(LApellidoCliente);
-            GroupBoxDatosCliente.Font = new Font("Britannic Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            GroupBoxDatosCliente.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxDatosCliente.ForeColor = Color.White;
-            GroupBoxDatosCliente.Location = new Point(172, 575);
-            GroupBoxDatosCliente.Margin = new Padding(4, 5, 4, 5);
+            GroupBoxDatosCliente.Location = new Point(150, 431);
+            GroupBoxDatosCliente.Margin = new Padding(4);
             GroupBoxDatosCliente.Name = "GroupBoxDatosCliente";
-            GroupBoxDatosCliente.Padding = new Padding(4, 5, 4, 5);
-            GroupBoxDatosCliente.Size = new Size(668, 291);
+            GroupBoxDatosCliente.Padding = new Padding(4);
+            GroupBoxDatosCliente.Size = new Size(584, 218);
             GroupBoxDatosCliente.TabIndex = 76;
             GroupBoxDatosCliente.TabStop = false;
             GroupBoxDatosCliente.Text = "Modificar Usuario";
+            // 
+            // BCancelar
+            // 
+            BCancelar.BackColor = Color.Sienna;
+            BCancelar.FlatAppearance.BorderSize = 2;
+            BCancelar.FlatStyle = FlatStyle.Flat;
+            BCancelar.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BCancelar.ForeColor = Color.White;
+            BCancelar.Location = new Point(453, 142);
+            BCancelar.Margin = new Padding(4);
+            BCancelar.Name = "BCancelar";
+            BCancelar.Size = new Size(123, 39);
+            BCancelar.TabIndex = 90;
+            BCancelar.Text = "Cancelar";
+            BCancelar.UseVisualStyleBackColor = false;
+            BCancelar.Click += BCancelar_Click;
             // 
             // button1
             // 
@@ -276,93 +301,95 @@
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatAppearance.BorderSize = 2;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Britannic Bold", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(408, 190);
-            button1.Margin = new Padding(5, 6, 5, 6);
+            button1.Location = new Point(320, 142);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
-            button1.Size = new Size(143, 52);
+            button1.Size = new Size(125, 39);
             button1.TabIndex = 21;
             button1.Text = "Modificar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // ComboBoxPerfil
             // 
             ComboBoxPerfil.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxPerfil.FormattingEnabled = true;
-            ComboBoxPerfil.Items.AddRange(new object[] { "Vendedor", "Gerente" });
-            ComboBoxPerfil.Location = new Point(366, 97);
+            ComboBoxPerfil.Location = new Point(320, 73);
+            ComboBoxPerfil.Margin = new Padding(3, 2, 3, 2);
             ComboBoxPerfil.Name = "ComboBoxPerfil";
-            ComboBoxPerfil.Size = new Size(213, 45);
+            ComboBoxPerfil.Size = new Size(187, 39);
             ComboBoxPerfil.TabIndex = 20;
             // 
             // LDni
             // 
             LDni.AutoSize = true;
-            LDni.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            LDni.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             LDni.ForeColor = Color.White;
-            LDni.Location = new Point(363, 68);
-            LDni.Margin = new Padding(5, 0, 5, 0);
+            LDni.Location = new Point(318, 51);
+            LDni.Margin = new Padding(4, 0, 4, 0);
             LDni.Name = "LDni";
-            LDni.Size = new Size(58, 22);
+            LDni.Size = new Size(44, 20);
             LDni.TabIndex = 19;
             LDni.Text = "Perfil";
             // 
             // TBContraseñaUsuario
             // 
-            TBContraseñaUsuario.Location = new Point(92, 197);
-            TBContraseñaUsuario.Margin = new Padding(5, 6, 5, 6);
+            TBContraseñaUsuario.Location = new Point(80, 148);
+            TBContraseñaUsuario.Margin = new Padding(4);
             TBContraseñaUsuario.Name = "TBContraseñaUsuario";
-            TBContraseñaUsuario.Size = new Size(213, 45);
+            TBContraseñaUsuario.Size = new Size(187, 38);
             TBContraseñaUsuario.TabIndex = 8;
             // 
             // TBNombreUsuario
             // 
-            TBNombreUsuario.Location = new Point(92, 98);
-            TBNombreUsuario.Margin = new Padding(5, 6, 5, 6);
+            TBNombreUsuario.Location = new Point(80, 74);
+            TBNombreUsuario.Margin = new Padding(4);
             TBNombreUsuario.Name = "TBNombreUsuario";
-            TBNombreUsuario.Size = new Size(213, 45);
+            TBNombreUsuario.Size = new Size(187, 38);
             TBNombreUsuario.TabIndex = 6;
             // 
             // LNombreCliente
             // 
             LNombreCliente.AutoSize = true;
-            LNombreCliente.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            LNombreCliente.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             LNombreCliente.ForeColor = Color.White;
-            LNombreCliente.Location = new Point(89, 66);
-            LNombreCliente.Margin = new Padding(5, 0, 5, 0);
+            LNombreCliente.Location = new Point(78, 50);
+            LNombreCliente.Margin = new Padding(4, 0, 4, 0);
             LNombreCliente.Name = "LNombreCliente";
-            LNombreCliente.Size = new Size(85, 22);
+            LNombreCliente.Size = new Size(69, 20);
             LNombreCliente.TabIndex = 0;
             LNombreCliente.Text = "Nombre:";
             // 
             // LApellidoCliente
             // 
             LApellidoCliente.AutoSize = true;
-            LApellidoCliente.Font = new Font("Britannic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            LApellidoCliente.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             LApellidoCliente.ForeColor = Color.White;
-            LApellidoCliente.Location = new Point(89, 167);
-            LApellidoCliente.Margin = new Padding(5, 0, 5, 0);
+            LApellidoCliente.Location = new Point(78, 125);
+            LApellidoCliente.Margin = new Padding(4, 0, 4, 0);
             LApellidoCliente.Name = "LApellidoCliente";
-            LApellidoCliente.Size = new Size(118, 22);
+            LApellidoCliente.Size = new Size(96, 20);
             LApellidoCliente.TabIndex = 4;
             LApellidoCliente.Text = "Contraseña:";
             // 
             // GestionarUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1080, 908);
+            ClientSize = new Size(945, 681);
             Controls.Add(GroupBoxDatosCliente);
             Controls.Add(TabControlRegUsuarios);
             Controls.Add(GroupBoxGestionUsuarios);
             Controls.Add(BModificarUsuario);
             Controls.Add(BEliminarUsuario);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(4);
             Name = "GestionarUsuarios";
             Text = "Form1";
+            Load += GestionarUsuarios_Load;
             GroupBoxGestionUsuarios.ResumeLayout(false);
             GroupBoxGestionUsuarios.PerformLayout();
             TabControlRegUsuarios.ResumeLayout(false);
@@ -399,5 +426,13 @@
         internal Label LNombreCliente;
         internal Label LApellidoCliente;
         internal Button button1;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewTextBoxColumn FechaModificacion;
+        private DataGridViewTextBoxColumn FechaCreacion;
+        private DataGridViewTextBoxColumn Perfil;
+        private DataGridViewTextBoxColumn Empleado;
+        internal Button BCancelar;
     }
 }

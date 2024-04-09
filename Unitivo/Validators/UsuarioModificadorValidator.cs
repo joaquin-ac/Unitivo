@@ -4,7 +4,7 @@ using Unitivo.Repositorios.Implementaciones;
 
 namespace Unitivo.Validators
 {
-    public class UsuarioValidator : AbstractValidator<Usuario>
+    public class UsuarioModificadorValidator : AbstractValidator<Usuario>
     {
 
         EmpleadoRepositorio empleadoRepositorio = new EmpleadoRepositorio();
@@ -13,26 +13,18 @@ namespace Unitivo.Validators
 
         UsuariosRepositorio usuariosRepositorio = new UsuariosRepositorio();
 
-        public UsuarioValidator()
+        public UsuarioModificadorValidator()
         {
             //nombre contrase;a perfil confirmarcontrase;a idempleado
-            //valida id empleado
-            RuleFor(x => x.IdEmpleado)
-                .Must(NoExisteIdEmpleado).WithMessage("El empleado ya esta asociado a un usuario");
-
             //validar nombre
+            RuleFor(x => x)
+                .Must(x => ExisteNombreUsuario(x.NombreUsuario, x.Id)).WithMessage("El nombre de usuario ya existe en la base de datos")
+                ;
+
             RuleFor(x => x.NombreUsuario)
                 .NotEmpty().WithMessage("El campo Nombre es obligatorio")
                 .Length(3, 50).WithMessage("El campo Nombre debe tener entre 3 y 50 caracteres")
-                .Must(ExisteNombreUsuario).WithMessage("El nombre de usuario no existe en la base de datos")
-                .Must(NombreUsuarioNoVinculado).WithMessage("El correo ya esta vinculado a un usuario")
                 .Matches(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").WithMessage("El correo tiene que ser valido")
-                ;
-            //validar password
-            RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("El campo Password es obligatorio")
-                .Length(10, 50).WithMessage("El password debe contener al menos 10 caracteres")
-                .Matches(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{10,50}$").WithMessage("El password debe tener al menos una mayuscula, y un caracter especial")
                 ;
             //validar IdPerfil
             RuleFor(x => x.IdPerfil)
@@ -47,26 +39,22 @@ namespace Unitivo.Validators
             ;
         }
 
-        private bool ExisteNombreUsuario(string nombreUsuario)
+        private bool ExisteNombreUsuario(string nombreUsuario, int id)
         {
-            if (empleadoRepositorio.BuscarEmpleadosPorMail(nombreUsuario).Count > 0)
+            var usuarios = usuariosRepositorio.BuscarCorreoUsuario(nombreUsuario);
+            if (usuarios.Count < 1)
             {
                 return true;
             }
             else
             {
-                return false;
-            }
-        }
-
-        private bool NoExisteIdEmpleado(int idEmpleado)
-        {
-            if (usuariosRepositorio.BuscarUsuarioIdEmpleado(idEmpleado).Count > 0)
-            {
-                return false;
-            }
-            else
-            {
+                foreach (Usuario user in usuarios)
+                {
+                    if (user.Id != id)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         }
@@ -101,7 +89,7 @@ namespace Unitivo.Validators
             }
             else
             {
-                return false;
+                return true;
             }
         }
     }

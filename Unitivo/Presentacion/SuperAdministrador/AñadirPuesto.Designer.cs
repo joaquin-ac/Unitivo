@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             TabControlRegPerfil = new TabControl();
             TabPageListaPerfil = new TabPage();
             DataGridViewListarPerfiles = new DataGridView();
@@ -90,20 +91,28 @@
             DataGridViewListarPerfiles.ColumnHeadersHeight = 20;
             DataGridViewListarPerfiles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewListarPerfiles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DataGridViewListarPerfiles.DefaultCellStyle = dataGridViewCellStyle2;
             DataGridViewListarPerfiles.Dock = DockStyle.Fill;
             DataGridViewListarPerfiles.EnableHeadersVisualStyles = false;
             DataGridViewListarPerfiles.Location = new Point(3, 2);
             DataGridViewListarPerfiles.Margin = new Padding(3, 2, 3, 2);
             DataGridViewListarPerfiles.Name = "DataGridViewListarPerfiles";
             DataGridViewListarPerfiles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarPerfiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarPerfiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListarPerfiles.RowHeadersWidth = 51;
             DataGridViewListarPerfiles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListarPerfiles.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
@@ -137,7 +146,7 @@
             PanelRegClientes.Controls.Add(TBNombrePerfil);
             PanelRegClientes.Controls.Add(LNombrePerfil);
             PanelRegClientes.Location = new Point(198, 57);
-            PanelRegClientes.Margin = new Padding(4, 4, 4, 4);
+            PanelRegClientes.Margin = new Padding(4);
             PanelRegClientes.Name = "PanelRegClientes";
             PanelRegClientes.Size = new Size(505, 129);
             PanelRegClientes.TabIndex = 12;
@@ -151,7 +160,7 @@
             BRegistrarPerfil.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             BRegistrarPerfil.ForeColor = Color.White;
             BRegistrarPerfil.Location = new Point(371, 56);
-            BRegistrarPerfil.Margin = new Padding(4, 4, 4, 4);
+            BRegistrarPerfil.Margin = new Padding(4);
             BRegistrarPerfil.Name = "BRegistrarPerfil";
             BRegistrarPerfil.Size = new Size(115, 49);
             BRegistrarPerfil.TabIndex = 13;
@@ -163,7 +172,7 @@
             // 
             TBNombrePerfil.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TBNombrePerfil.Location = new Point(24, 67);
-            TBNombrePerfil.Margin = new Padding(4, 4, 4, 4);
+            TBNombrePerfil.Margin = new Padding(4);
             TBNombrePerfil.Name = "TBNombrePerfil";
             TBNombrePerfil.Size = new Size(325, 26);
             TBNombrePerfil.TabIndex = 6;
@@ -191,7 +200,7 @@
             Controls.Add(TabControlRegPerfil);
             Controls.Add(PanelRegClientes);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "AñadirPuesto";
             Text = "Form1";
             Load += AñadirPuesto_Load;

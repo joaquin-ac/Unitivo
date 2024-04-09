@@ -82,24 +82,22 @@ namespace Unitivo.Repositorios.Implementaciones
                     throw new ValidationException(sb.ToString());
                 }
 
-                if (BuscarClientePorDni(x.Dni).Dni != x.Dni)
-                {
-                    MessageBox.Show("El DNI ya está asociado a un cliente.", "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false; // Retorna false si ya existe un cliente con el mismo DNI
-                }
-                // Validar que el correo sea único
-
-                if (BuscarClientePorMail(x.Correo).Correo != x.Correo)
-                {
-                    MessageBox.Show("El correo ya está asociado a un cliente.", "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false; // Retorna false si ya existe un cliente con el mismo correo
-                }
-
                 // Agrega el cliente al contexto de Entity Framework
 
                 x.FechaModificacion = DateTime.Now;
 
-                _contexto?.Clientes.Update(x);
+                Cliente clienteContexto = (from u in _contexto?.Clientes
+                                           where u.Id == x.Id
+                                           select u).First();
+
+                clienteContexto.Nombre = x.Nombre;
+                clienteContexto.Apellido = x.Apellido;
+                clienteContexto.Dni = x.Dni;
+                clienteContexto.Telefono = x.Telefono;
+                clienteContexto.Direccion = x.Direccion;
+                clienteContexto.Correo = x.Correo;
+                clienteContexto.FechaModificacion = DateTime.Now;
+
                 _contexto?.SaveChanges();
 
                 // Retorna true si el cliente se agregó con éxito
@@ -113,6 +111,15 @@ namespace Unitivo.Repositorios.Implementaciones
             }
         }
 
+        public bool reactivarCliente(int id)
+        {
+            Cliente cli = (from c in _contexto?.Clientes
+                             where c.Id == id
+                             select c).First();
+            cli.Estado = true;
+            int resultado = _contexto?.SaveChanges() ?? 0;
+            return resultado > 0;
+        } 
 
 
         public bool EliminarCliente(int id){
@@ -162,6 +169,26 @@ namespace Unitivo.Repositorios.Implementaciones
             else
             {
                 return new List<Cliente>(); 
+            }
+        }
+
+        public List<Cliente> BuscarClienteActivos(object parametro)
+        {
+            if (int.TryParse(parametro.ToString(), out int resultado))
+            {
+                List<Cliente> clientes = _contexto?.Clientes.Where(c => c.Dni == resultado && c.Estado == true).ToList()!;
+                return clientes;
+            }
+            else if (parametro is string)
+            {
+                string cadena = (string)parametro;
+                return _contexto?.Clientes
+                    .Where(c => c.Estado == true && (c.Nombre.Contains(cadena) || c.Apellido.Contains(cadena)) )
+                    .ToList()!;
+            }
+            else
+            {
+                return new List<Cliente>();
             }
         }
 

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Unitivo.Presentacion.Logica;
-using Unitivo.Presentacion.Vendedor;
+﻿using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
 
 namespace Unitivo.Presentacion.SuperAdministrador
@@ -46,10 +36,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
                 DialogResult result = modificarEmpleadoForm.ShowDialog();
 
-                if (result == DialogResult.OK)
-                {
-                    CargarEmpleados();
-                }
+                CargarEmpleados();
+
             }
             else
             {
@@ -108,6 +96,115 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     }
                 }
             }
+        }
+
+        private void BBuscarUsuario_Click(object sender, EventArgs e)
+        {
+            if (ComboBoxBuscarDni.Text == "DNI" && TBGestionUsuario.Text != "")
+            {
+                //busqueda DNI
+                int dni = int.Parse(TBGestionUsuario.Text);
+                CargarEmpleados(dni);
+            }
+            else
+            {
+                //busqueda Nombre+Apellido
+                string nom = TBGestionUsuario.Text;
+                CargarEmpleados(nom);
+            }
+        }
+
+        private void CargarEmpleados(int dni)
+        {
+            List<Modelos.Empleado> empleados = empleadoRepositorio.ListarEmpleados(dni);
+            dgvEmpleados.Rows.Clear();
+            dgvEmpleados.Refresh();
+            foreach (Modelos.Empleado empleado in empleados)
+            {
+                if (empleado.Estado == true)
+                {
+                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad, "Inactivo");
+
+                    // Establecer el color de fondo de la fila agregada
+                    dgvEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void CargarEmpleados(string nom)
+        {
+            List<Modelos.Empleado> empleados = empleadoRepositorio.ListarEmpleados(nom);
+            dgvEmpleados.Rows.Clear();
+            dgvEmpleados.Refresh();
+            foreach (Modelos.Empleado empleado in empleados)
+            {
+                if (empleado.Estado == true)
+                {
+                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad, "Inactivo");
+
+                    // Establecer el color de fondo de la fila agregada
+                    dgvEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void GestionarEmpleados_Load(object sender, EventArgs e)
+        {
+            ComboBoxBuscarDni.Text = "Nombre y Apellido";
+        }
+
+        private void dgvEmpleados_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                DataGridViewRow filaSeleccionada = dgvEmpleados.Rows[e.RowIndex];
+                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
+                if (empleadoRepositorio.ReactivaEmpleado(IdSelect))
+                {
+                    MessageBox.Show("El empleado se reactivo con exito.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El empleado ya estaba activo.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarEmpleados();
+            }
+
+        }
+
+        private void dgvEmpleados_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+
+                if (dgvEmpleados.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.Red)
+                {
+                    BEliminarEmpleado.Enabled = false;
+                }
+                else
+                {
+                    BEliminarEmpleado.Enabled = true;
+                }
+            }
+
+        }
+
+        private void ComboBoxBuscarDni_SelectedValueChanged(object sender, EventArgs e)
+        {
+            TBGestionUsuario.Clear();
         }
     }
 }

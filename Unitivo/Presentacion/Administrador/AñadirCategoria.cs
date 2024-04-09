@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Serialization;
-using Unitivo.Modelos;
+﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
 
@@ -33,27 +23,20 @@ namespace Unitivo.Presentacion.Administrador
         {
             if (CommonFunctions.ValidarCamposNoVacios(this))
             {
-                try
+
+                Categoria categoria = new Categoria();
+                categoria.Descripcion = TBNombreCategoria.Text;
+
+
+                if (categoriaRepositorio.AgregarCategoria(categoria))
                 {
-                    Categoria categoria = new Categoria();
-                    categoria.Descripcion = TBNombreCategoria.Text;
-
-
-                    if (categoriaRepositorio.AgregarCategoria(categoria))
-                    {
-                        MessageBox.Show("Categoria agregada correctamente");
-                        LimpiarTextBoxs();
-                        CargarCategorias();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al agregar Categoria");
-                    }
+                    MessageBox.Show("Categoria agregada correctamente");
+                    LimpiarTextBoxs();
+                    CargarCategorias();
                 }
-                catch (Exception ex)
+                else
                 {
-                    // Captura y maneja el error que ocurra en perfilRepositorio.AgregarCategoria(categoria)
-                    MessageBox.Show("Error al agregar categoria: " + ex.Message, "Categoria", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al agregar Categoria");
                 }
             }
             else
@@ -64,24 +47,38 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CargarCategorias()
         {
-                List<Categoria> categorias = categoriaRepositorio.ListarCategoriasActivos();
-                DataGridViewListarCategorias.Rows.Clear();
-                DataGridViewListarCategorias.Refresh();
-                foreach (Categoria categoria in categorias)
+            List<Categoria> categorias = categoriaRepositorio.ListarCategorias();
+            DataGridViewListarCategorias.Rows.Clear();
+            DataGridViewListarCategorias.Refresh();
+
+            foreach (Categoria categoria in categorias)
+            {
+                if (categoria.Estado == true)
                 {
                     DataGridViewListarCategorias.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
                 }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = DataGridViewListarCategorias.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+
+                    // Establecer el color de fondo de la fila agregada
+                    DataGridViewListarCategorias.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
         }
 
-            // Método para limpiar los TextBox después de agregar un perfil.
+        // Método para limpiar los TextBox después de agregar un perfil.
         private void LimpiarTextBoxs()
         {
-                TBNombreCategoria.Clear();
+            TBNombreCategoria.Clear();
         }
 
+        private void AñadirCategoria_Load(object sender, EventArgs e)
+        {
 
-
+        }
     }
 
- 
+
 }

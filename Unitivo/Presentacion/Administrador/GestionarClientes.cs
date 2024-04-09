@@ -58,8 +58,8 @@ namespace Unitivo.Presentacion.Administrador
                 if (result == DialogResult.OK)
                 {
                     // Realiza acciones si se cerró el formulario con DialogResult.OK
-                    CargarClientes();
                 }
+                CargarClientes();
             }
             else
             {
@@ -74,13 +74,13 @@ namespace Unitivo.Presentacion.Administrador
             DataGridViewListarClientes.Refresh();
             foreach (Cliente cliente in clientes)
             {
-                if(cliente.Estado == true)
+                if (cliente.Estado == true)
                 {
-                    DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo);
+                    DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo, cliente.Estado);
                 }
-                else 
+                else
                 {
-                    int rowIndex = DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo, "Inactivo");
+                    int rowIndex = DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo, cliente.Estado);
 
                     DataGridViewListarClientes.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
                 }
@@ -115,14 +115,15 @@ namespace Unitivo.Presentacion.Administrador
             }
         }
 
-         private void BEliminarClientes_Click(object sender, EventArgs e)
+        private void BEliminarClientes_Click(object sender, EventArgs e)
         {
             if (DataGridViewListarClientes.SelectedRows.Count == 0)
             {
                 // No hay una fila seleccionada en el dgvEmpleados, muestra un mensaje de error.
                 MessageBox.Show("Debe seleccionar una fila para eliminar un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Salir del método sin realizar ninguna acción adicional.
-            } else
+            }
+            else
             {
                 // Obtén el ID del cliente seleccionado
                 int idSeleccionado = Convert.ToInt32(DataGridViewListarClientes.SelectedRows[0].Cells["ID"].Value);
@@ -131,17 +132,102 @@ namespace Unitivo.Presentacion.Administrador
 
                 if (result == DialogResult.Yes)
                 {
-                    if(clienteRepositorio.EliminarCliente(idSeleccionado))
+                    if (clienteRepositorio.EliminarCliente(idSeleccionado))
                     {
 
                         MessageBox.Show("El cliente se eliminó correctamente.", "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarClientes();
-                    } else
+                    }
+                    else
                     {
                         MessageBox.Show("Ocurrió un error al eliminar el cliente.", "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+
+        private void GestionarClientes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridViewListarClientes_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                DataGridViewRow filaSeleccionada = DataGridViewListarClientes.Rows[e.RowIndex];
+                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
+                if (clienteRepositorio.reactivarCliente(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarClientes();
+            }
+        }
+
+        private void DataGridViewListarClientes_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                DataGridViewRow filaSeleccionada = DataGridViewListarClientes.Rows[e.RowIndex];
+                bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
+                if (estadoSelect == false)
+                {
+                    BEliminarClientes.Enabled = false;
+                }
+                else
+                {
+                    BEliminarClientes.Enabled = true;
+                }
+            }
+        }
+
+        private void DataGridViewListarClientes_RowHeaderMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                DataGridViewRow filaSeleccionada = DataGridViewListarClientes.Rows[e.RowIndex];
+                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
+                if (clienteRepositorio.reactivarCliente(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarClientes();
+            }
+        }
+
+        private void DataGridViewListarClientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                DataGridViewRow filaSeleccionada = DataGridViewListarClientes.Rows[e.RowIndex];
+                bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
+                if (estadoSelect == false)
+                {
+                    BEliminarClientes.Enabled = false;
+                }
+                else
+                {
+                    BEliminarClientes.Enabled = true;
+                }
+            }
+        }
+
+        private void ComboBoxBuscarDni_SelectedValueChanged(object sender, EventArgs e)
+        {
+            TBBuscar.Clear();
         }
     }
 } 

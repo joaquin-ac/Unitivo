@@ -7,15 +7,13 @@ public partial class Factura
 {
     public int Id { get; set; }
 
-    public DateTime Fecha { get; set; }
-
-    public bool Estado { get; set; }
-
     public DateTime FechaCreacion { get; set; }
 
     public int IdUsuario { get; set; }
 
     public int IdCliente { get; set; }
+
+    public decimal Precio { get; set; }
 
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();
 

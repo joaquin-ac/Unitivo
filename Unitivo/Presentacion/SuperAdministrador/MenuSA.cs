@@ -214,6 +214,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
             PanelFormSuperAdministrador.Tag = formHijo;
             PanelFormSuperAdministrador.BringToFront();
             PanelFormSuperAdministrador.AutoScroll = true;
+
             formHijo.Show();
             hideSubMenu();
 

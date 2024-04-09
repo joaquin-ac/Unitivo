@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unitivo.Modelos;
+using Unitivo.Repositorios.Implementaciones;
 
 namespace Unitivo.Presentacion.Vendedor
 {
     public partial class DetalleVenta : Form
     {
-        public DetalleVenta()
+        List<DetalleFactura> detallesFacturas;
+        public DetalleVenta(List<DetalleFactura> detalles)
         {
             InitializeComponent();
+            detallesFacturas = detalles;
+            CargarDetalles();
         }
 
         private void BVolver_Click(object sender, EventArgs e)
@@ -22,5 +27,20 @@ namespace Unitivo.Presentacion.Vendedor
             Close();
         }
 
+        private void CargarDetalles()
+        {
+            dgvListaVentas.Rows.Clear();
+            dgvListaVentas.Refresh();
+
+            foreach (DetalleFactura dfactura in detallesFacturas)
+            {
+                dgvListaVentas.Rows.Add(dfactura.IdProducto, dfactura.IdProductoNavigation.Nombre , dfactura.Precio, dfactura.Cantidad, dfactura.IdProductoNavigation.IdTalleNavigation.Descripcion);
+            }
+        }
+
+        private void DetalleVenta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

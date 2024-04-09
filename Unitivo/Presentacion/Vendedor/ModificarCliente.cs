@@ -17,7 +17,7 @@ namespace Unitivo.Presentacion.Vendedor
     public partial class ModificarCliente : Form
     {
         ClienteRepositorio clienteRepositorio = new ClienteRepositorio();
-
+        private int idCliente = -1;
         //Valores del cliente
         private string? nombreOriginal;
         private string? apellidoOriginal;
@@ -64,6 +64,7 @@ namespace Unitivo.Presentacion.Vendedor
         //necesito una funcion que tome por parametro el cliente instanciado en el constructor y que muestre los datos del cliente en los textbox
         private void MostrarCliente(Cliente cliente)
         {
+            idCliente = cliente.Id;
             // Cargar los datos del cliente en los TextBox
             TBNombreCliente.Text = cliente.Nombre;
             nombreOriginal = cliente.Nombre;
@@ -102,14 +103,14 @@ namespace Unitivo.Presentacion.Vendedor
             {
                 Cliente cliente = new Cliente();
                 //asigna los campos a cliente.
+                cliente.Id = idCliente;
                 cliente.Nombre = nuevoNombre;
                 cliente.Apellido = nuevoApellido;
                 cliente.Dni = nuevoDni;
                 cliente.Telefono = nuevoTelefono;
                 cliente.Direccion = nuevaDireccion;
                 cliente.Correo = nuevoCorreo;
-                try
-                {
+
                     if (clienteRepositorio.ModificarCliente(cliente))
                     {
                         MessageBox.Show("Cliente modificado con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,10 +120,6 @@ namespace Unitivo.Presentacion.Vendedor
                     {
                         MessageBox.Show("No se pudo modificar el cliente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                catch
-                {
-                }
 
             }
             else

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             TabControlRegCategoria = new TabControl();
             TabPageListaCategoria = new TabPage();
             DataGridViewListarCategorias = new DataGridView();
@@ -50,11 +51,11 @@
             // 
             TabControlRegCategoria.Controls.Add(TabPageListaCategoria);
             TabControlRegCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabControlRegCategoria.Location = new Point(177, 267);
-            TabControlRegCategoria.Margin = new Padding(2, 3, 2, 3);
+            TabControlRegCategoria.Location = new Point(155, 200);
+            TabControlRegCategoria.Margin = new Padding(2);
             TabControlRegCategoria.Name = "TabControlRegCategoria";
             TabControlRegCategoria.SelectedIndex = 0;
-            TabControlRegCategoria.Size = new Size(713, 372);
+            TabControlRegCategoria.Size = new Size(624, 279);
             TabControlRegCategoria.TabIndex = 37;
             // 
             // TabPageListaCategoria
@@ -62,11 +63,11 @@
             TabPageListaCategoria.Controls.Add(DataGridViewListarCategorias);
             TabPageListaCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaCategoria.ForeColor = Color.White;
-            TabPageListaCategoria.Location = new Point(4, 29);
-            TabPageListaCategoria.Margin = new Padding(2, 3, 2, 3);
+            TabPageListaCategoria.Location = new Point(4, 26);
+            TabPageListaCategoria.Margin = new Padding(2);
             TabPageListaCategoria.Name = "TabPageListaCategoria";
-            TabPageListaCategoria.Padding = new Padding(2, 3, 2, 3);
-            TabPageListaCategoria.Size = new Size(705, 339);
+            TabPageListaCategoria.Padding = new Padding(2);
+            TabPageListaCategoria.Size = new Size(616, 249);
             TabPageListaCategoria.TabIndex = 0;
             TabPageListaCategoria.Text = "Lista de Categorias";
             TabPageListaCategoria.UseVisualStyleBackColor = true;
@@ -79,37 +80,45 @@
             DataGridViewListarCategorias.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListarCategorias.BackgroundColor = Color.RosyBrown;
             DataGridViewListarCategorias.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewListarCategorias.ColumnHeadersHeight = 20;
             DataGridViewListarCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewListarCategorias.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DataGridViewListarCategorias.DefaultCellStyle = dataGridViewCellStyle2;
             DataGridViewListarCategorias.Dock = DockStyle.Fill;
             DataGridViewListarCategorias.EnableHeadersVisualStyles = false;
-            DataGridViewListarCategorias.Location = new Point(2, 3);
-            DataGridViewListarCategorias.Margin = new Padding(2, 3, 2, 3);
+            DataGridViewListarCategorias.Location = new Point(2, 2);
+            DataGridViewListarCategorias.Margin = new Padding(2);
             DataGridViewListarCategorias.Name = "DataGridViewListarCategorias";
             DataGridViewListarCategorias.ReadOnly = true;
             DataGridViewListarCategorias.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarCategorias.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListarCategorias.RowHeadersWidth = 51;
             DataGridViewListarCategorias.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListarCategorias.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             DataGridViewListarCategorias.RowTemplate.Height = 24;
-            DataGridViewListarCategorias.Size = new Size(701, 333);
+            DataGridViewListarCategorias.Size = new Size(612, 245);
             DataGridViewListarCategorias.TabIndex = 0;
             // 
             // Column1
@@ -140,10 +149,10 @@
             PanelRegCategoria.Controls.Add(BRegistrarCategoria);
             PanelRegCategoria.Controls.Add(TBNombreCategoria);
             PanelRegCategoria.Controls.Add(LNombreCategoria);
-            PanelRegCategoria.Location = new Point(253, 39);
-            PanelRegCategoria.Margin = new Padding(5, 4, 5, 4);
+            PanelRegCategoria.Location = new Point(221, 29);
+            PanelRegCategoria.Margin = new Padding(4, 3, 4, 3);
             PanelRegCategoria.Name = "PanelRegCategoria";
-            PanelRegCategoria.Size = new Size(577, 177);
+            PanelRegCategoria.Size = new Size(505, 133);
             PanelRegCategoria.TabIndex = 36;
             // 
             // BRegistrarCategoria
@@ -154,10 +163,10 @@
             BRegistrarCategoria.FlatStyle = FlatStyle.Flat;
             BRegistrarCategoria.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             BRegistrarCategoria.ForeColor = Color.White;
-            BRegistrarCategoria.Location = new Point(424, 73);
-            BRegistrarCategoria.Margin = new Padding(5, 4, 5, 4);
+            BRegistrarCategoria.Location = new Point(371, 55);
+            BRegistrarCategoria.Margin = new Padding(4, 3, 4, 3);
             BRegistrarCategoria.Name = "BRegistrarCategoria";
-            BRegistrarCategoria.Size = new Size(130, 64);
+            BRegistrarCategoria.Size = new Size(114, 48);
             BRegistrarCategoria.TabIndex = 13;
             BRegistrarCategoria.Text = "Añadir";
             BRegistrarCategoria.UseVisualStyleBackColor = false;
@@ -166,10 +175,10 @@
             // TBNombreCategoria
             // 
             TBNombreCategoria.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBNombreCategoria.Location = new Point(23, 88);
-            TBNombreCategoria.Margin = new Padding(5, 4, 5, 4);
+            TBNombreCategoria.Location = new Point(20, 66);
+            TBNombreCategoria.Margin = new Padding(4, 3, 4, 3);
             TBNombreCategoria.Name = "TBNombreCategoria";
-            TBNombreCategoria.Size = new Size(371, 30);
+            TBNombreCategoria.Size = new Size(325, 26);
             TBNombreCategoria.TabIndex = 6;
             TBNombreCategoria.KeyPress += String_KeyPress;
             // 
@@ -179,25 +188,26 @@
             LNombreCategoria.BackColor = Color.Cornsilk;
             LNombreCategoria.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
             LNombreCategoria.ForeColor = Color.DarkOrange;
-            LNombreCategoria.Location = new Point(23, 16);
-            LNombreCategoria.Margin = new Padding(5, 0, 5, 0);
+            LNombreCategoria.Location = new Point(20, 12);
+            LNombreCategoria.Margin = new Padding(4, 0, 4, 0);
             LNombreCategoria.Name = "LNombreCategoria";
-            LNombreCategoria.Size = new Size(313, 36);
+            LNombreCategoria.Size = new Size(258, 29);
             LNombreCategoria.TabIndex = 0;
             LNombreCategoria.Text = "Nombre de Categoria :";
             // 
             // AñadirCategoria
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1066, 769);
+            ClientSize = new Size(933, 577);
             Controls.Add(TabControlRegCategoria);
             Controls.Add(PanelRegCategoria);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(5, 4, 5, 4);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "AñadirCategoria";
             Text = "Form1";
+            Load += AñadirCategoria_Load;
             TabControlRegCategoria.ResumeLayout(false);
             TabPageListaCategoria.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DataGridViewListarCategorias).EndInit();

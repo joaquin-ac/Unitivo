@@ -15,17 +15,19 @@ namespace Unitivo.Validators
     public class ProductoValidator : AbstractValidator<Producto>
     {
 
-        private readonly ProductoInterface? productoRepositorio;
-        private readonly CategoriaInterface? categoriaRepositorio;
-        private readonly TalleInterface? talleRepositorio;
+        private ProductoRepositorio productoRepositorio = new ProductoRepositorio();
+        private CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
+        private TalleRepositorio talleRepositorio = new TalleRepositorio();
         
         public ProductoValidator()
         {
             //validar Nombre
-            RuleFor(x => x.Nombre)
+
+            RuleFor(x => x)
                 .NotEmpty().WithMessage("El campo Nombre es obligatorio.")
-                .Must(ExisteNombre).WithMessage("Ya existe un producto con este nombre.")
+                .Must(x => ExisteNombre(x.Nombre, x.Id)).WithMessage("Ya existe un producto con este nombre.")
                 ;
+
             //validar categoria
             RuleFor(x => x.IdCategoria)
                 .NotEmpty().WithMessage("El campo Categoria es obligatorio")
@@ -46,41 +48,34 @@ namespace Unitivo.Validators
                 .NotEmpty().WithMessage("El campo Telefono es obligatorio")
                 .Must(x => x > 0).WithMessage("El campo Precio debe ser mayor a 0")
                 ;
-            //validar imagen
-            RuleFor(x => x.Imagen)
-                .NotEmpty().WithMessage("El campo Imagen es obligatorio")
-                .Must(x => x.Contains(".jpg") || x.Contains(".png") || x.Contains(".jpeg")).WithMessage("El campo Imagen debe ser un archivo .jpg, .png o .jpeg")
-                ;
         }
 
 
-        private bool ExisteNombre(string nombre){
-            if(productoRepositorio!.BuscarProductoNombre(nombre) != null){
-                return false;
+        private bool ExisteNombre(string nombre, int id = -1){
+
+            var prods = productoRepositorio!.BuscarProductoNombre(nombre);
+            if (prods.Count < 1)
+            {
+                return true;
             }
             else
             {
+                foreach (Producto prod in prods)
+                {
+                    if (prod.Id != id)
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
         }
         private bool ExisteCategoria(int id)
         {
-            if(categoriaRepositorio!.BuscarCategoriaPorId(id) != null){
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return (categoriaRepositorio!.BuscarCategoriaPorId(id) != null);
         }
         private bool ExisteTalle(int id){
-            if(talleRepositorio!.BuscarTallePorId(id) != null){
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return (talleRepositorio!.BuscarTallePorId(id) != null);
         }
     }
 }

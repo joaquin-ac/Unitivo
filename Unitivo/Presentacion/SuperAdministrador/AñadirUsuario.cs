@@ -54,25 +54,29 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 {
                     MessageBox.Show("El password y el re-password deben coincidir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-
-                Usuario x = new Usuario();
-
-                x.NombreUsuario = TBNombreUsuario.Text;
-                x.Password = TBContraseñaUsuario.Text;
-                x.IdEmpleado = int.Parse(TBEmpleado.Text);
-                x.IdPerfil = int.Parse(CBPerfil.Text);
-
-                if (usuarioRepositorio!.AgregarUsuario(x))
+                else
                 {
-                    MessageBox.Show("Usuario " + x.NombreUsuario + " agregado con exito!", "Exito", MessageBoxButtons.OK);
-                    LimpiarTextBoxs();
-                    CargarEmpleados();
-                    CargarUsuarios();
-                    // CargarUsuarios();
-                } else
-                {
-                    MessageBox.Show("Hubo problemas para agregar al usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Usuario x = new Usuario();
+
+                    x.NombreUsuario = TBNombreUsuario.Text;
+                    x.Password = TBContraseñaUsuario.Text;
+                    x.IdEmpleado = int.Parse(TBEmpleado.Text);
+                    x.IdPerfil = (int)CBPerfil.SelectedValue;
+
+                    if (usuarioRepositorio!.AgregarUsuario(x))
+                    {
+                        MessageBox.Show("Usuario " + x.NombreUsuario + " agregado con exito!", "Exito", MessageBoxButtons.OK);
+                        LimpiarTextBoxs();
+                        CargarEmpleados();
+                        CargarUsuarios();
+                        // CargarUsuarios();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo problemas para agregar al usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+              
             }
         }
 
@@ -99,14 +103,25 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void CargarUsuarios()
         {
-            List<Usuario> usuarios = usuarioRepositorio!.ListarUsuariosActivos();
+            List<Usuario> usuarios = usuarioRepositorio!.ListarUsuarios();
 
             dgvListaUsuarios.Rows.Clear();
             dgvListaUsuarios.Refresh();
 
-            foreach(Usuario usuario in usuarios)
+            foreach (Usuario usuario in usuarios)
             {
-                dgvListaUsuarios.Rows.Add(usuario.Id, usuario.IdPerfilNavigation.DescripcionPerfil, usuario.NombreUsuario, usuario.IdEmpleadoNavigation.Nombre, usuario.IdEmpleadoNavigation.Apellido, usuario.Estado);
+                if (usuario.Estado == true)
+                {
+                    dgvListaUsuarios.Rows.Add(usuario.Id, usuario.IdPerfilNavigation.DescripcionPerfil, usuario.NombreUsuario, usuario.IdEmpleadoNavigation.Nombre, usuario.IdEmpleadoNavigation.Apellido, usuario.Estado);
+                }
+                else
+                {
+                    // Agregar la fila con el estado "Inactivo"
+                    int rowIndex = dgvListaUsuarios.Rows.Add(usuario.Id, usuario.IdPerfilNavigation.DescripcionPerfil, usuario.NombreUsuario, usuario.IdEmpleadoNavigation.Nombre, usuario.IdEmpleadoNavigation.Apellido, usuario.Estado);
+
+                    // Establecer el color de fondo de la fila agregada
+                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 
@@ -128,7 +143,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
             }
         }
 
-        private void dgvEmpleados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvEmpleados_CellContentDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -148,10 +163,14 @@ namespace Unitivo.Presentacion.SuperAdministrador
             CargarEmpleados();
             CargarUsuarios();
             var perfiles = perfilRepositorio.ListarPerfiles();
-            foreach (var perfil in perfiles)
-            {
-                CBPerfil.Items.Add(perfil.Id);
-            }
+            CBPerfil.DataSource = perfiles;
+            CBPerfil.ValueMember = "Id";
+            CBPerfil.DisplayMember = "DescripcionPerfil";
+        }
+
+        private void dgvListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -7,7 +7,7 @@ public partial class Perfile
 {
     public int Id { get; set; }
 
-    public string DescripcionPerfil { get; set; } = null!;
+    public string DescripcionPerfil { get; set; } = "";
 
     public bool EstadoPerfil { get; set; }
 

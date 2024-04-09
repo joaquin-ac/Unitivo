@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Unitivo.Modelos;
+﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
 
@@ -17,6 +8,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
     {
         public int fila;
         EmpleadoRepositorio empleadoRepositorio = new EmpleadoRepositorio();
+        private int idEmpleado = -1;
 
         //Valores del empleado
         private string? nombreOriginal;
@@ -32,6 +24,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
         public ModificarEmpleado(int id)
         {
             InitializeComponent();
+            idEmpleado = id;
             MostrarEmpleado(empleadoRepositorio.buscarEmpleado(id));
         }
 
@@ -119,6 +112,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 nuevoTelefono != telefonoOriginal || nuevaDireccion != direccionOriginal || nuevoCorreo != correoOriginal || nuevaEdad != EdadOriginal)
             {
                 Empleado empleado = new Empleado();
+                empleado.Id = idEmpleado;
                 empleado.Nombre = nuevoNombre;
                 empleado.Apellido = nuevoApellido;
                 empleado.Dni = nuevoDni;
@@ -126,27 +120,24 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 empleado.Direccion = nuevaDireccion;
                 empleado.Correo = nuevoCorreo;
                 empleado.Edad = nuevaEdad;
-                try
+
+                if (empleadoRepositorio.ModificarEmpleado(empleado))
                 {
-                    if (empleadoRepositorio.ModificarEmpleado(empleado))
-                    {
-                        MessageBox.Show("Cliente modificado con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo modificar el cliente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("Empleado modificado con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
                 }
-                catch
+                else
                 {
+                    MessageBox.Show("No se pudo modificar el empleado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
 
             }
             else
             {
                 MessageBox.Show("No se han realizado cambios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
     }
 }

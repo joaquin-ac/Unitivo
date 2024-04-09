@@ -16,5 +16,18 @@ namespace Unitivo.Presentacion.Administrador
         {
             InitializeComponent();
         }
+
+        private void BBuscarCategoria_Click(object sender, EventArgs e)
+        {
+            DateTime fecha = System.DateTime.Now;
+            if (DateTimeDesde.Value > DateTimeHasta.Value || DateTimeDesde.Value > fecha || DateTimeHasta.Value > fecha)
+            {
+                MessageBox.Show("Fecha incorrecta.", "Facturas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //CargarVentas(DateTimeDesde.Value, DateTimeHasta.Value.AddDays(1), TBBuscar.Text);
+            }
+        }
     }
 }
