@@ -147,7 +147,7 @@ insert into perfiles values ('SuperAdmin', 1);
 insert into perfiles values ('Vendedor', 1);
 insert into perfiles values ('Administrador', 1);
 
-delete from empleados
+
 insert into empleados values('Juan','Gomez',12345678,'3494123456','Jujuy 300','juan@gmail.com',1,'2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720','1998-12-28 01:15:11.1580000');
 insert into empleados values('Pepe','Gomez',12345679,'3494123455','Jujuy 200','pepe@gmail.com',1,'2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720','1998-12-28 01:15:11.1580000');
 insert into empleados values('Maria','Gomez',12345677,'3494123454','Jujuy 100','maria@gmail.com',1,'2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720','1998-12-28 01:15:11.1580000');
