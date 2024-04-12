@@ -71,13 +71,14 @@ namespace Unitivo.Presentacion.Administrador
                 productoParaEditar.Precio = (double)decimal.Parse(TBPrecioProducto.Text);
                 productoParaEditar.IdCategoria = (int)CBCategoriaProducto.SelectedValue;
                 productoParaEditar.IdTalle = (int)CBTalleProducto.SelectedValue;
+                productoParaEditar.Stock += int.Parse(TBStockAdic.Text);
                 int stockAgregar = int.Parse(TBStockAdic.Text);
 
                 if (productoRepositorio.ModificarProducto(productoParaEditar, stockAgregar))
                 {
-                    CargarProductos();
-                    MessageBox.Show("Se modifico con exito", "exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     productoParaEditar = new Producto();
+                    CargarProductos();
+                    MessageBox.Show("Se modifico con exito", "exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);                
                     TBStockProducto.Text = "";
                     TBNombreProducto.Text = "";
                     TBPrecioProducto.Text = "";

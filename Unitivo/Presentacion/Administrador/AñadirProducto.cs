@@ -77,7 +77,7 @@ namespace Unitivo.Presentacion.Administrador
 
                 if (productoRepositorio!.AgregarProducto(producto))
                 {
-                    MessageBox.Show("Categoria agregada correctamente.");
+                    MessageBox.Show("Producto agregado correctamente.");
                     LimpiarTextBoxs();
                     cargarCategorias();
                     cargarTalles();
@@ -85,7 +85,7 @@ namespace Unitivo.Presentacion.Administrador
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar Categoria.");
+                    MessageBox.Show("Error al agregar el Producto.");
                 }
             }
             else

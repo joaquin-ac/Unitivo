@@ -74,11 +74,10 @@ GO
 
 CREATE TABLE facturas (
     id INT IDENTITY(1,1) PRIMARY KEY,
-    fecha DATE NOT NULL,
-    estado BIT NOT NULL,
     FechaCreacion DATETIME2 NOT NULL DEFAULT GETDATE(),
     id_usuario INT NOT NULL,
     id_cliente INT NOT NULL, -- Agregado el campo id_cliente
+	total int not null,
 
     CONSTRAINT FK_id_usuario_FACTURAS FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     CONSTRAINT FK_id_cliente_FACTURAS FOREIGN KEY (id_cliente) REFERENCES clientes(id)
@@ -110,7 +109,7 @@ CREATE TABLE productos (
     id INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     precio FLOAT NOT NULL,
-    stock INT NOT NULL,
+    stock INT,
     estado BIT NOT NULL,
     imagen VARCHAR(255) NOT NULL,
     FechaCreacion DATETIME2 NOT NULL DEFAULT GETDATE(),
@@ -155,4 +154,3 @@ insert into empleados values('Maria','Gomez',12345677,'3494123454','Jujuy 100','
 insert into usuarios values('juan@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnqpkOsOxAwv4swlDLrubUG.XC4dBm', 1, '2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720', 1, 1);
 insert into usuarios values('pepe@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnqpkOsOxAwv4swlDLrubUG.XC4dBm', 1, '2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720', 2, 2);
 insert into usuarios values('maria@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnqpkOsOxAwv4swlDLrubUG.XC4dBm', 1, '2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720', 3, 3);
-

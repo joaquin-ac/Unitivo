@@ -25,7 +25,7 @@ namespace Unitivo.Validators
 
             RuleFor(x => x)
                 .NotEmpty().WithMessage("El campo Nombre es obligatorio.")
-                .Must(x => ExisteNombre(x.Nombre, x.Id)).WithMessage("Ya existe un producto con este nombre.")
+                .Must(ExisteProducto).WithMessage("Ya existe el producto.")
                 ;
 
             //validar categoria
@@ -51,9 +51,9 @@ namespace Unitivo.Validators
         }
 
 
-        private bool ExisteNombre(string nombre, int id = -1){
+        private bool ExisteProducto(Producto producto){
 
-            var prods = productoRepositorio!.BuscarProductoNombre(nombre);
+            var prods = productoRepositorio!.BuscarProductoNombreExacto(producto.Nombre);
             if (prods.Count < 1)
             {
                 return true;
@@ -62,7 +62,8 @@ namespace Unitivo.Validators
             {
                 foreach (Producto prod in prods)
                 {
-                    if (prod.Id != id)
+                    MessageBox.Show(prod.Id + " "+ producto.Id);
+                    if ((prod.Id != producto.Id) && (producto.IdTalle == prod.IdTalle) && (producto.IdCategoria == prod.IdCategoria))
                     {
                         return false;
                     }

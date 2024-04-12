@@ -15,7 +15,8 @@ namespace Unitivo.Repositorios.Implementaciones
         public ProductoRepositorio()
         {
             _contexto = Contexto.dbContexto;
-
+            _contexto?.Categorias.Load();
+            _contexto?.Talles.Load();
         }
 
         private void CargarTalleYCategorias()
@@ -64,7 +65,10 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public Producto BuscarProducto(int id)
         {
-            return _contexto?.Productos.Find(id)!;
+            Producto prod = (from p in _contexto?.Productos
+                             where p.Id == id
+                             select p).First();
+            return prod;
         }
 
         public bool EliminarProducto(int id)
@@ -83,30 +87,42 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public bool ModificarProducto(Producto x, int stockAdic)
         {
+            
             var validator = new ProductoValidator();
             var result = validator.Validate(x);
 
-            if (!result.IsValid)
+            try
             {
-                StringBuilder sb = new StringBuilder();
-                foreach (var failure in result.Errors)
+                if (!result.IsValid)
                 {
-                    sb.AppendLine($"{failure.PropertyName}: {failure.ErrorMessage}");
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var failure in result.Errors)
+                    {
+                        sb.AppendLine($"{failure.PropertyName}: {failure.ErrorMessage}");
+                    }
+                    throw new ValidationException(sb.ToString());
                 }
-                throw new ValidationException(sb.ToString());
+
+
+                Producto producto = (from p in _contexto?.Productos
+                                      where p.Id == x.Id
+                                      select p).First();
+                MessageBox.Show(x.Stock.ToString());
+                producto.Stock = x.Stock;
+                producto.Nombre = x.Nombre;
+                producto.Precio = x.Precio;
+                producto.IdCategoria = x.IdCategoria;
+                producto.IdTalle = x.IdTalle;
+                producto.FechaModificacion = DateTime.Now;
+
+                _contexto?.SaveChanges();
+                return true;
             }
-
-
-            Producto? producto = (from p in _contexto?.Productos
-                                  where p.Id == x.Id
-                                  select p).First();
-            producto!.Stock = producto.Stock + stockAdic;
-            producto.Nombre = x.Nombre;
-            producto.Precio = x.Precio;
-            producto.IdCategoria = x.IdCategoria;
-            producto.IdTalle = x.IdTalle;
-            int resultado = _contexto?.SaveChanges() ?? 0;
-            return resultado > 0;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public List<Producto> ListarProductosActivos()
@@ -119,6 +135,10 @@ namespace Unitivo.Repositorios.Implementaciones
             return _contexto?.Productos.Where(c => c.Nombre.Contains(nombre)).ToList()!;
         }
 
+        public List<Producto> BuscarProductoNombreExacto(string nombre)
+        {
+            return _contexto?.Productos.Where(c => c.Nombre == nombre).ToList()!;
+        }
 
         public List<Producto> BuscarProductos(string nom, string cat, string talle)
         {
@@ -138,6 +158,10 @@ namespace Unitivo.Repositorios.Implementaciones
                                   select p).First();
 
             producto.Stock -= stockReducir;
+            if (producto.Stock <= 0)
+            {
+                producto.Estado = false;
+            }
 
             try
             {
