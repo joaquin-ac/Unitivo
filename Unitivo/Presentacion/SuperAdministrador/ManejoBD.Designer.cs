@@ -125,6 +125,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "ManejoBD";
             Text = "Form1";
+            Load += ManejoBD_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

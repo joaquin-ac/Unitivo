@@ -123,6 +123,11 @@ namespace Unitivo.Presentacion.Vendedor
         {
             TBBuscar.Clear();
         }
+
+        private void BImprimirClientes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

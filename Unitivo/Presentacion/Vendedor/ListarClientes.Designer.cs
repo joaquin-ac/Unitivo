@@ -142,6 +142,7 @@
             BImprimirClientes.Size = new Size(59, 52);
             BImprimirClientes.TabIndex = 3;
             BImprimirClientes.UseVisualStyleBackColor = false;
+            BImprimirClientes.Click += BImprimirClientes_Click;
             // 
             // TabControlListaClientes
             // 
@@ -191,7 +192,7 @@
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Window;
             dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.ForeColor = Color.White;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;

@@ -24,7 +24,6 @@ namespace Unitivo.Repositorios.Implementaciones
         {
             try
             {
-
                 // se agregan los demas campos obligatorios
                 x.FechaCreacion = DateTime.Now;
 

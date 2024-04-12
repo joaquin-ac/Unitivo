@@ -17,9 +17,14 @@
         }
 
         private void BRestaurar_Click(object sender, EventArgs e)
-        {     
+        {
             DatabaseBackupRestore backupRestore = new DatabaseBackupRestore(connectionString);
             backupRestore.RestoreDatabase(databaseName, backupFilePath);
+        }
+
+        private void ManejoBD_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

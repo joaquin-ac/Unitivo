@@ -77,7 +77,7 @@ CREATE TABLE facturas (
     FechaCreacion DATETIME2 NOT NULL DEFAULT GETDATE(),
     id_usuario INT NOT NULL,
     id_cliente INT NOT NULL, -- Agregado el campo id_cliente
-	total int not null,
+	total decimal not null,
 
     CONSTRAINT FK_id_usuario_FACTURAS FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     CONSTRAINT FK_id_cliente_FACTURAS FOREIGN KEY (id_cliente) REFERENCES clientes(id)
