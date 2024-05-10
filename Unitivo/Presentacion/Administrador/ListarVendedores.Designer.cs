@@ -32,7 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            BImprimirVendedor = new Button();
             GroupBoxVendedor = new GroupBox();
             BBuscarVendedor = new Button();
             TBBuscarVendedor = new TextBox();
@@ -51,18 +50,6 @@
             TabPageListaVendedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
-            // 
-            // BImprimirVendedor
-            // 
-            BImprimirVendedor.BackColor = Color.SteelBlue;
-            BImprimirVendedor.ForeColor = Color.White;
-            BImprimirVendedor.Image = Properties.Resources.icons8_imprimir_26;
-            BImprimirVendedor.Location = new Point(864, 318);
-            BImprimirVendedor.Margin = new Padding(4);
-            BImprimirVendedor.Name = "BImprimirVendedor";
-            BImprimirVendedor.Size = new Size(59, 52);
-            BImprimirVendedor.TabIndex = 22;
-            BImprimirVendedor.UseVisualStyleBackColor = false;
             // 
             // GroupBoxVendedor
             // 
@@ -236,7 +223,6 @@
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(934, 519);
             Controls.Add(TabControlListaVendedores);
-            Controls.Add(BImprimirVendedor);
             Controls.Add(GroupBoxVendedor);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);

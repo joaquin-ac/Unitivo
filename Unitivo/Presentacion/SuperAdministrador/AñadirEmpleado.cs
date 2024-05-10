@@ -94,7 +94,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
         private void CargarEmpleados()
         {
 
-            List<Empleado> empleados = empleadoRepositorio.ListarEmpleados();
+            List<Empleado> empleados = empleadoRepositorio.ListarEmpleadosActivos();
             DataGridViewListarEmpleados.Rows.Clear();
             DataGridViewListarEmpleados.Refresh();
             foreach (Empleado empleado in empleados)

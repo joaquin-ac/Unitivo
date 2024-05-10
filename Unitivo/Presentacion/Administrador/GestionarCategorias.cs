@@ -39,19 +39,19 @@ namespace Unitivo.Presentacion.Administrador
 
             if (dgvRegistroCategoria.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar el usuario seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar la categoria seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     int idEliminar = (int)dgvRegistroCategoria.SelectedRows[0].Cells["ID"].Value;
                     if (categoriaRepositorio.EliminarCategoria(idEliminar))
                     {
-                        MessageBox.Show("El usuario se eliminó correctamente.", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("la categoria se eliminó correctamente.", "categoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarCategorias();
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrió un error al eliminar el usuario.", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ocurrió un error al eliminar la categoria.", "categoria", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -151,31 +151,19 @@ namespace Unitivo.Presentacion.Administrador
                 if (estadoSelect == false)
                 {
                     BEliminarCategoria.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarCategoria.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
         }
 
         private void dgvRegistroCategoria_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                // Obtener la fila que fue doble clickeada
-                DataGridViewRow filaSeleccionada = dgvRegistroCategoria.Rows[e.RowIndex];
-                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
-                if (categoriaRepositorio.reactivarCategoria(IdSelect))
-                {
-                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                CargarCategorias();
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -196,6 +184,24 @@ namespace Unitivo.Presentacion.Administrador
                 {
                     MessageBox.Show("Ocurrio un error al modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dgvRegistroCategoria.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)dgvRegistroCategoria.SelectedRows[0].Cells["ID"].Value; ;
+                if (categoriaRepositorio.reactivarCategoria(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarCategorias();
             }
         }
     }

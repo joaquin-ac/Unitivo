@@ -47,7 +47,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void cargarCategorias()
         {
-            var categorias = categoriaRepositorio.ListarCategorias();
+            var categorias = categoriaRepositorio.ListarCategoriasActivos();
 
             CBCategoria.Items.AddRange(categorias.ToArray());
             CBCategoria.ValueMember = "Id";
@@ -57,7 +57,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void cargarTalles()
         {
-            var talles = talleRepositorio.ListarTalles();
+            var talles = talleRepositorio.ListarTallesActivos();
 
             CBTalle.Items.AddRange(talles.ToArray());
             CBTalle.ValueMember = "Id";

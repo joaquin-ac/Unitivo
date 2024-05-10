@@ -34,7 +34,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CargarVendedores()
         {
-            List<Usuario> vendedores = usuariosRepositorios.listarVendedores();
+            List<Usuario> vendedores = usuariosRepositorios.listarVendedoresActivos();
             dgvEmpleados.Rows.Clear();
             dgvEmpleados.Refresh();
 

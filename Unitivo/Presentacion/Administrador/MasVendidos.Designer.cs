@@ -1,6 +1,6 @@
 ﻿namespace Unitivo.Presentacion.Administrador
 {
-    partial class VentasPorCategoria
+    partial class MasVendidos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             Chart20 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             Chart50 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -53,7 +53,7 @@
             button2 = new Button();
             DTPDesde = new DateTimePicker();
             DTPHasta = new DateTimePicker();
-            comboBox1 = new ComboBox();
+            ComboBox1 = new ComboBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -77,66 +77,66 @@
             // 
             // Chart20
             // 
-            chartArea6.Name = "ChartArea1";
-            Chart20.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            Chart20.Legends.Add(legend6);
+            chartArea1.Name = "ChartArea1";
+            Chart20.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            Chart20.Legends.Add(legend1);
             Chart20.Location = new Point(32, 53);
             Chart20.Name = "Chart20";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            Chart20.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            Chart20.Series.Add(series1);
             Chart20.Size = new Size(445, 300);
             Chart20.TabIndex = 0;
             Chart20.Text = "chart1";
             // 
             // Chart50
             // 
-            chartArea7.Name = "ChartArea1";
-            Chart50.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            Chart50.Legends.Add(legend7);
+            chartArea2.Name = "ChartArea1";
+            Chart50.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            Chart50.Legends.Add(legend2);
             Chart50.Location = new Point(32, 408);
             Chart50.Name = "Chart50";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            Chart50.Series.Add(series7);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            Chart50.Series.Add(series2);
             Chart50.Size = new Size(445, 300);
             Chart50.TabIndex = 1;
             Chart50.Text = "chart2";
             // 
             // Chart10
             // 
-            chartArea8.Name = "ChartArea1";
-            Chart10.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            Chart10.Legends.Add(legend8);
+            chartArea3.Name = "ChartArea1";
+            Chart10.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            Chart10.Legends.Add(legend3);
             Chart10.Location = new Point(507, 53);
             Chart10.Name = "Chart10";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            Chart10.Series.Add(series8);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            Chart10.Series.Add(series3);
             Chart10.Size = new Size(300, 300);
             Chart10.TabIndex = 2;
             Chart10.Text = "chart3";
             // 
             // Chart40
             // 
-            chartArea9.Name = "ChartArea1";
-            Chart40.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            Chart40.Legends.Add(legend9);
+            chartArea4.Name = "ChartArea1";
+            Chart40.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            Chart40.Legends.Add(legend4);
             Chart40.Location = new Point(507, 408);
             Chart40.Name = "Chart40";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            Chart40.Series.Add(series9);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            Chart40.Series.Add(series4);
             Chart40.Size = new Size(300, 300);
             Chart40.TabIndex = 3;
             Chart40.Text = "chart4";
@@ -144,17 +144,17 @@
             // 
             // chart30
             // 
-            chartArea10.Name = "ChartArea1";
-            chart30.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            chart30.Legends.Add(legend10);
+            chartArea5.Name = "ChartArea1";
+            chart30.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            chart30.Legends.Add(legend5);
             chart30.Location = new Point(881, 408);
             chart30.Name = "chart30";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            chart30.Series.Add(series10);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            chart30.Series.Add(series5);
             chart30.Size = new Size(300, 300);
             chart30.TabIndex = 4;
             chart30.Text = "chart5";
@@ -168,7 +168,7 @@
             button1.TabIndex = 5;
             button1.Text = "Filtrar";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -196,13 +196,14 @@
             DTPHasta.Size = new Size(104, 23);
             DTPHasta.TabIndex = 8;
             // 
-            // comboBox1
+            // ComboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(862, 194);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 9;
+            ComboBox1.FormattingEnabled = true;
+            ComboBox1.Items.AddRange(new object[] { "Todos" });
+            ComboBox1.Location = new Point(862, 194);
+            ComboBox1.Name = "ComboBox1";
+            ComboBox1.Size = new Size(121, 23);
+            ComboBox1.TabIndex = 9;
             // 
             // label1
             // 
@@ -216,7 +217,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(1078, 68);
+            label2.Location = new Point(1064, 68);
             label2.Name = "label2";
             label2.Size = new Size(37, 15);
             label2.TabIndex = 11;
@@ -237,18 +238,19 @@
             label4.AutoSize = true;
             label4.Location = new Point(875, 160);
             label4.Name = "label4";
-            label4.Size = new Size(58, 15);
+            label4.Size = new Size(56, 15);
             label4.TabIndex = 12;
-            label4.Text = "Categoria\r\n";
+            label4.Text = "Producto";
+            label4.Click += label4_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(528, 372);
             label5.Name = "label5";
-            label5.Size = new Size(136, 15);
+            label5.Size = new Size(138, 15);
             label5.TabIndex = 13;
-            label5.Text = "Clientes mas compraron";
+            label5.Text = "Clientes mas Compraron";
             label5.Click += label5_Click;
             // 
             // label6
@@ -256,9 +258,9 @@
             label6.AutoSize = true;
             label6.Location = new Point(48, 372);
             label6.Name = "label6";
-            label6.Size = new Size(124, 15);
+            label6.Size = new Size(126, 15);
             label6.TabIndex = 14;
-            label6.Text = "Recaudado Por fechas";
+            label6.Text = "Recaudado Por Fechas";
             label6.Click += label6_Click;
             // 
             // label7
@@ -269,6 +271,7 @@
             label7.Size = new Size(79, 15);
             label7.TabIndex = 15;
             label7.Text = "Mas vendidas";
+            label7.Click += label7_Click;
             // 
             // label8
             // 
@@ -277,18 +280,19 @@
             label8.Name = "label8";
             label8.Size = new Size(61, 15);
             label8.TabIndex = 16;
-            label8.Text = "Por meses\r\n";
+            label8.Text = "Por meses";
+            label8.Click += label8_Click;
             // 
             // LTotalRecaudado
             // 
             LTotalRecaudado.AutoSize = true;
-            LTotalRecaudado.Location = new Point(32, 749);
+            LTotalRecaudado.Location = new Point(71, 745);
             LTotalRecaudado.Name = "LTotalRecaudado";
-            LTotalRecaudado.Size = new Size(100, 15);
+            LTotalRecaudado.Size = new Size(38, 15);
             LTotalRecaudado.TabIndex = 17;
-            LTotalRecaudado.Text = "Total Recaudado: ";
+            LTotalRecaudado.Text = "label9";
             // 
-            // VentasPorCategoria
+            // MasVendidos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -303,7 +307,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
+            Controls.Add(ComboBox1);
             Controls.Add(DTPHasta);
             Controls.Add(DTPDesde);
             Controls.Add(button2);
@@ -315,9 +319,9 @@
             Controls.Add(Chart20);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
-            Name = "VentasPorCategoria";
+            Name = "MasVendidos";
             Text = "Form1";
-            Load += VentasPorCategoria_Load;
+            Load += VentasPorProducto_Load;
             ((System.ComponentModel.ISupportInitialize)Chart20).EndInit();
             ((System.ComponentModel.ISupportInitialize)Chart50).EndInit();
             ((System.ComponentModel.ISupportInitialize)Chart10).EndInit();
@@ -341,7 +345,7 @@
         private Button button2;
         private DateTimePicker DTPDesde;
         private DateTimePicker DTPHasta;
-        private ComboBox comboBox1;
+        private ComboBox ComboBox1;
         private Label label1;
         private Label label2;
         private Label label3;

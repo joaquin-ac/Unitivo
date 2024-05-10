@@ -35,10 +35,8 @@
             BModificarProducto = new Button();
             GroupBoxBuscarProducto = new GroupBox();
             label3 = new Label();
-            label1 = new Label();
             Label2 = new Label();
             CBTalleBuscar = new ComboBox();
-            ComboBox2 = new ComboBox();
             CBCatBuscar = new ComboBox();
             BBuscarProducto = new Button();
             TBBuscar = new TextBox();
@@ -67,6 +65,7 @@
             groupBox1 = new GroupBox();
             Label4 = new Label();
             label9 = new Label();
+            BReactivar = new Button();
             GroupBoxBuscarProducto.SuspendLayout();
             TabControlListaProductos.SuspendLayout();
             TabPageListaProducto.SuspendLayout();
@@ -113,10 +112,8 @@
             // 
             GroupBoxBuscarProducto.BackColor = Color.Cornsilk;
             GroupBoxBuscarProducto.Controls.Add(label3);
-            GroupBoxBuscarProducto.Controls.Add(label1);
             GroupBoxBuscarProducto.Controls.Add(Label2);
             GroupBoxBuscarProducto.Controls.Add(CBTalleBuscar);
-            GroupBoxBuscarProducto.Controls.Add(ComboBox2);
             GroupBoxBuscarProducto.Controls.Add(CBCatBuscar);
             GroupBoxBuscarProducto.Controls.Add(BBuscarProducto);
             GroupBoxBuscarProducto.Controls.Add(TBBuscar);
@@ -143,18 +140,6 @@
             label3.TabIndex = 45;
             label3.Text = "Talle :";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.DarkOliveGreen;
-            label1.Location = new Point(436, 20);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(69, 20);
-            label1.TabIndex = 44;
-            label1.Text = "Marcas :";
-            // 
             // Label2
             // 
             Label2.AutoSize = true;
@@ -178,17 +163,6 @@
             CBTalleBuscar.Name = "CBTalleBuscar";
             CBTalleBuscar.Size = new Size(140, 28);
             CBTalleBuscar.TabIndex = 42;
-            // 
-            // ComboBox2
-            // 
-            ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBox2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            ComboBox2.FormattingEnabled = true;
-            ComboBox2.Location = new Point(438, 41);
-            ComboBox2.Margin = new Padding(3, 2, 3, 2);
-            ComboBox2.Name = "ComboBox2";
-            ComboBox2.Size = new Size(140, 28);
-            ComboBox2.TabIndex = 41;
             // 
             // CBCatBuscar
             // 
@@ -278,7 +252,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -403,6 +377,7 @@
             TBStockAdic.Name = "TBStockAdic";
             TBStockAdic.Size = new Size(165, 29);
             TBStockAdic.TabIndex = 20;
+            TBStockAdic.KeyPress += TBStockAdic_KeyPress;
             // 
             // CBTalleProducto
             // 
@@ -458,6 +433,7 @@
             TBPrecioProducto.Name = "TBPrecioProducto";
             TBPrecioProducto.Size = new Size(187, 29);
             TBPrecioProducto.TabIndex = 15;
+            TBPrecioProducto.KeyPress += TBPrecioProducto_KeyPress;
             // 
             // TBNombreProducto
             // 
@@ -543,12 +519,23 @@
             label9.TabIndex = 21;
             label9.Text = "Entrante:";
             // 
+            // BReactivar
+            // 
+            BReactivar.Location = new Point(855, 148);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
+            // 
             // GestionarProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 634);
+            Controls.Add(BReactivar);
             Controls.Add(GroupBoxDatosCliente);
             Controls.Add(GroupBoxBuscarProducto);
             Controls.Add(TabControlListaProductos);
@@ -583,10 +570,8 @@
         internal TabPage TabPageListaProducto;
         internal DataGridView DataGridViewListaProductos;
         internal Label label3;
-        internal Label label1;
         internal Label Label2;
         internal ComboBox CBTalleBuscar;
-        internal ComboBox ComboBox2;
         internal ComboBox CBCatBuscar;
         internal Button button1;
         internal GroupBox GroupBoxDatosCliente;
@@ -610,5 +595,6 @@
         private DataGridViewTextBoxColumn Talle;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Estado;
+        private Button BReactivar;
     }
 }

@@ -55,12 +55,12 @@ namespace Unitivo.Presentacion.SuperAdministrador
             {
                 if (empleado.Estado == true)
                 {
-                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad);
+                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Estado);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad, "Inactivo");
+                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Estado);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -123,12 +123,12 @@ namespace Unitivo.Presentacion.SuperAdministrador
             {
                 if (empleado.Estado == true)
                 {
-                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad);
+                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Estado);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad, "Inactivo");
+                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Estado);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -145,12 +145,12 @@ namespace Unitivo.Presentacion.SuperAdministrador
             {
                 if (empleado.Estado == true)
                 {
-                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad);
+                    dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Estado);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad, "Inactivo");
+                    int rowIndex = dgvEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Estado);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -185,26 +185,52 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void dgvEmpleados_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
-
-                if (dgvEmpleados.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.Red)
+                DataGridViewRow filaSeleccionada = dgvEmpleados.Rows[e.RowIndex];
+                bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
+                if (estadoSelect == false)
                 {
                     BEliminarEmpleado.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarEmpleado.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
+
 
         }
 
         private void ComboBoxBuscarDni_SelectedValueChanged(object sender, EventArgs e)
         {
             TBGestionUsuario.Clear();
+        }
+
+        private void BReactivar_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleados.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)dgvEmpleados.SelectedRows[0].Cells["ID"].Value; ;
+                if (empleadoRepositorio.ReactivaEmpleado(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarEmpleados();
+            }
+        }
+
+        private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -47,11 +47,8 @@
             DataGridViewRegistroCategorias = new DataGridView();
             Label1 = new Label();
             Panel2 = new Panel();
-            BAgregarImagen = new Button();
-            pictureBoxProducto = new PictureBox();
             BAñadirProducto = new Button();
             CBCategoria = new ComboBox();
-            LImagen = new Label();
             CBTalle = new ComboBox();
             Label6 = new Label();
             Label3 = new Label();
@@ -66,7 +63,6 @@
             ((System.ComponentModel.ISupportInitialize)DataGridViewListaProductos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DataGridViewRegistroCategorias).BeginInit();
             Panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxProducto).BeginInit();
             SuspendLayout();
             // 
             // TabControlListaProductos
@@ -118,7 +114,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -245,11 +241,8 @@
             // Panel2
             // 
             Panel2.BackColor = Color.Cornsilk;
-            Panel2.Controls.Add(BAgregarImagen);
-            Panel2.Controls.Add(pictureBoxProducto);
             Panel2.Controls.Add(BAñadirProducto);
             Panel2.Controls.Add(CBCategoria);
-            Panel2.Controls.Add(LImagen);
             Panel2.Controls.Add(CBTalle);
             Panel2.Controls.Add(Label6);
             Panel2.Controls.Add(Label3);
@@ -264,27 +257,6 @@
             Panel2.Name = "Panel2";
             Panel2.Size = new Size(892, 158);
             Panel2.TabIndex = 16;
-            // 
-            // BAgregarImagen
-            // 
-            BAgregarImagen.Location = new Point(400, 115);
-            BAgregarImagen.Margin = new Padding(3, 2, 3, 2);
-            BAgregarImagen.Name = "BAgregarImagen";
-            BAgregarImagen.Size = new Size(158, 22);
-            BAgregarImagen.TabIndex = 20;
-            BAgregarImagen.Text = "Agregar";
-            BAgregarImagen.UseVisualStyleBackColor = true;
-            BAgregarImagen.Click += btnCargarImagen_Click;
-            // 
-            // pictureBoxProducto
-            // 
-            pictureBoxProducto.BackColor = Color.RosyBrown;
-            pictureBoxProducto.Location = new Point(612, 34);
-            pictureBoxProducto.Margin = new Padding(3, 2, 3, 2);
-            pictureBoxProducto.Name = "pictureBoxProducto";
-            pictureBoxProducto.Size = new Size(124, 92);
-            pictureBoxProducto.TabIndex = 19;
-            pictureBoxProducto.TabStop = false;
             // 
             // BAñadirProducto
             // 
@@ -309,19 +281,6 @@
             CBCategoria.Name = "CBCategoria";
             CBCategoria.Size = new Size(153, 23);
             CBCategoria.TabIndex = 15;
-            // 
-            // LImagen
-            // 
-            LImagen.AutoSize = true;
-            LImagen.BackColor = Color.Cornsilk;
-            LImagen.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LImagen.ForeColor = Color.SaddleBrown;
-            LImagen.Location = new Point(300, 112);
-            LImagen.Margin = new Padding(5, 0, 5, 0);
-            LImagen.Name = "LImagen";
-            LImagen.Size = new Size(83, 24);
-            LImagen.TabIndex = 13;
-            LImagen.Text = "Imagen: ";
             // 
             // CBTalle
             // 
@@ -445,7 +404,6 @@
             ((System.ComponentModel.ISupportInitialize)DataGridViewRegistroCategorias).EndInit();
             Panel2.ResumeLayout(false);
             Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxProducto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -458,7 +416,6 @@
         internal Panel Panel2;
         internal ComboBox CBCategoria;
         internal Button BAñadirProducto;
-        internal Label LImagen;
         internal ComboBox CBTalle;
         internal Label Label6;
         internal Label Label3;
@@ -469,10 +426,7 @@
         internal Label Label4;
         internal TextBox TBStock;
 
-        #endregion
-
-        private PictureBox pictureBoxProducto;
-        private Button BAgregarImagen;
+#endregion
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Producto;
         private DataGridViewTextBoxColumn Categoria;

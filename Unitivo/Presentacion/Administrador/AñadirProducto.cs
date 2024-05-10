@@ -43,7 +43,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CargarProductos()
         {
-            List<Producto> productos = productoRepositorio.ListarProductos();
+            List<Producto> productos = productoRepositorio.ListarProductosActivos();
             DataGridViewListaProductos.Rows.Clear();
             DataGridViewListaProductos.Refresh();
             foreach (Producto producto in productos)
@@ -102,7 +102,7 @@ namespace Unitivo.Presentacion.Administrador
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     rutaImagenProducto = openFileDialog.FileName;
-                    pictureBoxProducto.Image = Image.FromFile(rutaImagenProducto);
+                    //pictureBoxProducto.Image = Image.FromFile(rutaImagenProducto);
                     image!.Save(rutaImagenProducto);
                 }
             }
@@ -152,7 +152,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void cargarCategorias()
         {
-            var categorias = categoriaRepositorio.ListarCategorias();
+            var categorias = categoriaRepositorio.ListarCategoriasActivos();
             CBCategoria.DataSource = categorias;
             CBCategoria.ValueMember = "Id";
             CBCategoria.DisplayMember = "Descripcion";
@@ -160,7 +160,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void cargarTalles()
         {
-            var talles = talleRepositorio.ListarTalles();
+            var talles = talleRepositorio.ListarTallesActivos();
             CBTalle.DataSource = talles;
             CBTalle.ValueMember = "Id";
             CBTalle.DisplayMember = "Descripcion";

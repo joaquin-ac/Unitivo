@@ -94,7 +94,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -104,6 +104,7 @@
             DataGridViewListarPerfiles.Location = new Point(3, 2);
             DataGridViewListarPerfiles.Margin = new Padding(3, 2, 3, 2);
             DataGridViewListarPerfiles.Name = "DataGridViewListarPerfiles";
+            DataGridViewListarPerfiles.ReadOnly = true;
             DataGridViewListarPerfiles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
@@ -125,18 +126,21 @@
             ID.HeaderText = "ID";
             ID.MinimumWidth = 6;
             ID.Name = "ID";
+            ID.ReadOnly = true;
             // 
             // Descripcion
             // 
             Descripcion.HeaderText = "Descripcion";
             Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
             // 
             // Estado
             // 
             Estado.HeaderText = "Estado";
             Estado.MinimumWidth = 6;
             Estado.Name = "Estado";
+            Estado.ReadOnly = true;
             // 
             // PanelRegClientes
             // 

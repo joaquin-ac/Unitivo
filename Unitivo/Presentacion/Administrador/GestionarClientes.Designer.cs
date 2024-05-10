@@ -32,7 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             BModificarCliente = new Button();
-            BImprimirClientes = new Button();
             GroupBoxClientes = new GroupBox();
             Label2 = new Label();
             BBuscar = new Button();
@@ -50,6 +49,7 @@
             Direccion = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            BReactivar = new Button();
             GroupBoxClientes.SuspendLayout();
             TabControlListaClientes.SuspendLayout();
             TabPageListaCliente.SuspendLayout();
@@ -68,18 +68,6 @@
             BModificarCliente.TabIndex = 23;
             BModificarCliente.UseVisualStyleBackColor = false;
             BModificarCliente.Click += BModificarCliente_Click;
-            // 
-            // BImprimirClientes
-            // 
-            BImprimirClientes.BackColor = Color.SteelBlue;
-            BImprimirClientes.ForeColor = Color.White;
-            BImprimirClientes.Image = Properties.Resources.icons8_imprimir_26;
-            BImprimirClientes.Location = new Point(827, 284);
-            BImprimirClientes.Margin = new Padding(4);
-            BImprimirClientes.Name = "BImprimirClientes";
-            BImprimirClientes.Size = new Size(59, 52);
-            BImprimirClientes.TabIndex = 22;
-            BImprimirClientes.UseVisualStyleBackColor = false;
             // 
             // GroupBoxClientes
             // 
@@ -212,7 +200,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -293,16 +281,26 @@
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
+            // BReactivar
+            // 
+            BReactivar.Location = new Point(827, 237);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
+            // 
             // GestionarClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 577);
+            Controls.Add(BReactivar);
             Controls.Add(TabControlListaClientes);
             Controls.Add(BEliminarClientes);
             Controls.Add(BModificarCliente);
-            Controls.Add(BImprimirClientes);
             Controls.Add(GroupBoxClientes);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
@@ -344,5 +342,6 @@
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Estado;
+        private Button BReactivar;
     }
 }

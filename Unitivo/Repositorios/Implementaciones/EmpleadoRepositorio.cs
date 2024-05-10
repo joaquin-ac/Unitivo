@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Unitivo.Modelos;
 using Unitivo.Recursos;
@@ -47,6 +48,12 @@ namespace Unitivo.Repositorios.Implementaciones
                     return false; // Retorna false si ya existe un empleado con el mismo correo
                 }
 
+                if (BuscarEmpleadosPorTelefono(x.Telefono) != null)
+                {
+                    MessageBox.Show("El telefono ya esta asociado a un empleado.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false; // Retorna false si ya existe un empleado con el mismo correo
+                }
+
                 // se agregan los demas campos obligatorios
                 x.FechaCreacion = DateTime.Now;
                 x.Estado = true;
@@ -59,10 +66,33 @@ namespace Unitivo.Repositorios.Implementaciones
                 // Retorna true si el empleado se agreg� con �xito
                 return true;
             }
-            catch (Exception ex)
+            catch (ValidationException ex)
             {
                 // Retorna false si hubo un error durante la inserci�n
+
                 MessageBox.Show(ex.Message, "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.InnerException != null)
+                {
+                    // Manejar la excepción interna
+                    MessageBox.Show("Excepción interna: " + ex.InnerException);
+                }
+                return false;
+            }
+            catch (DbUpdateException ex)
+            {
+                // Manejar error de Entity Framework al guardar cambios
+                MessageBox.Show("Error al guardar cambios en la base de datos: " + ex.Message, "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.InnerException != null)
+                {
+                    // Manejar la excepción interna
+                    MessageBox.Show("Excepción interna: " + ex.InnerException.Message);
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                // Manejar otros errores no previstos
+                MessageBox.Show("Error inesperado al agregar empleado: " + ex.Message, "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -142,6 +172,14 @@ namespace Unitivo.Repositorios.Implementaciones
             List<Empleado> empleados = (from emp in _contexto?.Empleados
                                         where emp.Correo == correo
                                         select emp).ToList();
+            return empleados;
+        }
+
+        public Empleado BuscarEmpleadosPorTelefono(string tel)
+        {
+            Empleado empleados = (from emp in _contexto?.Empleados
+                                        where emp.Telefono == tel
+                                        select emp).FirstOrDefault();
             return empleados;
         }
 

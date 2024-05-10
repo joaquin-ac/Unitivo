@@ -192,6 +192,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void dgvListaUsuarios_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
@@ -200,10 +201,12 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 if (estadoSelect == false)
                 {
                     BEliminarUsuario.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarUsuario.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
         }
@@ -211,6 +214,25 @@ namespace Unitivo.Presentacion.SuperAdministrador
         private void dgvListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void BReactivar_Click(object sender, EventArgs e)
+        {
+
+            if (dgvListaUsuarios.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)dgvListaUsuarios.SelectedRows[0].Cells["ID"].Value; ;
+                if (usuarioRepositorio.reactivarUsuario(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                cargarUsuarios();
+            }
         }
     }
 }

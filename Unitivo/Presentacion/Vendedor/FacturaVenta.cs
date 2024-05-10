@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Unitivo.Modelos;
 using Unitivo.Repositorios.Implementaciones;
 using System.Drawing.Printing;
+using Unitivo.Formularios.Vendedor;
 
 namespace Unitivo.Presentacion.Vendedor
 {
@@ -19,11 +20,21 @@ namespace Unitivo.Presentacion.Vendedor
         FacturaRepositorio facturaRepositorio = new FacturaRepositorio();
         DetalleFacturaRepositorio dFacturaRepositorio = new DetalleFacturaRepositorio();
         Factura factura;
+        AñadirVentas ventaform;
         public FacturaVenta(Factura Pfactura)
         {
             InitializeComponent();
             factura = Pfactura;
             CargarFactura();
+
+        }
+
+        public FacturaVenta(Factura Pfactura, AñadirVentas pform)
+        {
+            InitializeComponent();
+            factura = Pfactura;
+            CargarFactura();
+            ventaform = pform;
 
         }
 
@@ -56,6 +67,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void BImprimir_Click(object sender, EventArgs e)
         {
+            BImprimir.Visible = false;
             // Mostrar el diálogo de impresión
             using (PrintDialog printDialog = new PrintDialog())
             {
@@ -75,7 +87,13 @@ namespace Unitivo.Presentacion.Vendedor
                     }
                 }
             }
+            if (ventaform != null)
+            {
+                ventaform.Close();
+            }
+            
             Close();
+            
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)

@@ -20,7 +20,7 @@ namespace Unitivo.Presentacion.Administrador
         private CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
         private TalleRepositorio talleRepositorio = new TalleRepositorio();
         private Producto productoParaEditar = new Producto();
-        
+
         public GestionarProductos()
         {
             InitializeComponent();
@@ -28,9 +28,12 @@ namespace Unitivo.Presentacion.Administrador
 
         private void NumStr_KeyPress(object sender, KeyPressEventArgs e)
         {
-            CommonFunctions.ValidarKeyPress((TextBox)sender, e);
+            CommonFunctions.ValidarDecimalKeyPress((TextBox)sender, e);
         }
-
+        private void NumInt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CommonFunctions.ValidarNumberKeyPress((TextBox)sender, e);
+        }
         private void BEliminarProducto_Click(object sender, EventArgs e)
         {
             if (DataGridViewListaProductos.SelectedRows.Count == 0)
@@ -42,19 +45,19 @@ namespace Unitivo.Presentacion.Administrador
 
             if (DataGridViewListaProductos.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar el usuario seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar el producto seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     int idEliminar = (int)DataGridViewListaProductos.SelectedRows[0].Cells["ID"].Value;
                     if (productoRepositorio.EliminarProducto(idEliminar))
                     {
-                        MessageBox.Show("El usuario se eliminó correctamente.", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El producto se eliminó correctamente.", "producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarProductos();
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrió un error al eliminar el usuario.", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ocurrió un error al eliminar el producto.", "producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -78,7 +81,7 @@ namespace Unitivo.Presentacion.Administrador
                 {
                     productoParaEditar = new Producto();
                     CargarProductos();
-                    MessageBox.Show("Se modifico con exito", "exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);                
+                    MessageBox.Show("Se modifico con exito", "exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TBStockProducto.Text = "";
                     TBNombreProducto.Text = "";
                     TBPrecioProducto.Text = "";
@@ -186,40 +189,29 @@ namespace Unitivo.Presentacion.Administrador
 
         private void DataGridViewListaProductos_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
-
                 DataGridViewRow filaSeleccionada = DataGridViewListaProductos.Rows[e.RowIndex];
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
                     BEliminarProducto.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarProducto.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
+
         }
 
         private void DataGridViewListaProductos_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                // Obtener la fila que fue doble clickeada
-                DataGridViewRow filaSeleccionada = DataGridViewListaProductos.Rows[e.RowIndex];
-                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
-                if (productoRepositorio.reactivarProducto(IdSelect))
-                {
-                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                CargarProductos();
-            }
+
         }
 
         private void BModificarProducto_Click(object sender, EventArgs e)
@@ -243,6 +235,34 @@ namespace Unitivo.Presentacion.Administrador
                 MessageBox.Show("Debe seleccionar una fila para modificar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Salir del método sin realizar ninguna acción adicional.
             }
+        }
+
+        private void BReactivar_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewListaProductos.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)DataGridViewListaProductos.SelectedRows[0].Cells["ID"].Value; ;
+                if (productoRepositorio.reactivarProducto(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarProductos();
+            }
+        }
+
+        private void TBPrecioProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumStr_KeyPress(sender, e);
+        }
+
+        private void TBStockAdic_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            NumInt_KeyPress(sender, e);
         }
     }
 }

@@ -33,10 +33,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             GroupBoxBuscarProducto = new GroupBox();
             label3 = new Label();
-            label1 = new Label();
             Label2 = new Label();
             CBTalle = new ComboBox();
-            ComboBox2 = new ComboBox();
             CBCategoria = new ComboBox();
             BBuscarProducto = new Button();
             TBBuscar = new TextBox();
@@ -65,10 +63,8 @@
             // 
             GroupBoxBuscarProducto.BackColor = Color.Cornsilk;
             GroupBoxBuscarProducto.Controls.Add(label3);
-            GroupBoxBuscarProducto.Controls.Add(label1);
             GroupBoxBuscarProducto.Controls.Add(Label2);
             GroupBoxBuscarProducto.Controls.Add(CBTalle);
-            GroupBoxBuscarProducto.Controls.Add(ComboBox2);
             GroupBoxBuscarProducto.Controls.Add(CBCategoria);
             GroupBoxBuscarProducto.Controls.Add(BBuscarProducto);
             GroupBoxBuscarProducto.Controls.Add(TBBuscar);
@@ -95,18 +91,6 @@
             label3.TabIndex = 33;
             label3.Text = "Talle :";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.DarkOliveGreen;
-            label1.Location = new Point(432, 16);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(69, 20);
-            label1.TabIndex = 32;
-            label1.Text = "Marcas :";
-            // 
             // Label2
             // 
             Label2.AutoSize = true;
@@ -130,17 +114,6 @@
             CBTalle.Name = "CBTalle";
             CBTalle.Size = new Size(140, 28);
             CBTalle.TabIndex = 30;
-            // 
-            // ComboBox2
-            // 
-            ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBox2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            ComboBox2.FormattingEnabled = true;
-            ComboBox2.Location = new Point(434, 37);
-            ComboBox2.Margin = new Padding(3, 2, 3, 2);
-            ComboBox2.Name = "ComboBox2";
-            ComboBox2.Size = new Size(140, 28);
-            ComboBox2.TabIndex = 29;
             // 
             // CBCategoria
             // 
@@ -396,7 +369,6 @@
 
         internal GroupBox GroupBoxBuscarProducto;
         internal ComboBox CBTalle;
-        internal ComboBox ComboBox2;
         internal ComboBox CBCategoria;
         internal Button BBuscarProducto;
         internal TextBox TBBuscar;
@@ -410,7 +382,6 @@
         private Panel panel3;
         private Panel panel4;
         internal Label label3;
-        internal Label label1;
         internal Label Label2;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Producto;

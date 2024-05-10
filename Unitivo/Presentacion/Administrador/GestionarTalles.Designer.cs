@@ -39,20 +39,21 @@
             BEliminarTalle = new Button();
             TabListaTalles = new TabControl();
             TabPageListaTalles = new TabPage();
+            dgvListarTalles = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
             BAltaTalle = new Button();
             GroupBoxDatosTalles = new GroupBox();
             TBModTalle = new TextBox();
             button1 = new Button();
             LModTalle = new Label();
-            Estado = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            ID = new DataGridViewTextBoxColumn();
-            dgvListarTalles = new DataGridView();
+            BReactivar = new Button();
             GroupBoxGestionTalles.SuspendLayout();
             TabListaTalles.SuspendLayout();
             TabPageListaTalles.SuspendLayout();
-            GroupBoxDatosTalles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListarTalles).BeginInit();
+            GroupBoxDatosTalles.SuspendLayout();
             SuspendLayout();
             // 
             // GroupBoxGestionTalles
@@ -157,6 +158,78 @@
             TabPageListaTalles.Text = "Lista de Talles";
             TabPageListaTalles.UseVisualStyleBackColor = true;
             // 
+            // dgvListarTalles
+            // 
+            dgvListarTalles.AllowUserToAddRows = false;
+            dgvListarTalles.AllowUserToDeleteRows = false;
+            dgvListarTalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListarTalles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvListarTalles.BackgroundColor = Color.RosyBrown;
+            dgvListarTalles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvListarTalles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvListarTalles.ColumnHeadersHeight = 20;
+            dgvListarTalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvListarTalles.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvListarTalles.Dock = DockStyle.Fill;
+            dgvListarTalles.EnableHeadersVisualStyles = false;
+            dgvListarTalles.Location = new Point(3, 2);
+            dgvListarTalles.Margin = new Padding(4);
+            dgvListarTalles.Name = "dgvListarTalles";
+            dgvListarTalles.ReadOnly = true;
+            dgvListarTalles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvListarTalles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvListarTalles.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dgvListarTalles.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dgvListarTalles.Size = new Size(709, 168);
+            dgvListarTalles.TabIndex = 3;
+            dgvListarTalles.CellContentClick += dgvListarTalles_CellContentClick;
+            dgvListarTalles.RowHeaderMouseClick += dgvListarTalles_RowHeaderMouseClick;
+            dgvListarTalles.RowHeaderMouseDoubleClick += dgvListarTalles_RowHeaderMouseDoubleClick;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
+            // 
             // BAltaTalle
             // 
             BAltaTalle.BackColor = Color.DarkOliveGreen;
@@ -194,6 +267,8 @@
             TBModTalle.Name = "TBModTalle";
             TBModTalle.Size = new Size(194, 32);
             TBModTalle.TabIndex = 16;
+            TBModTalle.TextChanged += TBModTalle_TextChanged;
+            TBModTalle.KeyPress += TBModTalle_KeyPress;
             // 
             // button1
             // 
@@ -224,77 +299,15 @@
             LModTalle.TabIndex = 15;
             LModTalle.Text = "Descripción : ";
             // 
-            // Estado
+            // BReactivar
             // 
-            Estado.HeaderText = "Estado";
-            Estado.MinimumWidth = 6;
-            Estado.Name = "Estado";
-            Estado.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            // 
-            // dgvListarTalles
-            // 
-            dgvListarTalles.AllowUserToAddRows = false;
-            dgvListarTalles.AllowUserToDeleteRows = false;
-            dgvListarTalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvListarTalles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvListarTalles.BackgroundColor = Color.RosyBrown;
-            dgvListarTalles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvListarTalles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvListarTalles.ColumnHeadersHeight = 20;
-            dgvListarTalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvListarTalles.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvListarTalles.Dock = DockStyle.Fill;
-            dgvListarTalles.EnableHeadersVisualStyles = false;
-            dgvListarTalles.Location = new Point(3, 2);
-            dgvListarTalles.Margin = new Padding(4);
-            dgvListarTalles.Name = "dgvListarTalles";
-            dgvListarTalles.ReadOnly = true;
-            dgvListarTalles.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvListarTalles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgvListarTalles.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dgvListarTalles.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dgvListarTalles.Size = new Size(709, 168);
-            dgvListarTalles.TabIndex = 3;
-            dgvListarTalles.CellContentClick += dgvListarTalles_CellContentClick;
-            dgvListarTalles.RowHeaderMouseClick += dgvListarTalles_RowHeaderMouseClick;
-            dgvListarTalles.RowHeaderMouseDoubleClick += dgvListarTalles_RowHeaderMouseDoubleClick;
+            BReactivar.Location = new Point(851, 174);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
             // 
             // GestionarTalles
             // 
@@ -302,6 +315,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 634);
+            Controls.Add(BReactivar);
             Controls.Add(GroupBoxDatosTalles);
             Controls.Add(GroupBoxGestionTalles);
             Controls.Add(BModificarTalle);
@@ -317,9 +331,9 @@
             GroupBoxGestionTalles.PerformLayout();
             TabListaTalles.ResumeLayout(false);
             TabPageListaTalles.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvListarTalles).EndInit();
             GroupBoxDatosTalles.ResumeLayout(false);
             GroupBoxDatosTalles.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvListarTalles).EndInit();
             ResumeLayout(false);
         }
 
@@ -341,5 +355,6 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Estado;
+        private Button BReactivar;
     }
 }

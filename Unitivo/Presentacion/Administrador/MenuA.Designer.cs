@@ -80,10 +80,10 @@
             BSalir.FlatStyle = FlatStyle.Flat;
             BSalir.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
             BSalir.ForeColor = Color.Cornsilk;
-            BSalir.Location = new Point(0, 1366);
-            BSalir.Margin = new Padding(4, 5, 4, 5);
+            BSalir.Location = new Point(0, 1024);
+            BSalir.Margin = new Padding(4, 4, 4, 4);
             BSalir.Name = "BSalir";
-            BSalir.Size = new Size(286, 56);
+            BSalir.Size = new Size(252, 42);
             BSalir.TabIndex = 8;
             BSalir.Text = "Cerrar Sesión";
             BSalir.TextAlign = ContentAlignment.TopCenter;
@@ -109,10 +109,10 @@
             PanelMenuLateral.Controls.Add(PanelSubMenuProductos);
             PanelMenuLateral.Controls.Add(BProductosAdmin);
             PanelMenuLateral.Dock = DockStyle.Left;
-            PanelMenuLateral.Location = new Point(0, 92);
-            PanelMenuLateral.Margin = new Padding(4, 5, 4, 5);
+            PanelMenuLateral.Location = new Point(0, 69);
+            PanelMenuLateral.Margin = new Padding(4, 4, 4, 4);
             PanelMenuLateral.Name = "PanelMenuLateral";
-            PanelMenuLateral.Size = new Size(307, 908);
+            PanelMenuLateral.Size = new Size(269, 681);
             PanelMenuLateral.TabIndex = 8;
             // 
             // PanelSubMenuReportes
@@ -121,10 +121,10 @@
             PanelSubMenuReportes.Controls.Add(button3);
             PanelSubMenuReportes.Controls.Add(BVentasCategoria);
             PanelSubMenuReportes.Dock = DockStyle.Top;
-            PanelSubMenuReportes.Location = new Point(0, 1168);
-            PanelSubMenuReportes.Margin = new Padding(4, 5, 4, 5);
+            PanelSubMenuReportes.Location = new Point(0, 876);
+            PanelSubMenuReportes.Margin = new Padding(4, 4, 4, 4);
             PanelSubMenuReportes.Name = "PanelSubMenuReportes";
-            PanelSubMenuReportes.Size = new Size(286, 142);
+            PanelSubMenuReportes.Size = new Size(252, 106);
             PanelSubMenuReportes.TabIndex = 21;
             // 
             // button3
@@ -135,13 +135,14 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = Color.Sienna;
-            button3.Location = new Point(0, 62);
-            button3.Margin = new Padding(4, 5, 4, 5);
+            button3.Location = new Point(0, 46);
+            button3.Margin = new Padding(4, 4, 4, 4);
             button3.Name = "button3";
-            button3.Size = new Size(286, 62);
+            button3.Size = new Size(252, 46);
             button3.TabIndex = 2;
             button3.Text = "Mas Vendidos";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // BVentasCategoria
             // 
@@ -152,9 +153,9 @@
             BVentasCategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BVentasCategoria.ForeColor = Color.Sienna;
             BVentasCategoria.Location = new Point(0, 0);
-            BVentasCategoria.Margin = new Padding(4, 5, 4, 5);
+            BVentasCategoria.Margin = new Padding(4, 4, 4, 4);
             BVentasCategoria.Name = "BVentasCategoria";
-            BVentasCategoria.Size = new Size(286, 62);
+            BVentasCategoria.Size = new Size(252, 46);
             BVentasCategoria.TabIndex = 1;
             BVentasCategoria.Text = "Ventas por Categoria";
             BVentasCategoria.UseVisualStyleBackColor = false;
@@ -170,10 +171,10 @@
             BReportes.ForeColor = Color.Cornsilk;
             BReportes.Image = Properties.Resources.icons8_ventas_totales_48;
             BReportes.ImageAlign = ContentAlignment.MiddleLeft;
-            BReportes.Location = new Point(0, 1088);
-            BReportes.Margin = new Padding(4, 5, 4, 5);
+            BReportes.Location = new Point(0, 816);
+            BReportes.Margin = new Padding(4, 4, 4, 4);
             BReportes.Name = "BReportes";
-            BReportes.Size = new Size(286, 80);
+            BReportes.Size = new Size(252, 60);
             BReportes.TabIndex = 20;
             BReportes.Text = "Reportes";
             BReportes.TextAlign = ContentAlignment.MiddleLeft;
@@ -189,10 +190,10 @@
             BVolver.FlatStyle = FlatStyle.Flat;
             BVolver.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point);
             BVolver.ForeColor = Color.Sienna;
-            BVolver.Location = new Point(0, 1310);
-            BVolver.Margin = new Padding(4, 5, 4, 5);
+            BVolver.Location = new Point(0, 982);
+            BVolver.Margin = new Padding(4, 4, 4, 4);
             BVolver.Name = "BVolver";
-            BVolver.Size = new Size(286, 56);
+            BVolver.Size = new Size(252, 42);
             BVolver.TabIndex = 19;
             BVolver.Text = "Volver";
             BVolver.TextAlign = ContentAlignment.TopCenter;
@@ -204,10 +205,10 @@
             PanelSubMenuClientes.BackColor = Color.FloralWhite;
             PanelSubMenuClientes.Controls.Add(BGestionarClientes);
             PanelSubMenuClientes.Dock = DockStyle.Top;
-            PanelSubMenuClientes.Location = new Point(0, 1013);
-            PanelSubMenuClientes.Margin = new Padding(4, 5, 4, 5);
+            PanelSubMenuClientes.Location = new Point(0, 760);
+            PanelSubMenuClientes.Margin = new Padding(4, 4, 4, 4);
             PanelSubMenuClientes.Name = "PanelSubMenuClientes";
-            PanelSubMenuClientes.Size = new Size(286, 75);
+            PanelSubMenuClientes.Size = new Size(252, 56);
             PanelSubMenuClientes.TabIndex = 18;
             // 
             // BGestionarClientes
@@ -219,9 +220,9 @@
             BGestionarClientes.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BGestionarClientes.ForeColor = Color.Sienna;
             BGestionarClientes.Location = new Point(0, 0);
-            BGestionarClientes.Margin = new Padding(4, 5, 4, 5);
+            BGestionarClientes.Margin = new Padding(4, 4, 4, 4);
             BGestionarClientes.Name = "BGestionarClientes";
-            BGestionarClientes.Size = new Size(286, 62);
+            BGestionarClientes.Size = new Size(252, 46);
             BGestionarClientes.TabIndex = 1;
             BGestionarClientes.Text = "Gestionar Clientes";
             BGestionarClientes.UseVisualStyleBackColor = false;
@@ -237,10 +238,10 @@
             BClientes.ForeColor = Color.Cornsilk;
             BClientes.Image = Properties.Resources.icons8_contactos_50__2_;
             BClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            BClientes.Location = new Point(0, 933);
-            BClientes.Margin = new Padding(4, 5, 4, 5);
+            BClientes.Location = new Point(0, 700);
+            BClientes.Margin = new Padding(4, 4, 4, 4);
             BClientes.Name = "BClientes";
-            BClientes.Size = new Size(286, 80);
+            BClientes.Size = new Size(252, 60);
             BClientes.TabIndex = 17;
             BClientes.Text = "Clientes";
             BClientes.TextAlign = ContentAlignment.MiddleLeft;
@@ -254,10 +255,10 @@
             PanelSubMenuTalles.Controls.Add(BGestionarTalles);
             PanelSubMenuTalles.Controls.Add(BAñadirTalle);
             PanelSubMenuTalles.Dock = DockStyle.Top;
-            PanelSubMenuTalles.Location = new Point(0, 802);
-            PanelSubMenuTalles.Margin = new Padding(4, 5, 4, 5);
+            PanelSubMenuTalles.Location = new Point(0, 602);
+            PanelSubMenuTalles.Margin = new Padding(4, 4, 4, 4);
             PanelSubMenuTalles.Name = "PanelSubMenuTalles";
-            PanelSubMenuTalles.Size = new Size(286, 131);
+            PanelSubMenuTalles.Size = new Size(252, 98);
             PanelSubMenuTalles.TabIndex = 15;
             // 
             // BGestionarTalles
@@ -268,10 +269,10 @@
             BGestionarTalles.FlatStyle = FlatStyle.Flat;
             BGestionarTalles.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BGestionarTalles.ForeColor = Color.Sienna;
-            BGestionarTalles.Location = new Point(0, 62);
-            BGestionarTalles.Margin = new Padding(4, 5, 4, 5);
+            BGestionarTalles.Location = new Point(0, 46);
+            BGestionarTalles.Margin = new Padding(4, 4, 4, 4);
             BGestionarTalles.Name = "BGestionarTalles";
-            BGestionarTalles.Size = new Size(286, 62);
+            BGestionarTalles.Size = new Size(252, 46);
             BGestionarTalles.TabIndex = 2;
             BGestionarTalles.Text = "Gestionar Talles";
             BGestionarTalles.UseVisualStyleBackColor = false;
@@ -286,9 +287,9 @@
             BAñadirTalle.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BAñadirTalle.ForeColor = Color.Sienna;
             BAñadirTalle.Location = new Point(0, 0);
-            BAñadirTalle.Margin = new Padding(4, 5, 4, 5);
+            BAñadirTalle.Margin = new Padding(4, 4, 4, 4);
             BAñadirTalle.Name = "BAñadirTalle";
-            BAñadirTalle.Size = new Size(286, 62);
+            BAñadirTalle.Size = new Size(252, 46);
             BAñadirTalle.TabIndex = 1;
             BAñadirTalle.Text = "Añadir Talle";
             BAñadirTalle.UseVisualStyleBackColor = false;
@@ -304,10 +305,10 @@
             BTalles.ForeColor = Color.Cornsilk;
             BTalles.Image = Properties.Resources.icons8_patrón_de_la_camisa_a_medida_48;
             BTalles.ImageAlign = ContentAlignment.MiddleLeft;
-            BTalles.Location = new Point(0, 711);
-            BTalles.Margin = new Padding(4, 5, 4, 5);
+            BTalles.Location = new Point(0, 534);
+            BTalles.Margin = new Padding(4, 4, 4, 4);
             BTalles.Name = "BTalles";
-            BTalles.Size = new Size(286, 91);
+            BTalles.Size = new Size(252, 68);
             BTalles.TabIndex = 14;
             BTalles.Text = "Talles";
             BTalles.TextAlign = ContentAlignment.MiddleLeft;
@@ -321,10 +322,10 @@
             PanelSubMenuCategorias.Controls.Add(BGestionarCategorias);
             PanelSubMenuCategorias.Controls.Add(BAñadirCategoria);
             PanelSubMenuCategorias.Dock = DockStyle.Top;
-            PanelSubMenuCategorias.Location = new Point(0, 557);
-            PanelSubMenuCategorias.Margin = new Padding(4, 5, 4, 5);
+            PanelSubMenuCategorias.Location = new Point(0, 418);
+            PanelSubMenuCategorias.Margin = new Padding(4, 4, 4, 4);
             PanelSubMenuCategorias.Name = "PanelSubMenuCategorias";
-            PanelSubMenuCategorias.Size = new Size(286, 154);
+            PanelSubMenuCategorias.Size = new Size(252, 116);
             PanelSubMenuCategorias.TabIndex = 13;
             // 
             // BGestionarCategorias
@@ -335,10 +336,10 @@
             BGestionarCategorias.FlatStyle = FlatStyle.Flat;
             BGestionarCategorias.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BGestionarCategorias.ForeColor = Color.Sienna;
-            BGestionarCategorias.Location = new Point(0, 62);
-            BGestionarCategorias.Margin = new Padding(4, 5, 4, 5);
+            BGestionarCategorias.Location = new Point(0, 46);
+            BGestionarCategorias.Margin = new Padding(4, 4, 4, 4);
             BGestionarCategorias.Name = "BGestionarCategorias";
-            BGestionarCategorias.Size = new Size(286, 83);
+            BGestionarCategorias.Size = new Size(252, 62);
             BGestionarCategorias.TabIndex = 2;
             BGestionarCategorias.Text = "Gestionar Categorias";
             BGestionarCategorias.UseVisualStyleBackColor = false;
@@ -353,9 +354,9 @@
             BAñadirCategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BAñadirCategoria.ForeColor = Color.Sienna;
             BAñadirCategoria.Location = new Point(0, 0);
-            BAñadirCategoria.Margin = new Padding(4, 5, 4, 5);
+            BAñadirCategoria.Margin = new Padding(4, 4, 4, 4);
             BAñadirCategoria.Name = "BAñadirCategoria";
-            BAñadirCategoria.Size = new Size(286, 62);
+            BAñadirCategoria.Size = new Size(252, 46);
             BAñadirCategoria.TabIndex = 1;
             BAñadirCategoria.Text = "Añadir Categoria";
             BAñadirCategoria.UseVisualStyleBackColor = false;
@@ -371,10 +372,10 @@
             BCategoriasAdmin.ForeColor = Color.Cornsilk;
             BCategoriasAdmin.Image = Properties.Resources.icons8_categorizar_48;
             BCategoriasAdmin.ImageAlign = ContentAlignment.MiddleLeft;
-            BCategoriasAdmin.Location = new Point(0, 466);
-            BCategoriasAdmin.Margin = new Padding(4, 5, 4, 5);
+            BCategoriasAdmin.Location = new Point(0, 350);
+            BCategoriasAdmin.Margin = new Padding(4, 4, 4, 4);
             BCategoriasAdmin.Name = "BCategoriasAdmin";
-            BCategoriasAdmin.Size = new Size(286, 91);
+            BCategoriasAdmin.Size = new Size(252, 68);
             BCategoriasAdmin.TabIndex = 12;
             BCategoriasAdmin.Text = "Categorias";
             BCategoriasAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -388,10 +389,10 @@
             PanelSubMenuVentas.Controls.Add(BListarVendedoresAdmin);
             PanelSubMenuVentas.Controls.Add(BListarVentasAdmin);
             PanelSubMenuVentas.Dock = DockStyle.Top;
-            PanelSubMenuVentas.Location = new Point(0, 335);
-            PanelSubMenuVentas.Margin = new Padding(4, 5, 4, 5);
+            PanelSubMenuVentas.Location = new Point(0, 252);
+            PanelSubMenuVentas.Margin = new Padding(4, 4, 4, 4);
             PanelSubMenuVentas.Name = "PanelSubMenuVentas";
-            PanelSubMenuVentas.Size = new Size(286, 131);
+            PanelSubMenuVentas.Size = new Size(252, 98);
             PanelSubMenuVentas.TabIndex = 11;
             // 
             // BListarVendedoresAdmin
@@ -402,10 +403,10 @@
             BListarVendedoresAdmin.FlatStyle = FlatStyle.Flat;
             BListarVendedoresAdmin.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BListarVendedoresAdmin.ForeColor = Color.Sienna;
-            BListarVendedoresAdmin.Location = new Point(0, 62);
-            BListarVendedoresAdmin.Margin = new Padding(4, 5, 4, 5);
+            BListarVendedoresAdmin.Location = new Point(0, 46);
+            BListarVendedoresAdmin.Margin = new Padding(4, 4, 4, 4);
             BListarVendedoresAdmin.Name = "BListarVendedoresAdmin";
-            BListarVendedoresAdmin.Size = new Size(286, 62);
+            BListarVendedoresAdmin.Size = new Size(252, 46);
             BListarVendedoresAdmin.TabIndex = 2;
             BListarVendedoresAdmin.Text = "Listar Vendedores";
             BListarVendedoresAdmin.UseVisualStyleBackColor = false;
@@ -420,9 +421,9 @@
             BListarVentasAdmin.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BListarVentasAdmin.ForeColor = Color.Sienna;
             BListarVentasAdmin.Location = new Point(0, 0);
-            BListarVentasAdmin.Margin = new Padding(4, 5, 4, 5);
+            BListarVentasAdmin.Margin = new Padding(4, 4, 4, 4);
             BListarVentasAdmin.Name = "BListarVentasAdmin";
-            BListarVentasAdmin.Size = new Size(286, 62);
+            BListarVentasAdmin.Size = new Size(252, 46);
             BListarVentasAdmin.TabIndex = 1;
             BListarVentasAdmin.Text = "Listar Ventas";
             BListarVentasAdmin.UseVisualStyleBackColor = false;
@@ -438,10 +439,10 @@
             BVentasAdmin.ForeColor = Color.Cornsilk;
             BVentasAdmin.Image = Properties.Resources.icons8_ventas_totales_48;
             BVentasAdmin.ImageAlign = ContentAlignment.MiddleLeft;
-            BVentasAdmin.Location = new Point(0, 245);
-            BVentasAdmin.Margin = new Padding(4, 5, 4, 5);
+            BVentasAdmin.Location = new Point(0, 184);
+            BVentasAdmin.Margin = new Padding(4, 4, 4, 4);
             BVentasAdmin.Name = "BVentasAdmin";
-            BVentasAdmin.Size = new Size(286, 90);
+            BVentasAdmin.Size = new Size(252, 68);
             BVentasAdmin.TabIndex = 10;
             BVentasAdmin.Text = "Ventas";
             BVentasAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -455,10 +456,10 @@
             PanelSubMenuProductos.Controls.Add(BGestionarProductosAdmin);
             PanelSubMenuProductos.Controls.Add(BAñadirProductoAdmin);
             PanelSubMenuProductos.Dock = DockStyle.Top;
-            PanelSubMenuProductos.Location = new Point(0, 91);
-            PanelSubMenuProductos.Margin = new Padding(4, 5, 4, 5);
+            PanelSubMenuProductos.Location = new Point(0, 68);
+            PanelSubMenuProductos.Margin = new Padding(4, 4, 4, 4);
             PanelSubMenuProductos.Name = "PanelSubMenuProductos";
-            PanelSubMenuProductos.Size = new Size(286, 154);
+            PanelSubMenuProductos.Size = new Size(252, 116);
             PanelSubMenuProductos.TabIndex = 9;
             // 
             // BGestionarProductosAdmin
@@ -469,10 +470,10 @@
             BGestionarProductosAdmin.FlatStyle = FlatStyle.Flat;
             BGestionarProductosAdmin.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BGestionarProductosAdmin.ForeColor = Color.Sienna;
-            BGestionarProductosAdmin.Location = new Point(0, 62);
-            BGestionarProductosAdmin.Margin = new Padding(4, 5, 4, 5);
+            BGestionarProductosAdmin.Location = new Point(0, 46);
+            BGestionarProductosAdmin.Margin = new Padding(4, 4, 4, 4);
             BGestionarProductosAdmin.Name = "BGestionarProductosAdmin";
-            BGestionarProductosAdmin.Size = new Size(286, 83);
+            BGestionarProductosAdmin.Size = new Size(252, 62);
             BGestionarProductosAdmin.TabIndex = 2;
             BGestionarProductosAdmin.Text = "Gestionar Productos";
             BGestionarProductosAdmin.UseVisualStyleBackColor = false;
@@ -487,9 +488,9 @@
             BAñadirProductoAdmin.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BAñadirProductoAdmin.ForeColor = Color.Sienna;
             BAñadirProductoAdmin.Location = new Point(0, 0);
-            BAñadirProductoAdmin.Margin = new Padding(4, 5, 4, 5);
+            BAñadirProductoAdmin.Margin = new Padding(4, 4, 4, 4);
             BAñadirProductoAdmin.Name = "BAñadirProductoAdmin";
-            BAñadirProductoAdmin.Size = new Size(286, 62);
+            BAñadirProductoAdmin.Size = new Size(252, 46);
             BAñadirProductoAdmin.TabIndex = 1;
             BAñadirProductoAdmin.Text = "Añadir Producto";
             BAñadirProductoAdmin.UseVisualStyleBackColor = false;
@@ -506,9 +507,9 @@
             BProductosAdmin.Image = Properties.Resources.icons8_camiseta_48;
             BProductosAdmin.ImageAlign = ContentAlignment.MiddleLeft;
             BProductosAdmin.Location = new Point(0, 0);
-            BProductosAdmin.Margin = new Padding(4, 5, 4, 5);
+            BProductosAdmin.Margin = new Padding(4, 4, 4, 4);
             BProductosAdmin.Name = "BProductosAdmin";
-            BProductosAdmin.Size = new Size(286, 91);
+            BProductosAdmin.Size = new Size(252, 68);
             BProductosAdmin.TabIndex = 0;
             BProductosAdmin.Text = "Productos";
             BProductosAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -525,9 +526,9 @@
             PanelBarraMenu.Controls.Add(BMinimizarMenuAdmin);
             PanelBarraMenu.Dock = DockStyle.Top;
             PanelBarraMenu.Location = new Point(0, 0);
-            PanelBarraMenu.Margin = new Padding(4, 5, 4, 5);
+            PanelBarraMenu.Margin = new Padding(4, 4, 4, 4);
             PanelBarraMenu.Name = "PanelBarraMenu";
-            PanelBarraMenu.Size = new Size(1387, 92);
+            PanelBarraMenu.Size = new Size(1214, 69);
             PanelBarraMenu.TabIndex = 7;
             PanelBarraMenu.MouseDown += PanelBarraMenu_MouseDown;
             PanelBarraMenu.MouseMove += PanelBarraMenu_MouseMove;
@@ -540,10 +541,10 @@
             BMaximizarMenuAdmin.BackgroundImageLayout = ImageLayout.Stretch;
             BMaximizarMenuAdmin.FlatAppearance.BorderSize = 0;
             BMaximizarMenuAdmin.FlatStyle = FlatStyle.Flat;
-            BMaximizarMenuAdmin.Location = new Point(1264, 26);
-            BMaximizarMenuAdmin.Margin = new Padding(4, 5, 4, 5);
+            BMaximizarMenuAdmin.Location = new Point(1106, 20);
+            BMaximizarMenuAdmin.Margin = new Padding(4, 4, 4, 4);
             BMaximizarMenuAdmin.Name = "BMaximizarMenuAdmin";
-            BMaximizarMenuAdmin.Size = new Size(40, 46);
+            BMaximizarMenuAdmin.Size = new Size(35, 34);
             BMaximizarMenuAdmin.TabIndex = 3;
             BMaximizarMenuAdmin.UseVisualStyleBackColor = true;
             BMaximizarMenuAdmin.Click += BMaximizarMenuAdmin_Click;
@@ -555,10 +556,10 @@
             BCerrarMenuAdmin.BackgroundImageLayout = ImageLayout.Stretch;
             BCerrarMenuAdmin.FlatAppearance.BorderSize = 0;
             BCerrarMenuAdmin.FlatStyle = FlatStyle.Flat;
-            BCerrarMenuAdmin.Location = new Point(1320, 26);
-            BCerrarMenuAdmin.Margin = new Padding(4, 5, 4, 5);
+            BCerrarMenuAdmin.Location = new Point(1155, 20);
+            BCerrarMenuAdmin.Margin = new Padding(4, 4, 4, 4);
             BCerrarMenuAdmin.Name = "BCerrarMenuAdmin";
-            BCerrarMenuAdmin.Size = new Size(40, 46);
+            BCerrarMenuAdmin.Size = new Size(35, 34);
             BCerrarMenuAdmin.TabIndex = 2;
             BCerrarMenuAdmin.UseVisualStyleBackColor = true;
             BCerrarMenuAdmin.Click += BCerrarMenuAdmin_Click;
@@ -570,10 +571,10 @@
             BRestaurarMenuAdmin.BackgroundImageLayout = ImageLayout.Stretch;
             BRestaurarMenuAdmin.FlatAppearance.BorderSize = 0;
             BRestaurarMenuAdmin.FlatStyle = FlatStyle.Flat;
-            BRestaurarMenuAdmin.Location = new Point(1267, 26);
-            BRestaurarMenuAdmin.Margin = new Padding(4, 5, 4, 5);
+            BRestaurarMenuAdmin.Location = new Point(1109, 20);
+            BRestaurarMenuAdmin.Margin = new Padding(4, 4, 4, 4);
             BRestaurarMenuAdmin.Name = "BRestaurarMenuAdmin";
-            BRestaurarMenuAdmin.Size = new Size(40, 46);
+            BRestaurarMenuAdmin.Size = new Size(35, 34);
             BRestaurarMenuAdmin.TabIndex = 1;
             BRestaurarMenuAdmin.UseVisualStyleBackColor = true;
             BRestaurarMenuAdmin.Click += BRestaurarMenuAdmin_Click;
@@ -585,10 +586,10 @@
             BMinimizarMenuAdmin.BackgroundImageLayout = ImageLayout.Stretch;
             BMinimizarMenuAdmin.FlatAppearance.BorderSize = 0;
             BMinimizarMenuAdmin.FlatStyle = FlatStyle.Flat;
-            BMinimizarMenuAdmin.Location = new Point(1213, 26);
-            BMinimizarMenuAdmin.Margin = new Padding(4, 5, 4, 5);
+            BMinimizarMenuAdmin.Location = new Point(1061, 20);
+            BMinimizarMenuAdmin.Margin = new Padding(4, 4, 4, 4);
             BMinimizarMenuAdmin.Name = "BMinimizarMenuAdmin";
-            BMinimizarMenuAdmin.Size = new Size(40, 46);
+            BMinimizarMenuAdmin.Size = new Size(35, 34);
             BMinimizarMenuAdmin.TabIndex = 0;
             BMinimizarMenuAdmin.UseVisualStyleBackColor = true;
             BMinimizarMenuAdmin.Click += BMinimizarMenuAdmin_Click;
@@ -599,10 +600,10 @@
             PanelFormAdmin.BackgroundImage = Properties.Resources.imggrande5;
             PanelFormAdmin.BackgroundImageLayout = ImageLayout.Stretch;
             PanelFormAdmin.Controls.Add(Label1);
-            PanelFormAdmin.Location = new Point(307, 92);
-            PanelFormAdmin.Margin = new Padding(4, 5, 4, 5);
+            PanelFormAdmin.Location = new Point(269, 69);
+            PanelFormAdmin.Margin = new Padding(4, 4, 4, 4);
             PanelFormAdmin.Name = "PanelFormAdmin";
-            PanelFormAdmin.Size = new Size(1080, 908);
+            PanelFormAdmin.Size = new Size(945, 681);
             PanelFormAdmin.TabIndex = 9;
             // 
             // Label1
@@ -611,22 +612,22 @@
             Label1.BackColor = Color.LightSteelBlue;
             Label1.Font = new Font("Microsoft Sans Serif", 36F, FontStyle.Regular, GraphicsUnit.Point);
             Label1.ForeColor = Color.DarkRed;
-            Label1.Location = new Point(340, 257);
+            Label1.Location = new Point(298, 193);
             Label1.Margin = new Padding(4, 0, 4, 0);
             Label1.Name = "Label1";
-            Label1.Size = new Size(0, 69);
+            Label1.Size = new Size(0, 55);
             Label1.TabIndex = 4;
             // 
             // MenuA
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1387, 1000);
+            ClientSize = new Size(1214, 750);
             Controls.Add(PanelFormAdmin);
             Controls.Add(PanelMenuLateral);
             Controls.Add(PanelBarraMenu);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "MenuA";
             Text = "Form1";
             PanelMenuLateral.ResumeLayout(false);

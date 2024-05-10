@@ -109,7 +109,7 @@ namespace Unitivo.Presentacion.Vendedor
                 }
                 else
                 {
-                    int rowIndex = DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo, "Inactivo");
+                    int rowIndex = DataGridViewListarClientes.Rows.Add(cliente.Id, cliente.Nombre, cliente.Apellido, cliente.Dni, cliente.Telefono, cliente.Direccion, cliente.Correo);
 
                     DataGridViewListarClientes.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
                 }

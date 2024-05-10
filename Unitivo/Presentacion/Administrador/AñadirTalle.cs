@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace Unitivo.Presentacion.Administrador
 {
     public partial class AñadirTalle : Form
     {
         TalleRepositorio talleRepositorio = new TalleRepositorio();
+        private string tipoDeTalle = "Cualquiera";
         public AñadirTalle()
         {
             InitializeComponent();
@@ -24,7 +27,19 @@ namespace Unitivo.Presentacion.Administrador
 
         private void Num_KeyPress(object sender, KeyPressEventArgs e)
         {
-            CommonFunctions.ValidarNumberKeyPress((TextBox)sender, e);
+            if (tipoDeTalle == "numeros")
+            {
+                CommonFunctions.ValidarNumerosSinEspacios(sender, e);
+            }
+            else if (tipoDeTalle == "letras")
+            {
+                CommonFunctions.ValidarLetrasSinEspacios(sender, e);
+            }
+            else
+            {
+                CommonFunctions.ValidarKeyPress((System.Windows.Forms.TextBox)sender, e);
+            }
+            
         }
 
         private void BRegistrarTalle_Click(object sender, EventArgs e)
@@ -62,7 +77,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CargarTalles()
         {
-            List<Talle> talles = talleRepositorio.ListarTalles();
+            List<Talle> talles = talleRepositorio.ListarTallesActivos();
             DataGridViewListarTalles.Rows.Clear();
             DataGridViewListarTalles.Refresh();
 
@@ -92,6 +107,25 @@ namespace Unitivo.Presentacion.Administrador
         private void AñadirTalle_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void TBNombreTalle_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBNombreTalle.Text) && char.IsDigit(TBNombreTalle.Text[0]))
+            {
+                // Si el primer carácter es un número
+
+                tipoDeTalle = "numeros";
+            }
+            else if (!string.IsNullOrEmpty(TBNombreTalle.Text) && char.IsLetter(TBNombreTalle.Text[0]))
+            {
+                // Si el primer carácter es una letra
+                tipoDeTalle = "letras";
+            }
+            else
+            {
+                tipoDeTalle = "cualquiera";
+            }
         }
     }
 }

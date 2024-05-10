@@ -248,6 +248,11 @@ namespace Unitivo.Repositorios.Implementaciones
             return _contexto?.Usuarios.Where(u => u.IdPerfilNavigation.DescripcionPerfil == "Vendedor").ToList()!;
         }
 
+        public List<Usuario> listarVendedoresActivos()
+        {
+            return _contexto?.Usuarios.Where(u => u.IdPerfilNavigation.DescripcionPerfil == "Vendedor" && u.Estado == true).ToList()!;
+        }
+
         public List<Usuario> buscarVendedores(object parametro)
         {
             if (int.TryParse(parametro.ToString(), out int id))

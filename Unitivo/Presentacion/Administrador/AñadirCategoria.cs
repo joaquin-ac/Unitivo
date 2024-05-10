@@ -47,7 +47,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CargarCategorias()
         {
-            List<Categoria> categorias = categoriaRepositorio.ListarCategorias();
+            List<Categoria> categorias = categoriaRepositorio.ListarCategoriasActivos();
             DataGridViewListarCategorias.Rows.Clear();
             DataGridViewListarCategorias.Refresh();
 

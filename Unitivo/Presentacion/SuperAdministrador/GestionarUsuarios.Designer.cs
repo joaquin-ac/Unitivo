@@ -56,6 +56,7 @@
             TBNombreUsuario = new TextBox();
             LNombreCliente = new Label();
             LApellidoCliente = new Label();
+            BReactivar = new Button();
             GroupBoxGestionUsuarios.SuspendLayout();
             TabControlRegUsuarios.SuspendLayout();
             TabPageListaUsuarios.SuspendLayout();
@@ -178,7 +179,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -374,12 +375,23 @@
             LApellidoCliente.TabIndex = 4;
             LApellidoCliente.Text = "Contraseña:";
             // 
+            // BReactivar
+            // 
+            BReactivar.Location = new Point(839, 164);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
+            // 
             // GestionarUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 681);
+            Controls.Add(BReactivar);
             Controls.Add(GroupBoxDatosCliente);
             Controls.Add(TabControlRegUsuarios);
             Controls.Add(GroupBoxGestionUsuarios);
@@ -434,5 +446,6 @@
         private DataGridViewTextBoxColumn Perfil;
         private DataGridViewTextBoxColumn Empleado;
         internal Button BCancelar;
+        private Button BReactivar;
     }
 }

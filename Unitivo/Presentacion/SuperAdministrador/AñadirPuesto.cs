@@ -62,7 +62,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void CargarPerfiles()
         {
-            List<Perfile> perfiles = perfilRepositorio.ListarPerfiles();       
+            List<Perfile> perfiles = perfilRepositorio.ListarPerfilesActivos();       
 
             DataGridViewListarPerfiles.Rows.Clear();
             DataGridViewListarPerfiles.Refresh();

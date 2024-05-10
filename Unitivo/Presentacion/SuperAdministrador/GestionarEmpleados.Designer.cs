@@ -43,6 +43,7 @@
             TabControlListaEmpleados = new TabControl();
             TabPageListaEmpleados = new TabPage();
             dgvEmpleados = new DataGridView();
+            BReactivar = new Button();
             ID = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
@@ -50,6 +51,7 @@
             Telefono = new DataGridViewTextBoxColumn();
             Direccion = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
             GroupBoxGestionUsuarios.SuspendLayout();
             TabControlListaEmpleados.SuspendLayout();
             TabPageListaEmpleados.SuspendLayout();
@@ -206,11 +208,11 @@
             dgvEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvEmpleados.ColumnHeadersHeight = 20;
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, Apellido, Dni, Telefono, Direccion, Email });
+            dgvEmpleados.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, Apellido, Dni, Telefono, Direccion, Email, Estado });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -235,8 +237,19 @@
             dgvEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmpleados.Size = new Size(810, 275);
             dgvEmpleados.TabIndex = 2;
+            dgvEmpleados.CellContentClick += dgvEmpleados_CellContentClick;
             dgvEmpleados.RowHeaderMouseClick += dgvEmpleados_RowHeaderMouseClick;
             dgvEmpleados.RowHeaderMouseDoubleClick += dgvEmpleados_RowHeaderMouseDoubleClick;
+            // 
+            // BReactivar
+            // 
+            BReactivar.Location = new Point(864, 208);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
             // 
             // ID
             // 
@@ -294,12 +307,19 @@
             Email.ReadOnly = true;
             Email.Width = 125;
             // 
+            // Estado
+            // 
+            Estado.HeaderText = "Estado";
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
+            // 
             // GestionarEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 681);
+            Controls.Add(BReactivar);
             Controls.Add(TabControlListaEmpleados);
             Controls.Add(GroupBoxGestionUsuarios);
             Controls.Add(BModificarEmpleado);
@@ -332,6 +352,7 @@
         internal DataGridView dgvEmpleados;
         internal Label Label2;
         internal ComboBox ComboBoxBuscarDni;
+        private Button BReactivar;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;
@@ -339,5 +360,6 @@
         private DataGridViewTextBoxColumn Telefono;
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Estado;
     }
 }

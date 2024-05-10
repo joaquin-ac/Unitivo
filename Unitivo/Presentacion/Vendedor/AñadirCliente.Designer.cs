@@ -290,7 +290,7 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.ForeColor = Color.White;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
@@ -300,6 +300,7 @@
             DataGridViewListarClientes.Location = new Point(3, 2);
             DataGridViewListarClientes.Margin = new Padding(4);
             DataGridViewListarClientes.Name = "DataGridViewListarClientes";
+            DataGridViewListarClientes.ReadOnly = true;
             DataGridViewListarClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.NavajoWhite;
@@ -318,6 +319,7 @@
             Column1.HeaderText = "ID";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
+            Column1.ReadOnly = true;
             Column1.Width = 44;
             // 
             // Column2
@@ -325,6 +327,7 @@
             Column2.HeaderText = "Nombre";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
+            Column2.ReadOnly = true;
             Column2.Width = 81;
             // 
             // Column3
@@ -332,6 +335,7 @@
             Column3.HeaderText = "Apellido";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
+            Column3.ReadOnly = true;
             Column3.Width = 81;
             // 
             // Column4
@@ -339,6 +343,7 @@
             Column4.HeaderText = "Dni";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             Column4.Width = 52;
             // 
             // Column5
@@ -346,6 +351,7 @@
             Column5.HeaderText = "Telefono";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
+            Column5.ReadOnly = true;
             Column5.Width = 87;
             // 
             // Column6
@@ -353,6 +359,7 @@
             Column6.HeaderText = "Direccion";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
+            Column6.ReadOnly = true;
             Column6.Width = 90;
             // 
             // Column7
@@ -360,6 +367,7 @@
             Column7.HeaderText = "Email";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
+            Column7.ReadOnly = true;
             Column7.Width = 65;
             // 
             // AñadirCliente

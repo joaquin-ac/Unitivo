@@ -25,6 +25,23 @@ namespace Unitivo.Repositorios.Implementaciones
                 _contexto?.SaveChanges();
                 return true;
             }
+            catch (DbUpdateException ex)
+            {
+                // Manejar la excepción principal
+                MessageBox.Show("An error occurred while saving entity : " + ex.Message);
+
+                // Verificar si hay una excepción interna
+                if (ex.InnerException != null)
+                {
+                    // Manejar la excepción interna
+                    MessageBox.Show("Inner exception details: " + ex.InnerException.Message);
+                }
+                else
+                {
+                    MessageBox.Show("No inner exception found.");
+                }
+                return false;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Detalle Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);

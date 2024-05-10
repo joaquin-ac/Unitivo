@@ -217,6 +217,7 @@
             // DataGridViewListaVentas
             // 
             DataGridViewListaVentas.AllowUserToAddRows = false;
+            DataGridViewListaVentas.AllowUserToDeleteRows = false;
             DataGridViewListaVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListaVentas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListaVentas.BackgroundColor = Color.RosyBrown;
@@ -236,7 +237,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -246,6 +247,7 @@
             DataGridViewListaVentas.Location = new Point(3, 2);
             DataGridViewListaVentas.Margin = new Padding(4);
             DataGridViewListaVentas.Name = "DataGridViewListaVentas";
+            DataGridViewListaVentas.ReadOnly = true;
             DataGridViewListaVentas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.NavajoWhite;
@@ -264,30 +266,35 @@
             ID.HeaderText = "N° Factura";
             ID.MinimumWidth = 6;
             ID.Name = "ID";
+            ID.ReadOnly = true;
             // 
             // Fecha
             // 
             Fecha.HeaderText = "Fecha";
             Fecha.MinimumWidth = 6;
             Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
             // 
             // Cliente
             // 
             Cliente.HeaderText = "Cliente";
             Cliente.MinimumWidth = 6;
             Cliente.Name = "Cliente";
+            Cliente.ReadOnly = true;
             // 
             // Vendedor
             // 
             Vendedor.HeaderText = "Vendedor";
             Vendedor.MinimumWidth = 6;
             Vendedor.Name = "Vendedor";
+            Vendedor.ReadOnly = true;
             // 
             // Total
             // 
             Total.HeaderText = "Total";
             Total.MinimumWidth = 6;
             Total.Name = "Total";
+            Total.ReadOnly = true;
             // 
             // ListarVentas
             // 

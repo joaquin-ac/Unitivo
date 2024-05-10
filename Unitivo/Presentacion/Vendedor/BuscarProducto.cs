@@ -44,7 +44,7 @@ namespace Unitivo.Presentacion.Vendedor
             if (DataGridViewListaProductos.SelectedRows.Count == 0)
             {
                 // No hay una fila seleccionada en el dgvEmpleados, muestra un mensaje de error.
-                MessageBox.Show("Debe seleccionar una fila para seleccionar un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar una fila para seleccionar un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Salir del método sin realizar ninguna acción adicional.
             }
             else
@@ -52,7 +52,7 @@ namespace Unitivo.Presentacion.Vendedor
                 // Obtén el ID del cliente seleccionado
                 int idSeleccionado = Convert.ToInt32(DataGridViewListaProductos.SelectedRows[0].Cells["ID"].Value);
 
-                DialogResult result = MessageBox.Show("¿Está seguro que desea utilizar el cliente seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro que desea utilizar el producto seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -73,7 +73,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void cargarCategorias()
         {
-            var categorias = categoriaRepositorio.ListarCategorias();
+            var categorias = categoriaRepositorio.ListarCategoriasActivos();
 
             CBCategoria.Items.AddRange(categorias.ToArray());
             CBCategoria.ValueMember = "Id";
@@ -83,7 +83,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void cargarTalles()
         {
-            var talles = talleRepositorio.ListarTalles();
+            var talles = talleRepositorio.ListarTallesActivos();
 
             CBTalle.Items.AddRange(talles.ToArray());
             CBTalle.ValueMember = "Id";

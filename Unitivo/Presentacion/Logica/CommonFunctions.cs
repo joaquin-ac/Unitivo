@@ -5,7 +5,7 @@ namespace Unitivo.Presentacion.Logica
     static class CommonFunctions
     {
 
-        public static void ValidarStringKeyPress(TextBox textBox, KeyPressEventArgs e)
+        public static void ValidarStringKeyPress(object textBox, KeyPressEventArgs e)
         {
             // Verifica si la tecla presionada no es una letra o un espacio.
             if (!(char.IsLetter(e.KeyChar) || e.KeyChar == ' ' || e.KeyChar == (char)Keys.Back))
@@ -17,6 +17,25 @@ namespace Unitivo.Presentacion.Logica
             }
         }
 
+        public static void ValidarNumerosSinEspacios(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter ingresado no es un dígito o es un espacio en blanco
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es un dígito o es un espacio en blanco, se bloquea el carácter
+                e.Handled = true;
+            }
+        }
+
+        public static void ValidarLetrasSinEspacios(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si el carácter ingresado no es una letra o es un espacio en blanco
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                // Si no es una letra o es un espacio en blanco, se bloquea el carácter
+                e.Handled = true;
+            }
+        }
 
         public static void ValidarPassword(TextBox textBox, KeyPressEventArgs e)
         {
@@ -30,7 +49,16 @@ namespace Unitivo.Presentacion.Logica
             }
         }
 
+        public static void ValidarNoEspacioKeyPress(object textBox, KeyPressEventArgs e)
+        {
 
+            // Verifica que la tecla presionada sea un número o una tecla de borrado.
+            if (e.KeyChar == ' ')
+            {
+                // No permite ingresar la tecla presionada.
+                e.Handled = true;
+            }
+        }
 
         public static void ValidarNumberKeyPress(TextBox textBox, KeyPressEventArgs e)
         {
@@ -47,11 +75,21 @@ namespace Unitivo.Presentacion.Logica
         public static void ValidarDecimalKeyPress(TextBox textBox, KeyPressEventArgs e)
         {
             // Verifica que la tecla presionada sea un número o una tecla de borrado.
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            if (e.KeyChar == '.')
             {
-                // No permite ingresar la tecla presionada.
+                // Verifica si ya hay un punto en el texto.
+                if (textBox.Text.Contains('.'))
+                {
+                    // Si ya hay un punto, no permite ingresar otro.
+                    e.Handled = true;
+                    MessageBox.Show("Solo se permite un punto decimal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // Verifica si la tecla presionada no es un número, una tecla de borrado o una tecla de control.
+            else if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un número, no permite ingresar la tecla presionada.
                 e.Handled = true;
-                // Muestra un mensaje de error.
                 MessageBox.Show("Solo se aceptan números enteros o decimales.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

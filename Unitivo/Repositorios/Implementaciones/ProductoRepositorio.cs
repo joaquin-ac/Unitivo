@@ -107,7 +107,6 @@ namespace Unitivo.Repositorios.Implementaciones
                 Producto producto = (from p in _contexto?.Productos
                                       where p.Id == x.Id
                                       select p).First();
-                MessageBox.Show(x.Stock.ToString());
                 producto.Stock = x.Stock;
                 producto.Nombre = x.Nombre;
                 producto.Precio = x.Precio;
@@ -193,6 +192,289 @@ namespace Unitivo.Repositorios.Implementaciones
             prod.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
+        }
+
+
+        public object ProductosMasVendidos(DateTime fechaInicio, DateTime fechaFin, bool filtrarFecha)
+        {
+            object query;
+
+
+            if (filtrarFecha)
+            {
+                query = (from detalle in _contexto.DetalleFacturas
+                         join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                         where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin
+                         group detalle by detalle.IdProductoNavigation into Group
+                         orderby Group.Sum(d => d.Cantidad) descending
+                         select new { Producto = (Group.Key.IdCategoriaNavigation.Descripcion + " " + Group.Key.Nombre), Cantidad = Group.Sum(d => d.Cantidad) }
+                         ).Take(5).ToList();
+            }
+            else
+            {
+                query = (from detalle in _contexto.DetalleFacturas
+                         join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                         group detalle by detalle.IdProductoNavigation into Group
+                         orderby Group.Sum(d => d.Cantidad) descending
+                         select new { Producto = (Group.Key.IdCategoriaNavigation.Descripcion + " " + Group.Key.Nombre), Cantidad = Group.Sum(d => d.Cantidad) }
+                         ).Take(5).ToList();
+            }
+
+            return query;
+        }
+
+        public object ProductoPorMes(DateTime fechaInicio, DateTime fechaFin, bool filtrarFecha, int idProducto)
+        {
+            object query;
+
+            if (idProducto > 0)
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin && detalle.IdProductoNavigation.Id == idProducto
+                             group detalle by venta.FechaCreacion.Month into Group
+                             select new { Mes = Group.Key, Cantidad = Group.Sum(d => d.Cantidad) }).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             where detalle.IdProductoNavigation.Id == idProducto
+                             group detalle by venta.FechaCreacion.Month into Group
+                             select new { Mes = Group.Key, Cantidad = Group.Sum(d => d.Cantidad) }).ToList();
+                }
+            }
+            else
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin
+                             group detalle by venta.FechaCreacion.Month into Group
+                             select new { Mes = Group.Key, Cantidad = Group.Sum(d => d.Cantidad) }).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             group detalle by venta.FechaCreacion.Month into Group
+                             select new { Mes = Group.Key, Cantidad = Group.Sum(d => d.Cantidad) }).ToList();
+                }
+            }
+
+            return query;
+        }
+
+        public object EmpleadosMasVendioProd(DateTime fechaInicio, DateTime fechaFin, bool filtrarFecha, int idProducto)
+        {
+            object query;
+
+            if (idProducto > 0)
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join vendedor in _contexto.Usuarios on venta.IdUsuario equals vendedor.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin && detalle.IdProductoNavigation.Id == idProducto
+                             group detalle by vendedor into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Vendedor = $"{Group.Key.IdEmpleadoNavigation.Apellido}, {Group.Key.IdEmpleadoNavigation.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join vendedor in _contexto.Usuarios on venta.IdUsuario equals vendedor.Id
+                             where detalle.IdProductoNavigation.Id == idProducto
+                             group detalle by vendedor into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Vendedor = $"{Group.Key.IdEmpleadoNavigation.Apellido}, {Group.Key.IdEmpleadoNavigation.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+            }
+            else
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join vendedor in _contexto.Usuarios on venta.IdUsuario equals vendedor.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin
+                             group detalle by vendedor into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Vendedor = $"{Group.Key.IdEmpleadoNavigation.Apellido}, {Group.Key.IdEmpleadoNavigation.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join vendedor in _contexto.Usuarios on venta.IdUsuario equals vendedor.Id
+                             group detalle by vendedor into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Vendedor = $"{Group.Key.IdEmpleadoNavigation.Apellido}, {Group.Key.IdEmpleadoNavigation.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+            }
+
+            return query;
+        }
+
+        public object ClientesMasComproProd(DateTime fechaInicio, DateTime fechaFin, bool filtrarFecha, int idProducto)
+        {
+            object query;
+
+            if (idProducto > 0)
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join cliente in _contexto.Clientes on venta.IdCliente equals cliente.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin && detalle.IdProductoNavigation.Id == idProducto
+                             group detalle by cliente into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Cliente = $"{Group.Key.Apellido}, {Group.Key.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join cliente in _contexto.Clientes on venta.IdCliente equals cliente.Id
+                             where detalle.IdProductoNavigation.Id == idProducto
+                             group detalle by cliente into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Cliente = $"{Group.Key.Apellido}, {Group.Key.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+            }
+            else
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join cliente in _contexto.Clientes on venta.IdCliente equals cliente.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin
+                             group detalle by cliente into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Cliente = $"{Group.Key.Apellido}, {Group.Key.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             join cliente in _contexto.Clientes on venta.IdCliente equals cliente.Id
+                             group detalle by cliente into Group
+                             orderby Group.Sum(d => d.Cantidad) descending
+                             select new { Cliente = $"{Group.Key.Apellido}, {Group.Key.Nombre}", Cantidad = Group.Sum(d => d.Cantidad) }
+                             ).Take(5).ToList();
+                }
+            }
+
+            return query;
+        }
+
+        public object RecaudadoProductoPorFecha(DateTime fechaInicio, DateTime fechaFin, bool filtrarFecha, int idProducto)
+        {
+            object query;
+
+            if (idProducto > 0)
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin && detalle.IdProductoNavigation.Id == idProducto
+                             group new { detalle, venta } by new { Anio = venta.FechaCreacion.Year, Mes = venta.FechaCreacion.Month } into Group
+                             select new { Mes = Group.Key.Mes, Cantidad = Group.Sum(d => d.detalle.Precio), Anio = Group.Key.Anio }
+                             ).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             where detalle.IdProductoNavigation.Id == idProducto
+                             group new { detalle, venta } by new { Anio = venta.FechaCreacion.Year, Mes = venta.FechaCreacion.Month } into Group
+                             select new { Mes = Group.Key.Mes, Cantidad = Group.Sum(d => d.detalle.Precio), Anio = Group.Key.Anio }
+                             ).ToList();
+                }
+            }
+            else
+            {
+                if (filtrarFecha)
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin
+                             group new { detalle, venta } by new { Anio = venta.FechaCreacion.Year, Mes = venta.FechaCreacion.Month } into Group
+                             select new { Mes = Group.Key.Mes, Cantidad = Group.Sum(d => d.detalle.Precio), Anio = Group.Key.Anio }
+                             ).ToList();
+                }
+                else
+                {
+                    query = (from detalle in _contexto.DetalleFacturas
+                             join venta in _contexto.Facturas on detalle.IdFactura equals venta.Id
+                             group new { detalle, venta } by new { Anio = venta.FechaCreacion.Year, Mes = venta.FechaCreacion.Month } into Group
+                             select new { Mes = Group.Key.Mes, Cantidad = Group.Sum(d => d.detalle.Precio), Anio = Group.Key.Anio }
+                             ).ToList();
+                }
+            }
+
+            return query;
+        }
+
+        public decimal TotalRecaudadoProducto(DateTime fechaInicio, DateTime fechaFin, bool filtrarFecha, int idProducto)
+        {
+            decimal total = 0;
+            try
+            {
+                if (idProducto > 0)
+                {
+                    if (filtrarFecha)
+                    {
+                        total = (from venta in _contexto.Facturas
+                                 join detalle in _contexto.DetalleFacturas on venta.Id equals detalle.IdFactura
+                                 where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin && detalle.IdProductoNavigation.Id == idProducto
+                                 select detalle.Precio).Sum();
+                    }
+                    else
+                    {
+                        total = (from venta in _contexto.Facturas
+                                 join detalle in _contexto.DetalleFacturas on venta.Id equals detalle.IdFactura
+                                 where detalle.IdProductoNavigation.Id == idProducto
+                                 select detalle.Precio).Sum();
+                    }
+                }
+                else
+                {
+                    if (filtrarFecha)
+                    {
+                        total = (from venta in _contexto.Facturas
+                                 join detalle in _contexto.DetalleFacturas on venta.Id equals detalle.IdFactura
+                                 where venta.FechaCreacion >= fechaInicio && venta.FechaCreacion <= fechaFin
+                                 select detalle.Precio).Sum();
+                    }
+                    else
+                    {
+                        total = (from venta in _contexto.Facturas
+                                 join detalle in _contexto.DetalleFacturas on venta.Id equals detalle.IdFactura
+                                 select detalle.Precio).Sum();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                total = 0;
+            }
+            return total;
         }
     }
 

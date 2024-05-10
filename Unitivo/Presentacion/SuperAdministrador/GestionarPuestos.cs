@@ -45,7 +45,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     {
                         MessageBox.Show("Ocurrió un error al eliminar el puesto.", "Puesto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }   
+                }
             }
         }
 
@@ -173,6 +173,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void DataGridViewListarPerfiles_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
@@ -181,10 +182,12 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 if (estadoSelect == false)
                 {
                     BEliminarPerfiles.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarPerfiles.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
         }
@@ -198,6 +201,26 @@ namespace Unitivo.Presentacion.SuperAdministrador
         {
             perfilParaEditar = new Perfile();
             TBModPerfil.Text = "";
+        }
+
+        private void BReactivar_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewListarPerfiles.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)DataGridViewListarPerfiles.SelectedRows[0].Cells["ID"].Value; ;
+                if (perfilRepositorio.ReactivarPerfil(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarPerfiles();
+            }
+
+           
         }
     }
 }

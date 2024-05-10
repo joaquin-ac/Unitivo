@@ -48,6 +48,7 @@
             BModEmpleado = new Button();
             TBModPerfil = new TextBox();
             LModPerfil = new Label();
+            BReactivar = new Button();
             GroupBoxGestionPerfil.SuspendLayout();
             TabControlRegPerfil.SuspendLayout();
             TabPageListaPerfil.SuspendLayout();
@@ -183,7 +184,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -303,12 +304,23 @@
             LModPerfil.TabIndex = 15;
             LModPerfil.Text = "Puesto: ";
             // 
+            // BReactivar
+            // 
+            BReactivar.Location = new Point(835, 188);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
+            // 
             // GestionarPuestos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 681);
+            Controls.Add(BReactivar);
             Controls.Add(GroupBoxDatosPerfil);
             Controls.Add(TabControlRegPerfil);
             Controls.Add(GroupBoxGestionPerfil);
@@ -350,5 +362,6 @@
         internal Label LModPerfil;
         internal Button BModEmpleado;
         internal Button BCancelar;
+        private Button BReactivar;
     }
 }

@@ -103,7 +103,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void CargarUsuarios()
         {
-            List<Usuario> usuarios = usuarioRepositorio!.ListarUsuarios();
+            List<Usuario> usuarios = usuarioRepositorio!.ListarUsuariosActivos();
 
             dgvListaUsuarios.Rows.Clear();
             dgvListaUsuarios.Refresh();

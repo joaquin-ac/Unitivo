@@ -18,6 +18,7 @@ namespace Unitivo.Validators
             RuleFor(x => x)
                .Must(x => ExisteEmailEmpleado(x.Correo, x.Id)).WithMessage("El correo ya existe en la base de datos")
                .Must(x => ExisteDniEmpleado(x.Dni, x.Id)).WithMessage("El DNI ya existe en la base de datos")
+               .Must(x => ExisteTelEmpleado(x.Telefono, x.Id)).WithMessage("El Telefono ya existe en la base de datos")
                ;
             //validar dni 
             RuleFor(x => x.Dni)
@@ -89,6 +90,23 @@ namespace Unitivo.Validators
                     {
                         return false;
                     }
+                }
+                return true;
+            }
+        }
+
+        private bool ExisteTelEmpleado(string tel, int id)
+        {
+            var empleado = empleadoRepositorio.BuscarEmpleadosPorTelefono(tel);
+            if (empleado == null)
+            {
+                return true;
+            }
+            else
+            {
+                if (empleado.Id != id)
+                {
+                    return false;
                 }
                 return true;
             }

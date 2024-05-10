@@ -209,6 +209,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void DataGridViewListarClientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
@@ -217,10 +218,12 @@ namespace Unitivo.Presentacion.Administrador
                 if (estadoSelect == false)
                 {
                     BEliminarClientes.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarClientes.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
         }
@@ -228,6 +231,30 @@ namespace Unitivo.Presentacion.Administrador
         private void ComboBoxBuscarDni_SelectedValueChanged(object sender, EventArgs e)
         {
             TBBuscar.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BReactivar_Click(object sender, EventArgs e)
+        {
+
+            if (DataGridViewListarClientes.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)DataGridViewListarClientes.SelectedRows[0].Cells["ID"].Value; ;
+                if (clienteRepositorio.reactivarCliente(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarClientes();
+            }
         }
     }
 } 

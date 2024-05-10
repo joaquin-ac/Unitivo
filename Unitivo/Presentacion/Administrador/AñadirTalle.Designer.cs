@@ -94,7 +94,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -180,6 +180,7 @@
             TBNombreTalle.Name = "TBNombreTalle";
             TBNombreTalle.Size = new Size(325, 26);
             TBNombreTalle.TabIndex = 6;
+            TBNombreTalle.TextChanged += TBNombreTalle_TextChanged;
             TBNombreTalle.KeyPress += Num_KeyPress;
             // 
             // LNombreTalle

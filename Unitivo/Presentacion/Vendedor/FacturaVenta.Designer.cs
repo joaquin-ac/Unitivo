@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             TabDetalleVenta = new TabControl();
             TabPageDetalleVenta = new TabPage();
             dgvListaVentas = new DataGridView();
@@ -61,11 +62,11 @@
             // 
             TabDetalleVenta.Controls.Add(TabPageDetalleVenta);
             TabDetalleVenta.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            TabDetalleVenta.Location = new Point(11, 233);
+            TabDetalleVenta.Location = new Point(28, 226);
             TabDetalleVenta.Margin = new Padding(3, 2, 3, 2);
             TabDetalleVenta.Name = "TabDetalleVenta";
             TabDetalleVenta.SelectedIndex = 0;
-            TabDetalleVenta.Size = new Size(578, 169);
+            TabDetalleVenta.Size = new Size(613, 256);
             TabDetalleVenta.TabIndex = 60;
             // 
             // TabPageDetalleVenta
@@ -76,7 +77,7 @@
             TabPageDetalleVenta.Margin = new Padding(3, 2, 3, 2);
             TabPageDetalleVenta.Name = "TabPageDetalleVenta";
             TabPageDetalleVenta.Padding = new Padding(3, 2, 3, 2);
-            TabPageDetalleVenta.Size = new Size(570, 139);
+            TabPageDetalleVenta.Size = new Size(605, 226);
             TabPageDetalleVenta.TabIndex = 0;
             TabPageDetalleVenta.Text = "Detalle de Venta";
             TabPageDetalleVenta.UseVisualStyleBackColor = true;
@@ -87,19 +88,26 @@
             dgvListaVentas.AllowUserToDeleteRows = false;
             dgvListaVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvListaVentas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvListaVentas.BackgroundColor = Color.RosyBrown;
-            dgvListaVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvListaVentas.BackgroundColor = Color.WhiteSmoke;
+            dgvListaVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvListaVentas.ColumnHeadersHeight = 20;
-            dgvListaVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvListaVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Cantidad, Talle, Subtotal });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Chartreuse;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightGray;
+            dataGridViewCellStyle2.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle2;
             dgvListaVentas.Dock = DockStyle.Fill;
             dgvListaVentas.EnableHeadersVisualStyles = false;
             dgvListaVentas.Location = new Point(3, 2);
@@ -107,17 +115,18 @@
             dgvListaVentas.Name = "dgvListaVentas";
             dgvListaVentas.ReadOnly = true;
             dgvListaVentas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvListaVentas.RowHeadersVisible = false;
             dgvListaVentas.RowHeadersWidth = 51;
             dgvListaVentas.RowTemplate.Height = 24;
-            dgvListaVentas.Size = new Size(564, 135);
+            dgvListaVentas.Size = new Size(599, 222);
             dgvListaVentas.TabIndex = 56;
             // 
             // Codigo
@@ -164,7 +173,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.DarkSeaGreen;
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(BImprimir);
             panel2.Controls.Add(DateTimePickerFecha);
             panel2.Controls.Add(label4);
@@ -180,17 +189,17 @@
             panel2.Location = new Point(10, 9);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(604, 492);
+            panel2.Size = new Size(679, 556);
             panel2.TabIndex = 61;
             panel2.Paint += panel2_Paint;
             // 
             // BImprimir
             // 
-            BImprimir.BackColor = Color.SteelBlue;
+            BImprimir.BackColor = Color.DimGray;
             BImprimir.ForeColor = Color.White;
             BImprimir.Image = Properties.Resources.icons8_imprimir_26;
-            BImprimir.Location = new Point(18, 431);
-            BImprimir.Margin = new Padding(4);
+            BImprimir.Location = new Point(32, 501);
+            BImprimir.Margin = new Padding(4, 4, 4, 4);
             BImprimir.Name = "BImprimir";
             BImprimir.Size = new Size(41, 37);
             BImprimir.TabIndex = 73;
@@ -203,7 +212,7 @@
             DateTimePickerFecha.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             DateTimePickerFecha.Format = DateTimePickerFormat.Short;
             DateTimePickerFecha.Location = new Point(234, 175);
-            DateTimePickerFecha.Margin = new Padding(4);
+            DateTimePickerFecha.Margin = new Padding(4, 4, 4, 4);
             DateTimePickerFecha.Name = "DateTimePickerFecha";
             DateTimePickerFecha.Size = new Size(148, 24);
             DateTimePickerFecha.TabIndex = 72;
@@ -211,9 +220,10 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.White;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(419, 154);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(419, 152);
             label4.Margin = new Padding(7, 0, 7, 0);
             label4.Name = "label4";
             label4.Size = new Size(87, 20);
@@ -225,17 +235,18 @@
             TBVendedor.Enabled = false;
             TBVendedor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             TBVendedor.Location = new Point(419, 172);
-            TBVendedor.Margin = new Padding(4);
+            TBVendedor.Margin = new Padding(4, 4, 4, 4);
             TBVendedor.Name = "TBVendedor";
-            TBVendedor.Size = new Size(113, 29);
+            TBVendedor.Size = new Size(201, 29);
             TBVendedor.TabIndex = 70;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.White;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(234, 154);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(234, 153);
             label3.Margin = new Padding(7, 0, 7, 0);
             label3.Name = "label3";
             label3.Size = new Size(62, 20);
@@ -254,9 +265,10 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.White;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(80, 154);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(80, 152);
             label2.Margin = new Padding(7, 0, 7, 0);
             label2.Name = "label2";
             label2.Size = new Size(92, 20);
@@ -268,7 +280,7 @@
             TBIDFactura.Enabled = false;
             TBIDFactura.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             TBIDFactura.Location = new Point(80, 172);
-            TBIDFactura.Margin = new Padding(4);
+            TBIDFactura.Margin = new Padding(4, 4, 4, 4);
             TBIDFactura.Name = "TBIDFactura";
             TBIDFactura.Size = new Size(113, 29);
             TBIDFactura.TabIndex = 66;
@@ -277,8 +289,8 @@
             // 
             Label5.AutoSize = true;
             Label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Label5.ForeColor = Color.White;
-            Label5.Location = new Point(400, 437);
+            Label5.ForeColor = Color.Black;
+            Label5.Location = new Point(452, 509);
             Label5.Margin = new Padding(7, 0, 7, 0);
             Label5.Name = "Label5";
             Label5.Size = new Size(61, 24);
@@ -289,8 +301,8 @@
             // 
             TBTotalFactura.Enabled = false;
             TBTotalFactura.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TBTotalFactura.Location = new Point(471, 435);
-            TBTotalFactura.Margin = new Padding(4);
+            TBTotalFactura.Location = new Point(522, 507);
+            TBTotalFactura.Margin = new Padding(4, 4, 4, 4);
             TBTotalFactura.Name = "TBTotalFactura";
             TBTotalFactura.Size = new Size(113, 29);
             TBTotalFactura.TabIndex = 64;
@@ -298,9 +310,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.White;
             label1.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(216, 59);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(243, 53);
             label1.Name = "label1";
             label1.Size = new Size(158, 36);
             label1.TabIndex = 61;
@@ -310,8 +323,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DarkOliveGreen;
-            ClientSize = new Size(625, 510);
+            BackColor = Color.DimGray;
+            ClientSize = new Size(700, 574);
             Controls.Add(panel2);
             ForeColor = Color.Chartreuse;
             FormBorderStyle = FormBorderStyle.None;

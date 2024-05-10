@@ -62,7 +62,6 @@ namespace Unitivo.Validators
             {
                 foreach (Producto prod in prods)
                 {
-                    MessageBox.Show(prod.Id + " "+ producto.Id);
                     if ((prod.Id != producto.Id) && (producto.IdTalle == prod.IdTalle) && (producto.IdCategoria == prod.IdCategoria))
                     {
                         return false;

@@ -95,7 +95,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void CargarClientes()
         {
-            List<Cliente> clientes = clienteRepositorio.ListarClientes();
+            List<Cliente> clientes = clienteRepositorio.ListarClientesActivos();
             DataGridViewListarClientes.Rows.Clear();
             DataGridViewListarClientes.Refresh();
             foreach (Cliente cliente in clientes)

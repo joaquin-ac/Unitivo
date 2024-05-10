@@ -18,6 +18,7 @@ namespace Unitivo.Presentacion.Administrador
     {
         TalleRepositorio talleRepositorio = new TalleRepositorio();
         Talle talleParaEditar = new Talle();
+        private string tipoDeTalle = "cualquiera";
         public GestionarTalles()
         {
             InitializeComponent();
@@ -125,38 +126,26 @@ namespace Unitivo.Presentacion.Administrador
 
         private void dgvListarTalles_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                // Obtener la fila que fue doble clickeada
-                DataGridViewRow filaSeleccionada = dgvListarTalles.Rows[e.RowIndex];
-                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
-                if (talleRepositorio.reactivarTalle(IdSelect))
-                {
-                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                CargarTalles();
-            }
+
         }
 
         private void dgvListarTalles_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 // Obtener la fila que fue doble clickeada
-
                 DataGridViewRow filaSeleccionada = dgvListarTalles.Rows[e.RowIndex];
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
                     BEliminarTalle.Enabled = false;
+                    BReactivar.Enabled = true;
                 }
                 else
                 {
                     BEliminarTalle.Enabled = true;
+                    BReactivar.Enabled = false;
                 }
             }
         }
@@ -203,6 +192,61 @@ namespace Unitivo.Presentacion.Administrador
         private void dgvListarTalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void BReactivar_Click(object sender, EventArgs e)
+        {
+
+            if (dgvListarTalles.SelectedRows.Count >= 0)
+            {
+                // Obtener la fila que fue doble clickeada
+                int IdSelect = (int)dgvListarTalles.SelectedRows[0].Cells["ID"].Value; ;
+                if (talleRepositorio.reactivarTalle(IdSelect))
+                {
+                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                CargarTalles();
+            }
+        }
+
+        private void TBModTalle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (tipoDeTalle == "numeros")
+            {
+                CommonFunctions.ValidarNumerosSinEspacios(sender, e);
+            }
+            else if (tipoDeTalle == "letras")
+            {
+                CommonFunctions.ValidarLetrasSinEspacios(sender, e);
+            }
+            else
+            {
+                CommonFunctions.ValidarKeyPress((System.Windows.Forms.TextBox)sender, e);
+            }
+
+        }
+
+        private void TBModTalle_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBModTalle.Text) && char.IsDigit(TBModTalle.Text[0]))
+            {
+                // Si el primer carácter es un número
+
+                tipoDeTalle = "numeros";
+            }
+            else if (!string.IsNullOrEmpty(TBModTalle.Text) && char.IsLetter(TBModTalle.Text[0]))
+            {
+                // Si el primer carácter es una letra
+                tipoDeTalle = "letras";
+            }
+            else
+            {
+                tipoDeTalle = "cualquiera";
+            }
         }
     }
 }

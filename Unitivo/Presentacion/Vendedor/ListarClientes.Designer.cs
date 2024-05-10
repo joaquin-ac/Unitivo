@@ -35,7 +35,6 @@
             TBBuscar = new TextBox();
             ComboBoxBuscar = new ComboBox();
             BEditarCliente = new Button();
-            BImprimirClientes = new Button();
             TabControlListaClientes = new TabControl();
             TabPageListaCliente = new TabPage();
             DataGridViewListarClientes = new DataGridView();
@@ -131,19 +130,6 @@
             BEditarCliente.UseVisualStyleBackColor = false;
             BEditarCliente.Click += BEditarCliente_Click;
             // 
-            // BImprimirClientes
-            // 
-            BImprimirClientes.BackColor = Color.SteelBlue;
-            BImprimirClientes.ForeColor = Color.White;
-            BImprimirClientes.Image = Properties.Resources.icons8_imprimir_26;
-            BImprimirClientes.Location = new Point(830, 266);
-            BImprimirClientes.Margin = new Padding(4);
-            BImprimirClientes.Name = "BImprimirClientes";
-            BImprimirClientes.Size = new Size(59, 52);
-            BImprimirClientes.TabIndex = 3;
-            BImprimirClientes.UseVisualStyleBackColor = false;
-            BImprimirClientes.Click += BImprimirClientes_Click;
-            // 
             // TabControlListaClientes
             // 
             TabControlListaClientes.Controls.Add(TabPageListaCliente);
@@ -192,7 +178,7 @@
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Window;
             dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
@@ -277,7 +263,6 @@
             ClientSize = new Size(933, 519);
             Controls.Add(TabControlListaClientes);
             Controls.Add(BEditarCliente);
-            Controls.Add(BImprimirClientes);
             Controls.Add(GroupBoxClientes);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
@@ -292,7 +277,6 @@
             ResumeLayout(false);
         }
 
-        internal Button BImprimirClientes;
         internal GroupBox GroupBoxClientes;
         internal Button BBuscar;
         internal TextBox TBBuscar;

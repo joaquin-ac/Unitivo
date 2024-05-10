@@ -193,8 +193,9 @@ namespace Unitivo.Formularios.Vendedor
                 if (GuardarVenta(dgvListaVentas))
                 {
                     MessageBox.Show("Venta completada exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FacturaVenta facturaVentaForm = new FacturaVenta(facturaRepositorio.UltimaVenta());
+                    FacturaVenta facturaVentaForm = new FacturaVenta(facturaRepositorio.UltimaVenta(), this);
                     facturaVentaForm.Show();
+                    
                 }
                 else 
                 {
@@ -208,14 +209,14 @@ namespace Unitivo.Formularios.Vendedor
         private bool GuardarVenta(DataGridView dgvVentas)
         {
             Factura factura = new Factura();
-            factura.IdUsuario = usuariosRepositorio.BuscarUsuarioIdEmpleado(2).First().Id; //cambiar
+            factura.IdUsuario = vendedor.Id;
             factura.IdCliente = clienteCompra.Id;
             factura.Precio = decimal.Parse(TBTotal.Text);
 
             if (facturaRepositorio.AgregarFactura(factura))
             {
-                int iVenta = facturaRepositorio.idUltimaVenta();
-                if (GuardarDetalleVenta(iVenta, dgvListaVentas))
+                int idVenta = facturaRepositorio.idUltimaVenta();
+                if (GuardarDetalleVenta(idVenta, dgvListaVentas))
                 {
                     return true;
                 }
@@ -230,6 +231,7 @@ namespace Unitivo.Formularios.Vendedor
 
             foreach (DataGridViewRow fila in dgvVentas.Rows)
             {
+                dFactura.Id = 0;
                 dFactura.Cantidad = int.Parse(fila.Cells["Cantidad"].Value.ToString()!);
                 dFactura.Precio = decimal.Parse(fila.Cells["Precio"].Value.ToString()!);
                 dFactura.IdProducto = int.Parse(fila.Cells["Codigo"].Value.ToString()!);
@@ -268,6 +270,7 @@ namespace Unitivo.Formularios.Vendedor
         {
             Fecha.Value = DateTime.Now;
             TBVendedor.Text = vendedor.IdEmpleadoNavigation.Apellido + ", " + vendedor.IdEmpleadoNavigation.Nombre;
+            TBNroFactura.Text = (facturaRepositorio.idUltimaVenta() + 1)+"";
         }
 
         private int existeProdDataGrid()

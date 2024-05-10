@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Presentacion\Administrador\MasVendidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -32,7 +35,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
 
 </Project>
