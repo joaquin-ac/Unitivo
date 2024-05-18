@@ -79,10 +79,10 @@ namespace Unitivo.Formularios.Vendedor
                 string.IsNullOrEmpty(TBPrecio.Text) ||
                 string.IsNullOrEmpty(TBStock.Text) ||
                 string.IsNullOrEmpty(TBTalle.Text) ||
-                string.IsNullOrEmpty(TBCantidad.Text))
+                string.IsNullOrEmpty(TBCantidad.Text) || (int.TryParse(TBCantidad.Text, out int cantidad) && cantidad <= 0))
             {
                 // Al menos uno de los campos está vacío, mostrar un mensaje de error.
-                MessageBox.Show("Por favor, complete todos los campos antes de añadir la venta.", "Campos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, complete todos los campos correctamente antes de añadir la venta.", "Campos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

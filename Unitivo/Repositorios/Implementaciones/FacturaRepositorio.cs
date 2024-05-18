@@ -80,8 +80,9 @@ namespace Unitivo.Repositorios.Implementaciones
             List<Factura> listaVenta = (from p in _contexto?.Facturas
                                         orderby p.Id
                                         select p).ToList();
+            Factura ultimaFactura = listaVenta.LastOrDefault();
 
-            return listaVenta.Last().Id;
+            return ultimaFactura?.Id ?? 0;
         }
 
         public Factura UltimaVenta()
@@ -90,7 +91,7 @@ namespace Unitivo.Repositorios.Implementaciones
                                         orderby p.Id
                                         select p).ToList();
 
-            return listaVenta.Last();
+            return listaVenta.LastOrDefault();
         }
 
         public List<Factura> ListarFacturasActivos()
