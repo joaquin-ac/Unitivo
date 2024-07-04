@@ -211,7 +211,8 @@ namespace Unitivo.Formularios.Vendedor
             Factura factura = new Factura();
             factura.IdUsuario = vendedor.Id;
             factura.IdCliente = clienteCompra.Id;
-            factura.Precio = decimal.Parse(TBTotal.Text);
+            decimal totalPrecio = decimal.Parse(TBTotal.Text);
+            factura.Precio = totalPrecio;
 
             if (facturaRepositorio.AgregarFactura(factura))
             {
@@ -298,8 +299,8 @@ namespace Unitivo.Formularios.Vendedor
                 {
                     dgvListaVentas.Rows[indexfilaProd].Cells["Cantidad"].Value = antCant + CantAgregada;
 
-                    double antPrecio = (double)dgvListaVentas.Rows[indexfilaProd].Cells["Precio"].Value;
-                    double PrecioAgregado = productoCompra.Precio * double.Parse(TBCantidad.Text);
+                    decimal antPrecio = (decimal)dgvListaVentas.Rows[indexfilaProd].Cells["Precio"].Value;
+                    decimal PrecioAgregado = productoCompra.Precio * decimal.Parse(TBCantidad.Text);
 
                     dgvListaVentas.Rows[indexfilaProd].Cells["Precio"].Value = antPrecio + PrecioAgregado;
                 }
@@ -319,7 +320,7 @@ namespace Unitivo.Formularios.Vendedor
             int numRow = dgvListaVentas.Rows.Add();
             dgvListaVentas.Rows[numRow].Cells["Codigo"].Value = productoCompra.Id;
             dgvListaVentas.Rows[numRow].Cells["Descripcion"].Value = productoCompra.Nombre;
-            dgvListaVentas.Rows[numRow].Cells["Precio"].Value = double.Parse(TBCantidad.Text) * productoCompra.Precio;
+            dgvListaVentas.Rows[numRow].Cells["Precio"].Value = decimal.Parse(TBCantidad.Text) * productoCompra.Precio;
             dgvListaVentas.Rows[numRow].Cells["Cantidad"].Value = TBCantidad.Text.Trim();
             dgvListaVentas.Rows[numRow].Cells["Talle"].Value = TBTalle.Text.Trim();
 

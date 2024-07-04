@@ -37,7 +37,10 @@
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
+            TipoTalle = new DataGridViewTextBoxColumn();
             PanelRegCategoria = new Panel();
+            label1 = new Label();
+            CBTipoTalle = new ComboBox();
             BRegistrarCategoria = new Button();
             TBNombreCategoria = new TextBox();
             LNombreCategoria = new Label();
@@ -90,7 +93,7 @@
             DataGridViewListarCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewListarCategorias.ColumnHeadersHeight = 20;
             DataGridViewListarCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DataGridViewListarCategorias.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            DataGridViewListarCategorias.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, TipoTalle });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -142,10 +145,18 @@
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
             // 
+            // TipoTalle
+            // 
+            TipoTalle.HeaderText = "Tipo de talle";
+            TipoTalle.Name = "TipoTalle";
+            TipoTalle.ReadOnly = true;
+            // 
             // PanelRegCategoria
             // 
             PanelRegCategoria.BackColor = Color.Cornsilk;
             PanelRegCategoria.BackgroundImageLayout = ImageLayout.None;
+            PanelRegCategoria.Controls.Add(label1);
+            PanelRegCategoria.Controls.Add(CBTipoTalle);
             PanelRegCategoria.Controls.Add(BRegistrarCategoria);
             PanelRegCategoria.Controls.Add(TBNombreCategoria);
             PanelRegCategoria.Controls.Add(LNombreCategoria);
@@ -154,6 +165,27 @@
             PanelRegCategoria.Name = "PanelRegCategoria";
             PanelRegCategoria.Size = new Size(505, 133);
             PanelRegCategoria.TabIndex = 36;
+            PanelRegCategoria.Paint += PanelRegCategoria_Paint;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(20, 95);
+            label1.Name = "label1";
+            label1.Size = new Size(143, 15);
+            label1.TabIndex = 39;
+            label1.Text = "Seleccione el tipo de talle:";
+            label1.Click += label1_Click;
+            // 
+            // CBTipoTalle
+            // 
+            CBTipoTalle.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBTipoTalle.FormattingEnabled = true;
+            CBTipoTalle.Location = new Point(169, 92);
+            CBTipoTalle.Name = "CBTipoTalle";
+            CBTipoTalle.Size = new Size(176, 23);
+            CBTipoTalle.TabIndex = 38;
+            CBTipoTalle.SelectedIndexChanged += CBTipoTalle_SelectedIndexChanged;
             // 
             // BRegistrarCategoria
             // 
@@ -175,7 +207,7 @@
             // TBNombreCategoria
             // 
             TBNombreCategoria.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBNombreCategoria.Location = new Point(20, 66);
+            TBNombreCategoria.Location = new Point(20, 55);
             TBNombreCategoria.Margin = new Padding(4, 3, 4, 3);
             TBNombreCategoria.Name = "TBNombreCategoria";
             TBNombreCategoria.Size = new Size(325, 26);
@@ -229,5 +261,8 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private ComboBox CBTipoTalle;
+        private DataGridViewTextBoxColumn TipoTalle;
+        private Label label1;
     }
 }

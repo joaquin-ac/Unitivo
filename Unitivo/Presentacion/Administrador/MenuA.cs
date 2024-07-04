@@ -30,6 +30,7 @@ namespace Unitivo.Presentacion.Administrador
             PanelSubMenuVentas.Visible = false;
             PanelSubMenuTalles.Visible = false;
             PanelSubMenuClientes.Visible = false;
+            PanelSubMenuReportes.Visible = false;
         }
 
         private void showSubMenu(Panel subMenu)

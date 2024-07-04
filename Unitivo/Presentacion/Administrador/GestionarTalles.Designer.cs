@@ -43,6 +43,7 @@
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            TipoTalle = new DataGridViewTextBoxColumn();
             BAltaTalle = new Button();
             GroupBoxDatosTalles = new GroupBox();
             TBModTalle = new TextBox();
@@ -97,7 +98,6 @@
             TBBuscarTalle.Name = "TBBuscarTalle";
             TBBuscarTalle.Size = new Size(172, 26);
             TBBuscarTalle.TabIndex = 6;
-            TBBuscarTalle.KeyPress += Num_KeyPress;
             // 
             // BModificarTalle
             // 
@@ -176,11 +176,11 @@
             dgvListarTalles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListarTalles.ColumnHeadersHeight = 20;
             dgvListarTalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
+            dgvListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado, TipoTalle });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -230,6 +230,12 @@
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
+            // TipoTalle
+            // 
+            TipoTalle.HeaderText = "Tipo de Talle";
+            TipoTalle.Name = "TipoTalle";
+            TipoTalle.ReadOnly = true;
+            // 
             // BAltaTalle
             // 
             BAltaTalle.BackColor = Color.DarkOliveGreen;
@@ -259,16 +265,17 @@
             GroupBoxDatosTalles.TabIndex = 19;
             GroupBoxDatosTalles.TabStop = false;
             GroupBoxDatosTalles.Text = "Modificar Talle";
+            GroupBoxDatosTalles.Enter += GroupBoxDatosTalles_Enter;
             // 
             // TBModTalle
             // 
-            TBModTalle.Location = new Point(117, 100);
+            TBModTalle.Location = new Point(147, 53);
             TBModTalle.Margin = new Padding(4);
             TBModTalle.Name = "TBModTalle";
-            TBModTalle.Size = new Size(194, 32);
+            TBModTalle.Size = new Size(248, 32);
             TBModTalle.TabIndex = 16;
             TBModTalle.TextChanged += TBModTalle_TextChanged;
-            TBModTalle.KeyPress += TBModTalle_KeyPress;
+            TBModTalle.KeyPress += Num_KeyPress;
             // 
             // button1
             // 
@@ -278,7 +285,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(375, 98);
+            button1.Location = new Point(403, 54);
             button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(115, 35);
@@ -292,7 +299,7 @@
             LModTalle.AutoSize = true;
             LModTalle.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             LModTalle.ForeColor = Color.White;
-            LModTalle.Location = new Point(115, 68);
+            LModTalle.Location = new Point(11, 53);
             LModTalle.Margin = new Padding(7, 0, 7, 0);
             LModTalle.Name = "LModTalle";
             LModTalle.Size = new Size(125, 24);
@@ -356,5 +363,6 @@
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Estado;
         private Button BReactivar;
+        private DataGridViewTextBoxColumn TipoTalle;
     }
 }

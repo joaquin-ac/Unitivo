@@ -126,6 +126,7 @@
             CBCategoria.Name = "CBCategoria";
             CBCategoria.Size = new Size(140, 28);
             CBCategoria.TabIndex = 28;
+            CBCategoria.SelectedIndexChanged += CBCategoria_SelectedIndexChanged;
             // 
             // BBuscarProducto
             // 

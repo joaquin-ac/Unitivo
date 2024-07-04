@@ -8,10 +8,13 @@ namespace Unitivo.Presentacion.Administrador
     public partial class AñadirCategoria : Form
     {
         CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
+        TipoTalleRepositorio tipoTalleRepositorio = new TipoTalleRepositorio(); // Repositorio para tipoTalle
+
         public AñadirCategoria()
         {
             InitializeComponent();
             CargarCategorias();
+            CargarTipoTalles();
         }
 
         private void String_KeyPress(object sender, KeyPressEventArgs e)
@@ -23,16 +26,20 @@ namespace Unitivo.Presentacion.Administrador
         {
             if (CommonFunctions.ValidarCamposNoVacios(this))
             {
-
                 Categoria categoria = new Categoria();
                 categoria.Descripcion = TBNombreCategoria.Text;
 
+                if (CBTipoTalle.SelectedItem != null)
+                {
+                    categoria.TipoTalleId = ((TipoTalle)CBTipoTalle.SelectedItem).Id; // Guardar el ID de tipoTalle
+                }
 
-                if (categoriaRepositorio.AgregarCategoria(categoria))
+                if (CBTipoTalle.SelectedItem != null && categoriaRepositorio.AgregarCategoria(categoria))
                 {
                     MessageBox.Show("Categoria agregada correctamente");
                     LimpiarTextBoxs();
                     CargarCategorias();
+                    CargarTipoTalles();
                 }
                 else
                 {
@@ -41,9 +48,20 @@ namespace Unitivo.Presentacion.Administrador
             }
             else
             {
-                MessageBox.Show("Debe completar todos los campos", "Categoria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe completar todos los campos y seleccionar un tipo de talle válido", "Talle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void CargarTipoTalles()
+        {
+            var tipoTalles = tipoTalleRepositorio.ListarTipoTalles();
+
+            CBTipoTalle.Items.AddRange(tipoTalles.ToArray());
+            CBTipoTalle.ValueMember = "Id";
+            CBTipoTalle.DisplayMember = "Descripcion";
+            CBTipoTalle.Text = "Seleccione un tipo de talle";
+        }
+
 
         private void CargarCategorias()
         {
@@ -55,12 +73,12 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (categoria.Estado == true)
                 {
-                    DataGridViewListarCategorias.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+                    DataGridViewListarCategorias.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = DataGridViewListarCategorias.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+                    int rowIndex = DataGridViewListarCategorias.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
                     DataGridViewListarCategorias.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -75,6 +93,21 @@ namespace Unitivo.Presentacion.Administrador
         }
 
         private void AñadirCategoria_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBTipoTalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PanelRegCategoria_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

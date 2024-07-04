@@ -47,9 +47,9 @@
             DataGridViewRegistroCategorias = new DataGridView();
             Label1 = new Label();
             Panel2 = new Panel();
+            CBTalle = new ComboBox();
             BAñadirProducto = new Button();
             CBCategoria = new ComboBox();
-            CBTalle = new ComboBox();
             Label6 = new Label();
             Label3 = new Label();
             TBNombreProducto = new TextBox();
@@ -114,7 +114,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -241,9 +241,9 @@
             // Panel2
             // 
             Panel2.BackColor = Color.Cornsilk;
+            Panel2.Controls.Add(CBTalle);
             Panel2.Controls.Add(BAñadirProducto);
             Panel2.Controls.Add(CBCategoria);
-            Panel2.Controls.Add(CBTalle);
             Panel2.Controls.Add(Label6);
             Panel2.Controls.Add(Label3);
             Panel2.Controls.Add(TBNombreProducto);
@@ -257,6 +257,16 @@
             Panel2.Name = "Panel2";
             Panel2.Size = new Size(892, 158);
             Panel2.TabIndex = 16;
+            // 
+            // CBTalle
+            // 
+            CBTalle.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBTalle.FormattingEnabled = true;
+            CBTalle.Location = new Point(405, 71);
+            CBTalle.Name = "CBTalle";
+            CBTalle.Size = new Size(153, 23);
+            CBTalle.TabIndex = 39;
+            CBTalle.SelectedIndexChanged += CBTalle_SelectedIndexChanged;
             // 
             // BAñadirProducto
             // 
@@ -281,16 +291,7 @@
             CBCategoria.Name = "CBCategoria";
             CBCategoria.Size = new Size(153, 23);
             CBCategoria.TabIndex = 15;
-            // 
-            // CBTalle
-            // 
-            CBTalle.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBTalle.FormattingEnabled = true;
-            CBTalle.Location = new Point(405, 68);
-            CBTalle.Margin = new Padding(2);
-            CBTalle.Name = "CBTalle";
-            CBTalle.Size = new Size(153, 23);
-            CBTalle.TabIndex = 11;
+            CBCategoria.SelectedIndexChanged += CBCategoria_SelectedIndexChanged_1;
             // 
             // Label6
             // 
@@ -416,7 +417,6 @@
         internal Panel Panel2;
         internal ComboBox CBCategoria;
         internal Button BAñadirProducto;
-        internal ComboBox CBTalle;
         internal Label Label6;
         internal Label Label3;
         internal TextBox TBNombreProducto;
@@ -433,6 +433,7 @@
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Talle;
+        private ComboBox CBTalle;
     }
 
 

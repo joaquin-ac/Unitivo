@@ -41,16 +41,24 @@
             Talle = new DataGridViewTextBoxColumn();
             Subtotal = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
+            label10 = new Label();
+            label9 = new Label();
+            ldniVendedor = new Label();
+            ldniCliente = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            ltotal = new Label();
+            lcliente = new Label();
+            label6 = new Label();
+            lvendedor = new Label();
+            lfecha = new Label();
+            nFactura = new Label();
             BImprimir = new Button();
-            DateTimePickerFecha = new DateTimePicker();
             label4 = new Label();
-            TBVendedor = new TextBox();
             label3 = new Label();
             panel1 = new Panel();
             label2 = new Label();
-            TBIDFactura = new TextBox();
             Label5 = new Label();
-            TBTotalFactura = new TextBox();
             label1 = new Label();
             TabDetalleVenta.SuspendLayout();
             TabPageDetalleVenta.SuspendLayout();
@@ -66,7 +74,7 @@
             TabDetalleVenta.Margin = new Padding(3, 2, 3, 2);
             TabDetalleVenta.Name = "TabDetalleVenta";
             TabDetalleVenta.SelectedIndex = 0;
-            TabDetalleVenta.Size = new Size(613, 256);
+            TabDetalleVenta.Size = new Size(697, 256);
             TabDetalleVenta.TabIndex = 60;
             // 
             // TabPageDetalleVenta
@@ -77,7 +85,7 @@
             TabPageDetalleVenta.Margin = new Padding(3, 2, 3, 2);
             TabPageDetalleVenta.Name = "TabPageDetalleVenta";
             TabPageDetalleVenta.Padding = new Padding(3, 2, 3, 2);
-            TabPageDetalleVenta.Size = new Size(605, 226);
+            TabPageDetalleVenta.Size = new Size(689, 226);
             TabPageDetalleVenta.TabIndex = 0;
             TabPageDetalleVenta.Text = "Detalle de Venta";
             TabPageDetalleVenta.UseVisualStyleBackColor = true;
@@ -86,9 +94,13 @@
             // 
             dgvListaVentas.AllowUserToAddRows = false;
             dgvListaVentas.AllowUserToDeleteRows = false;
+            dgvListaVentas.AllowUserToResizeColumns = false;
+            dgvListaVentas.AllowUserToResizeRows = false;
             dgvListaVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvListaVentas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvListaVentas.BackgroundColor = Color.WhiteSmoke;
+            dgvListaVentas.BorderStyle = BorderStyle.None;
+            dgvListaVentas.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dgvListaVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
@@ -104,14 +116,16 @@
             dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.Chartreuse;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightGray;
-            dataGridViewCellStyle2.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = Color.SeaGreen;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle2;
             dgvListaVentas.Dock = DockStyle.Fill;
+            dgvListaVentas.Enabled = false;
             dgvListaVentas.EnableHeadersVisualStyles = false;
             dgvListaVentas.Location = new Point(3, 2);
             dgvListaVentas.Margin = new Padding(4, 2, 4, 2);
+            dgvListaVentas.MultiSelect = false;
             dgvListaVentas.Name = "dgvListaVentas";
             dgvListaVentas.ReadOnly = true;
             dgvListaVentas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -126,7 +140,11 @@
             dgvListaVentas.RowHeadersVisible = false;
             dgvListaVentas.RowHeadersWidth = 51;
             dgvListaVentas.RowTemplate.Height = 24;
-            dgvListaVentas.Size = new Size(599, 222);
+            dgvListaVentas.ShowCellErrors = false;
+            dgvListaVentas.ShowCellToolTips = false;
+            dgvListaVentas.ShowEditingIcon = false;
+            dgvListaVentas.ShowRowErrors = false;
+            dgvListaVentas.Size = new Size(683, 222);
             dgvListaVentas.TabIndex = 56;
             // 
             // Codigo
@@ -174,24 +192,160 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(label10);
+            panel2.Controls.Add(label9);
+            panel2.Controls.Add(ldniVendedor);
+            panel2.Controls.Add(ldniCliente);
+            panel2.Controls.Add(label8);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(ltotal);
+            panel2.Controls.Add(lcliente);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(lvendedor);
+            panel2.Controls.Add(lfecha);
+            panel2.Controls.Add(nFactura);
             panel2.Controls.Add(BImprimir);
-            panel2.Controls.Add(DateTimePickerFecha);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(TBVendedor);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(TBIDFactura);
             panel2.Controls.Add(Label5);
-            panel2.Controls.Add(TBTotalFactura);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(TabDetalleVenta);
             panel2.Location = new Point(10, 9);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(679, 556);
+            panel2.Size = new Size(749, 556);
             panel2.TabIndex = 61;
             panel2.Paint += panel2_Paint;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(574, 209);
+            label10.Name = "label10";
+            label10.Size = new Size(27, 15);
+            label10.TabIndex = 85;
+            label10.Text = "dni:";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(390, 209);
+            label9.Name = "label9";
+            label9.Size = new Size(27, 15);
+            label9.TabIndex = 84;
+            label9.Text = "dni:";
+            // 
+            // ldniVendedor
+            // 
+            ldniVendedor.AutoSize = true;
+            ldniVendedor.ForeColor = Color.Black;
+            ldniVendedor.Location = new Point(414, 209);
+            ldniVendedor.Name = "ldniVendedor";
+            ldniVendedor.Size = new Size(77, 15);
+            ldniVendedor.TabIndex = 83;
+            ldniVendedor.Text = "ldniVendedor";
+            // 
+            // ldniCliente
+            // 
+            ldniCliente.AutoSize = true;
+            ldniCliente.ForeColor = Color.Black;
+            ldniCliente.Location = new Point(597, 209);
+            ldniCliente.Name = "ldniCliente";
+            ldniCliente.Size = new Size(64, 15);
+            ldniCliente.TabIndex = 82;
+            ldniCliente.Text = "ldniCliente";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.White;
+            label8.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(234, 90);
+            label8.Margin = new Padding(7, 0, 7, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(75, 20);
+            label8.TabIndex = 81;
+            label8.Text = "Direccion";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.White;
+            label7.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(234, 18);
+            label7.Name = "label7";
+            label7.Size = new Size(108, 36);
+            label7.TabIndex = 80;
+            label7.Text = "Unitivo";
+            // 
+            // ltotal
+            // 
+            ltotal.AutoSize = true;
+            ltotal.ForeColor = Color.Black;
+            ltotal.Location = new Point(505, 516);
+            ltotal.Name = "ltotal";
+            ltotal.Size = new Size(34, 15);
+            ltotal.TabIndex = 79;
+            ltotal.Text = "ltotal";
+            // 
+            // lcliente
+            // 
+            lcliente.AutoSize = true;
+            lcliente.ForeColor = Color.Black;
+            lcliente.Location = new Point(573, 183);
+            lcliente.Name = "lcliente";
+            lcliente.Size = new Size(45, 15);
+            lcliente.TabIndex = 78;
+            lcliente.Text = "lcliente";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.White;
+            label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(573, 152);
+            label6.Margin = new Padding(7, 0, 7, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(62, 20);
+            label6.TabIndex = 77;
+            label6.Text = "Cliente:";
+            // 
+            // lvendedor
+            // 
+            lvendedor.AutoSize = true;
+            lvendedor.ForeColor = Color.Black;
+            lvendedor.Location = new Point(389, 184);
+            lvendedor.Name = "lvendedor";
+            lvendedor.Size = new Size(60, 15);
+            lvendedor.TabIndex = 76;
+            lvendedor.Text = "lvendedor";
+            // 
+            // lfecha
+            // 
+            lfecha.AutoSize = true;
+            lfecha.ForeColor = Color.Black;
+            lfecha.Location = new Point(234, 183);
+            lfecha.Name = "lfecha";
+            lfecha.Size = new Size(39, 15);
+            lfecha.TabIndex = 75;
+            lfecha.Text = "lfecha";
+            // 
+            // nFactura
+            // 
+            nFactura.AutoSize = true;
+            nFactura.ForeColor = Color.Black;
+            nFactura.Location = new Point(80, 183);
+            nFactura.Name = "nFactura";
+            nFactura.Size = new Size(53, 15);
+            nFactura.TabIndex = 74;
+            nFactura.Text = "nFactura";
             // 
             // BImprimir
             // 
@@ -199,23 +353,12 @@
             BImprimir.ForeColor = Color.White;
             BImprimir.Image = Properties.Resources.icons8_imprimir_26;
             BImprimir.Location = new Point(32, 501);
-            BImprimir.Margin = new Padding(4, 4, 4, 4);
+            BImprimir.Margin = new Padding(4);
             BImprimir.Name = "BImprimir";
             BImprimir.Size = new Size(41, 37);
             BImprimir.TabIndex = 73;
             BImprimir.UseVisualStyleBackColor = false;
             BImprimir.Click += BImprimir_Click;
-            // 
-            // DateTimePickerFecha
-            // 
-            DateTimePickerFecha.Enabled = false;
-            DateTimePickerFecha.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            DateTimePickerFecha.Format = DateTimePickerFormat.Short;
-            DateTimePickerFecha.Location = new Point(234, 175);
-            DateTimePickerFecha.Margin = new Padding(4, 4, 4, 4);
-            DateTimePickerFecha.Name = "DateTimePickerFecha";
-            DateTimePickerFecha.Size = new Size(148, 24);
-            DateTimePickerFecha.TabIndex = 72;
             // 
             // label4
             // 
@@ -223,22 +366,12 @@
             label4.BackColor = Color.White;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(419, 152);
+            label4.Location = new Point(389, 153);
             label4.Margin = new Padding(7, 0, 7, 0);
             label4.Name = "label4";
             label4.Size = new Size(87, 20);
             label4.TabIndex = 71;
             label4.Text = "Vendedor: ";
-            // 
-            // TBVendedor
-            // 
-            TBVendedor.Enabled = false;
-            TBVendedor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TBVendedor.Location = new Point(419, 172);
-            TBVendedor.Margin = new Padding(4, 4, 4, 4);
-            TBVendedor.Name = "TBVendedor";
-            TBVendedor.Size = new Size(201, 29);
-            TBVendedor.TabIndex = 70;
             // 
             // label3
             // 
@@ -275,16 +408,6 @@
             label2.TabIndex = 67;
             label2.Text = "N° Factura: ";
             // 
-            // TBIDFactura
-            // 
-            TBIDFactura.Enabled = false;
-            TBIDFactura.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TBIDFactura.Location = new Point(80, 172);
-            TBIDFactura.Margin = new Padding(4, 4, 4, 4);
-            TBIDFactura.Name = "TBIDFactura";
-            TBIDFactura.Size = new Size(113, 29);
-            TBIDFactura.TabIndex = 66;
-            // 
             // Label5
             // 
             Label5.AutoSize = true;
@@ -297,23 +420,13 @@
             Label5.TabIndex = 65;
             Label5.Text = "Total: ";
             // 
-            // TBTotalFactura
-            // 
-            TBTotalFactura.Enabled = false;
-            TBTotalFactura.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            TBTotalFactura.Location = new Point(522, 507);
-            TBTotalFactura.Margin = new Padding(4, 4, 4, 4);
-            TBTotalFactura.Name = "TBTotalFactura";
-            TBTotalFactura.Size = new Size(113, 29);
-            TBTotalFactura.TabIndex = 64;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.White;
             label1.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(243, 53);
+            label1.Location = new Point(234, 54);
             label1.Name = "label1";
             label1.Size = new Size(158, 36);
             label1.TabIndex = 61;
@@ -324,7 +437,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(700, 574);
+            ClientSize = new Size(771, 574);
             Controls.Add(panel2);
             ForeColor = Color.Chartreuse;
             FormBorderStyle = FormBorderStyle.None;
@@ -353,14 +466,22 @@
         private DataGridViewTextBoxColumn Subtotal;
         private Label label1;
         internal Label Label5;
-        internal TextBox TBTotalFactura;
         internal Label label2;
-        internal TextBox TBIDFactura;
         internal Label label4;
-        internal TextBox TBVendedor;
         internal Label label3;
         private Panel panel1;
-        internal DateTimePicker DateTimePickerFecha;
         internal Button BImprimir;
+        private Label lcliente;
+        internal Label label6;
+        private Label lvendedor;
+        private Label lfecha;
+        private Label nFactura;
+        private Label ltotal;
+        internal Label label8;
+        private Label label7;
+        private Label ldniVendedor;
+        private Label ldniCliente;
+        private Label label10;
+        private Label label9;
     }
 }

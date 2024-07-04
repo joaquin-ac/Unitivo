@@ -175,6 +175,7 @@
             CBCatBuscar.Name = "CBCatBuscar";
             CBCatBuscar.Size = new Size(140, 28);
             CBCatBuscar.TabIndex = 40;
+            CBCatBuscar.SelectedIndexChanged += CBCatBuscar_SelectedIndexChanged;
             // 
             // BBuscarProducto
             // 
@@ -202,7 +203,6 @@
             TBBuscar.Name = "TBBuscar";
             TBBuscar.Size = new Size(152, 26);
             TBBuscar.TabIndex = 6;
-            TBBuscar.KeyPress += NumStr_KeyPress;
             // 
             // TabControlListaProductos
             // 
@@ -252,7 +252,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -479,6 +479,7 @@
             CBCategoriaProducto.Name = "CBCategoriaProducto";
             CBCategoriaProducto.Size = new Size(187, 32);
             CBCategoriaProducto.TabIndex = 18;
+            CBCategoriaProducto.SelectedIndexChanged += CBCategoriaProducto_SelectedIndexChanged;
             // 
             // groupBox1
             // 

@@ -48,21 +48,22 @@ namespace Unitivo.Presentacion.Vendedor
         private void cargarCategorias()
         {
             var categorias = categoriaRepositorio.ListarCategoriasActivos();
-
-            CBCategoria.Items.AddRange(categorias.ToArray());
-            CBCategoria.ValueMember = "Id";
+            categorias.Insert(0, new Categoria { Id = 0, Descripcion = "Todos" }); // Agregar la opción "Todos"
+            CBCategoria.DataSource = categorias;
             CBCategoria.DisplayMember = "Descripcion";
-            CBCategoria.Text = "Todos";
+            CBCategoria.ValueMember = "Id";
+
         }
 
         private void cargarTalles()
         {
             var talles = talleRepositorio.ListarTallesActivos();
-
-            CBTalle.Items.AddRange(talles.ToArray());
+            CBTalle.DataSource = talles;
             CBTalle.ValueMember = "Id";
             CBTalle.DisplayMember = "Descripcion";
-            CBTalle.Text = "Todos";
+            CBTalle.Text = "Seleccione un talle";
+            CBTalle.SelectedValue = -1;
+
         }
 
         private void CargarProductos()
@@ -113,6 +114,24 @@ namespace Unitivo.Presentacion.Vendedor
 
                     // Establecer el color de fondo de la fila agregada
                     DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void CBCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBCategoria.SelectedValue is int categoriaId)
+            {
+                if (categoriaId == 0) // Si se selecciona "Todos"
+                {
+                    CBTalle.SelectedValue = -1; // Seleccionar "Todos" en CBTalleBuscar
+                }
+                var categoria = categoriaRepositorio.BuscarCategoriaPorId(categoriaId);
+                if (categoria != null)
+                {
+                    var tallesFiltrados = talleRepositorio.ListarTallesPorTipo(categoria.TipoTalleId);
+                    CBTalle.DataSource = tallesFiltrados;
+                    CBTalle.SelectedValue = -1;
                 }
             }
         }

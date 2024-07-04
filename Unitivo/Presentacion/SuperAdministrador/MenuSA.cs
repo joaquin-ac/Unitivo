@@ -33,6 +33,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
             PanelSubMenuUsuarios.Visible = false;
             PanelSubMenuEmpleados.Visible = false;
             PanelSubMenuPerfiles.Visible = false;
+            PanelSubMenuBD.Visible = false;
         }
 
         private void showSubMenu(Panel subMenu)

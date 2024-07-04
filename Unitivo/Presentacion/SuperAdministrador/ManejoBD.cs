@@ -1,10 +1,12 @@
-﻿namespace Unitivo.Presentacion.SuperAdministrador
+﻿using Unitivo.Properties;
+using Unitivo.Recursos;
+namespace Unitivo.Presentacion.SuperAdministrador
 {
     public partial class ManejoBD : Form
     {
-        private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True";
+        private string connectionString = Resources.DB_BackupRestore;
+        //private string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True";
         private string databaseName = "Unitivo";
-        private string backupFilePath = @"C:\BackUpUnitivo\Backup.bak";
         public ManejoBD()
         {
             InitializeComponent();
@@ -13,13 +15,13 @@
         private void BResguardar_Click(object sender, EventArgs e)
         {
             DatabaseBackupRestore backupRestore = new DatabaseBackupRestore(connectionString);
-            backupRestore.BackupDatabase(databaseName, backupFilePath);
+            backupRestore.BackupDatabase(databaseName);
         }
 
         private void BRestaurar_Click(object sender, EventArgs e)
         {
             DatabaseBackupRestore backupRestore = new DatabaseBackupRestore(connectionString);
-            backupRestore.RestoreDatabase(databaseName, backupFilePath);
+            backupRestore.RestoreDatabase(databaseName);
         }
 
         private void ManejoBD_Load(object sender, EventArgs e)

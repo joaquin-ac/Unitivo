@@ -67,11 +67,11 @@ namespace Unitivo.Presentacion.Administrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (productoParaEditar.Id != 0 && TBNombreProducto.Text != "" && TBPrecioProducto.Text != "" && TBStockAdic.Text != "")
+            if (productoParaEditar.Id != 0 && TBNombreProducto.Text != "" && TBPrecioProducto.Text != "" && TBStockAdic.Text != "" && !(TBPrecioProducto.Text.Contains(".") && TBPrecioProducto.Text.Split('.')[1].Length > 2))
             {
                 productoParaEditar = productoRepositorio.BuscarProducto(productoParaEditar.Id);
                 productoParaEditar.Nombre = TBNombreProducto.Text;
-                productoParaEditar.Precio = (double)decimal.Parse(TBPrecioProducto.Text);
+                productoParaEditar.Precio = decimal.Parse(TBPrecioProducto.Text);
                 productoParaEditar.IdCategoria = (int)CBCategoriaProducto.SelectedValue;
                 productoParaEditar.IdTalle = (int)CBTalleProducto.SelectedValue;
                 productoParaEditar.Stock += int.Parse(TBStockAdic.Text);
@@ -91,6 +91,10 @@ namespace Unitivo.Presentacion.Administrador
                 {
                     MessageBox.Show("Ocurrio un error al modificar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Complete los campos correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void CargarProductos()
@@ -133,28 +137,33 @@ namespace Unitivo.Presentacion.Administrador
 
         private void cargarCategorias()
         {
-            var categorias = categoriaRepositorio.ListarCategorias();
-            CBCategoriaProducto.DataSource = categorias;
+            CBCategoriaProducto.DataSource = categoriaRepositorio.ListarCategoriasActivos();
             CBCategoriaProducto.ValueMember = "Id";
             CBCategoriaProducto.DisplayMember = "Descripcion";
 
-            CBCatBuscar.Items.AddRange(categorias.ToArray());
-            CBCatBuscar.ValueMember = "Id";
+            var categorias = categoriaRepositorio.ListarCategoriasActivos();
+            categorias.Insert(0, new Categoria { Id = 0, Descripcion = "Todos" }); // Agregar la opción "Todos"
+            CBCatBuscar.DataSource = categorias;
             CBCatBuscar.DisplayMember = "Descripcion";
-            CBCatBuscar.Text = "Todos";
+            CBCatBuscar.ValueMember = "Id";
+
+
+            CBTalleProducto.Enabled = false;
+            
         }
 
         private void cargarTalles()
         {
-            var talles = talleRepositorio.ListarTalles();
-            CBTalleProducto.DataSource = talles;
-            CBTalleProducto.ValueMember = "Id";
-            CBTalleProducto.DisplayMember = "Descripcion";
-
-            CBTalleBuscar.Items.AddRange(talles.ToArray());
+            var talles = talleRepositorio.ListarTallesActivos();
+            CBTalleBuscar.DataSource = talles;
             CBTalleBuscar.ValueMember = "Id";
             CBTalleBuscar.DisplayMember = "Descripcion";
-            CBTalleBuscar.Text = "Todos";
+            CBTalleBuscar.Text = "Seleccione un talle";
+            CBTalleBuscar.SelectedValue = -1;
+
+            CBTalleProducto.DataSource = talleRepositorio.ListarTalles();
+            CBTalleProducto.ValueMember = "Id";
+            CBTalleProducto.DisplayMember = "Descripcion";
         }
 
         private void CargarProductos(string nom, string cat, string talle)
@@ -263,6 +272,40 @@ namespace Unitivo.Presentacion.Administrador
         private void TBStockAdic_KeyPress(object sender, KeyPressEventArgs e)
         {
             NumInt_KeyPress(sender, e);
+        }
+
+        private void CBCatBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBCatBuscar.SelectedValue is int categoriaId)
+            {
+                if (categoriaId == 0) // Si se selecciona "Todos"
+                {
+                    CBTalleBuscar.SelectedValue = -1; // Seleccionar "Todos" en CBTalleBuscar
+                }
+                var categoria = categoriaRepositorio.BuscarCategoriaPorId(categoriaId);
+                if (categoria != null)
+                {
+                    var tallesFiltrados = talleRepositorio.ListarTallesPorTipo(categoria.TipoTalleId);
+                    CBTalleBuscar.DataSource = tallesFiltrados;
+                    CBTalleBuscar.SelectedValue = -1;
+                }
+            }
+
+        }
+
+        private void CBCategoriaProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBCategoriaProducto.SelectedValue is int categoriaId)
+            {
+                var categoria = categoriaRepositorio.BuscarCategoriaPorId(categoriaId);
+                if (categoria != null)
+                {
+                    CBTalleProducto.Enabled = true;
+                    var tallesFiltrados = talleRepositorio.ListarTallesPorTipo(categoria.TipoTalleId);
+                    CBTalleProducto.DataSource = tallesFiltrados;
+                }
+            }
+
         }
     }
 }

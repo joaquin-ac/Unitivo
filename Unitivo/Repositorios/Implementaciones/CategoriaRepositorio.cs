@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace Unitivo.Repositorios.Implementaciones
 {
@@ -17,8 +18,9 @@ namespace Unitivo.Repositorios.Implementaciones
         private readonly UnitivoContext? _contexto;
 
         public CategoriaRepositorio()
-        {
+        { 
             _contexto = Contexto.dbContexto;
+            _contexto?.TipoTalles.Load();
         }    
         
         public bool AgregarCategoria(Categoria x){
@@ -381,6 +383,11 @@ namespace Unitivo.Repositorios.Implementaciones
                 query = 0;
             }
             return query;
+        }
+
+        public List<Categoria> ListarCategoriasPorTipo(int tipoTalleId)
+        {
+            return _contexto.Categorias.Where(c => c.TipoTalleId == tipoTalleId && c.Estado).ToList();
         }
     }
 }

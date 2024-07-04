@@ -56,6 +56,7 @@ namespace Unitivo.Presentacion.Vendedor
                     // Captura y maneja el error que ocurra en clienteRepositorio.AgregarCliente(cliente)
                     MessageBox.Show("Error al agregar cliente: " + ex.Message, "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
             else
             {
@@ -111,7 +112,6 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void AñadirCliente_Load_1(object sender, EventArgs e)
         {
-
         }
     }
 }

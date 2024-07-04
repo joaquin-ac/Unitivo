@@ -9,9 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Presentacion\Administrador\MasVendidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Presentacion\Administrador\MasVendidos.cs" />
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             GroupBoxGestionCategorias = new GroupBox();
             BBuscarCategoria = new Button();
             TBGestionCategoria = new TextBox();
@@ -43,6 +43,7 @@
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            TipoTalle = new DataGridViewTextBoxColumn();
             GroupBoxDatosCategoria = new GroupBox();
             TBNombreCategoria = new TextBox();
             button1 = new Button();
@@ -177,25 +178,25 @@
             dgvRegistroCategoria.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvRegistroCategoria.BackgroundColor = Color.RosyBrown;
             dgvRegistroCategoria.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvRegistroCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvRegistroCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvRegistroCategoria.ColumnHeadersHeight = 20;
             dgvRegistroCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvRegistroCategoria.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvRegistroCategoria.DefaultCellStyle = dataGridViewCellStyle5;
+            dgvRegistroCategoria.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado, TipoTalle });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvRegistroCategoria.DefaultCellStyle = dataGridViewCellStyle2;
             dgvRegistroCategoria.Dock = DockStyle.Fill;
             dgvRegistroCategoria.EnableHeadersVisualStyles = false;
             dgvRegistroCategoria.Location = new Point(2, 2);
@@ -203,14 +204,14 @@
             dgvRegistroCategoria.Name = "dgvRegistroCategoria";
             dgvRegistroCategoria.ReadOnly = true;
             dgvRegistroCategoria.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvRegistroCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvRegistroCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvRegistroCategoria.RowHeadersWidth = 51;
             dgvRegistroCategoria.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRegistroCategoria.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
@@ -242,6 +243,12 @@
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
+            // TipoTalle
+            // 
+            TipoTalle.HeaderText = "Tipo de Talle";
+            TipoTalle.Name = "TipoTalle";
+            TipoTalle.ReadOnly = true;
+            // 
             // GroupBoxDatosCategoria
             // 
             GroupBoxDatosCategoria.BackColor = Color.RosyBrown;
@@ -261,10 +268,10 @@
             // 
             // TBNombreCategoria
             // 
-            TBNombreCategoria.Location = new Point(119, 87);
+            TBNombreCategoria.Location = new Point(152, 69);
             TBNombreCategoria.Margin = new Padding(4);
             TBNombreCategoria.Name = "TBNombreCategoria";
-            TBNombreCategoria.Size = new Size(194, 32);
+            TBNombreCategoria.Size = new Size(273, 32);
             TBNombreCategoria.TabIndex = 16;
             // 
             // button1
@@ -275,7 +282,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(396, 83);
+            button1.Location = new Point(451, 63);
             button1.Margin = new Padding(4);
             button1.Name = "button1";
             button1.Size = new Size(115, 38);
@@ -289,7 +296,7 @@
             LModCategoria.AutoSize = true;
             LModCategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             LModCategoria.ForeColor = Color.White;
-            LModCategoria.Location = new Point(116, 55);
+            LModCategoria.Location = new Point(9, 69);
             LModCategoria.Margin = new Padding(7, 0, 7, 0);
             LModCategoria.Name = "LModCategoria";
             LModCategoria.Size = new Size(125, 24);
@@ -354,5 +361,6 @@
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Estado;
         private Button BReactivar;
+        private DataGridViewTextBoxColumn TipoTalle;
     }
 }

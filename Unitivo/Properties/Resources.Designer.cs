@@ -91,7 +91,16 @@ namespace Unitivo.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Server=(localdb)\localhost;Database=Unitivo;Integrated Security=True;Trust Server Certificate=True;.
+        ///   Busca una cadena traducida similar a Data Source=.\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True.
+        /// </summary>
+        internal static string DB_BackupRestore {
+            get {
+                return ResourceManager.GetString("DB_BackupRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Data Source=.\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False.
         /// </summary>
         internal static string DB_ConnectionString {
             get {

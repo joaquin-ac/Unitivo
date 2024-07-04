@@ -77,38 +77,50 @@ CREATE TABLE facturas (
     FechaCreacion DATETIME2 NOT NULL DEFAULT GETDATE(),
     id_usuario INT NOT NULL,
     id_cliente INT NOT NULL, -- Agregado el campo id_cliente
-	total decimal not null,
+	total decimal(10, 2) NOT NULL,
 
     CONSTRAINT FK_id_usuario_FACTURAS FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     CONSTRAINT FK_id_cliente_FACTURAS FOREIGN KEY (id_cliente) REFERENCES clientes(id)
 );
 GO
  
--- Tabla Talle
+-- Crear la tabla tipoTalle
+CREATE TABLE tipoTalle (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(255) NOT NULL
+);
+GO
+
+-- Crear la tabla Talle con la columna tipoTalle_id y la relación de clave foránea
 CREATE TABLE talles (
     id INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(255) NOT NULL,
     estado BIT NOT NULL,
+    tipoTalle_id INT,
 
-    CONSTRAINT CHK_TYPE_ESTADO_talle_TYPES CHECK(estado IN(0,1))
+    CONSTRAINT CHK_TYPE_ESTADO_talle_TYPES CHECK(estado IN (0, 1)),
+    CONSTRAINT FK_talles_tipoTalle FOREIGN KEY (tipoTalle_id) REFERENCES tipoTalle(id)
 );
 GO
 
--- Tabla Categoría
+-- Crear la tabla Categoría con la columna tipoTalle_id y la relación de clave foránea
 CREATE TABLE categorias (
     id INT IDENTITY(1,1) PRIMARY KEY,
     descripcion VARCHAR(255) NOT NULL,
     estado BIT NOT NULL,
+    tipoTalle_id INT,
 
-    CONSTRAINT CHK_TYPE_ESTADO_categoria_TYPES CHECK(estado IN(0,1))
+    CONSTRAINT CHK_TYPE_ESTADO_categoria_TYPES CHECK(estado IN (0, 1)),
+    CONSTRAINT FK_categorias_tipoTalle FOREIGN KEY (tipoTalle_id) REFERENCES tipoTalle(id)
 );
 GO
+
 
 -- Tabla Productos
 CREATE TABLE productos (
     id INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
-    precio FLOAT NOT NULL,
+    precio decimal(10, 2) NOT NULL,
     stock INT,
     estado BIT NOT NULL,
     imagen VARCHAR(255) NOT NULL,
@@ -129,7 +141,7 @@ GO
 CREATE TABLE detalle_facturas (
     id INT IDENTITY(1,1) PRIMARY KEY,
     cantidad INT NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL,
+    precio decimal(10, 2) NOT NULL,
     FechaCreacion DATETIME2 NOT NULL DEFAULT GETDATE(),
     id_factura INT,
     id_producto INT,
@@ -154,3 +166,6 @@ insert into empleados values('Maria','Gomez',12345677,'3494123454','Jujuy 100','
 insert into usuarios values('juan@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnqpkOsOxAwv4swlDLrubUG.XC4dBm', 1, '2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720', 1, 1);
 insert into usuarios values('pepe@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnqpkOsOxAwv4swlDLrubUG.XC4dBm', 1, '2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720', 2, 2);
 insert into usuarios values('maria@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnqpkOsOxAwv4swlDLrubUG.XC4dBm', 1, '2024-04-05 01:18:06.5466667','2024-04-05 01:18:06.2594720', 3, 3);
+
+insert into tipoTalle values ('Numeros');
+insert into tipoTalle values ('Letras');

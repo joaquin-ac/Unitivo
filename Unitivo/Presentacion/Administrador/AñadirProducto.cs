@@ -2,7 +2,6 @@
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
 using Unitivo.Sessions;
-
 namespace Unitivo.Presentacion.Administrador
 {
     public partial class AñadirProducto : Form
@@ -13,18 +12,21 @@ namespace Unitivo.Presentacion.Administrador
 
         private string? rutaImagenProducto;
         private Image? image;
+
         public AñadirProducto()
         {
             InitializeComponent();
-            AñadirProducto_Load();
         }
 
         private void AñadirProducto_Load(object sender, EventArgs e)
         {
+
             cargarCategorias();
             cargarTalles();
             CargarProductos();
+
         }
+
         private void String_KeyPress(object sender, KeyPressEventArgs e)
         {
             CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
@@ -39,7 +41,6 @@ namespace Unitivo.Presentacion.Administrador
         {
             CommonFunctions.ValidarDecimalKeyPress((TextBox)sender, e);
         }
-
 
         private void CargarProductos()
         {
@@ -71,7 +72,7 @@ namespace Unitivo.Presentacion.Administrador
                 producto.Nombre = TBNombreProducto.Text;
                 producto.IdCategoria = (int)CBCategoria.SelectedValue;
                 producto.Stock = int.Parse(TBStock.Text);
-                producto.Precio = double.Parse(TBPrecio.Text);
+                producto.Precio = decimal.Parse(TBPrecio.Text);
                 producto.IdTalle = (int)CBTalle.SelectedValue;
                 producto.Imagen = rutaImagenProducto!;
 
@@ -116,38 +117,16 @@ namespace Unitivo.Presentacion.Administrador
             CBCategoria.SelectedValue = 0;
             CBTalle.SelectedValue = 0;
         }
-        private void AñadirProducto_Load()
-        {
-            // Cargar las categorías.
-            CBCategoria.DataSource = LocalStorage.categorias;
-            CBCategoria.DisplayMember = "Nombre";
-            CBCategoria.ValueMember = "Id";
 
-            // Cargar los talles.
-            CBTalle.DataSource = LocalStorage.talles;
-            CBTalle.DisplayMember = "Nombre";
+        private void cargarTalles()
+        {
+
+            var talles = talleRepositorio.ListarTallesActivos();
+            CBTalle.DataSource = talles;
             CBTalle.ValueMember = "Id";
-        }
-
-        private bool verificarCamposNulos()
-        {
-            // Verificar si algún TextBox está vacío.
-            if (string.IsNullOrWhiteSpace(TBNombreProducto.Text) ||
-                CBCategoria.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(TBStock.Text) ||
-                string.IsNullOrWhiteSpace(TBPrecio.Text) ||
-                CBTalle.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(rutaImagenProducto)
-                )
-            {
-                MessageBox.Show("Todos los campos son obligatorios. Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            else
-            {
-                MessageBox.Show("Producto registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
-            }
+            CBTalle.DisplayMember = "Descripcion";
+            CBTalle.Text = "Seleccione un talle";
+            CBTalle.SelectedValue = -1;
         }
 
         private void cargarCategorias()
@@ -156,19 +135,39 @@ namespace Unitivo.Presentacion.Administrador
             CBCategoria.DataSource = categorias;
             CBCategoria.ValueMember = "Id";
             CBCategoria.DisplayMember = "Descripcion";
+
+            CBTalle.Enabled = false;
         }
 
-        private void cargarTalles()
-        {
-            var talles = talleRepositorio.ListarTallesActivos();
-            CBTalle.DataSource = talles;
-            CBTalle.ValueMember = "Id";
-            CBTalle.DisplayMember = "Descripcion";
-        }
 
         private void DataGridViewListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        private void CBCategoria_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (CBCategoria.SelectedValue is int categoriaId)
+            {
+                var categoria = categoriaRepositorio.BuscarCategoriaPorId(categoriaId);
+                if (categoria != null)
+                {
+                    CBTalle.Enabled = true;
+                    var tallesFiltrados = talleRepositorio.ListarTallesPorTipo(categoria.TipoTalleId);
+                    CBTalle.DataSource = tallesFiltrados;
+                }
+            }
+        }
+
+        private void CBTalle_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBTalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+

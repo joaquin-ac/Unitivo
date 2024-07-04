@@ -18,8 +18,10 @@ namespace Unitivo
         [STAThread]
         static void Main()
         {
-            string stringConection = "Data Source=.\\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string stringConection = Resources.DB_ConnectionString;
+            //string stringConection = "Data Source=.\\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
             DbContextOptionsBuilder<UnitivoContext> optionsBuilder = new();
+
             UnitivoContext unitivoContext = new(optionsBuilder.UseSqlServer(stringConection).Options);
             Contexto.dbContexto = unitivoContext;
             ApplicationConfiguration.Initialize();

@@ -98,46 +98,52 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BModEmpleado_Click(object sender, EventArgs e)
         {
-            // Obtén los nuevos valores de los TextBox
-            string nuevoNombre = TBNombreEmpleado.Text;
-            string nuevoApellido = TBApellidoEmpleado.Text;
-            int nuevoDni = int.Parse(TBDniEmpleado.Text);
-            string nuevoTelefono = TBTelEmpleado.Text;
-            string nuevaDireccion = TBDireccionEmpleado.Text;
-            string nuevoCorreo = TBCorreoEmpleado.Text;
-            DateTime nuevaEdad = DateTimePickerFechaNacimiento.Value;
-
-            // Compara los nuevos valores con los originales
-            if (nuevoNombre != nombreOriginal || nuevoApellido != apellidoOriginal || nuevoDni != dniOriginal ||
-                nuevoTelefono != telefonoOriginal || nuevaDireccion != direccionOriginal || nuevoCorreo != correoOriginal || nuevaEdad != EdadOriginal)
+            if (CommonFunctions.ValidarCamposNoVacios(this))
             {
-                Empleado empleado = new Empleado();
-                empleado.Id = idEmpleado;
-                empleado.Nombre = nuevoNombre;
-                empleado.Apellido = nuevoApellido;
-                empleado.Dni = nuevoDni;
-                empleado.Telefono = nuevoTelefono;
-                empleado.Direccion = nuevaDireccion;
-                empleado.Correo = nuevoCorreo;
-                empleado.Edad = nuevaEdad;
+                // Obtén los nuevos valores de los TextBox
+                string nuevoNombre = TBNombreEmpleado.Text;
+                string nuevoApellido = TBApellidoEmpleado.Text;
+                int nuevoDni = int.Parse(TBDniEmpleado.Text);
+                string nuevoTelefono = TBTelEmpleado.Text;
+                string nuevaDireccion = TBDireccionEmpleado.Text;
+                string nuevoCorreo = TBCorreoEmpleado.Text;
+                DateTime nuevaEdad = DateTimePickerFechaNacimiento.Value;
 
-                if (empleadoRepositorio.ModificarEmpleado(empleado))
+                // Compara los nuevos valores con los originales
+                if (nuevoNombre != nombreOriginal || nuevoApellido != apellidoOriginal || nuevoDni != dniOriginal ||
+                    nuevoTelefono != telefonoOriginal || nuevaDireccion != direccionOriginal || nuevoCorreo != correoOriginal || nuevaEdad != EdadOriginal)
                 {
-                    MessageBox.Show("Empleado modificado con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
+                    Empleado empleado = new Empleado();
+                    empleado.Id = idEmpleado;
+                    empleado.Nombre = nuevoNombre;
+                    empleado.Apellido = nuevoApellido;
+                    empleado.Dni = nuevoDni;
+                    empleado.Telefono = nuevoTelefono;
+                    empleado.Direccion = nuevaDireccion;
+                    empleado.Correo = nuevoCorreo;
+                    empleado.Edad = nuevaEdad;
+
+                    if (empleadoRepositorio.ModificarEmpleado(empleado))
+                    {
+                        MessageBox.Show("Empleado modificado con éxito.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar el empleado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo modificar el empleado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se han realizado cambios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-
             }
             else
             {
-                MessageBox.Show("No se han realizado cambios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ningun campo debe estar vacio", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
     }
 }

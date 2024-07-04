@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Unitivo.Modelos;
-
-public partial class Categoria
+﻿namespace Unitivo.Modelos
 {
-    public int Id { get; set; }
+    public partial class Categoria
+    {
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public bool Estado { get; set; }
 
-    public string Descripcion { get; set; } = null!;
+        // Foreign key
+        public int TipoTalleId { get; set; }
 
-    public bool Estado { get; set; }
+        // Navigation property
+        public virtual TipoTalle TipoTalleIdNavigation { get; set; } = null!;
 
-    public virtual ICollection<Producto> Productos { get; set; } = new List<Producto>();
-
+        // Productos relacionados
+        public virtual ICollection<Producto> Productos { get; set; } = new List<Producto>();
+    }
 }
+

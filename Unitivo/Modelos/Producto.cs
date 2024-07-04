@@ -9,7 +9,7 @@ public partial class Producto
 
     public string Nombre { get; set; } = null!;
 
-    public double Precio { get; set; }
+    public decimal Precio { get; set; }
 
     public int Stock { get; set; }
 
@@ -30,4 +30,5 @@ public partial class Producto
     public virtual Categoria IdCategoriaNavigation { get; set; } = null!;
 
     public virtual Talle IdTalleNavigation { get; set; } = null!;
+
 }

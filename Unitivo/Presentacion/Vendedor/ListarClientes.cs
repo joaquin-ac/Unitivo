@@ -67,6 +67,7 @@ namespace Unitivo.Presentacion.Vendedor
                     // Realiza acciones si se cerró el formulario con DialogResult.OK
                     CargarClientes();
                 }
+                CargarClientes();
             }
             else
             {

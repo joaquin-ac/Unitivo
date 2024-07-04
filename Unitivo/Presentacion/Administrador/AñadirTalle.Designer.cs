@@ -37,8 +37,11 @@
             ID = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            tipoTalle = new DataGridViewTextBoxColumn();
             PanelRegTalles = new Panel();
+            label1 = new Label();
             BRegistrarTalle = new Button();
+            CBTipoTalle = new ComboBox();
             TBNombreTalle = new TextBox();
             LNombreTalle = new Label();
             TabControlRegTalles.SuspendLayout();
@@ -90,11 +93,11 @@
             DataGridViewListarTalles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewListarTalles.ColumnHeadersHeight = 20;
             DataGridViewListarTalles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DataGridViewListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado });
+            DataGridViewListarTalles.Columns.AddRange(new DataGridViewColumn[] { ID, Descripcion, Estado, tipoTalle });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -142,11 +145,19 @@
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
+            // tipoTalle
+            // 
+            tipoTalle.HeaderText = "Tipo de Talle";
+            tipoTalle.Name = "tipoTalle";
+            tipoTalle.ReadOnly = true;
+            // 
             // PanelRegTalles
             // 
             PanelRegTalles.BackColor = Color.Cornsilk;
             PanelRegTalles.BackgroundImageLayout = ImageLayout.None;
+            PanelRegTalles.Controls.Add(label1);
             PanelRegTalles.Controls.Add(BRegistrarTalle);
+            PanelRegTalles.Controls.Add(CBTipoTalle);
             PanelRegTalles.Controls.Add(TBNombreTalle);
             PanelRegTalles.Controls.Add(LNombreTalle);
             PanelRegTalles.Location = new Point(224, 28);
@@ -154,6 +165,15 @@
             PanelRegTalles.Name = "PanelRegTalles";
             PanelRegTalles.Size = new Size(505, 129);
             PanelRegTalles.TabIndex = 39;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(24, 92);
+            label1.Name = "label1";
+            label1.Size = new Size(143, 15);
+            label1.TabIndex = 42;
+            label1.Text = "Seleccione el tipo de talle:";
             // 
             // BRegistrarTalle
             // 
@@ -172,10 +192,20 @@
             BRegistrarTalle.UseVisualStyleBackColor = false;
             BRegistrarTalle.Click += BRegistrarTalle_Click;
             // 
+            // CBTipoTalle
+            // 
+            CBTipoTalle.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBTipoTalle.FormattingEnabled = true;
+            CBTipoTalle.Location = new Point(173, 89);
+            CBTipoTalle.Name = "CBTipoTalle";
+            CBTipoTalle.Size = new Size(176, 23);
+            CBTipoTalle.TabIndex = 41;
+            CBTipoTalle.SelectedIndexChanged += CBTipoTalle_SelectedIndexChanged_1;
+            // 
             // TBNombreTalle
             // 
             TBNombreTalle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBNombreTalle.Location = new Point(24, 67);
+            TBNombreTalle.Location = new Point(24, 56);
             TBNombreTalle.Margin = new Padding(4);
             TBNombreTalle.Name = "TBNombreTalle";
             TBNombreTalle.Size = new Size(325, 26);
@@ -230,5 +260,8 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Estado;
+        private Label label1;
+        private ComboBox CBTipoTalle;
+        private DataGridViewTextBoxColumn tipoTalle;
     }
 }

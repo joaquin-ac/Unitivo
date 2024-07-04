@@ -7,6 +7,7 @@ using Unitivo.Validators;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Unitivo.Repositorios.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Unitivo.Repositorios.Implementaciones
 {
@@ -17,11 +18,12 @@ namespace Unitivo.Repositorios.Implementaciones
         public TalleRepositorio()
         {
             _contexto = Contexto.dbContexto;
+            _contexto?.TipoTalles.Load();
         }
 
         public bool AgregarTalle(Talle x)
         {
-            if (BuscarTalle(x.Descripcion).Count > 0)
+            if (BuscarTalleExacto(x.Descripcion).Count > 0)
             {
                 return false;
             }
@@ -103,6 +105,12 @@ namespace Unitivo.Repositorios.Implementaciones
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
         }
+
+        public List<Talle> ListarTallesPorTipo(int tipoTalleId)
+        {
+            return _contexto.Talles.Where(t => t.TipoTalleId == tipoTalleId && t.Estado).ToList();
+        }
+
     }
 }
 

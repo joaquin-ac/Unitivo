@@ -16,6 +16,7 @@ namespace Unitivo.Presentacion.Administrador
     public partial class GestionarCategorias : Form
     {
         CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
+        TipoTalleRepositorio tipoTalleRepositorio = new TipoTalleRepositorio();
         Categoria categoriaParaEditar = new Categoria();
         public GestionarCategorias()
         {
@@ -69,6 +70,7 @@ namespace Unitivo.Presentacion.Administrador
         private void GestionarCategorias_Load(object sender, EventArgs e)
         {
             CargarCategorias();
+            CargarTipoTalles();
         }
 
         private void CargarCategorias()
@@ -81,12 +83,12 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (categoria.Estado == true)
                 {
-                    dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+                    dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+                    int rowIndex = dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvRegistroCategoria.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -104,12 +106,12 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (categoria.Estado == true)
                 {
-                    dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+                    dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado);
+                    int rowIndex = dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvRegistroCategoria.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -128,6 +130,7 @@ namespace Unitivo.Presentacion.Administrador
                 TBNombreCategoria.Text = categoriaSeleccionado;
 
                 categoriaParaEditar.Id = idCategoria;
+
             }
             else
             {
@@ -173,6 +176,8 @@ namespace Unitivo.Presentacion.Administrador
                 categoriaParaEditar = categoriaRepositorio.BuscarCategoriaPorId(categoriaParaEditar.Id);
                 categoriaParaEditar.Descripcion = TBNombreCategoria.Text;
 
+              
+
                 if (categoriaRepositorio.ModificarCategoria(categoriaParaEditar))
                 {
                     CargarCategorias();
@@ -203,6 +208,11 @@ namespace Unitivo.Presentacion.Administrador
                 }
                 CargarCategorias();
             }
+        }
+
+        private void CargarTipoTalles()
+        {
+
         }
     }
 }

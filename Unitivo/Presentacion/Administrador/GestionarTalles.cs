@@ -17,16 +17,13 @@ namespace Unitivo.Presentacion.Administrador
     public partial class GestionarTalles : Form
     {
         TalleRepositorio talleRepositorio = new TalleRepositorio();
+        TipoTalleRepositorio tipoTalleRepositorio = new TipoTalleRepositorio();
         Talle talleParaEditar = new Talle();
-        private string tipoDeTalle = "cualquiera";
+        private string tipoDeTalle = "";
         public GestionarTalles()
         {
             InitializeComponent();
-        }
-
-        private void Num_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CommonFunctions.ValidarKeyPress((TextBox)sender, e);
+            CargarTipoTalles();
         }
 
         private void BEliminarTalle_Click(object sender, EventArgs e)
@@ -70,12 +67,12 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (talle.Estado == true)
                 {
-                    dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+                    dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado, talle.TipoTalleIdNavigation.Descripcion);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+                    int rowIndex = dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado, talle.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvListarTalles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -93,12 +90,12 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (talle.Estado == true)
                 {
-                    dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+                    dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado, talle.TipoTalleIdNavigation.Descripcion);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado);
+                    int rowIndex = dgvListarTalles.Rows.Add(talle.Id, talle.Descripcion, talle.Estado, talle.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
                     dgvListarTalles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -157,9 +154,11 @@ namespace Unitivo.Presentacion.Administrador
                 string talleSeleccionado = Convert.ToString(dgvListarTalles.SelectedRows[0].Cells["Descripcion"].Value);
                 int idTalle = (int)dgvListarTalles.SelectedRows[0].Cells["ID"].Value;
 
+
                 TBModTalle.Text = talleSeleccionado;
 
                 talleParaEditar.Id = idTalle;
+                tipoDeTalle = Convert.ToString(dgvListarTalles.SelectedRows[0].Cells["TipoTalle"].Value);
             }
             else
             {
@@ -174,7 +173,7 @@ namespace Unitivo.Presentacion.Administrador
             {
                 talleParaEditar = talleRepositorio.BuscarTallePorId(talleParaEditar.Id);
                 talleParaEditar.Descripcion = TBModTalle.Text;
-
+               
                 if (talleRepositorio.ModificarTalle(talleParaEditar))
                 {
                     CargarTalles();
@@ -215,11 +214,11 @@ namespace Unitivo.Presentacion.Administrador
 
         private void TBModTalle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (tipoDeTalle == "numeros")
+            if (tipoDeTalle == "Numeros")
             {
                 CommonFunctions.ValidarNumerosSinEspacios(sender, e);
             }
-            else if (tipoDeTalle == "letras")
+            else if (tipoDeTalle == "Letras")
             {
                 CommonFunctions.ValidarLetrasSinEspacios(sender, e);
             }
@@ -232,21 +231,42 @@ namespace Unitivo.Presentacion.Administrador
 
         private void TBModTalle_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TBModTalle.Text) && char.IsDigit(TBModTalle.Text[0]))
-            {
-                // Si el primer carácter es un número
+        }
 
-                tipoDeTalle = "numeros";
-            }
-            else if (!string.IsNullOrEmpty(TBModTalle.Text) && char.IsLetter(TBModTalle.Text[0]))
+        private void GroupBoxDatosTalles_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarTipoTalles()
+        {
+
+        }
+
+        private void Num_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (tipoDeTalle == "Numeros")
             {
-                // Si el primer carácter es una letra
-                tipoDeTalle = "letras";
+                CommonFunctions.ValidarNumerosSinEspacios(sender, e);
+            }
+            else if (tipoDeTalle == "Letras")
+            {
+                CommonFunctions.ValidarLetrasSinEspacios(sender, e);
             }
             else
             {
-                tipoDeTalle = "cualquiera";
+                CommonFunctions.ValidarKeyPress((System.Windows.Forms.TextBox)sender, e);
             }
+        }
+
+        private void CBTipoTalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBTipoTalle_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+           
         }
     }
 }

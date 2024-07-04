@@ -43,7 +43,6 @@
             TabControlListaEmpleados = new TabControl();
             TabPageListaEmpleados = new TabPage();
             dgvEmpleados = new DataGridView();
-            BReactivar = new Button();
             ID = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
             Direccion = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
+            BReactivar = new Button();
             GroupBoxGestionUsuarios.SuspendLayout();
             TabControlListaEmpleados.SuspendLayout();
             TabPageListaEmpleados.SuspendLayout();
@@ -212,8 +212,8 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvEmpleados.DefaultCellStyle = dataGridViewCellStyle2;
@@ -240,16 +240,6 @@
             dgvEmpleados.CellContentClick += dgvEmpleados_CellContentClick;
             dgvEmpleados.RowHeaderMouseClick += dgvEmpleados_RowHeaderMouseClick;
             dgvEmpleados.RowHeaderMouseDoubleClick += dgvEmpleados_RowHeaderMouseDoubleClick;
-            // 
-            // BReactivar
-            // 
-            BReactivar.Location = new Point(864, 208);
-            BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
-            BReactivar.Click += BReactivar_Click;
             // 
             // ID
             // 
@@ -312,6 +302,16 @@
             Estado.HeaderText = "Estado";
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
+            // 
+            // BReactivar
+            // 
+            BReactivar.Location = new Point(864, 208);
+            BReactivar.Name = "BReactivar";
+            BReactivar.Size = new Size(75, 23);
+            BReactivar.TabIndex = 90;
+            BReactivar.Text = "Reactivar";
+            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Click += BReactivar_Click;
             // 
             // GestionarEmpleados
             // 

@@ -45,11 +45,18 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void CargarFactura()
         {
-            TBIDFactura.Text = factura.Id.ToString();
-            DateTimePickerFecha.Value = factura.FechaCreacion;
             string nomVendedor = factura.IdUsuarioNavigation.IdEmpleadoNavigation.Apellido + ", " + factura.IdUsuarioNavigation.IdEmpleadoNavigation.Nombre;
-            TBVendedor.Text = nomVendedor;
-            TBTotalFactura.Text = factura.Precio.ToString();
+            string nomCliente = factura.IdClienteNavigation.Apellido + ", " + factura.IdClienteNavigation.Nombre;
+            string dniVendedor = factura.IdUsuarioNavigation.IdEmpleadoNavigation.Dni + "";
+            string dniCliente = factura.IdClienteNavigation.Dni + "";
+            lvendedor.Text = nomVendedor;
+            lcliente.Text = nomCliente;
+            ldniVendedor.Text = dniVendedor;
+            ldniCliente.Text = dniCliente;
+            nFactura.Text = factura.Id.ToString();
+            lfecha.Text = factura.FechaCreacion.ToString();
+            ltotal.Text = "$ "+factura.Precio;
+            
             CargarDetalle();
         }
 
@@ -61,7 +68,7 @@ namespace Unitivo.Presentacion.Vendedor
 
             foreach (DetalleFactura dfactura in detallesFactura)
             {
-                dgvListaVentas.Rows.Add(dfactura.Id, dfactura.IdProductoNavigation.Nombre, dfactura.Precio, dfactura.Cantidad, dfactura.IdProductoNavigation.IdTalleNavigation.Descripcion, dfactura.Precio);
+                dgvListaVentas.Rows.Add(dfactura.Id, dfactura.IdProductoNavigation.Nombre, dfactura.IdProductoNavigation.Precio, dfactura.Cantidad, dfactura.IdProductoNavigation.IdTalleNavigation.Descripcion, dfactura.Precio);
             }
         }
 
