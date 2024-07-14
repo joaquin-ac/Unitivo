@@ -29,8 +29,15 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             BEliminarProducto = new Button();
             BModificarProducto = new Button();
             GroupBoxBuscarProducto = new GroupBox();
@@ -82,7 +89,7 @@
             BEliminarProducto.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BEliminarProducto.ForeColor = Color.White;
             BEliminarProducto.Image = Properties.Resources.icons8_basura_26;
-            BEliminarProducto.Location = new Point(855, 290);
+            BEliminarProducto.Location = new Point(855, 286);
             BEliminarProducto.Margin = new Padding(4);
             BEliminarProducto.Name = "BEliminarProducto";
             BEliminarProducto.Size = new Size(59, 52);
@@ -119,11 +126,11 @@
             GroupBoxBuscarProducto.Controls.Add(TBBuscar);
             GroupBoxBuscarProducto.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxBuscarProducto.ForeColor = Color.SaddleBrown;
-            GroupBoxBuscarProducto.Location = new Point(68, 29);
+            GroupBoxBuscarProducto.Location = new Point(118, 29);
             GroupBoxBuscarProducto.Margin = new Padding(4);
             GroupBoxBuscarProducto.Name = "GroupBoxBuscarProducto";
             GroupBoxBuscarProducto.Padding = new Padding(4);
-            GroupBoxBuscarProducto.Size = new Size(770, 94);
+            GroupBoxBuscarProducto.Size = new Size(657, 94);
             GroupBoxBuscarProducto.TabIndex = 82;
             GroupBoxBuscarProducto.TabStop = false;
             GroupBoxBuscarProducto.Text = "Productos";
@@ -133,7 +140,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.DarkOliveGreen;
-            label3.Location = new Point(597, 20);
+            label3.Location = new Point(466, 20);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(50, 20);
@@ -158,7 +165,7 @@
             CBTalleBuscar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             CBTalleBuscar.FormattingEnabled = true;
             CBTalleBuscar.Items.AddRange(new object[] { "Todos" });
-            CBTalleBuscar.Location = new Point(599, 41);
+            CBTalleBuscar.Location = new Point(469, 41);
             CBTalleBuscar.Margin = new Padding(3, 2, 3, 2);
             CBTalleBuscar.Name = "CBTalleBuscar";
             CBTalleBuscar.Size = new Size(140, 28);
@@ -203,6 +210,7 @@
             TBBuscar.Name = "TBBuscar";
             TBBuscar.Size = new Size(152, 26);
             TBBuscar.TabIndex = 6;
+            TBBuscar.KeyPress += TBBuscar_KeyPress;
             // 
             // TabControlListaProductos
             // 
@@ -233,6 +241,8 @@
             // 
             DataGridViewListaProductos.AllowUserToAddRows = false;
             DataGridViewListaProductos.AllowUserToDeleteRows = false;
+            DataGridViewListaProductos.AllowUserToResizeColumns = false;
+            DataGridViewListaProductos.AllowUserToResizeRows = false;
             DataGridViewListaProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListaProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListaProductos.BackgroundColor = Color.RosyBrown;
@@ -249,14 +259,14 @@
             DataGridViewListaProductos.ColumnHeadersHeight = 20;
             DataGridViewListaProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewListaProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Producto, Categoria, Stock, Talle, Precio, Estado });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DataGridViewListaProductos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            DataGridViewListaProductos.DefaultCellStyle = dataGridViewCellStyle9;
             DataGridViewListaProductos.Dock = DockStyle.Fill;
             DataGridViewListaProductos.EnableHeadersVisualStyles = false;
             DataGridViewListaProductos.Location = new Point(3, 2);
@@ -264,15 +274,16 @@
             DataGridViewListaProductos.Name = "DataGridViewListaProductos";
             DataGridViewListaProductos.ReadOnly = true;
             DataGridViewListaProductos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.NavajoWhite;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DataGridViewListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.NavajoWhite;
+            dataGridViewCellStyle10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            DataGridViewListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             DataGridViewListaProductos.RowHeadersWidth = 51;
+            DataGridViewListaProductos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListaProductos.Size = new Size(727, 192);
             DataGridViewListaProductos.TabIndex = 6;
             DataGridViewListaProductos.RowHeaderMouseClick += DataGridViewListaProductos_RowHeaderMouseClick;
@@ -280,6 +291,8 @@
             // 
             // ID
             // 
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
             ID.HeaderText = "ID";
             ID.MinimumWidth = 6;
             ID.Name = "ID";
@@ -287,6 +300,8 @@
             // 
             // Producto
             // 
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            Producto.DefaultCellStyle = dataGridViewCellStyle3;
             Producto.HeaderText = "Producto";
             Producto.MinimumWidth = 6;
             Producto.Name = "Producto";
@@ -294,6 +309,8 @@
             // 
             // Categoria
             // 
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            Categoria.DefaultCellStyle = dataGridViewCellStyle4;
             Categoria.HeaderText = "Categoria";
             Categoria.MinimumWidth = 6;
             Categoria.Name = "Categoria";
@@ -301,6 +318,8 @@
             // 
             // Stock
             // 
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            Stock.DefaultCellStyle = dataGridViewCellStyle5;
             Stock.HeaderText = "Stock";
             Stock.MinimumWidth = 6;
             Stock.Name = "Stock";
@@ -308,6 +327,8 @@
             // 
             // Talle
             // 
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            Talle.DefaultCellStyle = dataGridViewCellStyle6;
             Talle.HeaderText = "Talle";
             Talle.MinimumWidth = 6;
             Talle.Name = "Talle";
@@ -315,6 +336,8 @@
             // 
             // Precio
             // 
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            Precio.DefaultCellStyle = dataGridViewCellStyle7;
             Precio.HeaderText = "Precio";
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
@@ -322,7 +345,10 @@
             // 
             // Estado
             // 
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            Estado.DefaultCellStyle = dataGridViewCellStyle8;
             Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
@@ -390,6 +416,7 @@
             CBTalleProducto.Name = "CBTalleProducto";
             CBTalleProducto.Size = new Size(187, 32);
             CBTalleProducto.TabIndex = 19;
+            CBTalleProducto.SelectedIndexChanged += CBTalleProducto_SelectedIndexChanged;
             // 
             // Label5
             // 
@@ -443,6 +470,7 @@
             TBNombreProducto.Name = "TBNombreProducto";
             TBNombreProducto.Size = new Size(187, 29);
             TBNombreProducto.TabIndex = 8;
+            TBNombreProducto.KeyPress += TBNombreProducto_KeyPress;
             // 
             // label7
             // 
@@ -522,12 +550,19 @@
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(855, 148);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(855, 286);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 91;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += BReactivar_Click;
             // 
             // GestionarProductos
@@ -589,6 +624,7 @@
         internal TextBox TBStockAdic;
         internal Label label9;
         private GroupBox groupBox1;
+        internal Button BReactivar;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Producto;
         private DataGridViewTextBoxColumn Categoria;
@@ -596,6 +632,5 @@
         private DataGridViewTextBoxColumn Talle;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Estado;
-        private Button BReactivar;
     }
 }

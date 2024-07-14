@@ -30,7 +30,16 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             BModificarCliente = new Button();
             GroupBoxClientes = new GroupBox();
             Label2 = new Label();
@@ -58,10 +67,10 @@
             // 
             // BModificarCliente
             // 
-            BModificarCliente.BackColor = Color.Goldenrod;
+            BModificarCliente.BackColor = Color.SteelBlue;
             BModificarCliente.ForeColor = Color.White;
             BModificarCliente.Image = Properties.Resources.icons8_editar_archivo_26;
-            BModificarCliente.Location = new Point(827, 354);
+            BModificarCliente.Location = new Point(841, 311);
             BModificarCliente.Margin = new Padding(4);
             BModificarCliente.Name = "BModificarCliente";
             BModificarCliente.Size = new Size(59, 52);
@@ -143,7 +152,7 @@
             BEliminarClientes.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BEliminarClientes.ForeColor = Color.White;
             BEliminarClientes.Image = Properties.Resources.icons8_basura_26;
-            BEliminarClientes.Location = new Point(827, 425);
+            BEliminarClientes.Location = new Point(841, 394);
             BEliminarClientes.Margin = new Padding(4);
             BEliminarClientes.Name = "BEliminarClientes";
             BEliminarClientes.Size = new Size(59, 52);
@@ -181,30 +190,34 @@
             // 
             DataGridViewListarClientes.AllowUserToAddRows = false;
             DataGridViewListarClientes.AllowUserToDeleteRows = false;
+            DataGridViewListarClientes.AllowUserToResizeColumns = false;
+            DataGridViewListarClientes.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            DataGridViewListarClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewListarClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListarClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             DataGridViewListarClientes.BackgroundColor = Color.RosyBrown;
             DataGridViewListarClientes.BorderStyle = BorderStyle.None;
             DataGridViewListarClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DataGridViewListarClientes.ColumnHeadersHeight = 20;
             DataGridViewListarClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewListarClientes.Columns.AddRange(new DataGridViewColumn[] { ID, Nombre, Apellido, Dni, Telefono, Direccion, Email, Estado });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DataGridViewListarClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            DataGridViewListarClientes.DefaultCellStyle = dataGridViewCellStyle11;
             DataGridViewListarClientes.Dock = DockStyle.Fill;
             DataGridViewListarClientes.EnableHeadersVisualStyles = false;
             DataGridViewListarClientes.Location = new Point(3, 2);
@@ -212,22 +225,24 @@
             DataGridViewListarClientes.Name = "DataGridViewListarClientes";
             DataGridViewListarClientes.ReadOnly = true;
             DataGridViewListarClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.NavajoWhite;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DataGridViewListarClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.NavajoWhite;
+            dataGridViewCellStyle12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            DataGridViewListarClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             DataGridViewListarClientes.RowHeadersWidth = 51;
+            DataGridViewListarClientes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListarClientes.Size = new Size(696, 297);
             DataGridViewListarClientes.TabIndex = 6;
             DataGridViewListarClientes.RowHeaderMouseClick += DataGridViewListarClientes_RowHeaderMouseClick_1;
-            DataGridViewListarClientes.RowHeaderMouseDoubleClick += DataGridViewListarClientes_RowHeaderMouseDoubleClick_1;
             // 
             // ID
             // 
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            ID.DefaultCellStyle = dataGridViewCellStyle3;
             ID.HeaderText = "ID";
             ID.MinimumWidth = 6;
             ID.Name = "ID";
@@ -235,6 +250,8 @@
             // 
             // Nombre
             // 
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            Nombre.DefaultCellStyle = dataGridViewCellStyle4;
             Nombre.HeaderText = "Nombre";
             Nombre.MinimumWidth = 6;
             Nombre.Name = "Nombre";
@@ -242,6 +259,8 @@
             // 
             // Apellido
             // 
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            Apellido.DefaultCellStyle = dataGridViewCellStyle5;
             Apellido.HeaderText = "Apellido";
             Apellido.MinimumWidth = 6;
             Apellido.Name = "Apellido";
@@ -249,6 +268,8 @@
             // 
             // Dni
             // 
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            Dni.DefaultCellStyle = dataGridViewCellStyle6;
             Dni.HeaderText = "Dni";
             Dni.MinimumWidth = 6;
             Dni.Name = "Dni";
@@ -256,6 +277,8 @@
             // 
             // Telefono
             // 
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            Telefono.DefaultCellStyle = dataGridViewCellStyle7;
             Telefono.HeaderText = "Telefono";
             Telefono.MinimumWidth = 6;
             Telefono.Name = "Telefono";
@@ -263,6 +286,8 @@
             // 
             // Direccion
             // 
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            Direccion.DefaultCellStyle = dataGridViewCellStyle8;
             Direccion.HeaderText = "Direccion";
             Direccion.MinimumWidth = 6;
             Direccion.Name = "Direccion";
@@ -270,6 +295,8 @@
             // 
             // Email
             // 
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            Email.DefaultCellStyle = dataGridViewCellStyle9;
             Email.HeaderText = "Email";
             Email.MinimumWidth = 6;
             Email.Name = "Email";
@@ -277,18 +304,28 @@
             // 
             // Estado
             // 
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            Estado.DefaultCellStyle = dataGridViewCellStyle10;
             Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(827, 237);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(841, 394);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 92;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += BReactivar_Click;
             // 
             // GestionarClientes
@@ -328,13 +365,14 @@
         internal TabControl TabControlListaClientes;
         internal TabPage TabPageListaCliente;
         internal DataGridView DataGridViewListarClientes;
-        private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
+        internal Button BReactivar;
+        private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Dni;
@@ -342,6 +380,5 @@
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Estado;
-        private Button BReactivar;
     }
 }

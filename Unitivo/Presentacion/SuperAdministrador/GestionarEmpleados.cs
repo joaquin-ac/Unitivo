@@ -161,27 +161,11 @@ namespace Unitivo.Presentacion.SuperAdministrador
         private void GestionarEmpleados_Load(object sender, EventArgs e)
         {
             ComboBoxBuscarDni.Text = "Nombre y Apellido";
+            BReactivar.Visible = false;
+            BEliminarEmpleado.Visible = false;
         }
 
-        private void dgvEmpleados_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Obtener la fila que fue doble clickeada
-                DataGridViewRow filaSeleccionada = dgvEmpleados.Rows[e.RowIndex];
-                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
-                if (empleadoRepositorio.ReactivaEmpleado(IdSelect))
-                {
-                    MessageBox.Show("El empleado se reactivo con exito.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El empleado ya estaba activo.", "Empleados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                CargarEmpleados();
-            }
-
-        }
+        
 
         private void dgvEmpleados_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -192,13 +176,13 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarEmpleado.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarEmpleado.Visible = false;
+                    BReactivar.Visible = true;
                 }
                 else
                 {
-                    BEliminarEmpleado.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarEmpleado.Visible = true;
+                    BReactivar.Visible = false;
                 }
             }
 

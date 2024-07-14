@@ -83,6 +83,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
         private void GestionarPuestos_Load(object sender, EventArgs e)
         {
             CargarPerfiles();
+            BReactivar.Visible = false;
+            BEliminarPerfiles.Visible = false;
         }
 
         private void BBuscarPerfil_Click(object sender, EventArgs e)
@@ -181,13 +183,13 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarPerfiles.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarPerfiles.Visible = false;
+                    BReactivar.Visible = true;
                 }
                 else
                 {
-                    BEliminarPerfiles.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarPerfiles.Visible = true;
+                    BReactivar.Visible = false;
                 }
             }
         }
@@ -220,7 +222,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 CargarPerfiles();
             }
 
-           
+
         }
     }
 }

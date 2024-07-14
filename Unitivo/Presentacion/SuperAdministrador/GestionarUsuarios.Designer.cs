@@ -69,7 +69,7 @@
             BModificarUsuario.BackColor = Color.SteelBlue;
             BModificarUsuario.ForeColor = Color.White;
             BModificarUsuario.Image = Properties.Resources.icons8_editar_archivo_26;
-            BModificarUsuario.Location = new Point(839, 212);
+            BModificarUsuario.Location = new Point(839, 213);
             BModificarUsuario.Margin = new Padding(4);
             BModificarUsuario.Name = "BModificarUsuario";
             BModificarUsuario.Size = new Size(59, 52);
@@ -82,7 +82,7 @@
             BEliminarUsuario.BackColor = Color.Brown;
             BEliminarUsuario.ForeColor = Color.White;
             BEliminarUsuario.Image = Properties.Resources.icons8_basura_26;
-            BEliminarUsuario.Location = new Point(839, 282);
+            BEliminarUsuario.Location = new Point(839, 299);
             BEliminarUsuario.Margin = new Padding(4);
             BEliminarUsuario.Name = "BEliminarUsuario";
             BEliminarUsuario.Size = new Size(59, 52);
@@ -162,6 +162,8 @@
             // 
             dgvListaUsuarios.AllowUserToAddRows = false;
             dgvListaUsuarios.AllowUserToDeleteRows = false;
+            dgvListaUsuarios.AllowUserToResizeColumns = false;
+            dgvListaUsuarios.AllowUserToResizeRows = false;
             dgvListaUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvListaUsuarios.BackgroundColor = Color.RosyBrown;
             dgvListaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -377,12 +379,19 @@
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(839, 164);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(839, 298);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 95;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += BReactivar_Click;
             // 
             // GestionarUsuarios
@@ -446,6 +455,6 @@
         private DataGridViewTextBoxColumn Perfil;
         private DataGridViewTextBoxColumn Empleado;
         internal Button BCancelar;
-        private Button BReactivar;
+        internal Button BReactivar;
     }
 }

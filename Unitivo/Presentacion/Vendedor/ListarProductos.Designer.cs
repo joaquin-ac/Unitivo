@@ -25,8 +25,14 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             GroupBoxBuscarProducto = new GroupBox();
             label3 = new Label();
             Label2 = new Label();
@@ -60,11 +66,11 @@
             GroupBoxBuscarProducto.Controls.Add(TBBuscar);
             GroupBoxBuscarProducto.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxBuscarProducto.ForeColor = Color.SaddleBrown;
-            GroupBoxBuscarProducto.Location = new Point(95, 28);
-            GroupBoxBuscarProducto.Margin = new Padding(4);
+            GroupBoxBuscarProducto.Location = new Point(135, 28);
+            GroupBoxBuscarProducto.Margin = new Padding(4, 4, 4, 4);
             GroupBoxBuscarProducto.Name = "GroupBoxBuscarProducto";
-            GroupBoxBuscarProducto.Padding = new Padding(4);
-            GroupBoxBuscarProducto.Size = new Size(770, 94);
+            GroupBoxBuscarProducto.Padding = new Padding(4, 4, 4, 4);
+            GroupBoxBuscarProducto.Size = new Size(674, 94);
             GroupBoxBuscarProducto.TabIndex = 19;
             GroupBoxBuscarProducto.TabStop = false;
             GroupBoxBuscarProducto.Text = "Productos";
@@ -74,7 +80,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.DarkOliveGreen;
-            label3.Location = new Point(605, 19);
+            label3.Location = new Point(482, 22);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(50, 20);
@@ -86,7 +92,7 @@
             Label2.AutoSize = true;
             Label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label2.ForeColor = Color.DarkOliveGreen;
-            Label2.Location = new Point(284, 19);
+            Label2.Location = new Point(284, 22);
             Label2.Margin = new Padding(4, 0, 4, 0);
             Label2.Name = "Label2";
             Label2.Size = new Size(94, 20);
@@ -99,7 +105,7 @@
             CBTalle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             CBTalle.FormattingEnabled = true;
             CBTalle.Items.AddRange(new object[] { "Todos" });
-            CBTalle.Location = new Point(607, 40);
+            CBTalle.Location = new Point(485, 43);
             CBTalle.Margin = new Padding(3, 2, 3, 2);
             CBTalle.Name = "CBTalle";
             CBTalle.Size = new Size(140, 28);
@@ -111,7 +117,7 @@
             CBCategoria.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             CBCategoria.FormattingEnabled = true;
             CBCategoria.Items.AddRange(new object[] { "Todos" });
-            CBCategoria.Location = new Point(287, 40);
+            CBCategoria.Location = new Point(287, 43);
             CBCategoria.Margin = new Padding(4, 2, 3, 2);
             CBCategoria.Name = "CBCategoria";
             CBCategoria.Size = new Size(140, 28);
@@ -127,8 +133,8 @@
             BBuscarProducto.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BBuscarProducto.ForeColor = Color.White;
             BBuscarProducto.Image = Properties.Resources.icons8_búsqueda_26;
-            BBuscarProducto.Location = new Point(197, 32);
-            BBuscarProducto.Margin = new Padding(4);
+            BBuscarProducto.Location = new Point(197, 35);
+            BBuscarProducto.Margin = new Padding(4, 4, 4, 4);
             BBuscarProducto.Name = "BBuscarProducto";
             BBuscarProducto.Size = new Size(46, 40);
             BBuscarProducto.TabIndex = 14;
@@ -139,8 +145,8 @@
             // 
             TBBuscar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TBBuscar.ForeColor = SystemColors.WindowFrame;
-            TBBuscar.Location = new Point(20, 40);
-            TBBuscar.Margin = new Padding(4);
+            TBBuscar.Location = new Point(20, 43);
+            TBBuscar.Margin = new Padding(4, 4, 4, 4);
             TBBuscar.Name = "TBBuscar";
             TBBuscar.Size = new Size(152, 26);
             TBBuscar.TabIndex = 6;
@@ -175,6 +181,8 @@
             // 
             DataGridViewListaProductos.AllowUserToAddRows = false;
             DataGridViewListaProductos.AllowUserToDeleteRows = false;
+            DataGridViewListaProductos.AllowUserToResizeColumns = false;
+            DataGridViewListaProductos.AllowUserToResizeRows = false;
             DataGridViewListaProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListaProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListaProductos.BackgroundColor = Color.RosyBrown;
@@ -191,35 +199,38 @@
             DataGridViewListaProductos.ColumnHeadersHeight = 20;
             DataGridViewListaProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewListaProductos.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Categoria, Stock, Column1, Column4 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DataGridViewListaProductos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DataGridViewListaProductos.DefaultCellStyle = dataGridViewCellStyle8;
             DataGridViewListaProductos.Dock = DockStyle.Fill;
             DataGridViewListaProductos.EnableHeadersVisualStyles = false;
             DataGridViewListaProductos.Location = new Point(3, 2);
-            DataGridViewListaProductos.Margin = new Padding(4);
+            DataGridViewListaProductos.Margin = new Padding(4, 4, 4, 4);
             DataGridViewListaProductos.Name = "DataGridViewListaProductos";
             DataGridViewListaProductos.ReadOnly = true;
             DataGridViewListaProductos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.NavajoWhite;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            DataGridViewListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.NavajoWhite;
+            dataGridViewCellStyle9.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            DataGridViewListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             DataGridViewListaProductos.RowHeadersWidth = 51;
+            DataGridViewListaProductos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListaProductos.Size = new Size(825, 305);
             DataGridViewListaProductos.TabIndex = 6;
             // 
             // Column2
             // 
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            Column2.DefaultCellStyle = dataGridViewCellStyle2;
             Column2.HeaderText = "ID";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
@@ -227,6 +238,8 @@
             // 
             // Column3
             // 
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            Column3.DefaultCellStyle = dataGridViewCellStyle3;
             Column3.HeaderText = "Producto";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
@@ -234,6 +247,8 @@
             // 
             // Categoria
             // 
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            Categoria.DefaultCellStyle = dataGridViewCellStyle4;
             Categoria.HeaderText = "Categoria";
             Categoria.MinimumWidth = 6;
             Categoria.Name = "Categoria";
@@ -241,6 +256,8 @@
             // 
             // Stock
             // 
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            Stock.DefaultCellStyle = dataGridViewCellStyle5;
             Stock.HeaderText = "Stock";
             Stock.MinimumWidth = 6;
             Stock.Name = "Stock";
@@ -248,6 +265,8 @@
             // 
             // Column1
             // 
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            Column1.DefaultCellStyle = dataGridViewCellStyle6;
             Column1.HeaderText = "Talle";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
@@ -255,6 +274,8 @@
             // 
             // Column4
             // 
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            Column4.DefaultCellStyle = dataGridViewCellStyle7;
             Column4.HeaderText = "Precio";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
@@ -269,7 +290,7 @@
             Controls.Add(GroupBoxBuscarProducto);
             Controls.Add(TabControlListaProductos);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "ListarProductos";
             Text = "Form1";
             Load += ListarProductos_Load;
@@ -287,12 +308,6 @@
         internal TabControl TabControlListaProductos;
         internal TabPage TabPageListaProducto;
         internal DataGridView DataGridViewListaProductos;
-        internal DataGridViewTextBoxColumn Column2;
-        internal DataGridViewTextBoxColumn Column3;
-        internal DataGridViewTextBoxColumn Categoria;
-        internal DataGridViewTextBoxColumn Stock;
-        internal DataGridViewTextBoxColumn Column1;
-        internal DataGridViewTextBoxColumn Column4;
 
         #endregion
 
@@ -300,5 +315,11 @@
         internal Label Label2;
         internal ComboBox CBTalle;
         internal ComboBox CBCategoria;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn Stock;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

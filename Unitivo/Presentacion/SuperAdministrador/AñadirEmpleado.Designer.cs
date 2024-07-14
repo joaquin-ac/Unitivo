@@ -295,6 +295,8 @@
             // 
             DataGridViewListarEmpleados.AllowUserToAddRows = false;
             DataGridViewListarEmpleados.AllowUserToDeleteRows = false;
+            DataGridViewListarEmpleados.AllowUserToResizeColumns = false;
+            DataGridViewListarEmpleados.AllowUserToResizeRows = false;
             DataGridViewListarEmpleados.BackgroundColor = Color.RosyBrown;
             DataGridViewListarEmpleados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -332,6 +334,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             DataGridViewListarEmpleados.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListarEmpleados.RowHeadersWidth = 51;
+            DataGridViewListarEmpleados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             DataGridViewListarEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle4;
             DataGridViewListarEmpleados.Size = new Size(433, 388);

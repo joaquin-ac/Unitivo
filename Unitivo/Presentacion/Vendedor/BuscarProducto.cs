@@ -96,7 +96,7 @@ namespace Unitivo.Presentacion.Vendedor
 
         private void CargarProductos()
         {
-            List<Producto> productos = productoRepositorio.ListarProductosActivos();
+            List<Producto> productos = productoRepositorio.ListarProductosActivosVentas();
             DataGridViewListaProductos.Rows.Clear();
             DataGridViewListaProductos.Refresh();
             foreach (Producto producto in productos)
@@ -126,7 +126,7 @@ namespace Unitivo.Presentacion.Vendedor
             {
                 talle = "";
             }
-            List<Producto> productos = productoRepositorio.BuscarProductosActivos(nom, cat, talle);
+            List<Producto> productos = productoRepositorio.BuscarProductosActivosVentas(nom, cat, talle);
             DataGridViewListaProductos.Rows.Clear();
             DataGridViewListaProductos.Refresh();
             foreach (Producto producto in productos)

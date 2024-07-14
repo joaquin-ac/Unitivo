@@ -55,7 +55,7 @@
             TabControlRegCategoria.Controls.Add(TabPageListaCategoria);
             TabControlRegCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabControlRegCategoria.Location = new Point(155, 200);
-            TabControlRegCategoria.Margin = new Padding(2);
+            TabControlRegCategoria.Margin = new Padding(2, 2, 2, 2);
             TabControlRegCategoria.Name = "TabControlRegCategoria";
             TabControlRegCategoria.SelectedIndex = 0;
             TabControlRegCategoria.Size = new Size(624, 279);
@@ -67,9 +67,9 @@
             TabPageListaCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaCategoria.ForeColor = Color.White;
             TabPageListaCategoria.Location = new Point(4, 26);
-            TabPageListaCategoria.Margin = new Padding(2);
+            TabPageListaCategoria.Margin = new Padding(2, 2, 2, 2);
             TabPageListaCategoria.Name = "TabPageListaCategoria";
-            TabPageListaCategoria.Padding = new Padding(2);
+            TabPageListaCategoria.Padding = new Padding(2, 2, 2, 2);
             TabPageListaCategoria.Size = new Size(616, 249);
             TabPageListaCategoria.TabIndex = 0;
             TabPageListaCategoria.Text = "Lista de Categorias";
@@ -79,6 +79,8 @@
             // 
             DataGridViewListarCategorias.AllowUserToAddRows = false;
             DataGridViewListarCategorias.AllowUserToDeleteRows = false;
+            DataGridViewListarCategorias.AllowUserToResizeColumns = false;
+            DataGridViewListarCategorias.AllowUserToResizeRows = false;
             DataGridViewListarCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListarCategorias.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListarCategorias.BackgroundColor = Color.RosyBrown;
@@ -105,7 +107,7 @@
             DataGridViewListarCategorias.Dock = DockStyle.Fill;
             DataGridViewListarCategorias.EnableHeadersVisualStyles = false;
             DataGridViewListarCategorias.Location = new Point(2, 2);
-            DataGridViewListarCategorias.Margin = new Padding(2);
+            DataGridViewListarCategorias.Margin = new Padding(2, 2, 2, 2);
             DataGridViewListarCategorias.Name = "DataGridViewListarCategorias";
             DataGridViewListarCategorias.ReadOnly = true;
             DataGridViewListarCategorias.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -148,6 +150,7 @@
             // TipoTalle
             // 
             TipoTalle.HeaderText = "Tipo de talle";
+            TipoTalle.MinimumWidth = 6;
             TipoTalle.Name = "TipoTalle";
             TipoTalle.ReadOnly = true;
             // 
@@ -160,10 +163,10 @@
             PanelRegCategoria.Controls.Add(BRegistrarCategoria);
             PanelRegCategoria.Controls.Add(TBNombreCategoria);
             PanelRegCategoria.Controls.Add(LNombreCategoria);
-            PanelRegCategoria.Location = new Point(221, 29);
+            PanelRegCategoria.Location = new Point(188, 29);
             PanelRegCategoria.Margin = new Padding(4, 3, 4, 3);
             PanelRegCategoria.Name = "PanelRegCategoria";
-            PanelRegCategoria.Size = new Size(505, 133);
+            PanelRegCategoria.Size = new Size(550, 133);
             PanelRegCategoria.TabIndex = 36;
             PanelRegCategoria.Paint += PanelRegCategoria_Paint;
             // 
@@ -181,9 +184,9 @@
             // 
             CBTipoTalle.DropDownStyle = ComboBoxStyle.DropDownList;
             CBTipoTalle.FormattingEnabled = true;
-            CBTipoTalle.Location = new Point(169, 92);
+            CBTipoTalle.Location = new Point(186, 92);
             CBTipoTalle.Name = "CBTipoTalle";
-            CBTipoTalle.Size = new Size(176, 23);
+            CBTipoTalle.Size = new Size(159, 23);
             CBTipoTalle.TabIndex = 38;
             CBTipoTalle.SelectedIndexChanged += CBTipoTalle_SelectedIndexChanged;
             // 
@@ -195,7 +198,7 @@
             BRegistrarCategoria.FlatStyle = FlatStyle.Flat;
             BRegistrarCategoria.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             BRegistrarCategoria.ForeColor = Color.White;
-            BRegistrarCategoria.Location = new Point(371, 55);
+            BRegistrarCategoria.Location = new Point(395, 55);
             BRegistrarCategoria.Margin = new Padding(4, 3, 4, 3);
             BRegistrarCategoria.Name = "BRegistrarCategoria";
             BRegistrarCategoria.Size = new Size(114, 48);

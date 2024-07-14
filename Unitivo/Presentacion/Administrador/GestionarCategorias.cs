@@ -71,6 +71,8 @@ namespace Unitivo.Presentacion.Administrador
         {
             CargarCategorias();
             CargarTipoTalles();
+            BReactivar.Visible = false;
+            BEliminarCategoria.Visible = false;
         }
 
         private void CargarCategorias()
@@ -153,20 +155,21 @@ namespace Unitivo.Presentacion.Administrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarCategoria.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarCategoria.Visible = false;
+                    BReactivar.Visible = true; ;
                 }
                 else
                 {
-                    BEliminarCategoria.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarCategoria.Visible = true;
+                    BReactivar.Visible = false;
+
                 }
             }
         }
 
         private void dgvRegistroCategoria_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -176,7 +179,7 @@ namespace Unitivo.Presentacion.Administrador
                 categoriaParaEditar = categoriaRepositorio.BuscarCategoriaPorId(categoriaParaEditar.Id);
                 categoriaParaEditar.Descripcion = TBNombreCategoria.Text;
 
-              
+
 
                 if (categoriaRepositorio.ModificarCategoria(categoriaParaEditar))
                 {
@@ -211,6 +214,16 @@ namespace Unitivo.Presentacion.Administrador
         }
 
         private void CargarTipoTalles()
+        {
+
+        }
+
+        private void BAltaCategoria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BAltaCategoria_Click_1(object sender, EventArgs e)
         {
 
         }

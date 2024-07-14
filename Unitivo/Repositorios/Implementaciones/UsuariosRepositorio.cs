@@ -217,9 +217,9 @@ namespace Unitivo.Repositorios.Implementaciones
                 {
                     if (BCrypt.Net.BCrypt.Verify(password, user.Password))
                     {
-                        if (user.Estado == false)
+                        if (user.Estado == false || user.IdEmpleadoNavigation.Estado == false)
                         {
-                            MessageBox.Show("Usuario desactivado", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Usuario o empleado desactivado", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return null!;
                         }
                         else

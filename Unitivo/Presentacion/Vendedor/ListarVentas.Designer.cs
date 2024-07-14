@@ -218,6 +218,8 @@
             // 
             DataGridViewListaVentas.AllowUserToAddRows = false;
             DataGridViewListaVentas.AllowUserToDeleteRows = false;
+            DataGridViewListaVentas.AllowUserToResizeColumns = false;
+            DataGridViewListaVentas.AllowUserToResizeRows = false;
             DataGridViewListaVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListaVentas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListaVentas.BackgroundColor = Color.RosyBrown;
@@ -258,6 +260,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             DataGridViewListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListaVentas.RowHeadersWidth = 51;
+            DataGridViewListaVentas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListaVentas.Size = new Size(847, 303);
             DataGridViewListaVentas.TabIndex = 5;
             // 

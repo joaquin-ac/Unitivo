@@ -242,6 +242,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
             // 
             dgvListaUsuarios.AllowUserToAddRows = false;
             dgvListaUsuarios.AllowUserToDeleteRows = false;
+            dgvListaUsuarios.AllowUserToResizeColumns = false;
+            dgvListaUsuarios.AllowUserToResizeRows = false;
             dgvListaUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvListaUsuarios.BackgroundColor = Color.RosyBrown;
             dgvListaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -281,6 +283,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
             dgvListaUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvListaUsuarios.RowHeadersVisible = false;
             dgvListaUsuarios.RowHeadersWidth = 51;
+            dgvListaUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dgvListaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListaUsuarios.Size = new Size(685, 182);
@@ -386,6 +389,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
             // 
             dgvEmpleados.AllowUserToAddRows = false;
             dgvEmpleados.AllowUserToDeleteRows = false;
+            dgvEmpleados.AllowUserToResizeColumns = false;
             dgvEmpleados.AllowUserToResizeRows = false;
             dgvEmpleados.BackgroundColor = Color.RosyBrown;
             dgvEmpleados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -423,6 +427,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
             dgvEmpleados.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvEmpleados.RowHeadersWidth = 51;
+            dgvEmpleados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle8.ForeColor = Color.Black;
             dgvEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dgvEmpleados.Size = new Size(472, 259);

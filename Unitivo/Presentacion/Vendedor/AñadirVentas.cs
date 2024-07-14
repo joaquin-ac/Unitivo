@@ -195,9 +195,9 @@ namespace Unitivo.Formularios.Vendedor
                     MessageBox.Show("Venta completada exitosamente.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FacturaVenta facturaVentaForm = new FacturaVenta(facturaRepositorio.UltimaVenta(), this);
                     facturaVentaForm.Show();
-                    
+
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Ocurrio un error al realizar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -244,7 +244,7 @@ namespace Unitivo.Formularios.Vendedor
             }
             return true;
         }
-            
+
 
 
         public void UtilizarCliente(Cliente cli)
@@ -271,7 +271,7 @@ namespace Unitivo.Formularios.Vendedor
         {
             Fecha.Value = DateTime.Now;
             TBVendedor.Text = vendedor.IdEmpleadoNavigation.Apellido + ", " + vendedor.IdEmpleadoNavigation.Nombre;
-            TBNroFactura.Text = (facturaRepositorio.idUltimaVenta() + 1)+"";
+            TBNroFactura.Text = (facturaRepositorio.idUltimaVenta() + 1) + "";
         }
 
         private int existeProdDataGrid()
@@ -334,6 +334,11 @@ namespace Unitivo.Formularios.Vendedor
                 precio = decimal.Parse(fila.Cells["Precio"].Value.ToString()!) + precio;
             }
             return precio;
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

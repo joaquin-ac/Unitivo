@@ -79,6 +79,8 @@
             // 
             DataGridViewListarTalles.AllowUserToAddRows = false;
             DataGridViewListarTalles.AllowUserToDeleteRows = false;
+            DataGridViewListarTalles.AllowUserToResizeColumns = false;
+            DataGridViewListarTalles.AllowUserToResizeRows = false;
             DataGridViewListarTalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListarTalles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListarTalles.BackgroundColor = Color.RosyBrown;
@@ -148,6 +150,7 @@
             // tipoTalle
             // 
             tipoTalle.HeaderText = "Tipo de Talle";
+            tipoTalle.MinimumWidth = 6;
             tipoTalle.Name = "tipoTalle";
             tipoTalle.ReadOnly = true;
             // 
@@ -160,10 +163,10 @@
             PanelRegTalles.Controls.Add(CBTipoTalle);
             PanelRegTalles.Controls.Add(TBNombreTalle);
             PanelRegTalles.Controls.Add(LNombreTalle);
-            PanelRegTalles.Location = new Point(224, 28);
-            PanelRegTalles.Margin = new Padding(4);
+            PanelRegTalles.Location = new Point(203, 28);
+            PanelRegTalles.Margin = new Padding(4, 4, 4, 4);
             PanelRegTalles.Name = "PanelRegTalles";
-            PanelRegTalles.Size = new Size(505, 129);
+            PanelRegTalles.Size = new Size(549, 129);
             PanelRegTalles.TabIndex = 39;
             // 
             // label1
@@ -183,8 +186,8 @@
             BRegistrarTalle.FlatStyle = FlatStyle.Flat;
             BRegistrarTalle.Font = new Font("Microsoft Sans Serif", 13F, FontStyle.Regular, GraphicsUnit.Point);
             BRegistrarTalle.ForeColor = Color.White;
-            BRegistrarTalle.Location = new Point(371, 56);
-            BRegistrarTalle.Margin = new Padding(4);
+            BRegistrarTalle.Location = new Point(395, 56);
+            BRegistrarTalle.Margin = new Padding(4, 4, 4, 4);
             BRegistrarTalle.Name = "BRegistrarTalle";
             BRegistrarTalle.Size = new Size(115, 49);
             BRegistrarTalle.TabIndex = 13;
@@ -196,7 +199,7 @@
             // 
             CBTipoTalle.DropDownStyle = ComboBoxStyle.DropDownList;
             CBTipoTalle.FormattingEnabled = true;
-            CBTipoTalle.Location = new Point(173, 89);
+            CBTipoTalle.Location = new Point(190, 89);
             CBTipoTalle.Name = "CBTipoTalle";
             CBTipoTalle.Size = new Size(176, 23);
             CBTipoTalle.TabIndex = 41;
@@ -205,8 +208,8 @@
             // TBNombreTalle
             // 
             TBNombreTalle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBNombreTalle.Location = new Point(24, 56);
-            TBNombreTalle.Margin = new Padding(4);
+            TBNombreTalle.Location = new Point(33, 56);
+            TBNombreTalle.Margin = new Padding(4, 4, 4, 4);
             TBNombreTalle.Name = "TBNombreTalle";
             TBNombreTalle.Size = new Size(325, 26);
             TBNombreTalle.TabIndex = 6;
@@ -235,7 +238,7 @@
             Controls.Add(TabControlRegTalles);
             Controls.Add(PanelRegTalles);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "AñadirTalle";
             Text = "Form1";
             Load += AñadirTalle_Load;

@@ -44,7 +44,6 @@
             Descripcion = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
             TipoTalle = new DataGridViewTextBoxColumn();
-            BAltaTalle = new Button();
             GroupBoxDatosTalles = new GroupBox();
             TBModTalle = new TextBox();
             button1 = new Button();
@@ -124,7 +123,7 @@
             BEliminarTalle.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BEliminarTalle.ForeColor = Color.White;
             BEliminarTalle.Image = Properties.Resources.icons8_basura_26;
-            BEliminarTalle.Location = new Point(851, 313);
+            BEliminarTalle.Location = new Point(851, 312);
             BEliminarTalle.Margin = new Padding(4);
             BEliminarTalle.Name = "BEliminarTalle";
             BEliminarTalle.Size = new Size(59, 52);
@@ -162,6 +161,8 @@
             // 
             dgvListarTalles.AllowUserToAddRows = false;
             dgvListarTalles.AllowUserToDeleteRows = false;
+            dgvListarTalles.AllowUserToResizeColumns = false;
+            dgvListarTalles.AllowUserToResizeRows = false;
             dgvListarTalles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvListarTalles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvListarTalles.BackgroundColor = Color.RosyBrown;
@@ -180,7 +181,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -201,6 +202,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvListarTalles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvListarTalles.RowHeadersWidth = 51;
+            dgvListarTalles.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dgvListarTalles.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvListarTalles.Size = new Size(709, 168);
@@ -233,21 +235,9 @@
             // TipoTalle
             // 
             TipoTalle.HeaderText = "Tipo de Talle";
+            TipoTalle.MinimumWidth = 6;
             TipoTalle.Name = "TipoTalle";
             TipoTalle.ReadOnly = true;
-            // 
-            // BAltaTalle
-            // 
-            BAltaTalle.BackColor = Color.DarkOliveGreen;
-            BAltaTalle.ForeColor = Color.White;
-            BAltaTalle.Image = Properties.Resources.icons8_más_2_matemáticas_30;
-            BAltaTalle.Location = new Point(851, 313);
-            BAltaTalle.Margin = new Padding(4);
-            BAltaTalle.Name = "BAltaTalle";
-            BAltaTalle.Size = new Size(59, 52);
-            BAltaTalle.TabIndex = 92;
-            BAltaTalle.UseVisualStyleBackColor = false;
-            BAltaTalle.Click += BAltaTalle_Click;
             // 
             // GroupBoxDatosTalles
             // 
@@ -308,12 +298,19 @@
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(851, 174);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(851, 312);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 93;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += BReactivar_Click;
             // 
             // GestionarTalles
@@ -328,7 +325,6 @@
             Controls.Add(BModificarTalle);
             Controls.Add(BEliminarTalle);
             Controls.Add(TabListaTalles);
-            Controls.Add(BAltaTalle);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "GestionarTalles";
@@ -351,9 +347,8 @@
         internal Button BEliminarTalle;
         internal TabControl TabListaTalles;
         internal TabPage TabPageListaTalles;
-        internal Button BAltaTalle;
 
-#endregion
+        #endregion
         internal GroupBox GroupBoxDatosTalles;
         internal TextBox TBModTalle;
         internal Button button1;
@@ -362,7 +357,7 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Estado;
-        private Button BReactivar;
         private DataGridViewTextBoxColumn TipoTalle;
+        internal Button BReactivar;
     }
 }

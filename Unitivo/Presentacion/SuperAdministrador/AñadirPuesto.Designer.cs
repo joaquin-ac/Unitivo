@@ -76,6 +76,8 @@
             // 
             DataGridViewListarPerfiles.AllowUserToAddRows = false;
             DataGridViewListarPerfiles.AllowUserToDeleteRows = false;
+            DataGridViewListarPerfiles.AllowUserToResizeColumns = false;
+            DataGridViewListarPerfiles.AllowUserToResizeRows = false;
             DataGridViewListarPerfiles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListarPerfiles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListarPerfiles.BackgroundColor = Color.RosyBrown;

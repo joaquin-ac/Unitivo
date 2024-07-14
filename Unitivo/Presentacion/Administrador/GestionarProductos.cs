@@ -124,6 +124,8 @@ namespace Unitivo.Presentacion.Administrador
             cargarCategorias();
             cargarTalles();
             CargarProductos();
+            BReactivar.Visible = false;
+            BEliminarProducto.Visible = false;
         }
 
         private void BBuscarProducto_Click(object sender, EventArgs e)
@@ -149,7 +151,7 @@ namespace Unitivo.Presentacion.Administrador
 
 
             CBTalleProducto.Enabled = false;
-            
+
         }
 
         private void cargarTalles()
@@ -164,6 +166,10 @@ namespace Unitivo.Presentacion.Administrador
             CBTalleProducto.DataSource = talleRepositorio.ListarTalles();
             CBTalleProducto.ValueMember = "Id";
             CBTalleProducto.DisplayMember = "Descripcion";
+            CBTalleProducto.SelectedValue = -1;
+
+            CBTalleBuscar.Enabled = false;
+            CBTalleProducto.Enabled = false;
         }
 
         private void CargarProductos(string nom, string cat, string talle)
@@ -206,13 +212,13 @@ namespace Unitivo.Presentacion.Administrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarProducto.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarProducto.Visible = false;
+                    BReactivar.Visible = true;
                 }
                 else
                 {
-                    BEliminarProducto.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarProducto.Visible = true;
+                    BReactivar.Visible = false;
                 }
             }
 
@@ -278,6 +284,7 @@ namespace Unitivo.Presentacion.Administrador
         {
             if (CBCatBuscar.SelectedValue is int categoriaId)
             {
+                CBTalleBuscar.Enabled = true;
                 if (categoriaId == 0) // Si se selecciona "Todos"
                 {
                     CBTalleBuscar.SelectedValue = -1; // Seleccionar "Todos" en CBTalleBuscar
@@ -306,6 +313,26 @@ namespace Unitivo.Presentacion.Administrador
                 }
             }
 
+        }
+
+        private void CBTalleProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBCategoriaProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
+        }
+
+        private void TBBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
+        }
+
+        private void TBNombreProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
         }
     }
 }

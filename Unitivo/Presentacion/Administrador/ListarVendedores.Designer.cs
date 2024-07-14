@@ -118,6 +118,8 @@
             // 
             dgvEmpleados.AllowUserToAddRows = false;
             dgvEmpleados.AllowUserToDeleteRows = false;
+            dgvEmpleados.AllowUserToResizeColumns = false;
+            dgvEmpleados.AllowUserToResizeRows = false;
             dgvEmpleados.BackgroundColor = Color.RosyBrown;
             dgvEmpleados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -155,6 +157,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvEmpleados.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvEmpleados.RowHeadersWidth = 51;
+            dgvEmpleados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dgvEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmpleados.Size = new Size(810, 275);

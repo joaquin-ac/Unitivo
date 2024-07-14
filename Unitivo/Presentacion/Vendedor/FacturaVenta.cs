@@ -55,8 +55,8 @@ namespace Unitivo.Presentacion.Vendedor
             ldniCliente.Text = dniCliente;
             nFactura.Text = factura.Id.ToString();
             lfecha.Text = factura.FechaCreacion.ToString();
-            ltotal.Text = "$ "+factura.Precio;
-            
+            ltotal.Text = "$ " + factura.Precio;
+
             CargarDetalle();
         }
 
@@ -98,9 +98,9 @@ namespace Unitivo.Presentacion.Vendedor
             {
                 ventaform.Close();
             }
-            
+
             Close();
-            
+
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)

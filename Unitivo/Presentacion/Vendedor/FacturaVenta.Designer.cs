@@ -29,8 +29,15 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             TabDetalleVenta = new TabControl();
             TabPageDetalleVenta = new TabPage();
             dgvListaVentas = new DataGridView();
@@ -41,13 +48,13 @@
             Talle = new DataGridViewTextBoxColumn();
             Subtotal = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
+            ltotal = new Label();
             label10 = new Label();
             label9 = new Label();
             ldniVendedor = new Label();
             ldniCliente = new Label();
             label8 = new Label();
             label7 = new Label();
-            ltotal = new Label();
             lcliente = new Label();
             label6 = new Label();
             lvendedor = new Label();
@@ -112,14 +119,14 @@
             dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Cantidad, Talle, Subtotal });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Chartreuse;
-            dataGridViewCellStyle2.SelectionBackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionForeColor = Color.SeaGreen;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.SeaGreen;
+            dataGridViewCellStyle8.SelectionBackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle8.SelectionForeColor = Color.SeaGreen;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvListaVentas.DefaultCellStyle = dataGridViewCellStyle8;
             dgvListaVentas.Dock = DockStyle.Fill;
             dgvListaVentas.Enabled = false;
             dgvListaVentas.EnableHeadersVisualStyles = false;
@@ -129,16 +136,19 @@
             dgvListaVentas.Name = "dgvListaVentas";
             dgvListaVentas.ReadOnly = true;
             dgvListaVentas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle9.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvListaVentas.RowHeadersVisible = false;
             dgvListaVentas.RowHeadersWidth = 51;
+            dgvListaVentas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dgvListaVentas.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dgvListaVentas.RowTemplate.Height = 24;
             dgvListaVentas.ShowCellErrors = false;
             dgvListaVentas.ShowCellToolTips = false;
@@ -149,6 +159,8 @@
             // 
             // Codigo
             // 
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            Codigo.DefaultCellStyle = dataGridViewCellStyle2;
             Codigo.HeaderText = "Codigo";
             Codigo.MinimumWidth = 6;
             Codigo.Name = "Codigo";
@@ -156,6 +168,8 @@
             // 
             // Descripcion
             // 
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            Descripcion.DefaultCellStyle = dataGridViewCellStyle3;
             Descripcion.HeaderText = "Descripcion";
             Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
@@ -163,6 +177,8 @@
             // 
             // Precio
             // 
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            Precio.DefaultCellStyle = dataGridViewCellStyle4;
             Precio.HeaderText = "Precio";
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
@@ -170,6 +186,8 @@
             // 
             // Cantidad
             // 
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            Cantidad.DefaultCellStyle = dataGridViewCellStyle5;
             Cantidad.HeaderText = "Cantidad";
             Cantidad.MinimumWidth = 6;
             Cantidad.Name = "Cantidad";
@@ -177,6 +195,8 @@
             // 
             // Talle
             // 
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            Talle.DefaultCellStyle = dataGridViewCellStyle6;
             Talle.HeaderText = "Talle";
             Talle.MinimumWidth = 6;
             Talle.Name = "Talle";
@@ -184,6 +204,8 @@
             // 
             // Subtotal
             // 
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
             Subtotal.HeaderText = "Subtotal";
             Subtotal.MinimumWidth = 6;
             Subtotal.Name = "Subtotal";
@@ -192,13 +214,13 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(ltotal);
             panel2.Controls.Add(label10);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(ldniVendedor);
             panel2.Controls.Add(ldniCliente);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
-            panel2.Controls.Add(ltotal);
             panel2.Controls.Add(lcliente);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(lvendedor);
@@ -218,6 +240,16 @@
             panel2.Size = new Size(749, 556);
             panel2.TabIndex = 61;
             panel2.Paint += panel2_Paint;
+            // 
+            // ltotal
+            // 
+            ltotal.AutoSize = true;
+            ltotal.ForeColor = Color.Black;
+            ltotal.Location = new Point(516, 514);
+            ltotal.Name = "ltotal";
+            ltotal.Size = new Size(34, 15);
+            ltotal.TabIndex = 79;
+            ltotal.Text = "ltotal";
             // 
             // label10
             // 
@@ -243,7 +275,7 @@
             // 
             ldniVendedor.AutoSize = true;
             ldniVendedor.ForeColor = Color.Black;
-            ldniVendedor.Location = new Point(414, 209);
+            ldniVendedor.Location = new Point(417, 209);
             ldniVendedor.Name = "ldniVendedor";
             ldniVendedor.Size = new Size(77, 15);
             ldniVendedor.TabIndex = 83;
@@ -253,7 +285,7 @@
             // 
             ldniCliente.AutoSize = true;
             ldniCliente.ForeColor = Color.Black;
-            ldniCliente.Location = new Point(597, 209);
+            ldniCliente.Location = new Point(601, 209);
             ldniCliente.Name = "ldniCliente";
             ldniCliente.Size = new Size(64, 15);
             ldniCliente.TabIndex = 82;
@@ -268,9 +300,9 @@
             label8.Location = new Point(234, 90);
             label8.Margin = new Padding(7, 0, 7, 0);
             label8.Name = "label8";
-            label8.Size = new Size(75, 20);
+            label8.Size = new Size(182, 20);
             label8.TabIndex = 81;
-            label8.Text = "Direccion";
+            label8.Text = "Dirección: San Juan 596";
             // 
             // label7
             // 
@@ -283,16 +315,6 @@
             label7.Size = new Size(108, 36);
             label7.TabIndex = 80;
             label7.Text = "Unitivo";
-            // 
-            // ltotal
-            // 
-            ltotal.AutoSize = true;
-            ltotal.ForeColor = Color.Black;
-            ltotal.Location = new Point(505, 516);
-            ltotal.Name = "ltotal";
-            ltotal.Size = new Size(34, 15);
-            ltotal.TabIndex = 79;
-            ltotal.Text = "ltotal";
             // 
             // lcliente
             // 
@@ -353,7 +375,7 @@
             BImprimir.ForeColor = Color.White;
             BImprimir.Image = Properties.Resources.icons8_imprimir_26;
             BImprimir.Location = new Point(32, 501);
-            BImprimir.Margin = new Padding(4);
+            BImprimir.Margin = new Padding(4, 4, 4, 4);
             BImprimir.Name = "BImprimir";
             BImprimir.Size = new Size(41, 37);
             BImprimir.TabIndex = 73;
@@ -439,7 +461,7 @@
             BackColor = Color.DimGray;
             ClientSize = new Size(771, 574);
             Controls.Add(panel2);
-            ForeColor = Color.Chartreuse;
+            ForeColor = Color.Black;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
             Name = "FacturaVenta";
@@ -458,12 +480,6 @@
         internal TabPage TabPageDetalleVenta;
         internal DataGridView dgvListaVentas;
         private Panel panel2;
-        private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn Talle;
-        private DataGridViewTextBoxColumn Subtotal;
         private Label label1;
         internal Label Label5;
         internal Label label2;
@@ -483,5 +499,11 @@
         private Label ldniCliente;
         private Label label10;
         private Label label9;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Talle;
+        private DataGridViewTextBoxColumn Subtotal;
     }
 }

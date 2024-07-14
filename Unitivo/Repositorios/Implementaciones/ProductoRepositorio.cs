@@ -126,7 +126,12 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public List<Producto> ListarProductosActivos()
         {
-            return _contexto?.Productos.Where(c => c.Estado == true || c.Stock != 0).ToList()!;
+            return _contexto?.Productos.Where(c => c.Estado == true && c.Stock != 0).ToList()!;
+        }
+
+        public List<Producto> ListarProductosActivosVentas()
+        {
+            return _contexto?.Productos.Where(c => c.Estado == true && c.Stock != 0 && c.IdCategoriaNavigation.Estado == true && c.IdTalleNavigation.Estado == true).ToList()!;
         }
 
         public List<Producto> BuscarProductoNombre(string nombre)
@@ -179,6 +184,16 @@ namespace Unitivo.Repositorios.Implementaciones
 
             List<Producto> prods = (from p in _contexto?.Productos
                                     where p.Estado == true && p.IdCategoriaNavigation.Descripcion.Contains(cat) && p.Nombre.Contains(nom) && p.IdTalleNavigation.Descripcion.Contains(talle)
+                                    select p).ToList();
+
+            return prods;
+        }
+
+        public List<Producto> BuscarProductosActivosVentas(string nom, string cat, string talle)
+        {
+
+            List<Producto> prods = (from p in _contexto?.Productos
+                                    where (p.Estado == true && p.Stock != 0 && p.IdCategoriaNavigation.Estado == true && p.IdTalleNavigation.Estado == true) && p.IdCategoriaNavigation.Descripcion.Contains(cat) && p.Nombre.Contains(nom) && p.IdTalleNavigation.Descripcion.Contains(talle)
                                     select p).ToList();
 
             return prods;

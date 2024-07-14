@@ -36,7 +36,6 @@
             TBGestionCategoria = new TextBox();
             BModificarCategoria = new Button();
             BEliminarCategoria = new Button();
-            BAltaCategoria = new Button();
             TabControlRegCategoria = new TabControl();
             TabPageListaCategoria = new TabPage();
             dgvRegistroCategoria = new DataGridView();
@@ -124,7 +123,7 @@
             BEliminarCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             BEliminarCategoria.ForeColor = Color.White;
             BEliminarCategoria.Image = Properties.Resources.icons8_basura_26;
-            BEliminarCategoria.Location = new Point(836, 298);
+            BEliminarCategoria.Location = new Point(836, 297);
             BEliminarCategoria.Margin = new Padding(4);
             BEliminarCategoria.Name = "BEliminarCategoria";
             BEliminarCategoria.Size = new Size(59, 52);
@@ -132,18 +131,6 @@
             BEliminarCategoria.TextImageRelation = TextImageRelation.ImageBeforeText;
             BEliminarCategoria.UseVisualStyleBackColor = false;
             BEliminarCategoria.Click += BEliminarCategoria_Click;
-            // 
-            // BAltaCategoria
-            // 
-            BAltaCategoria.BackColor = Color.DarkOliveGreen;
-            BAltaCategoria.ForeColor = Color.White;
-            BAltaCategoria.Image = Properties.Resources.icons8_más_2_matemáticas_30;
-            BAltaCategoria.Location = new Point(836, 298);
-            BAltaCategoria.Margin = new Padding(4);
-            BAltaCategoria.Name = "BAltaCategoria";
-            BAltaCategoria.Size = new Size(59, 52);
-            BAltaCategoria.TabIndex = 87;
-            BAltaCategoria.UseVisualStyleBackColor = false;
             // 
             // TabControlRegCategoria
             // 
@@ -174,6 +161,8 @@
             // 
             dgvRegistroCategoria.AllowUserToAddRows = false;
             dgvRegistroCategoria.AllowUserToDeleteRows = false;
+            dgvRegistroCategoria.AllowUserToResizeColumns = false;
+            dgvRegistroCategoria.AllowUserToResizeRows = false;
             dgvRegistroCategoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRegistroCategoria.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvRegistroCategoria.BackgroundColor = Color.RosyBrown;
@@ -246,6 +235,7 @@
             // TipoTalle
             // 
             TipoTalle.HeaderText = "Tipo de Talle";
+            TipoTalle.MinimumWidth = 6;
             TipoTalle.Name = "TipoTalle";
             TipoTalle.ReadOnly = true;
             // 
@@ -273,6 +263,7 @@
             TBNombreCategoria.Name = "TBNombreCategoria";
             TBNombreCategoria.Size = new Size(273, 32);
             TBNombreCategoria.TabIndex = 16;
+            TBNombreCategoria.KeyPress += String_KeyPress;
             // 
             // button1
             // 
@@ -305,12 +296,19 @@
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(836, 164);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(836, 297);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 89;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 92;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += button2_Click;
             // 
             // GestionarCategorias
@@ -325,7 +323,6 @@
             Controls.Add(GroupBoxGestionCategorias);
             Controls.Add(BModificarCategoria);
             Controls.Add(BEliminarCategoria);
-            Controls.Add(BAltaCategoria);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "GestionarCategorias";
@@ -346,7 +343,6 @@
         internal TextBox TBGestionCategoria;
         internal Button BModificarCategoria;
         internal Button BEliminarCategoria;
-        internal Button BAltaCategoria;
 
         #endregion
 
@@ -360,7 +356,7 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Descripcion;
         private DataGridViewTextBoxColumn Estado;
-        private Button BReactivar;
         private DataGridViewTextBoxColumn TipoTalle;
+        internal Button BReactivar;
     }
 }

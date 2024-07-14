@@ -91,7 +91,7 @@ namespace Unitivo.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Data Source=.\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True.
+        ///   Busca una cadena traducida similar a Server=(localdb)localhost;Database=Unitivo;Integrated Security=True;.
         /// </summary>
         internal static string DB_BackupRestore {
             get {
@@ -100,7 +100,7 @@ namespace Unitivo.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Data Source=.\SQLEXPRESS;Initial Catalog=Unitivo;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False.
+        ///   Busca una cadena traducida similar a Server=(localdb)localhost;Database=Unitivo;Integrated Security=True;.
         /// </summary>
         internal static string DB_ConnectionString {
             get {
@@ -324,6 +324,16 @@ namespace Unitivo.Properties {
         internal static System.Drawing.Bitmap icons8_patrón_de_la_camisa_a_medida_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-patrón-de-la-camisa-a-medida-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_restaurar_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-restaurar-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

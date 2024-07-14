@@ -39,7 +39,6 @@
             TBGestionUsuario = new TextBox();
             BModificarEmpleado = new Button();
             BEliminarEmpleado = new Button();
-            BAltaEmpleado = new Button();
             TabControlListaEmpleados = new TabControl();
             TabPageListaEmpleados = new TabPage();
             dgvEmpleados = new DataGridView();
@@ -147,25 +146,13 @@
             BEliminarEmpleado.BackColor = Color.Brown;
             BEliminarEmpleado.ForeColor = Color.White;
             BEliminarEmpleado.Image = Properties.Resources.icons8_basura_26;
-            BEliminarEmpleado.Location = new Point(864, 340);
+            BEliminarEmpleado.Location = new Point(864, 357);
             BEliminarEmpleado.Margin = new Padding(4);
             BEliminarEmpleado.Name = "BEliminarEmpleado";
             BEliminarEmpleado.Size = new Size(59, 52);
             BEliminarEmpleado.TabIndex = 75;
             BEliminarEmpleado.UseVisualStyleBackColor = false;
             BEliminarEmpleado.Click += BEliminarEmpleado_Click;
-            // 
-            // BAltaEmpleado
-            // 
-            BAltaEmpleado.BackColor = Color.DarkOliveGreen;
-            BAltaEmpleado.ForeColor = Color.White;
-            BAltaEmpleado.Image = Properties.Resources.icons8_más_2_matemáticas_30;
-            BAltaEmpleado.Location = new Point(864, 340);
-            BAltaEmpleado.Margin = new Padding(4);
-            BAltaEmpleado.Name = "BAltaEmpleado";
-            BAltaEmpleado.Size = new Size(59, 52);
-            BAltaEmpleado.TabIndex = 80;
-            BAltaEmpleado.UseVisualStyleBackColor = false;
             // 
             // TabControlListaEmpleados
             // 
@@ -196,6 +183,8 @@
             // 
             dgvEmpleados.AllowUserToAddRows = false;
             dgvEmpleados.AllowUserToDeleteRows = false;
+            dgvEmpleados.AllowUserToResizeColumns = false;
+            dgvEmpleados.AllowUserToResizeRows = false;
             dgvEmpleados.BackgroundColor = Color.RosyBrown;
             dgvEmpleados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -233,13 +222,13 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvEmpleados.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvEmpleados.RowHeadersWidth = 51;
+            dgvEmpleados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dgvEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEmpleados.Size = new Size(810, 275);
             dgvEmpleados.TabIndex = 2;
             dgvEmpleados.CellContentClick += dgvEmpleados_CellContentClick;
             dgvEmpleados.RowHeaderMouseClick += dgvEmpleados_RowHeaderMouseClick;
-            dgvEmpleados.RowHeaderMouseDoubleClick += dgvEmpleados_RowHeaderMouseDoubleClick;
             // 
             // ID
             // 
@@ -300,17 +289,26 @@
             // Estado
             // 
             Estado.HeaderText = "Estado";
+            Estado.MinimumWidth = 6;
             Estado.Name = "Estado";
             Estado.ReadOnly = true;
+            Estado.Width = 125;
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(864, 208);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(864, 356);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 93;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += BReactivar_Click;
             // 
             // GestionarEmpleados
@@ -324,7 +322,6 @@
             Controls.Add(GroupBoxGestionUsuarios);
             Controls.Add(BModificarEmpleado);
             Controls.Add(BEliminarEmpleado);
-            Controls.Add(BAltaEmpleado);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "GestionarEmpleados";
@@ -343,7 +340,6 @@
         internal TextBox TBGestionUsuario;
         internal Button BModificarEmpleado;
         internal Button BEliminarEmpleado;
-        internal Button BAltaEmpleado;
 
         #endregion
 
@@ -352,7 +348,6 @@
         internal DataGridView dgvEmpleados;
         internal Label Label2;
         internal ComboBox ComboBoxBuscarDni;
-        private Button BReactivar;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;
@@ -361,5 +356,6 @@
         private DataGridViewTextBoxColumn Direccion;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Estado;
+        internal Button BReactivar;
     }
 }

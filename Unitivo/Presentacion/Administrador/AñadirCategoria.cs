@@ -39,7 +39,6 @@ namespace Unitivo.Presentacion.Administrador
                     MessageBox.Show("Categoria agregada correctamente");
                     LimpiarTextBoxs();
                     CargarCategorias();
-                    CargarTipoTalles();
                 }
                 else
                 {

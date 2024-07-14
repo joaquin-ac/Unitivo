@@ -37,19 +37,19 @@ namespace Unitivo.Presentacion.Administrador
 
             if (dgvListarTalles.SelectedRows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar el usuario seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar el talle seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     int idEliminar = (int)dgvListarTalles.SelectedRows[0].Cells["ID"].Value;
                     if (talleRepositorio.EliminarTalle(idEliminar))
                     {
-                        MessageBox.Show("El usuario se eliminó correctamente.", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El talle se eliminó correctamente.", "Talles", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarTalles();
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrió un error al eliminar el usuario.", "Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ocurrió un error al eliminar el talle.", "Talles", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -112,6 +112,8 @@ namespace Unitivo.Presentacion.Administrador
         private void GestionarTalles_Load(object sender, EventArgs e)
         {
             CargarTalles();
+            BReactivar.Visible = false;
+            BEliminarTalle.Visible = false;
         }
 
         private void BBuscarTalle_Click(object sender, EventArgs e)
@@ -136,13 +138,13 @@ namespace Unitivo.Presentacion.Administrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarTalle.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarTalle.Visible = false;
+                    BReactivar.Visible = true;
                 }
                 else
                 {
-                    BEliminarTalle.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarTalle.Visible = true;
+                    BReactivar.Visible = false;
                 }
             }
         }
@@ -173,7 +175,7 @@ namespace Unitivo.Presentacion.Administrador
             {
                 talleParaEditar = talleRepositorio.BuscarTallePorId(talleParaEditar.Id);
                 talleParaEditar.Descripcion = TBModTalle.Text;
-               
+
                 if (talleRepositorio.ModificarTalle(talleParaEditar))
                 {
                     CargarTalles();
@@ -266,7 +268,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CBTipoTalle_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-           
+
         }
     }
 }

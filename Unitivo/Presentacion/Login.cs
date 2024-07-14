@@ -41,7 +41,7 @@ namespace Unitivo.Presentacion
 
             Usuario user = usuariosRepositorio.LoggUser(nombreUsuario, contraseña);
 
-            if (user != null) //CAMBIAR
+            if (user != null) 
             {
 
                 if (user.IdPerfilNavigation.DescripcionPerfil.ToString() == "Vendedor")

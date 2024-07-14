@@ -168,6 +168,11 @@ namespace Unitivo.Presentacion.Administrador
         {
 
         }
+
+        private void TBNombreProducto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

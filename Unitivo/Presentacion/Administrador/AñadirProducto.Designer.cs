@@ -95,6 +95,8 @@
             // 
             DataGridViewListaProductos.AllowUserToAddRows = false;
             DataGridViewListaProductos.AllowUserToDeleteRows = false;
+            DataGridViewListaProductos.AllowUserToResizeColumns = false;
+            DataGridViewListaProductos.AllowUserToResizeRows = false;
             DataGridViewListaProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataGridViewListaProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             DataGridViewListaProductos.BackgroundColor = Color.RosyBrown;
@@ -135,6 +137,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             DataGridViewListaProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DataGridViewListaProductos.RowHeadersWidth = 51;
+            DataGridViewListaProductos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             DataGridViewListaProductos.Size = new Size(880, 186);
             DataGridViewListaProductos.TabIndex = 7;
             DataGridViewListaProductos.CellContentClick += DataGridViewListaProductos_CellContentClick;
@@ -326,6 +329,7 @@
             TBNombreProducto.Name = "TBNombreProducto";
             TBNombreProducto.Size = new Size(153, 23);
             TBNombreProducto.TabIndex = 5;
+            TBNombreProducto.TextChanged += TBNombreProducto_TextChanged;
             TBNombreProducto.KeyPress += String_KeyPress;
             // 
             // Label2

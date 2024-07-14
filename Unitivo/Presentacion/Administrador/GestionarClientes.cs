@@ -148,7 +148,8 @@ namespace Unitivo.Presentacion.Administrador
 
         private void GestionarClientes_Load(object sender, EventArgs e)
         {
-
+            BReactivar.Visible = false;
+            BEliminarClientes.Visible = false;
         }
 
         private void DataGridViewListarClientes_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -179,33 +180,15 @@ namespace Unitivo.Presentacion.Administrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarClientes.Enabled = false;
+                    BEliminarClientes.Visible = false;
                 }
                 else
                 {
-                    BEliminarClientes.Enabled = true;
+                    BEliminarClientes.Visible = true;
                 }
             }
         }
-
-        private void DataGridViewListarClientes_RowHeaderMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Obtener la fila que fue doble clickeada
-                DataGridViewRow filaSeleccionada = DataGridViewListarClientes.Rows[e.RowIndex];
-                int IdSelect = (int)filaSeleccionada.Cells["ID"].Value;
-                if (clienteRepositorio.reactivarCliente(IdSelect))
-                {
-                    MessageBox.Show("Se ha reactivado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("El puesto ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                CargarClientes();
-            }
-        }
+ 
 
         private void DataGridViewListarClientes_RowHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -217,13 +200,13 @@ namespace Unitivo.Presentacion.Administrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarClientes.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarClientes.Visible = false;
+                    BReactivar.Visible = true;
                 }
                 else
                 {
-                    BEliminarClientes.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarClientes.Visible = true;
+                    BReactivar.Visible = false;
                 }
             }
         }
@@ -257,4 +240,4 @@ namespace Unitivo.Presentacion.Administrador
             }
         }
     }
-} 
+}

@@ -17,7 +17,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void String_KeyPress(object sender, KeyPressEventArgs e)
         {
-            CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
+            //CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
         }
 
 
@@ -56,6 +56,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
         {
             cargarPerfiles();
             cargarUsuarios();
+            BReactivar.Visible = false;
+            BEliminarUsuario.Visible = false;
         }
 
         private void BBuscarUsuario_Click(object sender, EventArgs e)
@@ -200,13 +202,13 @@ namespace Unitivo.Presentacion.SuperAdministrador
                 bool estadoSelect = (bool)filaSeleccionada.Cells["Estado"].Value;
                 if (estadoSelect == false)
                 {
-                    BEliminarUsuario.Enabled = false;
-                    BReactivar.Enabled = true;
+                    BEliminarUsuario.Visible = false;
+                    BReactivar.Visible = true;
                 }
                 else
                 {
-                    BEliminarUsuario.Enabled = true;
-                    BReactivar.Enabled = false;
+                    BEliminarUsuario.Visible = true;
+                    BReactivar.Visible = false;
                 }
             }
         }

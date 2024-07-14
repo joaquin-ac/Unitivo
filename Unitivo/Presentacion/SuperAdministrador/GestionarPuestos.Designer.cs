@@ -36,7 +36,6 @@
             TBGestionPerfil = new TextBox();
             BModificarPerfiles = new Button();
             BEliminarPerfiles = new Button();
-            BAltaPerfil = new Button();
             TabControlRegPerfil = new TabControl();
             TabPageListaPerfil = new TabPage();
             DataGridViewListarPerfiles = new DataGridView();
@@ -117,25 +116,13 @@
             BEliminarPerfiles.BackColor = Color.Brown;
             BEliminarPerfiles.ForeColor = Color.White;
             BEliminarPerfiles.Image = Properties.Resources.icons8_basura_26;
-            BEliminarPerfiles.Location = new Point(835, 323);
+            BEliminarPerfiles.Location = new Point(835, 330);
             BEliminarPerfiles.Margin = new Padding(4);
             BEliminarPerfiles.Name = "BEliminarPerfiles";
             BEliminarPerfiles.Size = new Size(59, 52);
             BEliminarPerfiles.TabIndex = 81;
             BEliminarPerfiles.UseVisualStyleBackColor = false;
             BEliminarPerfiles.Click += BEliminarPerfiles_Click;
-            // 
-            // BAltaPerfil
-            // 
-            BAltaPerfil.BackColor = Color.DarkOliveGreen;
-            BAltaPerfil.ForeColor = Color.White;
-            BAltaPerfil.Image = Properties.Resources.icons8_más_2_matemáticas_30;
-            BAltaPerfil.Location = new Point(835, 323);
-            BAltaPerfil.Margin = new Padding(4);
-            BAltaPerfil.Name = "BAltaPerfil";
-            BAltaPerfil.Size = new Size(59, 52);
-            BAltaPerfil.TabIndex = 86;
-            BAltaPerfil.UseVisualStyleBackColor = false;
             // 
             // TabControlRegPerfil
             // 
@@ -211,7 +198,6 @@
             DataGridViewListarPerfiles.Size = new Size(715, 204);
             DataGridViewListarPerfiles.TabIndex = 0;
             DataGridViewListarPerfiles.RowHeaderMouseClick += DataGridViewListarPerfiles_RowHeaderMouseClick;
-            DataGridViewListarPerfiles.RowHeaderMouseDoubleClick += DataGridViewListarPerfiles_CellContentClick;
             // 
             // ID
             // 
@@ -291,6 +277,7 @@
             TBModPerfil.Name = "TBModPerfil";
             TBModPerfil.Size = new Size(194, 35);
             TBModPerfil.TabIndex = 16;
+            TBModPerfil.KeyPress += String_KeyPress;
             // 
             // LModPerfil
             // 
@@ -306,12 +293,19 @@
             // 
             // BReactivar
             // 
-            BReactivar.Location = new Point(835, 188);
+            BReactivar.BackColor = Color.DarkKhaki;
+            BReactivar.FlatAppearance.BorderSize = 2;
+            BReactivar.FlatStyle = FlatStyle.Flat;
+            BReactivar.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            BReactivar.ForeColor = Color.White;
+            BReactivar.Image = Properties.Resources.icons8_restaurar_24;
+            BReactivar.Location = new Point(835, 329);
+            BReactivar.Margin = new Padding(4);
             BReactivar.Name = "BReactivar";
-            BReactivar.Size = new Size(75, 23);
-            BReactivar.TabIndex = 90;
-            BReactivar.Text = "Reactivar";
-            BReactivar.UseVisualStyleBackColor = true;
+            BReactivar.Size = new Size(59, 52);
+            BReactivar.TabIndex = 94;
+            BReactivar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BReactivar.UseVisualStyleBackColor = false;
             BReactivar.Click += BReactivar_Click;
             // 
             // GestionarPuestos
@@ -326,7 +320,6 @@
             Controls.Add(GroupBoxGestionPerfil);
             Controls.Add(BModificarPerfiles);
             Controls.Add(BEliminarPerfiles);
-            Controls.Add(BAltaPerfil);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "GestionarPuestos";
@@ -347,7 +340,6 @@
         internal TextBox TBGestionPerfil;
         internal Button BModificarPerfiles;
         internal Button BEliminarPerfiles;
-        internal Button BAltaPerfil;
 
         #endregion
 
@@ -362,6 +354,6 @@
         internal Label LModPerfil;
         internal Button BModEmpleado;
         internal Button BCancelar;
-        private Button BReactivar;
+        internal Button BReactivar;
     }
 }

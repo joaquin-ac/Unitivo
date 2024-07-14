@@ -24,7 +24,7 @@ namespace Unitivo.Repositorios.Implementaciones
         }    
         
         public bool AgregarCategoria(Categoria x){
-            if (BuscarCategoria(x.Descripcion).Count > 0)
+            if (BuscarCategoriaExacta(x.Descripcion).Count > 0)
             {
                 return false;
             }
