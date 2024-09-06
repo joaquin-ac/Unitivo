@@ -56,6 +56,7 @@ namespace Unitivo.Formularios.Vendedor
             TBPrecio.Clear();
             TBTalle.Clear();
             TBCantidad.Clear();
+            TBColor.Clear();
             // El TextBox está vacío, así que debes mostrar el formulario BuscarProducto como un diálogo modal.
             BuscarProducto buscarProductoForm = new BuscarProducto(this);
             DialogResult result = buscarProductoForm.ShowDialog();
@@ -79,6 +80,7 @@ namespace Unitivo.Formularios.Vendedor
                 string.IsNullOrEmpty(TBPrecio.Text) ||
                 string.IsNullOrEmpty(TBStock.Text) ||
                 string.IsNullOrEmpty(TBTalle.Text) ||
+                string.IsNullOrEmpty(TBColor.Text) ||
                 string.IsNullOrEmpty(TBCantidad.Text) || (int.TryParse(TBCantidad.Text, out int cantidad) && cantidad <= 0))
             {
                 // Al menos uno de los campos está vacío, mostrar un mensaje de error.
@@ -107,16 +109,16 @@ namespace Unitivo.Formularios.Vendedor
                         TBStock.Clear();
                         TBPrecio.Clear();
                         TBTalle.Clear();
+                        TBColor.Clear();
                         TBCantidad.Enabled = false;
                         productoCompra = new Producto();
+                        // Todos los campos están llenos, puedes realizar la acción de agregar el producto.
+                        // Agregar código aquí para realizar la acción deseada, por ejemplo, agregar el producto a una lista o base de datos.
+
+                        // Después de agregar el producto, mostrar un mensaje de éxito.
+                        MessageBox.Show("Producto añadido con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
-
-                    // Todos los campos están llenos, puedes realizar la acción de agregar el producto.
-                    // Agregar código aquí para realizar la acción deseada, por ejemplo, agregar el producto a una lista o base de datos.
-
-                    // Después de agregar el producto, mostrar un mensaje de éxito.
-                    MessageBox.Show("Producto añadido con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
 
@@ -264,7 +266,7 @@ namespace Unitivo.Formularios.Vendedor
             TBPrecio.Text = productoCompra.Precio.ToString();
             TBStock.Text = productoCompra.Stock.ToString();
             TBTalle.Text = productoCompra.IdTalleNavigation.Descripcion;
-
+            TBColor.Text = productoCompra.IdColorNavigation.Descripcion;
         }
 
         private void AñadirVentas_Load(object sender, EventArgs e)
@@ -323,6 +325,7 @@ namespace Unitivo.Formularios.Vendedor
             dgvListaVentas.Rows[numRow].Cells["Precio"].Value = decimal.Parse(TBCantidad.Text) * productoCompra.Precio;
             dgvListaVentas.Rows[numRow].Cells["Cantidad"].Value = TBCantidad.Text.Trim();
             dgvListaVentas.Rows[numRow].Cells["Talle"].Value = TBTalle.Text.Trim();
+            dgvListaVentas.Rows[numRow].Cells["DGColor"].Value = TBColor.Text.Trim();
 
         }
 
@@ -337,6 +340,11 @@ namespace Unitivo.Formularios.Vendedor
         }
 
         private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
         {
 
         }

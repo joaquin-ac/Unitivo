@@ -49,6 +49,7 @@ namespace Unitivo.Presentacion.Vendedor
         {
             if (subMenu.Visible == false)
             {
+                hideSubMenu();
                 subMenu.Visible = true;
             }
             else
@@ -211,6 +212,16 @@ namespace Unitivo.Presentacion.Vendedor
                 Location = PointToScreen(new Point(MousePosition.X - Location.X - px, MousePosition.Y - Location.Y - py));
 
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

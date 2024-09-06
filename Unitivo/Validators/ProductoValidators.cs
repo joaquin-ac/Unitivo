@@ -62,7 +62,7 @@ namespace Unitivo.Validators
             {
                 foreach (Producto prod in prods)
                 {
-                    if ((prod.Id != producto.Id) && (producto.IdTalle == prod.IdTalle) && (producto.IdCategoria == prod.IdCategoria))
+                    if ((prod.Id != producto.Id) && (producto.IdTalle == prod.IdTalle) && (producto.IdCategoria == prod.IdCategoria) && (producto.IdColor == prod.IdColor))
                     {
                         return false;
                     }

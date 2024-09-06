@@ -11,6 +11,7 @@ using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Presentacion.Vendedor;
 using Unitivo.Repositorios.Implementaciones;
+using Color = System.Drawing.Color;
 
 namespace Unitivo.Presentacion.Administrador
 {
@@ -118,6 +119,8 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BBuscarTalle_Click(object sender, EventArgs e)
         {
+            BReactivar.Visible = false;
+            BEliminarTalle.Visible = false;
             //busqueda correo+Apellido
             string nom = TBBuscarTalle.Text;
             CargarTalles(nom);
@@ -171,10 +174,10 @@ namespace Unitivo.Presentacion.Administrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (talleParaEditar.Id != 0 && TBModTalle.Text != "")
+            if (talleParaEditar.Id != 0 && TBModTalle.Text.Trim() != "")
             {
                 talleParaEditar = talleRepositorio.BuscarTallePorId(talleParaEditar.Id);
-                talleParaEditar.Descripcion = TBModTalle.Text;
+                talleParaEditar.Descripcion = TBModTalle.Text.Trim();
 
                 if (talleRepositorio.ModificarTalle(talleParaEditar))
                 {
@@ -198,7 +201,7 @@ namespace Unitivo.Presentacion.Administrador
         private void BReactivar_Click(object sender, EventArgs e)
         {
 
-            if (dgvListarTalles.SelectedRows.Count >= 0)
+            if (dgvListarTalles.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)dgvListarTalles.SelectedRows[0].Cells["ID"].Value; ;

@@ -55,7 +55,7 @@
             TabControlRegCategoria.Controls.Add(TabPageListaCategoria);
             TabControlRegCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabControlRegCategoria.Location = new Point(155, 200);
-            TabControlRegCategoria.Margin = new Padding(2, 2, 2, 2);
+            TabControlRegCategoria.Margin = new Padding(2);
             TabControlRegCategoria.Name = "TabControlRegCategoria";
             TabControlRegCategoria.SelectedIndex = 0;
             TabControlRegCategoria.Size = new Size(624, 279);
@@ -67,9 +67,9 @@
             TabPageListaCategoria.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             TabPageListaCategoria.ForeColor = Color.White;
             TabPageListaCategoria.Location = new Point(4, 26);
-            TabPageListaCategoria.Margin = new Padding(2, 2, 2, 2);
+            TabPageListaCategoria.Margin = new Padding(2);
             TabPageListaCategoria.Name = "TabPageListaCategoria";
-            TabPageListaCategoria.Padding = new Padding(2, 2, 2, 2);
+            TabPageListaCategoria.Padding = new Padding(2);
             TabPageListaCategoria.Size = new Size(616, 249);
             TabPageListaCategoria.TabIndex = 0;
             TabPageListaCategoria.Text = "Lista de Categorias";
@@ -107,7 +107,7 @@
             DataGridViewListarCategorias.Dock = DockStyle.Fill;
             DataGridViewListarCategorias.EnableHeadersVisualStyles = false;
             DataGridViewListarCategorias.Location = new Point(2, 2);
-            DataGridViewListarCategorias.Margin = new Padding(2, 2, 2, 2);
+            DataGridViewListarCategorias.Margin = new Padding(2);
             DataGridViewListarCategorias.Name = "DataGridViewListarCategorias";
             DataGridViewListarCategorias.ReadOnly = true;
             DataGridViewListarCategorias.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;

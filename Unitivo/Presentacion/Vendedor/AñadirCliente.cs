@@ -33,12 +33,12 @@ namespace Unitivo.Presentacion.Vendedor
                 try
                 {
                     Cliente cliente = new Cliente();
-                    cliente.Nombre = TBNombreCliente.Text;
-                    cliente.Apellido = TBApellidoCliente.Text;
-                    cliente.Dni = int.Parse(TBDniCliente.Text);
-                    cliente.Telefono = TBTelCliente.Text;
-                    cliente.Direccion = TBDireccionCliente.Text;
-                    cliente.Correo = TBCorreoCliente.Text;
+                    cliente.Nombre = TBNombreCliente.Text.Trim();
+                    cliente.Apellido = TBApellidoCliente.Text.Trim();
+                    cliente.Dni = int.Parse(TBDniCliente.Text.Trim());
+                    cliente.Telefono = TBTelCliente.Text.Trim();
+                    cliente.Direccion = TBDireccionCliente.Text.Trim();
+                    cliente.Correo = TBCorreoCliente.Text.Trim();
 
                     if (clienteRepositorio.AgregarCliente(cliente))
                     {

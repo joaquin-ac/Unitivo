@@ -17,6 +17,7 @@ namespace Unitivo.Repositorios.Implementaciones
             _contexto = Contexto.dbContexto;
             _contexto?.Categorias.Load();
             _contexto?.Talles.Load();
+            _contexto?.Colores.Load();
         }
 
         private void CargarTalleYCategorias()
@@ -48,7 +49,6 @@ namespace Unitivo.Repositorios.Implementaciones
                 Guid.NewGuid().ToString() + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpg"
                 );
 
-                x.Imagen = "";
                 x.Estado = true;
                 x.FechaCreacion = DateTime.Now;
 
@@ -58,7 +58,7 @@ namespace Unitivo.Repositorios.Implementaciones
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error"+ex.Message, "Productos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -110,8 +110,10 @@ namespace Unitivo.Repositorios.Implementaciones
                 producto.Stock = x.Stock;
                 producto.Nombre = x.Nombre;
                 producto.Precio = x.Precio;
+                producto.Descripcion = x.Descripcion;
                 producto.IdCategoria = x.IdCategoria;
                 producto.IdTalle = x.IdTalle;
+                producto.IdColor = x.IdColor;
                 producto.FechaModificacion = DateTime.Now;
 
                 _contexto?.SaveChanges();
@@ -131,7 +133,7 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public List<Producto> ListarProductosActivosVentas()
         {
-            return _contexto?.Productos.Where(c => c.Estado == true && c.Stock != 0 && c.IdCategoriaNavigation.Estado == true && c.IdTalleNavigation.Estado == true).ToList()!;
+            return _contexto?.Productos.Where(c => c.Estado == true && c.Stock != 0 && c.IdCategoriaNavigation.Estado == true && c.IdTalleNavigation.Estado == true && c.IdColorNavigation.Estado == true).ToList()!;
         }
 
         public List<Producto> BuscarProductoNombre(string nombre)
@@ -144,15 +146,19 @@ namespace Unitivo.Repositorios.Implementaciones
             return _contexto?.Productos.Where(c => c.Nombre == nombre).ToList()!;
         }
 
-        public List<Producto> BuscarProductos(string nom, string cat, string talle)
+        public List<Producto> BuscarProductos(string nom, string cat, string talle, string col)
         {
-
-            List<Producto> prods = (from p in _contexto?.Productos
-                                    where p.IdCategoriaNavigation.Descripcion.Contains(cat) && p.Nombre.Contains(nom) && p.IdTalleNavigation.Descripcion.Contains(talle)
-                                    select p).ToList();
+            var prods = (from p in _contexto?.Productos
+                         where (string.IsNullOrEmpty(cat) || p.IdCategoriaNavigation.Descripcion == cat) &&
+                               (string.IsNullOrEmpty(col) || p.IdColorNavigation.Descripcion == col) &&
+                               (string.IsNullOrEmpty(nom) || p.Nombre.Contains(nom)) &&
+                               (string.IsNullOrEmpty(talle) || p.IdTalleNavigation.Descripcion == talle)
+                         select p).ToList();
 
             return prods;
         }
+
+        //where p.IdCategoriaNavigation.Descripcion.Contains(cat) && p.IdColorNavigation.Descripcion.Contains(col) && p.Nombre.Contains(nom) && p.IdTalleNavigation.Descripcion.Contains(talle)
 
         public bool ReducirStockProducto(int id, int stockReducir)
         {
@@ -189,11 +195,17 @@ namespace Unitivo.Repositorios.Implementaciones
             return prods;
         }
 
-        public List<Producto> BuscarProductosActivosVentas(string nom, string cat, string talle)
+        public List<Producto> BuscarProductosActivosVentas(string nom, string cat, string talle, string color)
         {
 
             List<Producto> prods = (from p in _contexto?.Productos
-                                    where (p.Estado == true && p.Stock != 0 && p.IdCategoriaNavigation.Estado == true && p.IdTalleNavigation.Estado == true) && p.IdCategoriaNavigation.Descripcion.Contains(cat) && p.Nombre.Contains(nom) && p.IdTalleNavigation.Descripcion.Contains(talle)
+                                    where (p.Estado == true && 
+                                    p.Stock != 0 && p.IdCategoriaNavigation.Estado == true && 
+                                    p.IdTalleNavigation.Estado == true && p.IdColorNavigation.Estado == true) &&
+                                    (string.IsNullOrEmpty(cat) || p.IdCategoriaNavigation.Descripcion == cat) &&
+                                    (string.IsNullOrEmpty(color) || p.IdColorNavigation.Descripcion == color) &&
+                                    (string.IsNullOrEmpty(nom) || p.Nombre.Contains(nom)) &&
+                                    (string.IsNullOrEmpty(talle) || p.IdTalleNavigation.Descripcion == talle)
                                     select p).ToList();
 
             return prods;

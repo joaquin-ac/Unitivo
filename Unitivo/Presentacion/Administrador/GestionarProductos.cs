@@ -19,6 +19,7 @@ namespace Unitivo.Presentacion.Administrador
         private ProductoRepositorio productoRepositorio = new ProductoRepositorio();
         private CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
         private TalleRepositorio talleRepositorio = new TalleRepositorio();
+        private ColorRepositorio colorRepositorio = new ColorRepositorio();
         private Producto productoParaEditar = new Producto();
 
         public GestionarProductos()
@@ -53,7 +54,11 @@ namespace Unitivo.Presentacion.Administrador
                     if (productoRepositorio.EliminarProducto(idEliminar))
                     {
                         MessageBox.Show("El producto se eliminó correctamente.", "producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarProductos();
+                        string nom = TBBuscar.Text;
+                        string cat = CBCatBuscar.Text;
+                        string talle = CBTalleBuscar.Text;
+                        string col = CBColorBuscar.Text;
+                        CargarProductos(nom, cat, talle, col);
                     }
                     else
                     {
@@ -67,14 +72,17 @@ namespace Unitivo.Presentacion.Administrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (productoParaEditar.Id != 0 && TBNombreProducto.Text != "" && TBPrecioProducto.Text != "" && TBStockAdic.Text != "" && !(TBPrecioProducto.Text.Contains(".") && TBPrecioProducto.Text.Split('.')[1].Length > 2))
+            bool CBoxsNoVacios = (CBCategoriaProducto.Text != "" && CBTalleProducto.Text != "" && CBColorProducto.Text != "");
+            if (CBoxsNoVacios && productoParaEditar.Id != 0 && TBNombreProducto.Text.Trim() != "" && TBPrecioProducto.Text.Trim() != "" && TBStockAdic.Text.Trim() != "" && TBDescripcionProducto.Text.Trim() != "" && !(TBPrecioProducto.Text.Trim().Contains(".") && TBPrecioProducto.Text.Trim().Split('.')[1].Length > 2))
             {
                 productoParaEditar = productoRepositorio.BuscarProducto(productoParaEditar.Id);
-                productoParaEditar.Nombre = TBNombreProducto.Text;
-                productoParaEditar.Precio = decimal.Parse(TBPrecioProducto.Text);
-                productoParaEditar.IdCategoria = (int)CBCategoriaProducto.SelectedValue;
-                productoParaEditar.IdTalle = (int)CBTalleProducto.SelectedValue;
-                productoParaEditar.Stock += int.Parse(TBStockAdic.Text);
+                productoParaEditar.Nombre = TBNombreProducto.Text.Trim();
+                productoParaEditar.Precio = decimal.Parse(TBPrecioProducto.Text.Trim());
+                productoParaEditar.Descripcion = TBDescripcionProducto.Text.Trim();
+                productoParaEditar.IdCategoria = (int)CBCategoriaProducto.SelectedValue!;
+                productoParaEditar.IdTalle = (int)CBTalleProducto.SelectedValue!;
+                productoParaEditar.IdColor = (int)CBColorProducto.SelectedValue!;
+                productoParaEditar.Stock += int.Parse(TBStockAdic.Text.Trim());
                 int stockAgregar = int.Parse(TBStockAdic.Text);
 
                 if (productoRepositorio.ModificarProducto(productoParaEditar, stockAgregar))
@@ -86,6 +94,11 @@ namespace Unitivo.Presentacion.Administrador
                     TBNombreProducto.Text = "";
                     TBPrecioProducto.Text = "";
                     TBStockAdic.Text = "";
+                    TBDescripcionProducto.Text = "";
+                    CBCategoriaProducto.SelectedValue = -1;
+                    CBColorProducto.SelectedValue = -1;
+                    CBTalleProducto.SelectedValue = -1;
+
                 }
                 else
                 {
@@ -106,15 +119,15 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (producto.Estado == true)
                 {
-                    DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.IdTalleNavigation.Descripcion, producto.Precio, producto.Estado);
+                    DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.IdTalleNavigation.Descripcion, producto.IdColorNavigation.Descripcion, producto.Stock, producto.Precio, producto.Descripcion, producto.Estado);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.IdTalleNavigation.Descripcion, producto.Precio, producto.Estado);
+                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.IdTalleNavigation.Descripcion, producto.IdColorNavigation.Descripcion, producto.Stock, producto.Precio, producto.Descripcion, producto.Estado);
 
                     // Establecer el color de fondo de la fila agregada
-                    DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }
@@ -123,6 +136,7 @@ namespace Unitivo.Presentacion.Administrador
         {
             cargarCategorias();
             cargarTalles();
+            cargarColores();
             CargarProductos();
             BReactivar.Visible = false;
             BEliminarProducto.Visible = false;
@@ -130,10 +144,13 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BBuscarProducto_Click(object sender, EventArgs e)
         {
+            BReactivar.Visible = false;
+            BEliminarProducto.Visible = false;
             string nom = TBBuscar.Text;
             string cat = CBCatBuscar.Text;
             string talle = CBTalleBuscar.Text;
-            CargarProductos(nom, cat, talle);
+            string col = CBColorBuscar.Text;
+            CargarProductos(nom, cat, talle, col);
 
         }
 
@@ -142,6 +159,7 @@ namespace Unitivo.Presentacion.Administrador
             CBCategoriaProducto.DataSource = categoriaRepositorio.ListarCategoriasActivos();
             CBCategoriaProducto.ValueMember = "Id";
             CBCategoriaProducto.DisplayMember = "Descripcion";
+            CBCategoriaProducto.SelectedValue = -1;
 
             var categorias = categoriaRepositorio.ListarCategoriasActivos();
             categorias.Insert(0, new Categoria { Id = 0, Descripcion = "Todos" }); // Agregar la opción "Todos"
@@ -150,29 +168,41 @@ namespace Unitivo.Presentacion.Administrador
             CBCatBuscar.ValueMember = "Id";
 
 
-            CBTalleProducto.Enabled = false;
-
         }
 
         private void cargarTalles()
         {
             var talles = talleRepositorio.ListarTallesActivos();
+            talles.Insert(0, new Talle { Id = 0, Descripcion = "Todos" }); // Agregar la opción "Todos"
             CBTalleBuscar.DataSource = talles;
             CBTalleBuscar.ValueMember = "Id";
             CBTalleBuscar.DisplayMember = "Descripcion";
-            CBTalleBuscar.Text = "Seleccione un talle";
-            CBTalleBuscar.SelectedValue = -1;
+            CBTalleBuscar.SelectedValue = 0;
 
-            CBTalleProducto.DataSource = talleRepositorio.ListarTalles();
+            CBTalleProducto.DataSource = talleRepositorio.ListarTallesActivos();
             CBTalleProducto.ValueMember = "Id";
             CBTalleProducto.DisplayMember = "Descripcion";
             CBTalleProducto.SelectedValue = -1;
 
-            CBTalleBuscar.Enabled = false;
-            CBTalleProducto.Enabled = false;
+
         }
 
-        private void CargarProductos(string nom, string cat, string talle)
+        private void cargarColores()
+        {
+            var colores = colorRepositorio.ListarColoresActivos();
+            colores.Insert(0, new Modelos.Color { Id = 0, Descripcion = "Todos" }); // Agregar la opción "Todos"
+            CBColorBuscar.DataSource = colores;
+            CBColorBuscar.DisplayMember = "Descripcion";
+            CBColorBuscar.ValueMember = "Id";
+
+
+            CBColorProducto.DataSource = colorRepositorio.ListarColoresActivos();
+            CBColorProducto.ValueMember = "Id";
+            CBColorProducto.DisplayMember = "Descripcion";
+            CBColorProducto.SelectedValue = -1;
+        }
+
+        private void CargarProductos(string nom, string cat, string talle, string col)
         {
             if (cat == "Todos")
             {
@@ -182,22 +212,26 @@ namespace Unitivo.Presentacion.Administrador
             {
                 talle = "";
             }
-            List<Producto> productos = productoRepositorio.BuscarProductos(nom, cat, talle);
+            if (col == "Todos")
+            {
+                col = "";
+            }
+            List<Producto> productos = productoRepositorio.BuscarProductos(nom, cat, talle, col);
             DataGridViewListaProductos.Rows.Clear();
             DataGridViewListaProductos.Refresh();
             foreach (Producto producto in productos)
             {
                 if (producto.Estado == true)
                 {
-                    DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.IdTalleNavigation.Descripcion, producto.Precio, producto.Estado);
+                    DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.IdTalleNavigation.Descripcion, producto.IdColorNavigation.Descripcion, producto.Stock, producto.Precio, producto.Descripcion, producto.Estado);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.IdTalleNavigation.Descripcion, producto.Precio, producto.Estado);
+                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.IdTalleNavigation.Descripcion, producto.IdColorNavigation.Descripcion, producto.Stock, producto.Precio, producto.Descripcion, producto.Estado);
 
                     // Establecer el color de fondo de la fila agregada
-                    DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }
@@ -231,6 +265,15 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BModificarProducto_Click(object sender, EventArgs e)
         {
+            TBStockProducto.Text = "";
+            TBNombreProducto.Text = "";
+            TBPrecioProducto.Text = "";
+            TBStockAdic.Text = "";
+            TBDescripcionProducto.Text = "";
+            CBCategoriaProducto.SelectedValue = -1;
+            CBColorProducto.SelectedValue = -1;
+            CBTalleProducto.SelectedValue = -1;
+
             if (DataGridViewListaProductos.SelectedRows.Count > 0)
             {
                 var fila = DataGridViewListaProductos.SelectedRows[0];
@@ -240,7 +283,9 @@ namespace Unitivo.Presentacion.Administrador
                 TBPrecioProducto.Text = fila.Cells["Precio"].Value.ToString();
                 CBCategoriaProducto.Text = fila.Cells["Categoria"].Value.ToString();
                 CBTalleProducto.Text = fila.Cells["Talle"].Value.ToString();
+                CBColorProducto.Text = fila.Cells["DGColor"].Value.ToString();
                 TBStockProducto.Text = fila.Cells["Stock"].Value.ToString();
+                TBDescripcionProducto.Text = fila.Cells["Descripcion"].Value.ToString();
                 TBStockAdic.Text = "0";
 
                 productoParaEditar.Id = idProducto;
@@ -254,7 +299,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BReactivar_Click(object sender, EventArgs e)
         {
-            if (DataGridViewListaProductos.SelectedRows.Count >= 0)
+            if (DataGridViewListaProductos.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)DataGridViewListaProductos.SelectedRows[0].Cells["ID"].Value; ;
@@ -266,7 +311,11 @@ namespace Unitivo.Presentacion.Administrador
                 {
                     MessageBox.Show("Ya estaba activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                CargarProductos();
+                string nom = TBBuscar.Text;
+                string cat = CBCatBuscar.Text;
+                string talle = CBTalleBuscar.Text;
+                string col = CBColorBuscar.Text;
+                CargarProductos(nom, cat, talle, col);
             }
         }
 
@@ -287,14 +336,15 @@ namespace Unitivo.Presentacion.Administrador
                 CBTalleBuscar.Enabled = true;
                 if (categoriaId == 0) // Si se selecciona "Todos"
                 {
-                    CBTalleBuscar.SelectedValue = -1; // Seleccionar "Todos" en CBTalleBuscar
+                    CBTalleBuscar.SelectedValue = 0; // Seleccionar "Todos" en CBTalleBuscar
                 }
                 var categoria = categoriaRepositorio.BuscarCategoriaPorId(categoriaId);
                 if (categoria != null)
                 {
                     var tallesFiltrados = talleRepositorio.ListarTallesPorTipo(categoria.TipoTalleId);
+                    tallesFiltrados.Insert(0, new Talle { Id = 0, Descripcion = "Todos" }); // Agregar la opción "Todos"
                     CBTalleBuscar.DataSource = tallesFiltrados;
-                    CBTalleBuscar.SelectedValue = -1;
+                    CBTalleBuscar.SelectedValue = 0;
                 }
             }
 
@@ -333,6 +383,56 @@ namespace Unitivo.Presentacion.Administrador
         private void TBNombreProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
             CommonFunctions.ValidarStringKeyPress((TextBox)sender, e);
+        }
+
+        private void GroupBoxBuscarProducto_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBNombreProducto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBoxDatosCliente_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBNombreProducto_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBPrecioProducto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
+using Color = System.Drawing.Color;
 
 namespace Unitivo.Presentacion.Administrador
 {
@@ -15,6 +16,8 @@ namespace Unitivo.Presentacion.Administrador
             InitializeComponent();
             CargarCategorias();
             CargarTipoTalles();
+
+            TBNombreCategoria.Enabled = false;
         }
 
         private void String_KeyPress(object sender, KeyPressEventArgs e)
@@ -27,7 +30,7 @@ namespace Unitivo.Presentacion.Administrador
             if (CommonFunctions.ValidarCamposNoVacios(this))
             {
                 Categoria categoria = new Categoria();
-                categoria.Descripcion = TBNombreCategoria.Text;
+                categoria.Descripcion = TBNombreCategoria.Text.Trim();
 
                 if (CBTipoTalle.SelectedItem != null)
                 {
@@ -55,10 +58,13 @@ namespace Unitivo.Presentacion.Administrador
         {
             var tipoTalles = tipoTalleRepositorio.ListarTipoTalles();
 
+            CBTipoTalle.Items.Clear();
+            CBTipoTalle.Items.Add("Seleccione un tipo de talle");
             CBTipoTalle.Items.AddRange(tipoTalles.ToArray());
             CBTipoTalle.ValueMember = "Id";
             CBTipoTalle.DisplayMember = "Descripcion";
-            CBTipoTalle.Text = "Seleccione un tipo de talle";
+            CBTipoTalle.SelectedIndex = 0; // Seleccionar el texto inicial
+
         }
 
 
@@ -98,6 +104,18 @@ namespace Unitivo.Presentacion.Administrador
 
         private void CBTipoTalle_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            TBNombreCategoria.Clear();
+            if (CBTipoTalle.SelectedIndex > 0)
+            {
+                TBNombreCategoria.Enabled = true; // Habilitar el TextBox si se selecciona un tipo de talle válido
+                //tipoDeTalle = ((TipoTalle)CBTipoTalle.SelectedItem).Descripcion; // Guardar la descripcion de tipoTalle
+            }
+            else
+            {
+                TBNombreCategoria.Enabled = false; // Deshabilitar el TextBox si no se selecciona un tipo de talle válido
+                TBNombreCategoria.Clear(); // Limpiar el TextBox
+            }
 
         }
 

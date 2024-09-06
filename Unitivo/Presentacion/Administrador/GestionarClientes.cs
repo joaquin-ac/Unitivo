@@ -12,6 +12,7 @@ using Unitivo.Presentacion.Logica;
 using Unitivo.Presentacion.Logica.Constructores;
 using Unitivo.Presentacion.Vendedor;
 using Unitivo.Repositorios.Implementaciones;
+using Color = System.Drawing.Color;
 
 namespace Unitivo.Presentacion.Administrador
 {
@@ -90,6 +91,8 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
+            BEliminarClientes.Visible = false;
+            BReactivar.Visible = false;
             object parametro = TBBuscar.Text;
             if (parametro != null)
             {
@@ -224,7 +227,7 @@ namespace Unitivo.Presentacion.Administrador
         private void BReactivar_Click(object sender, EventArgs e)
         {
 
-            if (DataGridViewListarClientes.SelectedRows.Count >= 0)
+            if (DataGridViewListarClientes.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)DataGridViewListarClientes.SelectedRows[0].Cells["ID"].Value; ;

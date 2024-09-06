@@ -115,6 +115,16 @@ CREATE TABLE categorias (
 );
 GO
 
+-- Tabla Colores
+CREATE TABLE colores (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    descripcion VARCHAR(255) NOT NULL,
+    estado BIT NOT NULL,
+
+    CONSTRAINT CHK_ESTADO_COLORES CHECK(estado IN (0, 1))
+);
+GO
+
 
 -- Tabla Productos
 CREATE TABLE productos (
@@ -123,17 +133,19 @@ CREATE TABLE productos (
     precio decimal(10, 2) NOT NULL,
     stock INT,
     estado BIT NOT NULL,
-    imagen VARCHAR(255) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
     FechaCreacion DATETIME2 NOT NULL DEFAULT GETDATE(),
     FechaModificacion DATETIME2 DEFAULT GETDATE(),
     id_categoria INT NOT NULL, 
     id_talle INT NOT NULL,
+	id_color INT NOT NULL,
 
     CONSTRAINT CHK_TYPE_ESTADO_PRODUCTOS CHECK(estado IN(0,1)),
     CONSTRAINT CHK_STOCK_PRODUCTOS CHECK(stock >= 0),
     CONSTRAINT CHK_PRECIO_PRODUCTOS CHECK(precio >= 0),
     CONSTRAINT FK_id_categoria_PRODUCTOS FOREIGN KEY (id_categoria) REFERENCES categorias(id),
-    CONSTRAINT FK_id_talle_PRODUCTOS FOREIGN KEY (id_talle) REFERENCES talles(id)
+    CONSTRAINT FK_id_talle_PRODUCTOS FOREIGN KEY (id_talle) REFERENCES talles(id),
+	CONSTRAINT FK_id_color_PRODUCTOS FOREIGN KEY (id_color) REFERENCES colores(id)
 );
 GO
 
@@ -169,3 +181,4 @@ insert into usuarios values('maria@gmail.com','$2b$10$7eQZae5/usN6MO2U3kWt/ucGnq
 
 insert into tipoTalle values ('Numeros');
 insert into tipoTalle values ('Letras');
+

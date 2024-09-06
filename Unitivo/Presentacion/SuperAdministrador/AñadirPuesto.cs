@@ -79,7 +79,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil); ;
 
                     // Establecer el color de fondo de la fila agregada
-                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }

@@ -41,12 +41,6 @@
             TabDetalleVenta = new TabControl();
             TabPageDetalleVenta = new TabPage();
             dgvListaVentas = new DataGridView();
-            Codigo = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Talle = new DataGridViewTextBoxColumn();
-            Subtotal = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             ltotal = new Label();
             label10 = new Label();
@@ -67,6 +61,13 @@
             label2 = new Label();
             Label5 = new Label();
             label1 = new Label();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Talle = new DataGridViewTextBoxColumn();
+            DGColor = new DataGridViewTextBoxColumn();
+            Subtotal = new DataGridViewTextBoxColumn();
             TabDetalleVenta.SuspendLayout();
             TabPageDetalleVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaVentas).BeginInit();
@@ -118,11 +119,11 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Cantidad, Talle, Subtotal });
+            dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Nombre, Precio, Cantidad, Talle, DGColor, Subtotal });
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.SeaGreen;
+            dataGridViewCellStyle8.ForeColor = Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = Color.WhiteSmoke;
             dataGridViewCellStyle8.SelectionForeColor = Color.SeaGreen;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
@@ -156,60 +157,6 @@
             dgvListaVentas.ShowRowErrors = false;
             dgvListaVentas.Size = new Size(683, 222);
             dgvListaVentas.TabIndex = 56;
-            // 
-            // Codigo
-            // 
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            Codigo.DefaultCellStyle = dataGridViewCellStyle2;
-            Codigo.HeaderText = "Codigo";
-            Codigo.MinimumWidth = 6;
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            Descripcion.DefaultCellStyle = dataGridViewCellStyle3;
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            Precio.DefaultCellStyle = dataGridViewCellStyle4;
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            Cantidad.DefaultCellStyle = dataGridViewCellStyle5;
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            // 
-            // Talle
-            // 
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            Talle.DefaultCellStyle = dataGridViewCellStyle6;
-            Talle.HeaderText = "Talle";
-            Talle.MinimumWidth = 6;
-            Talle.Name = "Talle";
-            Talle.ReadOnly = true;
-            // 
-            // Subtotal
-            // 
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
-            Subtotal.HeaderText = "Subtotal";
-            Subtotal.MinimumWidth = 6;
-            Subtotal.Name = "Subtotal";
-            Subtotal.ReadOnly = true;
             // 
             // panel2
             // 
@@ -375,7 +322,7 @@
             BImprimir.ForeColor = Color.White;
             BImprimir.Image = Properties.Resources.icons8_imprimir_26;
             BImprimir.Location = new Point(32, 501);
-            BImprimir.Margin = new Padding(4, 4, 4, 4);
+            BImprimir.Margin = new Padding(4);
             BImprimir.Name = "BImprimir";
             BImprimir.Size = new Size(41, 37);
             BImprimir.TabIndex = 73;
@@ -454,6 +401,66 @@
             label1.TabIndex = 61;
             label1.Text = "FACTURA";
             // 
+            // Codigo
+            // 
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            Codigo.DefaultCellStyle = dataGridViewCellStyle2;
+            Codigo.HeaderText = "Codigo";
+            Codigo.MinimumWidth = 6;
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            Nombre.DefaultCellStyle = dataGridViewCellStyle3;
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            Precio.DefaultCellStyle = dataGridViewCellStyle4;
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            Cantidad.DefaultCellStyle = dataGridViewCellStyle5;
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            // 
+            // Talle
+            // 
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            Talle.DefaultCellStyle = dataGridViewCellStyle6;
+            Talle.HeaderText = "Talle";
+            Talle.MinimumWidth = 6;
+            Talle.Name = "Talle";
+            Talle.ReadOnly = true;
+            // 
+            // DGColor
+            // 
+            DGColor.HeaderText = "Color";
+            DGColor.Name = "DGColor";
+            DGColor.ReadOnly = true;
+            // 
+            // Subtotal
+            // 
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            Subtotal.DefaultCellStyle = dataGridViewCellStyle7;
+            Subtotal.HeaderText = "Subtotal";
+            Subtotal.MinimumWidth = 6;
+            Subtotal.Name = "Subtotal";
+            Subtotal.ReadOnly = true;
+            // 
             // FacturaVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -500,10 +507,11 @@
         private Label label10;
         private Label label9;
         private DataGridViewTextBoxColumn Codigo;
-        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Talle;
+        private DataGridViewTextBoxColumn DGColor;
         private DataGridViewTextBoxColumn Subtotal;
     }
 }

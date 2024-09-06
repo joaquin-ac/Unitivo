@@ -81,12 +81,12 @@ namespace Unitivo.Presentacion.Vendedor
             if (CommonFunctions.ValidarCamposNoVacios(this))
             {
                 // Obtén los nuevos valores de los TextBox
-                string nuevoNombre = TBNombreCliente.Text;
-                string nuevoApellido = TBApellidoCliente.Text;
-                int nuevoDni = int.Parse(TBDniCliente.Text);
-                string nuevoTelefono = TBTelCliente.Text;
-                string nuevaDireccion = TBDireccion.Text;
-                string nuevoCorreo = TBCorreoCliente.Text;
+                string nuevoNombre = TBNombreCliente.Text.Trim();
+                string nuevoApellido = TBApellidoCliente.Text.Trim();
+                int nuevoDni = int.Parse(TBDniCliente.Text.Trim());
+                string nuevoTelefono = TBTelCliente.Text.Trim();
+                string nuevaDireccion = TBDireccion.Text.Trim();
+                string nuevoCorreo = TBCorreoCliente.Text.Trim();
 
 
                 // Compara los nuevos valores con los originales

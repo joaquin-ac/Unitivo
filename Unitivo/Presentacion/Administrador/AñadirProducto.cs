@@ -1,7 +1,7 @@
 ﻿using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
-using Unitivo.Sessions;
+using Color = System.Drawing.Color;
 namespace Unitivo.Presentacion.Administrador
 {
     public partial class AñadirProducto : Form
@@ -9,6 +9,7 @@ namespace Unitivo.Presentacion.Administrador
         private ProductoRepositorio productoRepositorio = new ProductoRepositorio();
         private CategoriaRepositorio categoriaRepositorio = new CategoriaRepositorio();
         private TalleRepositorio talleRepositorio = new TalleRepositorio();
+        private ColorRepositorio colorRepositorio = new ColorRepositorio();
 
         private string? rutaImagenProducto;
         private Image? image;
@@ -23,8 +24,8 @@ namespace Unitivo.Presentacion.Administrador
 
             cargarCategorias();
             cargarTalles();
+            CargarColores();
             CargarProductos();
-
         }
 
         private void String_KeyPress(object sender, KeyPressEventArgs e)
@@ -51,12 +52,12 @@ namespace Unitivo.Presentacion.Administrador
             {
                 if (producto.Estado == true)
                 {
-                    DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.Precio, producto.IdTalleNavigation.Descripcion);
+                    DataGridViewListaProductos.Rows.Add(producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.IdTalleNavigation.Descripcion, producto.IdColorNavigation.Descripcion, producto.Stock, producto.Precio, producto.Descripcion, producto.Estado);
                 }
                 else
                 {
                     // Agregar la fila con el estado "Inactivo"
-                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Id, producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.Stock, producto.Precio, producto.IdTalleNavigation.Descripcion);
+                    int rowIndex = DataGridViewListaProductos.Rows.Add(producto.Nombre, producto.IdCategoriaNavigation.Descripcion, producto.IdTalleNavigation.Descripcion, producto.IdColorNavigation.Descripcion, producto.Stock, producto.Precio, producto.Descripcion   , producto.Estado);
 
                     // Establecer el color de fondo de la fila agregada
                     DataGridViewListaProductos.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
@@ -66,15 +67,16 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BAñadirProducto_Click(object sender, EventArgs e)
         {
-            if (CommonFunctions.ValidarCamposNoVacios(this) && CBCategoria.Text != "" && CBTalle.Text != "" && !(TBPrecio.Text.Contains(".") && TBPrecio.Text.Split('.')[1].Length > 2))
+            if (CommonFunctions.ValidarCamposNoVacios(this) && CBCategoria.Text != "" && CBColor.Text != "" && CBTalle.Text != "" && !(TBPrecio.Text.Trim().Contains(".") && TBPrecio.Text.Trim().Split('.')[1].Length > 2))
             {
                 Producto producto = new Producto();
-                producto.Nombre = TBNombreProducto.Text;
-                producto.IdCategoria = (int)CBCategoria.SelectedValue;
-                producto.Stock = int.Parse(TBStock.Text);
-                producto.Precio = decimal.Parse(TBPrecio.Text);
-                producto.IdTalle = (int)CBTalle.SelectedValue;
-                producto.Imagen = rutaImagenProducto!;
+                producto.Nombre = TBNombreProducto.Text.Trim();
+                producto.IdCategoria = (int)CBCategoria.SelectedValue!;
+                producto.Stock = int.Parse(TBStock.Text.Trim());
+                producto.Precio = decimal.Parse(TBPrecio.Text.Trim());
+                producto.IdTalle = (int)CBTalle.SelectedValue!;
+                producto.Descripcion = TBDescripcion.Text.Trim();
+                producto.IdColor = (int)CBColor.SelectedValue!;
 
                 if (productoRepositorio!.AgregarProducto(producto))
                 {
@@ -116,6 +118,7 @@ namespace Unitivo.Presentacion.Administrador
             TBStock.Text = "";
             CBCategoria.SelectedValue = 0;
             CBTalle.SelectedValue = 0;
+            TBDescripcion.Text = "";
         }
 
         private void cargarTalles()
@@ -138,6 +141,15 @@ namespace Unitivo.Presentacion.Administrador
 
             CBTalle.Enabled = false;
         }
+        private void CargarColores()
+        {
+            var colores = colorRepositorio.ListarColoresActivos();
+            CBColor.DataSource = colores;
+            CBColor.ValueMember = "Id";
+            CBColor.DisplayMember = "Descripcion";
+
+        }
+
 
 
         private void DataGridViewListaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -170,6 +182,11 @@ namespace Unitivo.Presentacion.Administrador
         }
 
         private void TBNombreProducto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabPageListaProducto_Click(object sender, EventArgs e)
         {
 
         }

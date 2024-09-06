@@ -100,6 +100,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BBuscarUsuario_Click(object sender, EventArgs e)
         {
+            BReactivar.Visible = false;
+            BEliminarEmpleado.Visible = false;
             if (ComboBoxBuscarDni.Text == "DNI" && TBGestionUsuario.Text != "")
             {
                 //busqueda DNI
@@ -196,7 +198,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BReactivar_Click(object sender, EventArgs e)
         {
-            if (dgvEmpleados.SelectedRows.Count >= 0)
+            if (dgvEmpleados.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)dgvEmpleados.SelectedRows[0].Cells["ID"].Value; ;

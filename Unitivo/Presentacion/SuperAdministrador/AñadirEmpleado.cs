@@ -109,7 +109,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = DataGridViewListarEmpleados.Rows.Add(empleado.Id, empleado.Nombre, empleado.Apellido, empleado.Dni, empleado.Telefono, empleado.Direccion, empleado.Correo, empleado.Edad, "Inactivo");
 
                     // Establecer el color de fondo de la fila agregada
-                    DataGridViewListarEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    DataGridViewListarEmpleados.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }

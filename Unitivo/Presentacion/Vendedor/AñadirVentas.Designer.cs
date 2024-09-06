@@ -30,8 +30,8 @@ namespace Unitivo.Formularios.Vendedor
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Label1 = new Label();
             TBVendedor = new TextBox();
             LVendedor = new Label();
@@ -63,17 +63,20 @@ namespace Unitivo.Formularios.Vendedor
             BBuscarProducto = new Button();
             TBProductoVenta = new TextBox();
             dgvListaVentas = new DataGridView();
-            Codigo = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Talle = new DataGridViewTextBoxColumn();
             LTotalVenta = new Label();
             TBTotal = new TextBox();
             BConfirmar = new Button();
             BModificarProducto = new Button();
             BEliminarProducto = new Button();
             label11 = new Label();
+            label12 = new Label();
+            TBColor = new TextBox();
+            Codigo = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Talle = new DataGridViewTextBoxColumn();
+            DGColor = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
             GroupBoxClientes.SuspendLayout();
             GroupBoxArticulos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaVentas).BeginInit();
@@ -97,7 +100,7 @@ namespace Unitivo.Formularios.Vendedor
             TBVendedor.Enabled = false;
             TBVendedor.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             TBVendedor.Location = new Point(700, 83);
-            TBVendedor.Margin = new Padding(6, 6, 6, 6);
+            TBVendedor.Margin = new Padding(6);
             TBVendedor.Name = "TBVendedor";
             TBVendedor.Size = new Size(152, 23);
             TBVendedor.TabIndex = 57;
@@ -121,7 +124,7 @@ namespace Unitivo.Formularios.Vendedor
             Fecha.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             Fecha.Format = DateTimePickerFormat.Short;
             Fecha.Location = new Point(423, 82);
-            Fecha.Margin = new Padding(4, 4, 4, 4);
+            Fecha.Margin = new Padding(4);
             Fecha.Name = "Fecha";
             Fecha.Size = new Size(150, 23);
             Fecha.TabIndex = 59;
@@ -158,7 +161,7 @@ namespace Unitivo.Formularios.Vendedor
             TBNroFactura.Enabled = false;
             TBNroFactura.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             TBNroFactura.Location = new Point(182, 82);
-            TBNroFactura.Margin = new Padding(6, 6, 6, 6);
+            TBNroFactura.Margin = new Padding(6);
             TBNroFactura.Name = "TBNroFactura";
             TBNroFactura.Size = new Size(143, 23);
             TBNroFactura.TabIndex = 56;
@@ -178,9 +181,9 @@ namespace Unitivo.Formularios.Vendedor
             GroupBoxClientes.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxClientes.ForeColor = Color.SaddleBrown;
             GroupBoxClientes.Location = new Point(24, 140);
-            GroupBoxClientes.Margin = new Padding(4, 4, 4, 4);
+            GroupBoxClientes.Margin = new Padding(4);
             GroupBoxClientes.Name = "GroupBoxClientes";
-            GroupBoxClientes.Padding = new Padding(4, 4, 4, 4);
+            GroupBoxClientes.Padding = new Padding(4);
             GroupBoxClientes.Size = new Size(893, 122);
             GroupBoxClientes.TabIndex = 61;
             GroupBoxClientes.TabStop = false;
@@ -202,7 +205,7 @@ namespace Unitivo.Formularios.Vendedor
             // 
             TBTelCliVenta.Enabled = false;
             TBTelCliVenta.Location = new Point(683, 66);
-            TBTelCliVenta.Margin = new Padding(4, 4, 4, 4);
+            TBTelCliVenta.Margin = new Padding(4);
             TBTelCliVenta.Name = "TBTelCliVenta";
             TBTelCliVenta.Size = new Size(137, 31);
             TBTelCliVenta.TabIndex = 8;
@@ -223,7 +226,7 @@ namespace Unitivo.Formularios.Vendedor
             // 
             TBApellidoCliVenta.Enabled = false;
             TBApellidoCliVenta.Location = new Point(514, 66);
-            TBApellidoCliVenta.Margin = new Padding(4, 4, 4, 4);
+            TBApellidoCliVenta.Margin = new Padding(4);
             TBApellidoCliVenta.Name = "TBApellidoCliVenta";
             TBApellidoCliVenta.Size = new Size(137, 31);
             TBApellidoCliVenta.TabIndex = 6;
@@ -244,7 +247,7 @@ namespace Unitivo.Formularios.Vendedor
             // 
             TBNombreCliVenta.Enabled = false;
             TBNombreCliVenta.Location = new Point(346, 66);
-            TBNombreCliVenta.Margin = new Padding(4, 4, 4, 4);
+            TBNombreCliVenta.Margin = new Padding(4);
             TBNombreCliVenta.Name = "TBNombreCliVenta";
             TBNombreCliVenta.Size = new Size(137, 31);
             TBNombreCliVenta.TabIndex = 4;
@@ -267,7 +270,7 @@ namespace Unitivo.Formularios.Vendedor
             BBuscarCliente.ForeColor = Color.White;
             BBuscarCliente.Image = Resources.icons8_búsqueda_26;
             BBuscarCliente.Location = new Point(255, 58);
-            BBuscarCliente.Margin = new Padding(4, 4, 4, 4);
+            BBuscarCliente.Margin = new Padding(4);
             BBuscarCliente.Name = "BBuscarCliente";
             BBuscarCliente.Size = new Size(52, 46);
             BBuscarCliente.TabIndex = 2;
@@ -278,7 +281,7 @@ namespace Unitivo.Formularios.Vendedor
             // 
             TBDniCliVenta.Enabled = false;
             TBDniCliVenta.Location = new Point(83, 66);
-            TBDniCliVenta.Margin = new Padding(4, 4, 4, 4);
+            TBDniCliVenta.Margin = new Padding(4);
             TBDniCliVenta.Name = "TBDniCliVenta";
             TBDniCliVenta.Size = new Size(137, 31);
             TBDniCliVenta.TabIndex = 1;
@@ -287,6 +290,8 @@ namespace Unitivo.Formularios.Vendedor
             // GroupBoxArticulos
             // 
             GroupBoxArticulos.BackColor = Color.Cornsilk;
+            GroupBoxArticulos.Controls.Add(TBColor);
+            GroupBoxArticulos.Controls.Add(label12);
             GroupBoxArticulos.Controls.Add(BAñadir);
             GroupBoxArticulos.Controls.Add(Label10);
             GroupBoxArticulos.Controls.Add(TBCantidad);
@@ -302,9 +307,9 @@ namespace Unitivo.Formularios.Vendedor
             GroupBoxArticulos.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             GroupBoxArticulos.ForeColor = Color.SaddleBrown;
             GroupBoxArticulos.Location = new Point(24, 283);
-            GroupBoxArticulos.Margin = new Padding(4, 4, 4, 4);
+            GroupBoxArticulos.Margin = new Padding(4);
             GroupBoxArticulos.Name = "GroupBoxArticulos";
-            GroupBoxArticulos.Padding = new Padding(4, 4, 4, 4);
+            GroupBoxArticulos.Padding = new Padding(4);
             GroupBoxArticulos.Size = new Size(893, 122);
             GroupBoxArticulos.TabIndex = 62;
             GroupBoxArticulos.TabStop = false;
@@ -315,8 +320,8 @@ namespace Unitivo.Formularios.Vendedor
             BAñadir.BackColor = Color.DarkOliveGreen;
             BAñadir.ForeColor = Color.White;
             BAñadir.Image = Resources.add_32;
-            BAñadir.Location = new Point(767, 52);
-            BAñadir.Margin = new Padding(4, 4, 4, 4);
+            BAñadir.Location = new Point(824, 55);
+            BAñadir.Margin = new Padding(4);
             BAñadir.Name = "BAñadir";
             BAñadir.Size = new Size(52, 46);
             BAñadir.TabIndex = 12;
@@ -328,7 +333,7 @@ namespace Unitivo.Formularios.Vendedor
             Label10.AutoSize = true;
             Label10.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label10.ForeColor = Color.SaddleBrown;
-            Label10.Location = new Point(636, 40);
+            Label10.Location = new Point(704, 40);
             Label10.Margin = new Padding(4, 0, 4, 0);
             Label10.Name = "Label10";
             Label10.Size = new Size(81, 20);
@@ -338,8 +343,8 @@ namespace Unitivo.Formularios.Vendedor
             // TBCantidad
             // 
             TBCantidad.Enabled = false;
-            TBCantidad.Location = new Point(636, 67);
-            TBCantidad.Margin = new Padding(4, 4, 4, 4);
+            TBCantidad.Location = new Point(704, 67);
+            TBCantidad.Margin = new Padding(4);
             TBCantidad.Name = "TBCantidad";
             TBCantidad.Size = new Size(93, 31);
             TBCantidad.TabIndex = 10;
@@ -350,7 +355,7 @@ namespace Unitivo.Formularios.Vendedor
             Label6.AutoSize = true;
             Label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label6.ForeColor = Color.SaddleBrown;
-            Label6.Location = new Point(514, 40);
+            Label6.Location = new Point(480, 40);
             Label6.Margin = new Padding(4, 0, 4, 0);
             Label6.Name = "Label6";
             Label6.Size = new Size(50, 20);
@@ -360,8 +365,8 @@ namespace Unitivo.Formularios.Vendedor
             // TBTalle
             // 
             TBTalle.Enabled = false;
-            TBTalle.Location = new Point(514, 67);
-            TBTalle.Margin = new Padding(4, 4, 4, 4);
+            TBTalle.Location = new Point(480, 67);
+            TBTalle.Margin = new Padding(4);
             TBTalle.Name = "TBTalle";
             TBTalle.Size = new Size(93, 31);
             TBTalle.TabIndex = 8;
@@ -371,7 +376,7 @@ namespace Unitivo.Formularios.Vendedor
             Label7.AutoSize = true;
             Label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label7.ForeColor = Color.SaddleBrown;
-            Label7.Location = new Point(389, 40);
+            Label7.Location = new Point(364, 40);
             Label7.Margin = new Padding(4, 0, 4, 0);
             Label7.Name = "Label7";
             Label7.Size = new Size(58, 20);
@@ -381,8 +386,8 @@ namespace Unitivo.Formularios.Vendedor
             // TBStock
             // 
             TBStock.Enabled = false;
-            TBStock.Location = new Point(389, 67);
-            TBStock.Margin = new Padding(4, 4, 4, 4);
+            TBStock.Location = new Point(364, 67);
+            TBStock.Margin = new Padding(4);
             TBStock.Name = "TBStock";
             TBStock.Size = new Size(93, 31);
             TBStock.TabIndex = 6;
@@ -392,7 +397,7 @@ namespace Unitivo.Formularios.Vendedor
             Label8.AutoSize = true;
             Label8.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Label8.ForeColor = Color.SaddleBrown;
-            Label8.Location = new Point(266, 40);
+            Label8.Location = new Point(247, 40);
             Label8.Margin = new Padding(4, 0, 4, 0);
             Label8.Name = "Label8";
             Label8.Size = new Size(61, 20);
@@ -403,8 +408,8 @@ namespace Unitivo.Formularios.Vendedor
             // 
             TBPrecio.Enabled = false;
             TBPrecio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBPrecio.Location = new Point(266, 67);
-            TBPrecio.Margin = new Padding(4, 4, 4, 4);
+            TBPrecio.Location = new Point(247, 67);
+            TBPrecio.Margin = new Padding(4);
             TBPrecio.Name = "TBPrecio";
             TBPrecio.Size = new Size(96, 26);
             TBPrecio.TabIndex = 4;
@@ -428,7 +433,7 @@ namespace Unitivo.Formularios.Vendedor
             BBuscarProducto.ForeColor = Color.White;
             BBuscarProducto.Image = Resources.icons8_búsqueda_26;
             BBuscarProducto.Location = new Point(178, 52);
-            BBuscarProducto.Margin = new Padding(4, 4, 4, 4);
+            BBuscarProducto.Margin = new Padding(4);
             BBuscarProducto.Name = "BBuscarProducto";
             BBuscarProducto.Size = new Size(52, 46);
             BBuscarProducto.TabIndex = 2;
@@ -439,7 +444,7 @@ namespace Unitivo.Formularios.Vendedor
             // 
             TBProductoVenta.Enabled = false;
             TBProductoVenta.Location = new Point(17, 64);
-            TBProductoVenta.Margin = new Padding(4, 4, 4, 4);
+            TBProductoVenta.Margin = new Padding(4);
             TBProductoVenta.Name = "TBProductoVenta";
             TBProductoVenta.Size = new Size(137, 31);
             TBProductoVenta.TabIndex = 1;
@@ -455,36 +460,138 @@ namespace Unitivo.Formularios.Vendedor
             dgvListaVentas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvListaVentas.BackgroundColor = Color.Tan;
             dgvListaVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.DarkOliveGreen;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkOliveGreen;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaVentas.ColumnHeadersHeight = 20;
             dgvListaVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Cantidad, Talle });
+            dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Talle, DGColor, Cantidad });
             dgvListaVentas.EnableHeadersVisualStyles = false;
             dgvListaVentas.Location = new Point(24, 428);
             dgvListaVentas.Margin = new Padding(4, 2, 4, 2);
             dgvListaVentas.Name = "dgvListaVentas";
             dgvListaVentas.ReadOnly = true;
             dgvListaVentas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvListaVentas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvListaVentas.RowHeadersWidth = 51;
             dgvListaVentas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvListaVentas.RowTemplate.Height = 24;
-            dgvListaVentas.Size = new Size(771, 161);
+            dgvListaVentas.Size = new Size(804, 161);
             dgvListaVentas.TabIndex = 63;
+            // 
+            // LTotalVenta
+            // 
+            LTotalVenta.AutoSize = true;
+            LTotalVenta.BackColor = Color.Cornsilk;
+            LTotalVenta.FlatStyle = FlatStyle.Flat;
+            LTotalVenta.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LTotalVenta.ForeColor = Color.SaddleBrown;
+            LTotalVenta.Location = new Point(59, 614);
+            LTotalVenta.Margin = new Padding(6, 0, 6, 0);
+            LTotalVenta.Name = "LTotalVenta";
+            LTotalVenta.Size = new Size(66, 25);
+            LTotalVenta.TabIndex = 64;
+            LTotalVenta.Text = "Total:";
+            // 
+            // TBTotal
+            // 
+            TBTotal.BackColor = Color.Cornsilk;
+            TBTotal.Enabled = false;
+            TBTotal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            TBTotal.Location = new Point(166, 615);
+            TBTotal.Margin = new Padding(6);
+            TBTotal.Name = "TBTotal";
+            TBTotal.Size = new Size(99, 26);
+            TBTotal.TabIndex = 65;
+            // 
+            // BConfirmar
+            // 
+            BConfirmar.BackColor = Color.DarkOliveGreen;
+            BConfirmar.FlatAppearance.BorderSize = 2;
+            BConfirmar.FlatStyle = FlatStyle.Flat;
+            BConfirmar.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            BConfirmar.ForeColor = Color.Cornsilk;
+            BConfirmar.Location = new Point(618, 614);
+            BConfirmar.Margin = new Padding(4);
+            BConfirmar.Name = "BConfirmar";
+            BConfirmar.Size = new Size(158, 44);
+            BConfirmar.TabIndex = 66;
+            BConfirmar.Text = "Confirmar";
+            BConfirmar.UseVisualStyleBackColor = false;
+            BConfirmar.Click += BConfirmar_Click;
+            // 
+            // BModificarProducto
+            // 
+            BModificarProducto.BackColor = Color.SteelBlue;
+            BModificarProducto.ForeColor = Color.White;
+            BModificarProducto.Image = Resources.icons8_editar_archivo_26;
+            BModificarProducto.Location = new Point(848, 454);
+            BModificarProducto.Margin = new Padding(4);
+            BModificarProducto.Name = "BModificarProducto";
+            BModificarProducto.Size = new Size(59, 52);
+            BModificarProducto.TabIndex = 69;
+            BModificarProducto.UseVisualStyleBackColor = false;
+            BModificarProducto.Click += BModificarProducto_Click;
+            // 
+            // BEliminarProducto
+            // 
+            BEliminarProducto.BackColor = Color.Brown;
+            BEliminarProducto.ForeColor = Color.White;
+            BEliminarProducto.Image = Resources.icons8_basura_26;
+            BEliminarProducto.Location = new Point(848, 524);
+            BEliminarProducto.Margin = new Padding(4);
+            BEliminarProducto.Name = "BEliminarProducto";
+            BEliminarProducto.Size = new Size(59, 52);
+            BEliminarProducto.TabIndex = 68;
+            BEliminarProducto.UseVisualStyleBackColor = false;
+            BEliminarProducto.Click += BEliminarProducto_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = SystemColors.ButtonHighlight;
+            label11.Location = new Point(134, 606);
+            label11.Name = "label11";
+            label11.Size = new Size(32, 37);
+            label11.TabIndex = 70;
+            label11.Text = "$";
+            label11.Click += label11_Click;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.ForeColor = Color.SaddleBrown;
+            label12.Location = new Point(596, 39);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(54, 20);
+            label12.TabIndex = 13;
+            label12.Text = "Color :";
+            label12.Click += label12_Click;
+            // 
+            // TBColor
+            // 
+            TBColor.Enabled = false;
+            TBColor.Location = new Point(594, 67);
+            TBColor.Margin = new Padding(4);
+            TBColor.Name = "TBColor";
+            TBColor.Size = new Size(93, 31);
+            TBColor.TabIndex = 14;
+            //TBColor.TextChanged += this.TBColor_TextChanged;
             // 
             // Codigo
             // 
@@ -507,13 +614,6 @@ namespace Unitivo.Formularios.Vendedor
             Precio.Name = "Precio";
             Precio.ReadOnly = true;
             // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            // 
             // Talle
             // 
             Talle.HeaderText = "Talle";
@@ -521,84 +621,18 @@ namespace Unitivo.Formularios.Vendedor
             Talle.Name = "Talle";
             Talle.ReadOnly = true;
             // 
-            // LTotalVenta
+            // DGColor
             // 
-            LTotalVenta.AutoSize = true;
-            LTotalVenta.BackColor = Color.Cornsilk;
-            LTotalVenta.FlatStyle = FlatStyle.Flat;
-            LTotalVenta.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            LTotalVenta.ForeColor = Color.SaddleBrown;
-            LTotalVenta.Location = new Point(59, 614);
-            LTotalVenta.Margin = new Padding(6, 0, 6, 0);
-            LTotalVenta.Name = "LTotalVenta";
-            LTotalVenta.Size = new Size(66, 25);
-            LTotalVenta.TabIndex = 64;
-            LTotalVenta.Text = "Total:";
+            DGColor.HeaderText = "Color";
+            DGColor.Name = "DGColor";
+            DGColor.ReadOnly = true;
             // 
-            // TBTotal
+            // Cantidad
             // 
-            TBTotal.BackColor = Color.Cornsilk;
-            TBTotal.Enabled = false;
-            TBTotal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TBTotal.Location = new Point(166, 615);
-            TBTotal.Margin = new Padding(6, 6, 6, 6);
-            TBTotal.Name = "TBTotal";
-            TBTotal.Size = new Size(99, 26);
-            TBTotal.TabIndex = 65;
-            // 
-            // BConfirmar
-            // 
-            BConfirmar.BackColor = Color.DarkOliveGreen;
-            BConfirmar.FlatAppearance.BorderSize = 2;
-            BConfirmar.FlatStyle = FlatStyle.Flat;
-            BConfirmar.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            BConfirmar.ForeColor = Color.Cornsilk;
-            BConfirmar.Location = new Point(618, 614);
-            BConfirmar.Margin = new Padding(4, 4, 4, 4);
-            BConfirmar.Name = "BConfirmar";
-            BConfirmar.Size = new Size(158, 44);
-            BConfirmar.TabIndex = 66;
-            BConfirmar.Text = "Confirmar";
-            BConfirmar.UseVisualStyleBackColor = false;
-            BConfirmar.Click += BConfirmar_Click;
-            // 
-            // BModificarProducto
-            // 
-            BModificarProducto.BackColor = Color.SteelBlue;
-            BModificarProducto.ForeColor = Color.White;
-            BModificarProducto.Image = Resources.icons8_editar_archivo_26;
-            BModificarProducto.Location = new Point(830, 454);
-            BModificarProducto.Margin = new Padding(4, 4, 4, 4);
-            BModificarProducto.Name = "BModificarProducto";
-            BModificarProducto.Size = new Size(59, 52);
-            BModificarProducto.TabIndex = 69;
-            BModificarProducto.UseVisualStyleBackColor = false;
-            BModificarProducto.Click += BModificarProducto_Click;
-            // 
-            // BEliminarProducto
-            // 
-            BEliminarProducto.BackColor = Color.Brown;
-            BEliminarProducto.ForeColor = Color.White;
-            BEliminarProducto.Image = Resources.icons8_basura_26;
-            BEliminarProducto.Location = new Point(830, 524);
-            BEliminarProducto.Margin = new Padding(4, 4, 4, 4);
-            BEliminarProducto.Name = "BEliminarProducto";
-            BEliminarProducto.Size = new Size(59, 52);
-            BEliminarProducto.TabIndex = 68;
-            BEliminarProducto.UseVisualStyleBackColor = false;
-            BEliminarProducto.Click += BEliminarProducto_Click;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.ForeColor = SystemColors.ButtonHighlight;
-            label11.Location = new Point(134, 606);
-            label11.Name = "label11";
-            label11.Size = new Size(32, 37);
-            label11.TabIndex = 70;
-            label11.Text = "$";
-            label11.Click += label11_Click;
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
             // 
             // AñadirVentas
             // 
@@ -623,7 +657,7 @@ namespace Unitivo.Formularios.Vendedor
             Controls.Add(TBNroFactura);
             Controls.Add(Label1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "AñadirVentas";
             Text = "Form1";
             Load += AñadirVentas_Load;
@@ -666,11 +700,6 @@ namespace Unitivo.Formularios.Vendedor
         internal Button BBuscarProducto;
         internal TextBox TBProductoVenta;
         internal DataGridView dgvListaVentas;
-        internal DataGridViewTextBoxColumn Codigo;
-        internal DataGridViewTextBoxColumn Descripcion;
-        internal DataGridViewTextBoxColumn Precio;
-        internal DataGridViewTextBoxColumn Cantidad;
-        internal DataGridViewTextBoxColumn Talle;
         internal Label LTotalVenta;
         internal TextBox TBTotal;
         internal Button BConfirmar;
@@ -678,6 +707,14 @@ namespace Unitivo.Formularios.Vendedor
         internal Button BEliminarProducto;
         internal Button BAñadir;
         private Label label11;
+        internal TextBox TBColor;
+        internal Label label12;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Talle;
+        private DataGridViewTextBoxColumn DGColor;
+        private DataGridViewTextBoxColumn Cantidad;
     }
 
     #endregion

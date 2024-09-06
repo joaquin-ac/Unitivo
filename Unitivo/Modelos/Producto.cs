@@ -15,7 +15,7 @@ public partial class Producto
 
     public bool Estado { get; set; }
 
-    public string Imagen { get; set; } = null!;
+    public string Descripcion { get; set; } = null!;
 
     public DateTime FechaCreacion { get; set; }
 
@@ -25,10 +25,13 @@ public partial class Producto
 
     public int IdTalle { get; set; }
 
+    public int IdColor { get; set; }
+
     public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; } = new List<DetalleFactura>();
 
     public virtual Categoria IdCategoriaNavigation { get; set; } = null!;
 
     public virtual Talle IdTalleNavigation { get; set; } = null!;
 
+    public virtual Color IdColorNavigation { get; set; } = null!;
 }

@@ -11,6 +11,7 @@ using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Color = System.Drawing.Color;
 
 
 namespace Unitivo.Presentacion.Administrador
@@ -54,7 +55,7 @@ namespace Unitivo.Presentacion.Administrador
                 try
                 {
                     Talle talle = new Talle();
-                    talle.Descripcion = TBNombreTalle.Text;
+                    talle.Descripcion = TBNombreTalle.Text.Trim();
                     talle.TipoTalleId = ((TipoTalle)CBTipoTalle.SelectedItem).Id; // Asignar el ID del tipo de talle seleccionado
 
                     if (talleRepositorio.AgregarTalle(talle))

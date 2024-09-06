@@ -30,17 +30,19 @@
             TabDetalleVenta = new TabControl();
             TabPageDetalleVenta = new TabPage();
             dgvListaVentas = new DataGridView();
-            Codigo = new DataGridViewTextBoxColumn();
-            Descripcion = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
-            Cantidad = new DataGridViewTextBoxColumn();
-            Talle = new DataGridViewTextBoxColumn();
             BVolver = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
             panel4 = new Panel();
             panel3 = new Panel();
             panel5 = new Panel();
+            Codigo = new DataGridViewTextBoxColumn();
+            Nombre = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Talle = new DataGridViewTextBoxColumn();
+            DGColor = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
             TabDetalleVenta.SuspendLayout();
             TabPageDetalleVenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListaVentas).BeginInit();
@@ -91,7 +93,7 @@
             dgvListaVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvListaVentas.ColumnHeadersHeight = 20;
             dgvListaVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Descripcion, Precio, Cantidad, Talle });
+            dgvListaVentas.Columns.AddRange(new DataGridViewColumn[] { Codigo, Nombre, Precio, Cantidad, Talle, DGColor, Categoria });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -120,41 +122,6 @@
             dgvListaVentas.RowTemplate.Height = 24;
             dgvListaVentas.Size = new Size(886, 281);
             dgvListaVentas.TabIndex = 56;
-            // 
-            // Codigo
-            // 
-            Codigo.HeaderText = "Codigo";
-            Codigo.MinimumWidth = 6;
-            Codigo.Name = "Codigo";
-            Codigo.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.MinimumWidth = 6;
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad";
-            Cantidad.MinimumWidth = 6;
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
-            // 
-            // Talle
-            // 
-            Talle.HeaderText = "Talle";
-            Talle.MinimumWidth = 6;
-            Talle.Name = "Talle";
-            Talle.ReadOnly = true;
             // 
             // BVolver
             // 
@@ -218,6 +185,53 @@
             panel5.Size = new Size(966, 8);
             panel5.TabIndex = 75;
             // 
+            // Codigo
+            // 
+            Codigo.HeaderText = "Codigo";
+            Codigo.MinimumWidth = 6;
+            Codigo.Name = "Codigo";
+            Codigo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            // 
+            // Talle
+            // 
+            Talle.HeaderText = "Talle";
+            Talle.MinimumWidth = 6;
+            Talle.Name = "Talle";
+            Talle.ReadOnly = true;
+            // 
+            // DGColor
+            // 
+            DGColor.HeaderText = "Color";
+            DGColor.Name = "DGColor";
+            DGColor.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
             // DetalleVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -246,11 +260,6 @@
         internal TabControl TabDetalleVenta;
         internal TabPage TabPageDetalleVenta;
         internal DataGridView dgvListaVentas;
-        internal DataGridViewTextBoxColumn Codigo;
-        internal DataGridViewTextBoxColumn Descripcion;
-        internal DataGridViewTextBoxColumn Precio;
-        internal DataGridViewTextBoxColumn Cantidad;
-        internal DataGridViewTextBoxColumn Talle;
 
         #endregion
 
@@ -260,5 +269,12 @@
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
+        private DataGridViewTextBoxColumn Codigo;
+        private DataGridViewTextBoxColumn Nombre;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Talle;
+        private DataGridViewTextBoxColumn DGColor;
+        private DataGridViewTextBoxColumn Categoria;
     }
 }

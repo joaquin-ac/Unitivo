@@ -38,15 +38,21 @@
             TabControlListaProductos = new TabControl();
             TabPageListaProducto = new TabPage();
             DataGridViewListaProductos = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
             Producto = new DataGridViewTextBoxColumn();
             Categoria = new DataGridViewTextBoxColumn();
+            Talle = new DataGridViewTextBoxColumn();
+            DGColor = new DataGridViewTextBoxColumn();
             Stock = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
-            Talle = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
             DataGridViewRegistroCategorias = new DataGridView();
             Label1 = new Label();
             Panel2 = new Panel();
+            TBDescripcion = new TextBox();
+            label7 = new Label();
+            CBColor = new ComboBox();
+            lColor = new Label();
             CBTalle = new ComboBox();
             BAñadirProducto = new Button();
             CBCategoria = new ComboBox();
@@ -90,6 +96,7 @@
             TabPageListaProducto.TabIndex = 0;
             TabPageListaProducto.Text = "Lista de Producto";
             TabPageListaProducto.UseVisualStyleBackColor = true;
+            TabPageListaProducto.Click += TabPageListaProducto_Click;
             // 
             // DataGridViewListaProductos
             // 
@@ -112,7 +119,7 @@
             DataGridViewListaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DataGridViewListaProductos.ColumnHeadersHeight = 20;
             DataGridViewListaProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DataGridViewListaProductos.Columns.AddRange(new DataGridViewColumn[] { ID, Producto, Categoria, Stock, Precio, Talle });
+            DataGridViewListaProductos.Columns.AddRange(new DataGridViewColumn[] { Producto, Categoria, Talle, DGColor, Stock, Precio, Descripcion, Estado });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -142,47 +149,78 @@
             DataGridViewListaProductos.TabIndex = 7;
             DataGridViewListaProductos.CellContentClick += DataGridViewListaProductos_CellContentClick;
             // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            // 
             // Producto
             // 
+            Producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Producto.Frozen = true;
             Producto.HeaderText = "Producto";
             Producto.MinimumWidth = 6;
             Producto.Name = "Producto";
             Producto.ReadOnly = true;
+            Producto.Width = 130;
             // 
             // Categoria
             // 
+            Categoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Categoria.Frozen = true;
             Categoria.HeaderText = "Categoria";
             Categoria.MinimumWidth = 6;
             Categoria.Name = "Categoria";
             Categoria.ReadOnly = true;
             // 
-            // Stock
-            // 
-            Stock.HeaderText = "Stock";
-            Stock.MinimumWidth = 6;
-            Stock.Name = "Stock";
-            Stock.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            // 
             // Talle
             // 
+            Talle.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Talle.Frozen = true;
             Talle.HeaderText = "Talle";
             Talle.MinimumWidth = 6;
             Talle.Name = "Talle";
             Talle.ReadOnly = true;
+            // 
+            // DGColor
+            // 
+            DGColor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            DGColor.Frozen = true;
+            DGColor.HeaderText = "Color";
+            DGColor.Name = "DGColor";
+            DGColor.ReadOnly = true;
+            // 
+            // Stock
+            // 
+            Stock.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Stock.Frozen = true;
+            Stock.HeaderText = "Stock";
+            Stock.MinimumWidth = 6;
+            Stock.Name = "Stock";
+            Stock.ReadOnly = true;
+            Stock.Width = 85;
+            // 
+            // Precio
+            // 
+            Precio.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Precio.Frozen = true;
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 85;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Descripcion.Frozen = true;
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            Descripcion.Width = 229;
+            // 
+            // Estado
+            // 
+            Estado.Frozen = true;
+            Estado.HeaderText = "Estado";
+            Estado.Name = "Estado";
+            Estado.ReadOnly = true;
+            Estado.Visible = false;
             // 
             // DataGridViewRegistroCategorias
             // 
@@ -244,6 +282,10 @@
             // Panel2
             // 
             Panel2.BackColor = Color.Cornsilk;
+            Panel2.Controls.Add(TBDescripcion);
+            Panel2.Controls.Add(label7);
+            Panel2.Controls.Add(CBColor);
+            Panel2.Controls.Add(lColor);
             Panel2.Controls.Add(CBTalle);
             Panel2.Controls.Add(BAñadirProducto);
             Panel2.Controls.Add(CBCategoria);
@@ -261,11 +303,56 @@
             Panel2.Size = new Size(892, 158);
             Panel2.TabIndex = 16;
             // 
+            // TBDescripcion
+            // 
+            TBDescripcion.Location = new Point(596, 55);
+            TBDescripcion.Margin = new Padding(5);
+            TBDescripcion.Multiline = true;
+            TBDescripcion.Name = "TBDescripcion";
+            TBDescripcion.Size = new Size(153, 84);
+            TBDescripcion.TabIndex = 43;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Cornsilk;
+            label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.SaddleBrown;
+            label7.Location = new Point(596, 21);
+            label7.Margin = new Padding(5, 0, 5, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(115, 24);
+            label7.TabIndex = 42;
+            label7.Text = "Descripcion:";
+            label7.TextAlign = ContentAlignment.TopRight;
+            // 
+            // CBColor
+            // 
+            CBColor.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBColor.FormattingEnabled = true;
+            CBColor.Location = new Point(394, 116);
+            CBColor.Name = "CBColor";
+            CBColor.Size = new Size(153, 23);
+            CBColor.TabIndex = 41;
+            // 
+            // lColor
+            // 
+            lColor.AutoSize = true;
+            lColor.BackColor = Color.Cornsilk;
+            lColor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lColor.ForeColor = Color.SaddleBrown;
+            lColor.Location = new Point(298, 111);
+            lColor.Margin = new Padding(5, 0, 5, 0);
+            lColor.Name = "lColor";
+            lColor.Size = new Size(65, 24);
+            lColor.TabIndex = 40;
+            lColor.Text = "Color: ";
+            // 
             // CBTalle
             // 
             CBTalle.DropDownStyle = ComboBoxStyle.DropDownList;
             CBTalle.FormattingEnabled = true;
-            CBTalle.Location = new Point(405, 71);
+            CBTalle.Location = new Point(394, 69);
             CBTalle.Name = "CBTalle";
             CBTalle.Size = new Size(153, 23);
             CBTalle.TabIndex = 39;
@@ -360,7 +447,7 @@
             // 
             // TBPrecio
             // 
-            TBPrecio.Location = new Point(405, 21);
+            TBPrecio.Location = new Point(394, 21);
             TBPrecio.Margin = new Padding(5);
             TBPrecio.Name = "TBPrecio";
             TBPrecio.Size = new Size(153, 23);
@@ -431,13 +518,19 @@
         internal TextBox TBStock;
 
 #endregion
-        private DataGridViewTextBoxColumn ID;
+        private ComboBox CBTalle;
+        private ComboBox CBColor;
+        internal Label lColor;
+        internal TextBox TBDescripcion;
+        internal Label label7;
         private DataGridViewTextBoxColumn Producto;
         private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn Talle;
+        private DataGridViewTextBoxColumn DGColor;
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewTextBoxColumn Precio;
-        private DataGridViewTextBoxColumn Talle;
-        private ComboBox CBTalle;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Estado;
     }
 
 

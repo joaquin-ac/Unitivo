@@ -65,6 +65,8 @@ namespace Unitivo.Presentacion.Administrador
             //busqueda correo+Apellido
             string nom = TBGestionCategoria.Text;
             CargarCategorias(nom);
+            BReactivar.Visible = false;
+            BEliminarCategoria.Visible = false;
         }
 
         private void GestionarCategorias_Load(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace Unitivo.Presentacion.Administrador
                     int rowIndex = dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
-                    dgvRegistroCategoria.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    dgvRegistroCategoria.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }
@@ -116,7 +118,7 @@ namespace Unitivo.Presentacion.Administrador
                     int rowIndex = dgvRegistroCategoria.Rows.Add(categoria.Id, categoria.Descripcion, categoria.Estado, categoria.TipoTalleIdNavigation.Descripcion);
 
                     // Establecer el color de fondo de la fila agregada
-                    dgvRegistroCategoria.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    dgvRegistroCategoria.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
 
@@ -174,10 +176,10 @@ namespace Unitivo.Presentacion.Administrador
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (categoriaParaEditar.Id != 0 && TBNombreCategoria.Text != "")
+            if (categoriaParaEditar.Id != 0 && TBNombreCategoria.Text.Trim() != "")
             {
                 categoriaParaEditar = categoriaRepositorio.BuscarCategoriaPorId(categoriaParaEditar.Id);
-                categoriaParaEditar.Descripcion = TBNombreCategoria.Text;
+                categoriaParaEditar.Descripcion = TBNombreCategoria.Text.Trim();
 
 
 
@@ -197,7 +199,7 @@ namespace Unitivo.Presentacion.Administrador
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dgvRegistroCategoria.SelectedRows.Count >= 0)
+            if (dgvRegistroCategoria.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)dgvRegistroCategoria.SelectedRows[0].Cells["ID"].Value; ;

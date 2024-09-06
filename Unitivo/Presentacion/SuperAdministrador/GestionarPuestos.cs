@@ -67,7 +67,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil); ;
 
                     // Establecer el color de fondo de la fila agregada
-                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
 
             }
@@ -90,6 +90,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
         private void BBuscarPerfil_Click(object sender, EventArgs e)
         {
             CargarPerfiles(perfilRepositorio.BuscarPerfil(TBGestionPerfil.Text));
+            BReactivar.Visible = false;
+            BEliminarPerfiles.Visible = false;
         }
 
         private void CargarPerfiles(List<Perfile> nuevosPerfiles)
@@ -110,7 +112,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = DataGridViewListarPerfiles.Rows.Add(perfile.Id, perfile.DescripcionPerfil, perfile.EstadoPerfil); ;
 
                     // Establecer el color de fondo de la fila agregada
-                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    DataGridViewListarPerfiles.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
 
@@ -207,7 +209,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BReactivar_Click(object sender, EventArgs e)
         {
-            if (DataGridViewListarPerfiles.SelectedRows.Count >= 0)
+            if (DataGridViewListarPerfiles.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)DataGridViewListarPerfiles.SelectedRows[0].Cells["ID"].Value; ;

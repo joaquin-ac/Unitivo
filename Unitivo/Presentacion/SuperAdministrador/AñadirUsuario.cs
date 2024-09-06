@@ -120,7 +120,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = dgvListaUsuarios.Rows.Add(usuario.Id, usuario.IdPerfilNavigation.DescripcionPerfil, usuario.NombreUsuario, usuario.IdEmpleadoNavigation.Nombre, usuario.IdEmpleadoNavigation.Apellido, usuario.Estado);
 
                     // Establecer el color de fondo de la fila agregada
-                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }

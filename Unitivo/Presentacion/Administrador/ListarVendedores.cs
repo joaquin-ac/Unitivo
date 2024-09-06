@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Unitivo.Modelos;
 using Unitivo.Presentacion.Logica;
 using Unitivo.Repositorios.Implementaciones;
+using Color = System.Drawing.Color;
 
 namespace Unitivo.Presentacion.Administrador
 {

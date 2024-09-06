@@ -31,6 +31,7 @@ namespace Unitivo.Presentacion.Administrador
             PanelSubMenuTalles.Visible = false;
             PanelSubMenuClientes.Visible = false;
             PanelSubMenuReportes.Visible = false;
+            SubMenuColores.Visible = false;
         }
 
         private void showSubMenu(Panel subMenu)
@@ -129,6 +130,8 @@ namespace Unitivo.Presentacion.Administrador
 
         // Variable para el formulario activo
         private Form? formularioActivo;
+
+        public Panel PanelSubMenuColores { get; private set; }
 
         private void BVolver_Click(object sender, EventArgs e)
         {
@@ -241,6 +244,36 @@ namespace Unitivo.Presentacion.Administrador
         private void button3_Click(object sender, EventArgs e)
         {
             AbrirFormulariosAdmin(new MasVendidos());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            showSubMenu(SubMenuColores);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AbrirFormulariosAdmin(new AñadirColor());
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            AbrirFormulariosAdmin(new GestionarColores());
+        }
+
+        private void PanelFormAdmin_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

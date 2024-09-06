@@ -22,6 +22,7 @@ namespace Unitivo.Modelos
         public virtual DbSet<Perfile> Perfiles { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
         public virtual DbSet<Talle> Talles { get; set; }
+        public virtual DbSet<Color> Colores { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<TipoTalle> TipoTalles { get; set; }  // Agrega aquí
 
@@ -176,10 +177,11 @@ namespace Unitivo.Modelos
                 entity.Property(e => e.FechaModificacion).HasDefaultValueSql("(getdate())");
                 entity.Property(e => e.IdCategoria).HasColumnName("id_categoria");
                 entity.Property(e => e.IdTalle).HasColumnName("id_talle");
-                entity.Property(e => e.Imagen)
+                entity.Property(e => e.IdColor).HasColumnName("id_color");
+                entity.Property(e => e.Descripcion)
                     .HasMaxLength(255)
                     .IsUnicode(false)
-                    .HasColumnName("imagen");
+                    .HasColumnName("descripcion");
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(255)
                     .IsUnicode(false)
@@ -194,6 +196,10 @@ namespace Unitivo.Modelos
                     .HasForeignKey(d => d.IdTalle)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_id_talle_PRODUCTOS");
+                entity.HasOne(d => d.IdColorNavigation).WithMany(p => p.Productos)
+                    .HasForeignKey(d => d.IdColor)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_id_color_PRODUCTOS");
             });
 
             modelBuilder.Entity<Talle>(entity =>
@@ -212,6 +218,16 @@ namespace Unitivo.Modelos
                       .HasForeignKey(d => d.TipoTalleId)
                       .HasConstraintName("FK_talles_tipoTalle")
                       .OnDelete(DeleteBehavior.ClientSetNull); // O el comportamiento que desees
+            });
+
+            modelBuilder.Entity<Color>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK__colores__3213E83FACA61F17");
+                entity.ToTable("colores");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Descripcion).HasMaxLength(50).IsUnicode(false).HasColumnName("descripcion");
+                entity.Property(e => e.Estado).HasColumnName("estado");
+
             });
 
             modelBuilder.Entity<Usuario>(entity =>

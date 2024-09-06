@@ -65,7 +65,8 @@ namespace Unitivo.Presentacion.SuperAdministrador
             //busqueda correo+Apellido
             string nom = TBGestionUsuario.Text;
             cargarUsuarios(nom);
-
+            BReactivar.Visible = false;
+            BEliminarUsuario.Visible = false;
         }
 
         private void cargarUsuarios()
@@ -87,7 +88,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = dgvListaUsuarios.Rows.Add(usuario.Id, usuario.NombreUsuario, usuario.Estado, usuario.IdEmpleadoNavigation.FechaModificacion, usuario.IdEmpleadoNavigation.FechaCreacion, usuario.IdPerfilNavigation.DescripcionPerfil, usuario.IdEmpleadoNavigation.Apellido);
 
                     // Establecer el color de fondo de la fila agregada
-                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }
@@ -111,7 +112,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
                     int rowIndex = dgvListaUsuarios.Rows.Add(usuario.Id, usuario.NombreUsuario, usuario.Estado, usuario.IdEmpleadoNavigation.FechaModificacion, usuario.IdEmpleadoNavigation.FechaCreacion, usuario.IdPerfilNavigation.DescripcionPerfil, usuario.IdEmpleadoNavigation.Apellido);
 
                     // Establecer el color de fondo de la fila agregada
-                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                    dgvListaUsuarios.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                 }
             }
         }
@@ -221,7 +222,7 @@ namespace Unitivo.Presentacion.SuperAdministrador
         private void BReactivar_Click(object sender, EventArgs e)
         {
 
-            if (dgvListaUsuarios.SelectedRows.Count >= 0)
+            if (dgvListaUsuarios.SelectedRows.Count > 0)
             {
                 // Obtener la fila que fue doble clickeada
                 int IdSelect = (int)dgvListaUsuarios.SelectedRows[0].Cells["ID"].Value; ;

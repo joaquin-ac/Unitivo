@@ -102,7 +102,7 @@
             // TBBuscar
             // 
             TBBuscar.Location = new Point(228, 52);
-            TBBuscar.Margin = new Padding(4, 4, 4, 4);
+            TBBuscar.Margin = new Padding(4);
             TBBuscar.Name = "TBBuscar";
             TBBuscar.Size = new Size(193, 31);
             TBBuscar.TabIndex = 1;
@@ -116,7 +116,7 @@
             ComboBoxBuscar.FormattingEnabled = true;
             ComboBoxBuscar.Items.AddRange(new object[] { "DNI", "Nombre y Apellido" });
             ComboBoxBuscar.Location = new Point(43, 56);
-            ComboBoxBuscar.Margin = new Padding(4, 4, 4, 4);
+            ComboBoxBuscar.Margin = new Padding(4);
             ComboBoxBuscar.Name = "ComboBoxBuscar";
             ComboBoxBuscar.Size = new Size(147, 28);
             ComboBoxBuscar.TabIndex = 0;
@@ -128,7 +128,7 @@
             BEditarCliente.ForeColor = Color.White;
             BEditarCliente.Image = Properties.Resources.icons8_editar_archivo_26;
             BEditarCliente.Location = new Point(830, 303);
-            BEditarCliente.Margin = new Padding(4, 4, 4, 4);
+            BEditarCliente.Margin = new Padding(4);
             BEditarCliente.Name = "BEditarCliente";
             BEditarCliente.Size = new Size(59, 52);
             BEditarCliente.TabIndex = 4;
@@ -193,7 +193,7 @@
             DataGridViewListarClientes.Dock = DockStyle.Fill;
             DataGridViewListarClientes.EnableHeadersVisualStyles = false;
             DataGridViewListarClientes.Location = new Point(3, 2);
-            DataGridViewListarClientes.Margin = new Padding(4, 4, 4, 4);
+            DataGridViewListarClientes.Margin = new Padding(4);
             DataGridViewListarClientes.Name = "DataGridViewListarClientes";
             DataGridViewListarClientes.ReadOnly = true;
             DataGridViewListarClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
