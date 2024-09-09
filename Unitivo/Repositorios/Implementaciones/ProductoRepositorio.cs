@@ -74,7 +74,10 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool EliminarProducto(int id)
         {
             Producto? producto = _contexto?.Productos.Find(id);
-            if (producto == null) return false;
+            if (producto == null)
+            {
+                return false;
+            }
             producto.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -216,6 +219,10 @@ namespace Unitivo.Repositorios.Implementaciones
             Producto prod = (from p in _contexto?.Productos
                              where p.Id == idProducto
                              select p).First();
+            if (prod == null)
+            {
+                return false;
+            }
             prod.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

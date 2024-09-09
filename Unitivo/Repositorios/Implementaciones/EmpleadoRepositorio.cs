@@ -104,7 +104,10 @@ namespace Unitivo.Repositorios.Implementaciones
                                   where emp.Id == id
                                   select emp).First();
 
-            if (empleado == null) return false;
+            if (empleado == null)
+            { 
+                return false; 
+            }
             empleado.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -214,6 +217,10 @@ namespace Unitivo.Repositorios.Implementaciones
             Empleado empleado = (from emp in _contexto?.Empleados
                                  where emp.Id == id
                                  select emp).First();
+            if (empleado == null)
+            {
+                return false;
+            }
             empleado.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

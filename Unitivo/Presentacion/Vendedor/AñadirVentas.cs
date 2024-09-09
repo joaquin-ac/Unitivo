@@ -34,7 +34,7 @@ namespace Unitivo.Formularios.Vendedor
             TBDniCliVenta.Clear();
             TBNombreCliVenta.Clear();
             TBTelCliVenta.Clear();
-            TBNombreCliVenta.Clear();
+            TBApellidoCliVenta.Clear();
             // El TextBox está vacío, así que debes mostrar el formulario BuscarCliente como un diálogo modal.
             BuscarCliente buscarClienteForm = new BuscarCliente(this);
             DialogResult result = buscarClienteForm.ShowDialog();
@@ -186,7 +186,7 @@ namespace Unitivo.Formularios.Vendedor
 
 
 
-            if (dgvListaVentas.Rows.Count <= 0 || CommonFunctions.ValidarCamposNoVacios(this))
+            if (dgvListaVentas.Rows.Count < 1 || clienteCompra.Id < 1)
             {
                 MessageBox.Show("Complete los datos necesarios para realizar la compra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

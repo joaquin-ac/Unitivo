@@ -62,6 +62,10 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BBuscarUsuario_Click(object sender, EventArgs e)
         {
+            TBNombreUsuario.Text = "";
+            ComboBoxPerfil.SelectedValue = -1;
+
+            usuarioParaEditar = new Usuario();
             //busqueda correo+Apellido
             string nom = TBGestionUsuario.Text;
             cargarUsuarios(nom);

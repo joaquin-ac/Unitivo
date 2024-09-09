@@ -73,7 +73,7 @@ namespace Unitivo.Presentacion.Administrador
         private void button1_Click(object sender, EventArgs e)
         {
             bool CBoxsNoVacios = (CBCategoriaProducto.Text != "" && CBTalleProducto.Text != "" && CBColorProducto.Text != "");
-            if (CBoxsNoVacios && productoParaEditar.Id != 0 && TBNombreProducto.Text.Trim() != "" && TBPrecioProducto.Text.Trim() != "" && TBStockAdic.Text.Trim() != "" && TBDescripcionProducto.Text.Trim() != "" && !(TBPrecioProducto.Text.Trim().Contains(".") && TBPrecioProducto.Text.Trim().Split('.')[1].Length > 2))
+            if (CBoxsNoVacios && productoParaEditar.Id > 0 && TBNombreProducto.Text.Trim() != "" && TBPrecioProducto.Text.Trim() != "" && TBStockAdic.Text.Trim() != "" && TBDescripcionProducto.Text.Trim() != "" && !(TBPrecioProducto.Text.Trim().Contains(".") && TBPrecioProducto.Text.Trim().Split('.')[1].Length > 2))
             {
                 productoParaEditar = productoRepositorio.BuscarProducto(productoParaEditar.Id);
                 productoParaEditar.Nombre = TBNombreProducto.Text.Trim();
@@ -144,6 +144,16 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BBuscarProducto_Click(object sender, EventArgs e)
         {
+            TBStockProducto.Text = "";
+            TBNombreProducto.Text = "";
+            TBPrecioProducto.Text = "";
+            TBStockAdic.Text = "";
+            TBDescripcionProducto.Text = "";
+            CBCategoriaProducto.SelectedValue = -1;
+            CBColorProducto.SelectedValue = -1;
+            CBTalleProducto.SelectedValue = -1;
+            productoParaEditar = new Producto();
+
             BReactivar.Visible = false;
             BEliminarProducto.Visible = false;
             string nom = TBBuscar.Text;

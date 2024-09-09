@@ -116,6 +116,10 @@ namespace Unitivo.Repositorios.Implementaciones
             Cliente cli = (from c in _contexto?.Clientes
                              where c.Id == id
                              select c).First();
+            if (cli == null)
+            {
+                return false;
+            }
             cli.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -124,7 +128,10 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public bool EliminarCliente(int id){
             Cliente? cliente = _contexto?.Clientes.Find(id);
-            if(cliente == null) return false;
+            if (cliente == null)
+            {
+                return false;
+            }
             cliente.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

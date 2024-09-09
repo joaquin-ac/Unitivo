@@ -68,7 +68,7 @@ namespace Unitivo.Presentacion.Vendedor
 
             foreach (DetalleFactura dfactura in detallesFactura)
             {
-                dgvListaVentas.Rows.Add(dfactura.Id, dfactura.IdProductoNavigation.Nombre, dfactura.IdProductoNavigation.Precio, dfactura.Cantidad, dfactura.IdProductoNavigation.IdTalleNavigation.Descripcion, dfactura.IdProductoNavigation.IdColorNavigation.Descripcion, dfactura.Precio);
+                dgvListaVentas.Rows.Add(dfactura.IdProductoNavigation.Id, dfactura.IdProductoNavigation.Nombre, dfactura.IdProductoNavigation.Precio, dfactura.Cantidad, dfactura.IdProductoNavigation.IdTalleNavigation.Descripcion, dfactura.IdProductoNavigation.IdColorNavigation.Descripcion, dfactura.Precio);
             }
         }
 

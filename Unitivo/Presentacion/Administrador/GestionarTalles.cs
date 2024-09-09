@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -119,6 +120,9 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BBuscarTalle_Click(object sender, EventArgs e)
         {
+            TBModTalle.Text = "";
+
+            talleParaEditar = new Talle();
             BReactivar.Visible = false;
             BEliminarTalle.Visible = false;
             //busqueda correo+Apellido

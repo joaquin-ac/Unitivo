@@ -42,7 +42,10 @@ namespace Unitivo.Repositorios.Implementaciones
         }
         public bool EliminarCategoria(int id){
             Categoria? Categoria = _contexto?.Categorias.Find(id);
-            if(Categoria == null) return false;
+            if (Categoria == null)
+            {
+                return false;
+            }
             Categoria.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -95,6 +98,10 @@ namespace Unitivo.Repositorios.Implementaciones
             Categoria cat = (from c in _contexto?.Categorias
                             where c.Id == id
                             select c).First();
+            if (cat == null)
+            {
+                return false;
+            }
             cat.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

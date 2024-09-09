@@ -47,7 +47,10 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool EliminarFactura(int id)
         {
             Factura? Factura = _contexto?.Facturas.Find(id);
-            if (Factura == null) return false;
+            if (Factura == null)
+            {
+                return false;
+            }
             //Factura.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

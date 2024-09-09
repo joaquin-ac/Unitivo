@@ -43,7 +43,10 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool EliminarTalle(int id)
         {
             Talle? Talle = _contexto?.Talles.Find(id);
-            if (Talle == null) return false;
+            if (Talle == null)
+            { 
+                return false; 
+            }
             Talle.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -101,6 +104,10 @@ namespace Unitivo.Repositorios.Implementaciones
             Talle tal = (from t in _contexto?.Talles
                              where t.Id == id
                              select t).First();
+            if(tal == null)
+            {
+                return false;
+            }
             tal.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

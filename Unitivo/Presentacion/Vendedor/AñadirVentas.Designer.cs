@@ -50,6 +50,8 @@ namespace Unitivo.Formularios.Vendedor
             BBuscarCliente = new Button();
             TBDniCliVenta = new TextBox();
             GroupBoxArticulos = new GroupBox();
+            TBColor = new TextBox();
+            label12 = new Label();
             BAñadir = new Button();
             Label10 = new Label();
             TBCantidad = new TextBox();
@@ -69,8 +71,6 @@ namespace Unitivo.Formularios.Vendedor
             BModificarProducto = new Button();
             BEliminarProducto = new Button();
             label11 = new Label();
-            label12 = new Label();
-            TBColor = new TextBox();
             Codigo = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
@@ -314,6 +314,28 @@ namespace Unitivo.Formularios.Vendedor
             GroupBoxArticulos.TabIndex = 62;
             GroupBoxArticulos.TabStop = false;
             GroupBoxArticulos.Text = "Articulos";
+            // 
+            // TBColor
+            // 
+            TBColor.Enabled = false;
+            TBColor.Location = new Point(594, 67);
+            TBColor.Margin = new Padding(4);
+            TBColor.Name = "TBColor";
+            TBColor.Size = new Size(93, 31);
+            TBColor.TabIndex = 14;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.ForeColor = Color.SaddleBrown;
+            label12.Location = new Point(596, 39);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(54, 20);
+            label12.TabIndex = 13;
+            label12.Text = "Color :";
+            label12.Click += label12_Click;
             // 
             // BAñadir
             // 
@@ -570,29 +592,6 @@ namespace Unitivo.Formularios.Vendedor
             label11.Text = "$";
             label11.Click += label11_Click;
             // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.ForeColor = Color.SaddleBrown;
-            label12.Location = new Point(596, 39);
-            label12.Margin = new Padding(4, 0, 4, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(54, 20);
-            label12.TabIndex = 13;
-            label12.Text = "Color :";
-            label12.Click += label12_Click;
-            // 
-            // TBColor
-            // 
-            TBColor.Enabled = false;
-            TBColor.Location = new Point(594, 67);
-            TBColor.Margin = new Padding(4);
-            TBColor.Name = "TBColor";
-            TBColor.Size = new Size(93, 31);
-            TBColor.TabIndex = 14;
-            //TBColor.TextChanged += this.TBColor_TextChanged;
-            // 
             // Codigo
             // 
             Codigo.HeaderText = "Codigo";
@@ -609,7 +608,7 @@ namespace Unitivo.Formularios.Vendedor
             // 
             // Precio
             // 
-            Precio.HeaderText = "Precio";
+            Precio.HeaderText = "Subtotal";
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
             Precio.ReadOnly = true;

@@ -63,6 +63,9 @@ namespace Unitivo.Presentacion.Administrador
         private void BBuscarCategoria_Click(object sender, EventArgs e)
         {
             //busqueda correo+Apellido
+            TBNombreCategoria.Text = "";
+
+            categoriaParaEditar = new Categoria();
             string nom = TBGestionCategoria.Text;
             CargarCategorias(nom);
             BReactivar.Visible = false;

@@ -82,6 +82,10 @@ namespace Unitivo.Repositorios.Implementaciones
             Usuario user = (from u in _contexto?.Usuarios
                             where u.Id == id
                             select u).First();
+            if(user == null)
+            {
+                return false;
+            }
             user.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -125,7 +129,11 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool EliminarUsuario(int id)
         {
             Usuario? usuario = _contexto?.Usuarios.Find(id);
-            if (usuario == null) return false;
+            if (usuario == null)
+            {
+                return false;
+            }
+
             usuario.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

@@ -36,7 +36,10 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool EliminarPerfil(int id)
         {
             Perfile? perfil = _contexto?.Perfiles.Find(id);
-            if (perfil == null) return false;
+            if (perfil == null)
+            {
+                return false;
+            }
             perfil.EstadoPerfil = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             MessageBox.Show("Se desactivo correctamente", "Exito");
@@ -46,7 +49,10 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool ReactivarPerfil(int id)
         {
             Perfile? perfil = _contexto?.Perfiles.Find(id);
-            if (perfil == null) return false;
+            if (perfil == null)
+            {
+                return false;
+            }
             perfil.EstadoPerfil = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;

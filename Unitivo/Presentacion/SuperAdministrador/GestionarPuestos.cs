@@ -89,6 +89,9 @@ namespace Unitivo.Presentacion.SuperAdministrador
 
         private void BBuscarPerfil_Click(object sender, EventArgs e)
         {
+            TBModPerfil.Text = "";
+
+            perfilParaEditar = new Perfile();
             CargarPerfiles(perfilRepositorio.BuscarPerfil(TBGestionPerfil.Text));
             BReactivar.Visible = false;
             BEliminarPerfiles.Visible = false;

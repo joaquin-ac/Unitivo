@@ -118,6 +118,9 @@ namespace Unitivo.Presentacion.Administrador
 
         private void BBuscarColor_Click(object sender, EventArgs e)
         {
+            TBModColor.Text = "";
+
+            colorParaEditar = new Color();
             BReactivar.Visible = false;
             BEliminarColor.Visible = false;
             //busqueda correo+Apellido

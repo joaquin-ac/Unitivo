@@ -43,7 +43,10 @@ namespace Unitivo.Repositorios.Implementaciones
         public bool EliminarColor(int id)
         {
             Color? Color = _contexto?.Colores.Find(id);
-            if (Color == null) return false;
+            if (Color == null)
+            { 
+                return false; 
+            }
             Color.Estado = false;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
@@ -98,10 +101,14 @@ namespace Unitivo.Repositorios.Implementaciones
 
         public bool reactivarColor(int id)
         {
-            Color tal = (from t in _contexto?.Colores
+            Color? col = (from t in _contexto?.Colores
                              where t.Id == id
-                             select t).First();
-            tal.Estado = true;
+                             select t).FirstOrDefault();
+            if (col == null)
+            {
+                return false;
+            }
+            col.Estado = true;
             int resultado = _contexto?.SaveChanges() ?? 0;
             return resultado > 0;
         }
